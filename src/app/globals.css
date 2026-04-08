@@ -39,8 +39,32 @@ body::before {
   z-index: -1;
 }
 
+.black-hole-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  perspective: 1000px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.visual-anchor {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 700px;
+  margin-top: 50px;
+}
+
 /* Digital Scanlines */
 .scanlines {
+
   position: fixed;
   top: 0;
   left: 0;
@@ -297,16 +321,16 @@ body::before {
 
 /* Header Tribal Layout */
 .cyber-header {
-  position: fixed;
-  top: 0;
+  position: relative;
   width: 100%;
   z-index: 100;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to bottom, rgba(2,2,2,0.9), transparent);
+  background: transparent;
 }
+
 
 .header-accent {
   width: 300px;

@@ -71,55 +71,59 @@ export default function Home() {
         </p>
       </header>
 
-      {/* Central Black Hole - Transcendental Event Horizon */}
-      <div className="event-horizon"></div>
-      <div className="black-hole-core">
-        <div className="inner-glow"></div>
-      </div>
+      {/* Visual Anchor to center the black hole group below the name */}
+      <div className="visual-anchor">
+          {/* Central Black Hole - Transcendental Event Horizon */}
+          <div className="event-horizon"></div>
+          <div className="black-hole-core">
+            <div className="inner-glow"></div>
+          </div>
 
-      {/* Neural Orbit & Runic Nodes */}
-      <div 
-        className="orbit"
-        style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
-      >
-        {APPS.map((app, index) => {
-          const angle = (index / APPS.length) * 360;
-          const radius = 350;
-          const x = radius * Math.cos((angle * Math.PI) / 180);
-          const y = radius * Math.sin((angle * Math.PI) / 180);
+          {/* Neural Orbit & Runic Nodes */}
+          <div 
+            className="orbit"
+            style={{ transform: `rotate(${rotation}deg)` }}
+          >
+            {APPS.map((app, index) => {
+              const angle = (index / APPS.length) * 360;
+              const radius = 350;
+              const x = radius * Math.cos((angle * Math.PI) / 180);
+              const y = radius * Math.sin((angle * Math.PI) / 180);
 
-          return (
-            <div key={app.id}>
-              {/* Neural Thread Connection */}
-              <div 
-                className="neural-thread"
-                style={{ 
-                  transform: `rotate(${angle}deg)`,
-                  width: `${radius}px`
-                }}
-              >
-                <div className="particle" style={{ animationDelay: `${index * 0.5}s` }}></div>
-              </div>
+              return (
+                <div key={app.id}>
+                  {/* Neural Thread Connection */}
+                  <div 
+                    className="neural-thread"
+                    style={{ 
+                      transform: `rotate(${angle}deg)`,
+                      width: `${radius}px`
+                    }}
+                  >
+                    <div className="particle" style={{ animationDelay: `${index * 0.5}s` }}></div>
+                  </div>
 
-              {/* Hex-Runic Node */}
-              <motion.div 
-                className="runic-node"
-                style={{ 
-                  left: `calc(50% + ${x}px - 35px)`,
-                  top: `calc(50% + ${y}px - 35px)`,
-                  transform: `rotate(-${rotation}deg)`,
-                }}
-                whileHover={{ scale: 1.3 }}
-              >
-                <div className="runic-content">{app.symbol}</div>
-                <div className="runic-name">
-                  {app.name}
+                  {/* Hex-Runic Node */}
+                  <motion.div 
+                    className="runic-node"
+                    style={{ 
+                      left: `calc(50% + ${x}px - 35px)`,
+                      top: `calc(50% + ${y}px - 35px)`,
+                      transform: `rotate(-${rotation}deg)`,
+                    }}
+                    whileHover={{ scale: 1.3 }}
+                  >
+                    <div className="runic-content">{app.symbol}</div>
+                    <div className="runic-name">
+                      {app.name}
+                    </div>
+                  </motion.div>
                 </div>
-              </motion.div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
       </div>
+
 
       <style jsx global>{`
         .logo-container {
