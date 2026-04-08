@@ -50,130 +50,122 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Main Content Area - Forces absolute center of the viewport remaining space */}
-      <div className="visual-anchor-container">
-        <div className="visual-anchor">
-            {/* 1. Logo Core - Absolute Center */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="center-element spider-core-wrapper"
-            >
+      <div className="visual-anchor">
+          {/* Logo Centralized - NO OFFSETS, just absolute center */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="spider-center-anchor"
+          >
+            <div className="core-glow-container">
               <div className="core-glow"></div>
-              <Image
-                src="/logo.png"
-                alt="Phantom Troupe Logo"
-                width={110}
-                height={110}
-                className="logo"
-                priority
-              />
-            </motion.div>
-
-            {/* 2. Central Reference Dot */}
-            <div className="center-element center-point"></div>
-
-            {/* 3. Rotating Web - Absolute Center */}
-            <div 
-              className="center-element orbit"
-              style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
-            >
-              {/* Radial Web Lines */}
-              {APPS.map((app, index) => {
-                const angle = (index / APPS.length) * 360;
-                const angleRad = (angle * Math.PI) / 180;
-                const cos = Math.cos(angleRad);
-                const sin = Math.sin(angleRad);
-
-                return (
-                  <div key={`radial-${index}`}>
-                    {/* Radial Thread */}
-                    <div 
-                      className="neural-thread"
-                      style={{ 
-                        width: 'var(--orbit-radius)',
-                        transform: `rotate(${angle}deg)` 
-                      }}
-                    >
-                      <div className="particle" style={{ animationDelay: `${index * 0.4}s` }}></div>
-                    </div>
-
-                    {/* Concentric Segments */}
-                    {Array.from({ length: WEB_LAYERS }).map((_, li) => {
-                      const rScale = (li + 2) / (WEB_LAYERS + 2);
-                      const segmentWidth = 0.5176; 
-                      const segmentRotation = 105;
-
-                      return (
-                        <div 
-                          key={`segment-${li}-${index}`}
-                          className="web-segment"
-                          style={{
-                            left: `calc(50% + (${cos} * var(--orbit-radius) * ${rScale}))`,
-                            top: `calc(50% + (${sin} * var(--orbit-radius) * ${rScale}))`,
-                            width: `calc(var(--orbit-radius) * ${rScale} * ${segmentWidth} + 2px)`, 
-                            transform: `rotate(${angle + segmentRotation}deg)`,
-                            opacity: 0.15 - (li * 0.015),
-                            borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
-                          }}
-                        ></div>
-                      );
-                    })}
-
-                    {/* Nodes at the edge */}
-                    <motion.div 
-                      className="runic-node"
-                      style={{ 
-                        left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
-                        top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
-                        transform: `rotate(-${rotation}deg)`,
-                      }}
-                      whileHover={{ scale: 1.2, borderColor: '#00f2ff' }}
-                    >
-                      <div className="runic-content">{app.symbol}</div>
-                      <div className="runic-name">{app.name}</div>
-                    </motion.div>
-                  </div>
-                );
-              })}
             </div>
-        </div>
+            <Image
+              src="/logo.png"
+              alt="Phantom Troupe Logo"
+              width={100}
+              height={100}
+              className="logo"
+              priority
+            />
+          </motion.div>
+
+          {/* Central Anchor Dot - The absolute center of the radial lines */}
+          <div className="center-point"></div>
+
+          {/* Rotating Spider Web Structure */}
+          <div 
+            className="orbit"
+            style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
+          >
+            {/* 1. Radial Web Lines (ALL intersect at exactly [0,0] which is top:50%, left:50%) */}
+            {APPS.map((app, index) => {
+              const angle = (index / APPS.length) * 360;
+              const angleRad = (angle * Math.PI) / 180;
+              const cos = Math.cos(angleRad);
+              const sin = Math.sin(angleRad);
+
+              return (
+                <div key={`radial-${index}`}>
+                  <div 
+                    className="neural-thread"
+                    style={{ 
+                      width: 'var(--orbit-radius)',
+                      transform: `rotate(${angle}deg)` 
+                    }}
+                  >
+                    <div className="particle" style={{ animationDelay: `${index * 0.4}s` }}></div>
+                  </div>
+
+                  {/* 2. Concentric Web Segments */}
+                  {Array.from({ length: WEB_LAYERS }).map((_, li) => {
+                    const rScale = (li + 2) / (WEB_LAYERS + 2);
+                    const segmentWidth = 0.5176; 
+                    const segmentRotation = 105;
+
+                    return (
+                      <div 
+                        key={`segment-${li}-${index}`}
+                        className="web-segment"
+                        style={{
+                          left: `calc(50% + (${cos} * var(--orbit-radius) * ${rScale}))`,
+                          top: `calc(50% + (${sin} * var(--orbit-radius) * ${rScale}))`,
+                          width: `calc(var(--orbit-radius) * ${rScale} * ${segmentWidth} + 2px)`, 
+                          transform: `rotate(${angle + segmentRotation}deg)`,
+                          opacity: 0.15 - (li * 0.015),
+                          borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
+                        }}
+                      ></div>
+                    );
+                  })}
+
+                  <motion.div 
+                    className="runic-node"
+                    style={{ 
+                      left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
+                      top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
+                      transform: `rotate(-${rotation}deg)`,
+                    }}
+                    whileHover={{ scale: 1.2, borderColor: '#00f2ff' }}
+                  >
+                    <div className="runic-content">{app.symbol}</div>
+                    <div className="runic-name">{app.name}</div>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
       </div>
 
       <style jsx global>{`
-        .visual-anchor-container {
-          flex: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-          position: relative;
-        }
         .visual-anchor {
           position: relative;
+          width: 100%;
+          height: 100%;
+          flex: 1;
+        }
+        .spider-center-anchor {
+          position: absolute;
+          top: 50%;
+          left: 50%;
           width: 0;
           height: 0;
-        }
-        .center-element {
-          position: absolute;
-          top: 0;
-          left: 0;
-          transform: translate(-50%, -50%);
-        }
-        .spider-core-wrapper {
-          z-index: 100;
           display: flex;
           justify-content: center;
           align-items: center;
+          z-index: 100;
+          pointer-events: none;
+        }
+        .core-glow-container {
+          position: absolute;
+          transform: translate(-50%, -50%);
         }
         .core-glow {
-          position: absolute;
-          width: 250px;
-          height: 250px;
+          width: 300px;
+          height: 300px;
           background: radial-gradient(circle, rgba(0, 242, 255, 0.5), transparent 70%);
           filter: blur(25px);
           animation: core-pulse 4s infinite alternate ease-in-out;
-          pointer-events: none;
         }
         @keyframes core-pulse {
           0% { transform: scale(0.9); opacity: 0.3; }
@@ -182,16 +174,21 @@ export default function Home() {
         .logo { 
           border-radius: 50%; 
           border: 2px solid var(--primary);
-          box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+          box-shadow: 0 0 40px rgba(0, 242, 255, 0.4);
+          transform: translate(-50%, -50%); /* EXACT center */
           min-width: 110px;
           min-height: 110px;
           filter: brightness(1.2) contrast(1.1);
           z-index: 101;
         }
         .center-point {
+          position: absolute;
           width: 4px;
           height: 4px;
           background: #fff;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
           box-shadow: 0 0 15px #fff;
           z-index: 200;
         }
@@ -208,11 +205,6 @@ export default function Home() {
           width: 100%;
           height: 100%;
           display: block;
-        }
-        .orbit {
-          width: 0;
-          height: 0;
-          z-index: 10;
         }
       `}</style>
     </main>
