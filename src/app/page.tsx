@@ -19,7 +19,7 @@ const APPS = [
   { id: 12, name: "Docker", symbol: "M" },
 ];
 
-const WEB_RINGS = [1.2, 0.9, 0.6, 0.3]; // Relative to orbit-radius
+const WEB_RINGS = [1.2, 0.9, 0.6, 0.3];
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
@@ -40,22 +40,6 @@ export default function Home() {
       <div className="scanlines"></div>
       
       <header className="cyber-header">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="logo-container"
-          style={{ marginBottom: '10px' }}
-        >
-          <Image
-            src="/logo.png"
-            alt="Phantom Troupe Logo"
-            width={80}
-            height={80}
-            className="logo"
-            priority
-          />
-        </motion.div>
-        
         <div className="glitch-wrapper">
           <h1 className="glitch" data-text="Phantom Troupe">
             Phantom Troupe
@@ -69,7 +53,23 @@ export default function Home() {
       </header>
 
       <div className="visual-anchor">
-          {/* Static Anchor Thread to the Spider */}
+          {/* Logo as the Anchor Tip */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="spider-anchor"
+          >
+            <Image
+              src="/logo.png"
+              alt="Phantom Troupe Logo"
+              width={60}
+              height={60}
+              className="logo"
+              priority
+            />
+          </motion.div>
+
+          {/* Silk Thread connecting Spider to Center */}
           <div className="silk-thread"></div>
 
           {/* Central Anchor Dot */}
@@ -101,9 +101,6 @@ export default function Home() {
 
                   {/* 2. Concentric Web Segments (Rings) */}
                   {WEB_RINGS.map((rScale, ri) => {
-                    const nextAngle = ((index + 1) / APPS.length) * 360;
-                    const nextAngleRad = (nextAngle * Math.PI) / 180;
-                    
                     return (
                       <div 
                         key={`ring-${ri}-${index}`}
@@ -111,15 +108,15 @@ export default function Home() {
                         style={{
                           left: `calc(50% + (${cos} * var(--orbit-radius) * ${rScale}))`,
                           top: `calc(50% + (${sin} * var(--orbit-radius) * ${rScale}))`,
-                          width: `calc(var(--orbit-radius) * ${rScale} * 0.52)`, // 2 * sin(15deg) approx 0.52
-                          transform: `rotate(${angle + 105}deg)`, // Perpendicular + offset to connect
+                          width: `calc(var(--orbit-radius) * ${rScale} * 0.52)`,
+                          transform: `rotate(${angle + 105}deg)`,
                           opacity: 0.2 - (ri * 0.04)
                         }}
                       ></div>
                     );
                   })}
 
-                  {/* 3. Application Nodes (Caught in the Web) */}
+                  {/* 3. Application Nodes */}
                   <motion.div 
                     className="runic-node"
                     style={{ 
@@ -140,20 +137,35 @@ export default function Home() {
 
       <style jsx global>{`
         .visual-anchor {
-          margin-top: 40px; /* Space for the silk thread */
+          margin-top: 60px;
+          position: relative;
+        }
+        .spider-anchor {
+          position: absolute;
+          top: -160px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 100;
+          filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.5));
+        }
+        .silk-thread {
+          position: absolute;
+          top: -130px; /* Connects bottom of spider to center */
+          left: 50%;
+          width: 1px;
+          height: 130px;
+          background: linear-gradient(to bottom, #fff, var(--primary));
+          transform: translateX(-50%);
+          z-index: 5;
+          opacity: 0.6;
+        }
+        .logo { 
+          border-radius: 50%; 
+          border: 1px solid rgba(0, 242, 255, 0.4);
+          box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
         }
         .web-segment {
           background: rgba(255, 255, 255, 0.15);
-          filter: drop-shadow(0 0 2px rgba(0, 242, 255, 0.1));
-        }
-        .black-hole-container::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(1px 1px at 20px 30px, rgba(0, 242, 255, 0.1), transparent);
-          background-size: 100px 100px;
-          opacity: 0.1;
-          pointer-events: none;
         }
       `}</style>
     </main>
