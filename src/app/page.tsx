@@ -19,26 +19,18 @@ const APPS = [
   { id: 12, name: "Docker", symbol: "M" },
 ];
 
-const WEB_LAYERS = 8;
+const WEB_LAYERS = 8; 
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
     const interval = setInterval(() => {
       setRotation((prev) => (prev + 0.08) % 360);
     }, 50);
-
-    // After 4 seconds, the web is "complete"
-    const timer = setTimeout(() => setIsComplete(true), 4000);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timer);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   if (!isMounted) return null;
@@ -59,32 +51,24 @@ export default function Home() {
       </header>
 
       <div className="visual-anchor">
-          {/* Logo Offset - Slightly down and to the right */}
+          {/* Logo Offset - Slightly to the bottom-right as requested */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.5, x: "50%", y: "50%" }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1,
-              top: "51.5%", // Slightly down
-              left: "51.5%", // Slightly right
-              x: "-50%",
-              y: "-50%"
-            }}
-            transition={{ delay: 0.5, duration: 1.5 }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
             className="spider-center-anchor"
           >
             <div className="core-glow"></div>
             <Image
               src="/logo.png"
               alt="Phantom Troupe Logo"
-              width={90}
-              height={90}
-              className="logo"
+              width={100}
+              height={100}
+              className="logo offset-logo"
               priority
             />
           </motion.div>
 
-          {/* Central Anchor Dot */}
+          {/* Central Anchor Dot - Stays at absolute zero */}
           <div className="center-point"></div>
 
           {/* Rotating Spider Web Structure */}
@@ -92,7 +76,7 @@ export default function Home() {
             className="orbit"
             style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
           >
-            {/* 1. Radial Web Lines with "Growth" animation */}
+            {/* 1. Radial Web Lines */}
             {APPS.map((app, index) => {
               const angle = (index / APPS.length) * 360;
               const angleRad = (angle * Math.PI) / 180;
@@ -101,53 +85,39 @@ export default function Home() {
 
               return (
                 <div key={`radial-${index}`}>
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: 'var(--orbit-radius)' }}
-                    transition={{ delay: index * 0.1, duration: 1.5, ease: "easeOut" }}
+                  <div 
                     className="neural-thread"
                     style={{ 
+                      width: 'var(--orbit-radius)',
                       transform: `rotate(${angle}deg)` 
                     }}
                   >
                     <div className="particle" style={{ animationDelay: `${index * 0.4}s` }}></div>
-                  </motion.div>
+                  </div>
 
-                  {/* 2. Concentric Web Segments with "Growth" animation */}
+                  {/* 2. Concentric Web Segments */}
                   {Array.from({ length: WEB_LAYERS }).map((_, li) => {
                     const rScale = (li + 2) / (WEB_LAYERS + 2);
-                    const segmentWidth = 0.5176;
+                    const segmentWidth = 0.5176; 
                     const segmentRotation = 105;
 
                     return (
-                      <motion.div 
+                      <div 
                         key={`segment-${li}-${index}`}
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ 
-                          opacity: 0.15 - (li * 0.015),
-                          scale: 1
-                        }}
-                        transition={{ 
-                          delay: 1.5 + (li * 0.2) + (index * 0.05), 
-                          duration: 0.8 
-                        }}
                         className="web-segment"
                         style={{
                           left: `calc(50% + (${cos} * var(--orbit-radius) * ${rScale}))`,
                           top: `calc(50% + (${sin} * var(--orbit-radius) * ${rScale}))`,
-                          width: `calc(var(--orbit-radius) * ${rScale} * ${segmentWidth} + 2px)`,
+                          width: `calc(var(--orbit-radius) * ${rScale} * ${segmentWidth} + 2px)`, 
                           transform: `rotate(${angle + segmentRotation}deg)`,
+                          opacity: 0.15 - (li * 0.015),
                           borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
                         }}
-                      ></motion.div>
+                      ></div>
                     );
                   })}
 
-                  {/* 3. Application Nodes */}
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 2.5 + (index * 0.1) }}
                     className="runic-node"
                     style={{ 
                       left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
@@ -174,10 +144,14 @@ export default function Home() {
         }
         .spider-center-anchor {
           position: absolute;
-          z-index: 100;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
           display: flex;
           justify-content: center;
           align-items: center;
+          z-index: 100;
           pointer-events: none;
         }
         .core-glow {
@@ -185,21 +159,30 @@ export default function Home() {
           width: 250px;
           height: 250px;
           background: radial-gradient(circle, rgba(0, 242, 255, 0.5), transparent 70%);
-          filter: blur(25px);
+          filter: blur(20px);
           animation: core-pulse 4s infinite alternate ease-in-out;
+          /* Following the offset of the logo */
+          margin-top: 5px;
+          margin-left: 5px;
         }
         @keyframes core-pulse {
-          0% { transform: scale(0.9); opacity: 0.2; }
-          100% { transform: scale(1.15); opacity: 0.6; }
+          0% { transform: scale(0.9); opacity: 0.3; }
+          100% { transform: scale(1.1); opacity: 0.7; }
         }
         .logo { 
           border-radius: 50%; 
-          border: 1px solid var(--primary);
-          box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
-          min-width: 90px;
-          min-height: 90px;
-          filter: brightness(1.1) contrast(1.1);
+          border: 2px solid var(--primary);
+          box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+          transform: translate(-50%, -50%);
+          min-width: 100px;
+          min-height: 100px;
+          filter: brightness(1.2) contrast(1.1);
           z-index: 101;
+        }
+        /* The Offset requested by the user */
+        .offset-logo {
+          margin-top: 5px;
+          margin-left: 5px;
         }
         .center-point {
           position: absolute;
@@ -211,10 +194,10 @@ export default function Home() {
           transform: translate(-50%, -50%);
           box-shadow: 0 0 10px #fff;
           z-index: 200;
-          opacity: 0.5;
         }
         .web-segment {
           background: transparent;
+          filter: drop-shadow(0 0 1px rgba(0, 242, 255, 0.2));
           height: 1px;
           transform-origin: left center;
         }
