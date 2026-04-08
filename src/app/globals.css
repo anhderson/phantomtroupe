@@ -54,7 +54,7 @@ body::before {
     90deg,
     rgba(255, 0, 0, 0.06),
     rgba(0, 255, 0, 0.02),
-    rgba(0, 255, 0, 0.06)
+    rgba(0, 0, 255, 0.06)
   );
   z-index: 2000;
   background-size: 100% 4px, 3px 100%;
@@ -279,6 +279,21 @@ body::before {
   opacity: 1;
   top: -55px;
 }
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
 
 /* Header Tribal Layout */
 .cyber-header {
