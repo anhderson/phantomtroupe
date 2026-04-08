@@ -43,15 +43,15 @@ export default function Home() {
         <div className="glitch-wrapper">
           <h1 className="glitch" data-text="Phantom Troupe">
             Phantom Troupe
-            <span aria-hidden="true">Phantom Troupe</span>
-            <span aria-hidden="true">Phantom Troupe</span>
+            <span aria-hidden="true" className="glitch-span">Phantom Troupe</span>
+            <span aria-hidden="true" className="glitch-span">Phantom Troupe</span>
           </h1>
           <div className="header-accent"></div>
         </div>
       </header>
 
       <div className="visual-anchor">
-          {/* Logo Centralized in the heart of the 12 nodes */}
+          {/* Logo Centralized - EXACT center of the 12 orbits */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -68,7 +68,7 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* Central Anchor Dot */}
+          {/* Central Anchor Dot - Shared center point */}
           <div className="center-point"></div>
 
           {/* Rotating Spider Web Structure */}
@@ -106,7 +106,7 @@ export default function Home() {
                           top: `calc(50% + (${sin} * var(--orbit-radius) * ${rScale}))`,
                           width: `calc(var(--orbit-radius) * ${rScale} * 0.52)`,
                           transform: `rotate(${angle + 105}deg)`,
-                          opacity: 0.2 - (ri * 0.04)
+                          opacity: 0.15 - (ri * 0.03)
                         }}
                       ></div>
                     );
@@ -120,7 +120,7 @@ export default function Home() {
                       top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       transform: `rotate(-${rotation}deg)`,
                     }}
-                    whileHover={{ scale: 1.15, borderColor: '#00f2ff' }}
+                    whileHover={{ scale: 1.2, borderColor: '#00f2ff' }}
                   >
                     <div className="runic-content">{app.symbol}</div>
                     <div className="runic-name">{app.name}</div>
@@ -133,40 +133,53 @@ export default function Home() {
 
       <style jsx global>{`
         .visual-anchor {
-          margin-top: 20px;
           position: relative;
+          width: 100%;
+          height: 100%;
+          flex: 1;
         }
         .spider-center-anchor {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 100;
+          width: 0;
+          height: 0;
           display: flex;
           justify-content: center;
           align-items: center;
+          z-index: 100;
         }
         .core-glow {
           position: absolute;
-          width: 250px;
-          height: 250px;
-          background: radial-gradient(circle, rgba(0, 242, 255, 0.5), transparent 70%);
-          filter: blur(25px);
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(0, 242, 255, 0.4), transparent 70%);
+          filter: blur(30px);
           animation: core-pulse 4s infinite alternate ease-in-out;
+          pointer-events: none;
         }
         @keyframes core-pulse {
-          0% { transform: scale(0.8); opacity: 0.4; }
-          100% { transform: scale(1.2); opacity: 0.8; }
+          0% { transform: scale(0.8); opacity: 0.3; }
+          100% { transform: scale(1.2); opacity: 0.6; }
         }
         .logo { 
           border-radius: 50%; 
           border: 2px solid var(--primary);
-          box-shadow: 0 0 40px rgba(0, 242, 255, 0.4);
-          position: relative;
-          z-index: 101;
+          box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+          transform: translate(-50%, -50%); /* Crucial for internal centering */
+          min-width: 100px;
+          min-height: 100px;
+        }
+        .glitch-span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
         }
         .web-segment {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.12);
         }
       `}</style>
     </main>
