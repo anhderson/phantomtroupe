@@ -51,7 +51,7 @@ export default function Home() {
       </header>
 
       <div className="visual-anchor">
-          {/* Logo Centralized - EXACT center of the 12 orbits */}
+          {/* Logo Centralized - The Core Anchor */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -68,7 +68,7 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* Central Anchor Dot - Shared center point */}
+          {/* Shared Center Point */}
           <div className="center-point"></div>
 
           {/* Rotating Spider Web Structure */}
@@ -106,7 +106,7 @@ export default function Home() {
                           top: `calc(50% + (${sin} * var(--orbit-radius) * ${rScale}))`,
                           width: `calc(var(--orbit-radius) * ${rScale} * 0.52)`,
                           transform: `rotate(${angle + 105}deg)`,
-                          opacity: 0.15 - (ri * 0.03)
+                          opacity: 0.12 - (ri * 0.02)
                         }}
                       ></div>
                     );
@@ -132,43 +132,51 @@ export default function Home() {
       </div>
 
       <style jsx global>{`
+        /* Override display flex in globals.css if necessary */
         .visual-anchor {
           position: relative;
           width: 100%;
-          height: 100%;
           flex: 1;
+          display: block !important; /* Ensure it's not flex to avoid centring ambiguity */
+          min-height: 0;
         }
         .spider-center-anchor {
           position: absolute;
           top: 50%;
           left: 50%;
-          width: 0;
-          height: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          transform: translate(-50%, -50%); /* Center the 0x0 point */
           z-index: 100;
+          pointer-events: none;
         }
         .core-glow {
           position: absolute;
+          top: 0;
+          left: 0;
           width: 300px;
           height: 300px;
           background: radial-gradient(circle, rgba(0, 242, 255, 0.4), transparent 70%);
-          filter: blur(30px);
+          filter: blur(40px);
+          transform: translate(-50%, -50%); /* Centered on the 0x0 point */
           animation: core-pulse 4s infinite alternate ease-in-out;
-          pointer-events: none;
         }
         @keyframes core-pulse {
-          0% { transform: scale(0.8); opacity: 0.3; }
-          100% { transform: scale(1.2); opacity: 0.6; }
+          0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; }
+          100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
         }
         .logo { 
           border-radius: 50%; 
           border: 2px solid var(--primary);
           box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
-          transform: translate(-50%, -50%); /* Crucial for internal centering */
+          transform: translate(-50%, -50%); /* Centered on the 0x0 point */
           min-width: 100px;
           min-height: 100px;
+          pointer-events: auto;
+        }
+        .center-point {
+          position: absolute !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
         }
         .glitch-span {
           position: absolute;
@@ -177,9 +185,6 @@ export default function Home() {
           width: 100%;
           height: 100%;
           display: block;
-        }
-        .web-segment {
-          background: rgba(255, 255, 255, 0.12);
         }
       `}</style>
     </main>
