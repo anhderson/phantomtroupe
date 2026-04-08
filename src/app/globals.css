@@ -6,6 +6,10 @@
   --secondary: #ff00ea;
   --accent: #fff;
   --void: #000;
+  /* Responsive Units */
+  --orbit-radius: clamp(150px, 35vmin, 350px);
+  --node-size: clamp(40px, 8vmin, 70px);
+  --black-hole-size: clamp(80px, 20vmin, 180px);
 }
 
 * {
@@ -20,7 +24,7 @@ body {
   font-family: 'Rajdhani', sans-serif;
   overflow: hidden;
   height: 100vh;
-  width: 100vw;
+  width: 100%; /* Better than 100vw to avoid scrollbar jump */
 }
 
 /* Background Texture & Grain */
@@ -40,31 +44,32 @@ body::before {
 }
 
 .black-hole-container {
-  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 40px;
+  padding: clamp(10px, 4vmin, 40px);
   perspective: 1000px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden; /* Prevent ANY scrolling or drifting */
+  position: relative;
 }
 
 .visual-anchor {
   position: relative;
   width: 100%;
+  height: 100%;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 700px;
-  margin-top: 50px;
+  /* Safe zone for the orbit */
+  min-height: 0; 
 }
 
 /* Digital Scanlines */
 .scanlines {
-
   position: fixed;
   top: 0;
   left: 0;
@@ -72,16 +77,10 @@ body::before {
   height: 100%;
   background: linear-gradient(
     rgba(18, 16, 16, 0) 50%,
-    rgba(0, 0, 0, 0.25) 50%
-  ),
-  linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.06),
-    rgba(0, 255, 0, 0.02),
-    rgba(0, 0, 255, 0.06)
+    rgba(0, 0, 0, 0.15) 50%
   );
   z-index: 2000;
-  background-size: 100% 4px, 3px 100%;
+  background-size: 100% 4px;
   pointer-events: none;
 }
 
@@ -92,11 +91,13 @@ body::before {
   align-items: center;
   justify-content: center;
   text-align: center;
+  z-index: 100;
+  pointer-events: none;
 }
 
 .glitch {
   font-family: 'Orbitron', sans-serif;
-  font-size: 4rem;
+  font-size: clamp(1.5rem, 8vw, 4rem);
   font-weight: 900;
   text-transform: uppercase;
   position: relative;
@@ -105,55 +106,13 @@ body::before {
   animation: glitch 1s infinite;
 }
 
-.glitch span {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.glitch span:first-child {
-  animation: glitch 650ms infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-  transform: translate(-0.025em, -0.0125em);
-  opacity: 0.8;
-}
-
-.glitch span:last-child {
-  animation: glitch 375ms infinite;
-  clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
-  transform: translate(0.0125em, 0.025em);
-  opacity: 0.8;
-}
+.glitch span { position: absolute; top: 0; left: 0; }
+.glitch span:first-child { animation: glitch 650ms infinite; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); transform: translate(-0.025em, -0.0125em); opacity: 0.8;}
+.glitch span:last-child { animation: glitch 375ms infinite; clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%); transform: translate(0.0125em, 0.025em); opacity: 0.8;}
 
 @keyframes glitch {
-  0% {
-    text-shadow: 0.05em 0 0 var(--secondary), -0.05em -0.025em 0 var(--primary),
-      -0.025em 0.05em 0 #fff;
-  }
-  14% {
-    text-shadow: 0.05em 0 0 var(--secondary), -0.05em -0.025em 0 var(--primary),
-      -0.025em 0.05em 0 #fff;
-  }
-  15% {
-    text-shadow: -0.05em -0.025em 0 var(--secondary), 0.025em 0.025em 0 var(--primary),
-      -0.05em -0.05em 0 #fff;
-  }
-  49% {
-    text-shadow: -0.05em -0.025em 0 var(--secondary), 0.025em 0.025em 0 var(--primary),
-      -0.05em -0.05em 0 #fff;
-  }
-  50% {
-    text-shadow: 0.025em 0.05em 0 var(--secondary), 0.05em 0 0 var(--primary),
-      0.05em -0.025em 0 #fff;
-  }
-  99% {
-    text-shadow: 0.025em 0.05em 0 var(--secondary), 0.05em 0 0 var(--primary),
-      0.05em -0.025em 0 #fff;
-  }
-  100% {
-    text-shadow: -0.025em 0 0 var(--secondary), -0.025em -0.025em 0 var(--primary),
-      -0.025em -0.05em 0 #fff;
-  }
+  0%, 14%, 49%, 50%, 99%, 100% { text-shadow: 0.05em 0 0 var(--secondary), -0.05em -0.025em 0 var(--primary), -0.025em 0.05em 0 #fff; }
+  15% { text-shadow: -0.05em -0.025em 0 var(--secondary), 0.025em 0.025em 0 var(--primary), -0.05em -0.05em 0 #fff; }
 }
 
 .event-horizon {
@@ -161,18 +120,10 @@ body::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 280px;
-  height: 280px;
+  width: calc(var(--black-hole-size) * 1.5);
+  height: calc(var(--black-hole-size) * 1.5);
   border-radius: 50%;
-
-  background: conic-gradient(
-    from 0deg,
-    transparent,
-    rgba(0, 242, 255, 0.4),
-    rgba(255, 0, 234, 0.4),
-    rgba(255, 255, 255, 0.6),
-    transparent
-  );
+  background: conic-gradient(from 0deg, transparent, rgba(0, 242, 255, 0.4), rgba(255, 0, 234, 0.4), rgba(255, 255, 255, 0.6), transparent);
   filter: blur(15px);
   animation: rotate-accretion 4s linear infinite;
   z-index: 5;
@@ -183,19 +134,16 @@ body::before {
   to { transform: translate(-50%, -50%) rotate(360deg) scale(1.05); }
 }
 
-
 .black-hole-core {
-  width: 180px;
-  height: 180px;
+  width: var(--black-hole-size);
+  height: var(--black-hole-size);
   background: #000;
   border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 
-    0 0 40px 10px rgba(0, 242, 255, 0.2),
-    inset 0 0 50px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px 10px rgba(0, 242, 255, 0.2), inset 0 0 50px rgba(255, 255, 255, 0.1);
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -214,17 +162,15 @@ body::before {
 
 @keyframes pulse-ring {
   0% { transform: scale(0.9); opacity: 0; }
-  50% { opacity: 0.5; }
   100% { transform: scale(1.2); opacity: 0; }
 }
 
-/* Connection Lines - Neural Threads */
 .neural-thread {
   position: absolute;
   top: 50%;
   left: 50%;
   height: 1px;
-  width: 350px;
+  width: var(--orbit-radius);
   transform-origin: left center;
   background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,242,255,0.8) 50%, rgba(255,0,234,0) 100%);
   z-index: 1;
@@ -247,11 +193,10 @@ body::before {
   100% { left: 100%; opacity: 0; }
 }
 
-/* Runic Node Design */
 .runic-node {
   position: absolute;
-  width: 70px;
-  height: 70px;
+  width: var(--node-size);
+  height: var(--node-size);
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
   background: rgba(10, 10, 10, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -263,27 +208,15 @@ body::before {
   box-shadow: 0 0 15px rgba(0,0,0,0.8);
 }
 
-.runic-node::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: inherit;
-  clip-path: inherit;
-  z-index: -1;
-  transition: inherit;
-}
-
 .runic-node:hover {
-  transform: scale(1.3) rotate(360deg);
+  transform: scale(1.2) rotate(360deg);
   border-color: var(--primary);
   box-shadow: 0 0 30px var(--primary);
-  background: rgba(0, 242, 255, 0.1);
 }
 
 .runic-content {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.2rem;
+  font-size: clamp(0.6rem, 2vw, 1.2rem);
   color: var(--primary);
   text-shadow: 0 0 5px var(--primary);
 }
@@ -295,62 +228,49 @@ body::before {
   transform: translateX(-50%);
   background: rgba(0,0,0,0.9);
   padding: 5px 12px;
-  border-radius: 2px;
   border: 1px solid var(--primary);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--primary);
   opacity: 0;
   transition: 0.3s;
   pointer-events: none;
   white-space: nowrap;
-  letter-spacing: 2px;
 }
 
-.runic-node:hover .runic-name {
-  opacity: 1;
-  top: -55px;
-}
+.runic-node:hover .runic-name { opacity: 1; top: -55px; }
 
 .orbit {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 700px;
-  height: 700px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
+  width: calc(var(--orbit-radius) * 2);
+  height: calc(var(--orbit-radius) * 2);
+  transform: translate(-50%, -50%);
   pointer-events: none;
+  z-index: 10;
 }
 
-
-/* Header Tribal Layout */
 .cyber-header {
   position: relative;
   width: 100%;
   z-index: 100;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: transparent;
 }
 
-
 .header-accent {
-  width: 300px;
+  width: min(300px, 60vw);
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
   margin-top: 10px;
 }
 
 .user-tag {
-  margin-top: 15px;
+  margin-top: 10px;
   font-family: 'Orbitron', sans-serif;
   color: #555;
-  letter-spacing: 4px;
+  letter-spacing: clamp(1px, 1vw, 4px);
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: clamp(0.5rem, 2vw, 0.8rem);
 }

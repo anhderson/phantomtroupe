@@ -35,23 +35,20 @@ export default function Home() {
 
   return (
     <main className="black-hole-container">
-      {/* Visual Overlay Layers */}
       <div className="scanlines"></div>
       
-      {/* Cyber Header */}
       <header className="cyber-header">
         <motion.div 
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           className="logo-container"
-          style={{ marginBottom: '20px' }}
+          style={{ marginBottom: '10px' }}
         >
           <Image
             src="/logo.png"
             alt="Phantom Troupe Logo"
-            width={100}
-            height={100}
+            width={80}
+            height={80}
             className="logo"
             priority
           />
@@ -66,57 +63,45 @@ export default function Home() {
           <div className="header-accent"></div>
         </div>
         
-        <p className="user-tag">
-          NODE: CHROLLO_LUCILFER_00
-        </p>
+        <p className="user-tag">NODE: CHROLLO_LUCILFER_00</p>
       </header>
 
-      {/* Visual Anchor to center the black hole group below the name */}
       <div className="visual-anchor">
-          {/* Central Black Hole - Transcendental Event Horizon */}
           <div className="event-horizon"></div>
           <div className="black-hole-core">
             <div className="inner-glow"></div>
           </div>
 
-          {/* Neural Orbit & Runic Nodes */}
           <div 
             className="orbit"
             style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
           >
             {APPS.map((app, index) => {
               const angle = (index / APPS.length) * 360;
-              const radius = 350;
-              const x = radius * Math.cos((angle * Math.PI) / 180);
-              const y = radius * Math.sin((angle * Math.PI) / 180);
+              const angleRad = (angle * Math.PI) / 180;
+              const cos = Math.cos(angleRad);
+              const sin = Math.sin(angleRad);
 
               return (
                 <div key={app.id}>
-                  {/* Neural Thread Connection */}
                   <div 
                     className="neural-thread"
-                    style={{ 
-                      transform: `rotate(${angle}deg)`,
-                      width: `${radius}px`
-                    }}
+                    style={{ transform: `rotate(${angle}deg)` }}
                   >
                     <div className="particle" style={{ animationDelay: `${index * 0.5}s` }}></div>
                   </div>
 
-                  {/* Hex-Runic Node */}
                   <motion.div 
                     className="runic-node"
                     style={{ 
-                      left: `calc(50% + ${x}px - 35px)`,
-                      top: `calc(50% + ${y}px - 35px)`,
+                      left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
+                      top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       transform: `rotate(-${rotation}deg)`,
                     }}
-                    whileHover={{ scale: 1.3 }}
+                    whileHover={{ scale: 1.1 }}
                   >
                     <div className="runic-content">{app.symbol}</div>
-                    <div className="runic-name">
-                      {app.name}
-                    </div>
+                    <div className="runic-name">{app.name}</div>
                   </motion.div>
                 </div>
               );
@@ -124,51 +109,32 @@ export default function Home() {
           </div>
       </div>
 
-
       <style jsx global>{`
-        .logo-container {
-          filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.4));
-        }
-
+        .logo-container { filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.4)); }
         .inner-glow {
           position: absolute;
-          width: 80px;
-          height: 80px;
+          width: 40%;
+          height: 40%;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           background: radial-gradient(circle, #fff, #00f2ff, transparent);
           border-radius: 50%;
           filter: blur(20px);
-          animation: pulse 3s infinite alternate cubic-bezier(0.445, 0.05, 0.55, 0.95);
+          animation: pulse 3s infinite alternate ease-in-out;
         }
-
         @keyframes pulse {
           0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; }
-          100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.8; }
+          100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
         }
-
-        /* Ambient Mysterious Particles */
         .black-hole-container::after {
           content: "";
           position: absolute;
-          width: 100%;
-          height: 100%;
-          background-image: 
-            radial-gradient(1px 1px at 20px 30px, #eee, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0));
-          background-size: 200px 200px;
-          animation: ambient-drift 30s linear infinite;
-          opacity: 0.1;
+          inset: 0;
+          background-image: radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0));
+          background-size: 150px 150px;
+          opacity: 0.05;
           pointer-events: none;
-        }
-
-        @keyframes ambient-drift {
-          from { background-position: 0 0; }
-          to { background-position: 1000px 1000px; }
         }
       `}</style>
     </main>
