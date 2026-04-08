@@ -67,11 +67,10 @@ export default function Home() {
       </header>
 
       <div className="visual-anchor">
-          <div className="event-horizon"></div>
-          <div className="black-hole-core">
-            <div className="inner-glow"></div>
-          </div>
+          {/* Minimalist central connection dot */}
+          <div className="center-point"></div>
 
+          {/* Neural Orbit & Runic Nodes */}
           <div 
             className="orbit"
             style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
@@ -111,21 +110,17 @@ export default function Home() {
 
       <style jsx global>{`
         .logo-container { filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.4)); }
-        .inner-glow {
+        .center-point {
           position: absolute;
-          width: 40%;
-          height: 40%;
+          width: 6px;
+          height: 6px;
+          background: var(--primary);
+          border-radius: 50%;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          background: radial-gradient(circle, #fff, #00f2ff, transparent);
-          border-radius: 50%;
-          filter: blur(20px);
-          animation: pulse 3s infinite alternate ease-in-out;
-        }
-        @keyframes pulse {
-          0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; }
-          100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
+          box-shadow: 0 0 15px var(--primary);
+          z-index: 20;
         }
         .black-hole-container::after {
           content: "";
