@@ -110,6 +110,11 @@ export default function Home() {
 
       <style jsx global>{`
         .logo-container { filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.4)); }
+        .logo {
+          border-radius: 50%;
+          border: 1px solid rgba(0, 242, 255, 0.3);
+          object-fit: cover;
+        }
         .center-point {
           position: absolute;
           width: 6px;
