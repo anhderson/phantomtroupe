@@ -1,0 +1,20 @@
+<svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M50 35C53.3137 35 56 32.3137 56 29C56 25.6863 53.3137 23 50 23C46.6863 23 44 25.6863 44 29C44 32.3137 46.6863 35 50 35Z" fill="white"/>
+  <path d="M50 78C56.6274 78 62 70.3888 62 61C62 51.6112 56.6274 44 50 44C43.3726 44 38 51.6112 38 61C38 70.3888 43.3726 78 50 78Z" fill="white"/>
+  
+  <!-- Legs Right -->
+  <path d="M56 48L75 30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M60 52L85 45" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M62 58L90 60" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M62 64L85 75" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M60 70L75 90" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M56 75L65 95" stroke="white" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Legs Left -->
+  <path d="M44 48L25 30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M40 52L15 45" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M38 58L10 60" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M38 64L15 75" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M40 70L25 90" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M44 75L35 95" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg>

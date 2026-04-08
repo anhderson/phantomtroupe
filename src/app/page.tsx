@@ -51,7 +51,7 @@ export default function Home() {
       </header>
 
       <div className="visual-anchor">
-          {/* Minimalist Spider Symbol - No border, no background */}
+          {/* Truly Transparent SVG Spider Symbol */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -59,10 +59,10 @@ export default function Home() {
           >
             <div className="core-glow"></div>
             <Image
-              src="/spider.png"
+              src="/spider.svg"
               alt="Phantom Troupe Spider Symbol"
-              width={120}
-              height={120}
+              width={140}
+              height={140}
               className="spider-symbol offset-spider"
               priority
             />
@@ -156,7 +156,7 @@ export default function Home() {
           position: absolute;
           width: 300px;
           height: 300px;
-          background: radial-gradient(circle, rgba(0, 242, 255, 0.3), transparent 70%);
+          background: radial-gradient(circle, rgba(0, 242, 255, 0.25), transparent 70%);
           filter: blur(25px);
           animation: core-pulse 4s infinite alternate ease-in-out;
           margin-top: 15px;
@@ -164,13 +164,13 @@ export default function Home() {
         }
         @keyframes core-pulse {
           0% { transform: scale(0.9); opacity: 0.2; }
-          100% { transform: scale(1.1); opacity: 0.5; }
+          100% { transform: scale(1.1); opacity: 0.4; }
         }
         .spider-symbol { 
           transform: translate(-50%, -50%);
           z-index: 101;
-          filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.5));
-          opacity: 0.9;
+          filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.6));
+          opacity: 0.95;
         }
         .offset-spider {
           margin-top: 12px;
