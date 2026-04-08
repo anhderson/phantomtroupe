@@ -51,7 +51,7 @@ export default function Home() {
       </header>
 
       <div className="visual-anchor">
-          {/* Logo Offset - Slightly to the bottom-right as requested */}
+          {/* Logo Offset - Slightly more to the bottom-right */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -68,10 +68,8 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* Central Anchor Dot - Stays at absolute zero */}
           <div className="center-point"></div>
 
-          {/* Rotating Spider Web Structure */}
           <div 
             className="orbit"
             style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
@@ -161,9 +159,9 @@ export default function Home() {
           background: radial-gradient(circle, rgba(0, 242, 255, 0.5), transparent 70%);
           filter: blur(20px);
           animation: core-pulse 4s infinite alternate ease-in-out;
-          /* Following the offset of the logo */
-          margin-top: 5px;
-          margin-left: 5px;
+          /* Following the increased offset */
+          margin-top: 15px;
+          margin-left: 15px;
         }
         @keyframes core-pulse {
           0% { transform: scale(0.9); opacity: 0.3; }
@@ -179,10 +177,10 @@ export default function Home() {
           filter: brightness(1.2) contrast(1.1);
           z-index: 101;
         }
-        /* The Offset requested by the user */
+        /* Increased Offset - further down and right */
         .offset-logo {
-          margin-top: 5px;
-          margin-left: 5px;
+          margin-top: 12px;
+          margin-left: 12px;
         }
         .center-point {
           position: absolute;
