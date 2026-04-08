@@ -51,34 +51,30 @@ export default function Home() {
       </header>
 
       <div className="visual-anchor">
-          {/* Logo Centralized - NO OFFSETS, just absolute center */}
+          {/* Minimalist Spider Symbol - No border, no background */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             className="spider-center-anchor"
           >
-            <div className="core-glow-container">
-              <div className="core-glow"></div>
-            </div>
+            <div className="core-glow"></div>
             <Image
-              src="/logo.png"
-              alt="Phantom Troupe Logo"
-              width={100}
-              height={100}
-              className="logo"
+              src="/spider.png"
+              alt="Phantom Troupe Spider Symbol"
+              width={120}
+              height={120}
+              className="spider-symbol offset-spider"
               priority
             />
           </motion.div>
 
-          {/* Central Anchor Dot - The absolute center of the radial lines */}
           <div className="center-point"></div>
 
-          {/* Rotating Spider Web Structure */}
           <div 
             className="orbit"
             style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
           >
-            {/* 1. Radial Web Lines (ALL intersect at exactly [0,0] which is top:50%, left:50%) */}
+            {/* 1. Radial Web Lines */}
             {APPS.map((app, index) => {
               const angle = (index / APPS.length) * 360;
               const angleRad = (angle * Math.PI) / 180;
@@ -156,40 +152,39 @@ export default function Home() {
           z-index: 100;
           pointer-events: none;
         }
-        .core-glow-container {
-          position: absolute;
-          transform: translate(-50%, -50%);
-        }
         .core-glow {
+          position: absolute;
           width: 300px;
           height: 300px;
-          background: radial-gradient(circle, rgba(0, 242, 255, 0.5), transparent 70%);
+          background: radial-gradient(circle, rgba(0, 242, 255, 0.3), transparent 70%);
           filter: blur(25px);
           animation: core-pulse 4s infinite alternate ease-in-out;
+          margin-top: 15px;
+          margin-left: 15px;
         }
         @keyframes core-pulse {
-          0% { transform: scale(0.9); opacity: 0.3; }
-          100% { transform: scale(1.1); opacity: 0.7; }
+          0% { transform: scale(0.9); opacity: 0.2; }
+          100% { transform: scale(1.1); opacity: 0.5; }
         }
-        .logo { 
-          border-radius: 50%; 
-          border: 2px solid var(--primary);
-          box-shadow: 0 0 40px rgba(0, 242, 255, 0.4);
-          transform: translate(-50%, -50%); /* EXACT center */
-          min-width: 110px;
-          min-height: 110px;
-          filter: brightness(1.2) contrast(1.1);
+        .spider-symbol { 
+          transform: translate(-50%, -50%);
           z-index: 101;
+          filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.5));
+          opacity: 0.9;
+        }
+        .offset-spider {
+          margin-top: 12px;
+          margin-left: 12px;
         }
         .center-point {
           position: absolute;
-          width: 4px;
-          height: 4px;
+          width: 2px;
+          height: 2px;
           background: #fff;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          box-shadow: 0 0 15px #fff;
+          box-shadow: 0 0 10px #fff;
           z-index: 200;
         }
         .web-segment {
