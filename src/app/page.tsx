@@ -19,7 +19,7 @@ const APPS = [
   { id: 12, name: "Docker", symbol: "M" },
 ];
 
-const WEB_RINGS = [1.2, 0.9, 0.6, 0.3];
+const WEB_LAYERS = 8; // Increased density for a realistic web
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
@@ -28,7 +28,7 @@ export default function Home() {
   useEffect(() => {
     setIsMounted(true);
     const interval = setInterval(() => {
-      setRotation((prev) => (prev + 0.1) % 360);
+      setRotation((prev) => (prev + 0.08) % 360);
     }, 50);
     return () => clearInterval(interval);
   }, []);
@@ -51,7 +51,7 @@ export default function Home() {
       </header>
 
       <div className="visual-anchor">
-          {/* Logo Centralized - The Core Anchor */}
+          {/* Logo Centralized - EXACT nucleus */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -68,7 +68,7 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* Shared Center Point */}
+          {/* Central Anchor Dot - Meeting point of all web lines */}
           <div className="center-point"></div>
 
           {/* Rotating Spider Web Structure */}
@@ -76,7 +76,7 @@ export default function Home() {
             className="orbit"
             style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
           >
-            {/* 1. Radial Web Lines */}
+            {/* 1. Radial Web Lines (The 12 primary threads) */}
             {APPS.map((app, index) => {
               const angle = (index / APPS.length) * 360;
               const angleRad = (angle * Math.PI) / 180;
@@ -95,24 +95,29 @@ export default function Home() {
                     <div className="particle" style={{ animationDelay: `${index * 0.4}s` }}></div>
                   </div>
 
-                  {/* 2. Concentric Web Segments (Rings) */}
-                  {WEB_RINGS.map((rScale, ri) => {
+                  {/* 2. Concentric Web Segments (Connecting the side lines multiple times) */}
+                  {Array.from({ length: WEB_LAYERS }).map((_, li) => {
+                    const rScale = (li + 2) / (WEB_LAYERS + 2); // Distribution of layers
+                    const segmentWidth = 0.5176; // 2 * sin(15deg)
+                    const segmentRotation = 105; // (30/2) + 90
+
                     return (
                       <div 
-                        key={`ring-${ri}-${index}`}
+                        key={`segment-${li}-${index}`}
                         className="web-segment"
                         style={{
                           left: `calc(50% + (${cos} * var(--orbit-radius) * ${rScale}))`,
                           top: `calc(50% + (${sin} * var(--orbit-radius) * ${rScale}))`,
-                          width: `calc(var(--orbit-radius) * ${rScale} * 0.52)`,
-                          transform: `rotate(${angle + 105}deg)`,
-                          opacity: 0.12 - (ri * 0.02)
+                          width: `calc(var(--orbit-radius) * ${rScale} * ${segmentWidth} + 2px)`, // Slight overlap for gapless connection
+                          transform: `rotate(${angle + segmentRotation}deg)`,
+                          opacity: 0.15 - (li * 0.015),
+                          borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
                         }}
                       ></div>
                     );
                   })}
 
-                  {/* 3. Application Nodes */}
+                  {/* 3. Application Nodes (Caught at the edge of the web) */}
                   <motion.div 
                     className="runic-node"
                     style={{ 
@@ -132,51 +137,62 @@ export default function Home() {
       </div>
 
       <style jsx global>{`
-        /* Override display flex in globals.css if necessary */
         .visual-anchor {
           position: relative;
           width: 100%;
+          height: 100%;
           flex: 1;
-          display: block !important; /* Ensure it's not flex to avoid centring ambiguity */
-          min-height: 0;
         }
         .spider-center-anchor {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%); /* Center the 0x0 point */
+          width: 0;
+          height: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           z-index: 100;
           pointer-events: none;
         }
         .core-glow {
           position: absolute;
-          top: 0;
-          left: 0;
-          width: 300px;
-          height: 300px;
-          background: radial-gradient(circle, rgba(0, 242, 255, 0.4), transparent 70%);
-          filter: blur(40px);
-          transform: translate(-50%, -50%); /* Centered on the 0x0 point */
+          width: 250px;
+          height: 250px;
+          background: radial-gradient(circle, rgba(0, 242, 255, 0.5), transparent 70%);
+          filter: blur(20px);
           animation: core-pulse 4s infinite alternate ease-in-out;
         }
         @keyframes core-pulse {
-          0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; }
-          100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
+          0% { transform: scale(0.9); opacity: 0.3; }
+          100% { transform: scale(1.1); opacity: 0.7; }
         }
         .logo { 
           border-radius: 50%; 
           border: 2px solid var(--primary);
-          box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
-          transform: translate(-50%, -50%); /* Centered on the 0x0 point */
+          box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+          transform: translate(-50%, -50%);
           min-width: 100px;
           min-height: 100px;
-          pointer-events: auto;
+          filter: brightness(1.2) contrast(1.1);
+          z-index: 101;
         }
         .center-point {
-          position: absolute !important;
-          top: 50% !important;
-          left: 50% !important;
-          transform: translate(-50%, -50%) !important;
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #fff;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          box-shadow: 0 0 10px #fff;
+          z-index: 200;
+        }
+        .web-segment {
+          background: transparent;
+          filter: drop-shadow(0 0 1px rgba(0, 242, 255, 0.2));
+          height: 1px;
+          transform-origin: left center;
         }
         .glitch-span {
           position: absolute;
