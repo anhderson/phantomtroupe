@@ -51,22 +51,25 @@ export default function Home() {
       </header>
 
       <div className="visual-anchor">
-          {/* Logo Centralized - The Core of the Web */}
+          {/* Logo at the Top Center - The Guardian Spider */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="spider-core"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="spider-top-anchor"
           >
             <div className="core-glow"></div>
             <Image
               src="/logo.png"
               alt="Phantom Troupe Logo"
-              width={100}
-              height={100}
+              width={80}
+              height={80}
               className="logo"
               priority
             />
           </motion.div>
+
+          {/* Silk Thread connecting Top Spider to Web Center */}
+          <div className="silk-thread"></div>
 
           {/* Central Anchor Dot */}
           <div className="center-point"></div>
@@ -133,14 +136,14 @@ export default function Home() {
 
       <style jsx global>{`
         .visual-anchor {
-          margin-top: 20px;
+          margin-top: 80px;
           position: relative;
         }
-        .spider-core {
+        .spider-top-anchor {
           position: absolute;
-          top: 50%;
+          top: -180px;
           left: 50%;
-          transform: translate(-50%, -50%);
+          transform: translateX(-50%);
           z-index: 100;
           display: flex;
           justify-content: center;
@@ -148,20 +151,31 @@ export default function Home() {
         }
         .core-glow {
           position: absolute;
-          width: 200px;
-          height: 200px;
+          width: 150px;
+          height: 150px;
           background: radial-gradient(circle, rgba(0, 242, 255, 0.4), transparent 70%);
-          filter: blur(20px);
-          animation: core-pulse 4s infinite alternate ease-in-out;
+          filter: blur(15px);
+          animation: core-pulse 3s infinite alternate ease-in-out;
         }
         @keyframes core-pulse {
-          0% { transform: scale(0.8); opacity: 0.4; }
-          100% { transform: scale(1.2); opacity: 0.7; }
+          0% { transform: scale(0.9); opacity: 0.3; }
+          100% { transform: scale(1.1); opacity: 0.6; }
+        }
+        .silk-thread {
+          position: absolute;
+          top: -140px;
+          left: 50%;
+          width: 1px;
+          height: 140px;
+          background: linear-gradient(to bottom, var(--primary), transparent);
+          transform: translateX(-50%);
+          z-index: 5;
+          opacity: 0.5;
         }
         .logo { 
           border-radius: 50%; 
-          border: 2px solid var(--primary);
-          box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+          border: 1px solid var(--primary);
+          box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
           position: relative;
           z-index: 101;
         }
