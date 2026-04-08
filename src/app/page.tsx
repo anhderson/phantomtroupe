@@ -82,7 +82,7 @@ export default function Home() {
           {/* Neural Orbit & Runic Nodes */}
           <div 
             className="orbit"
-            style={{ transform: `rotate(${rotation}deg)` }}
+            style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
           >
             {APPS.map((app, index) => {
               const angle = (index / APPS.length) * 360;
