@@ -622,7 +622,7 @@ body::before {
 /* Worldometer styles */
 .planet-trigger {
   position: fixed;
-  bottom: 40px;
+  bottom: 70px;
   right: 40px;
   width: 115px;
   height: 115px;
@@ -636,7 +636,7 @@ body::before {
 /* History Trigger - Left Side */
 .history-trigger {
   position: fixed;
-  bottom: 40px;
+  bottom: 70px;
   left: 40px;
   width: 115px;
   height: 115px;
