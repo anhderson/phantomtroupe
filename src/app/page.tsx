@@ -26,7 +26,7 @@ const APPS = [
     tech: "Algoritmos Celestiais, Web3, Fate-Engine",
     status: "TECENDO O DESTINO",
     security: "ARCANO",
-    downloadUrl: "/executaveis/Project Zero Setup 1.0.3.exe",
+    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Project.Zero.Setup.1.0.3.exe",
     installerPath: "src/executaveis/Project Zero Setup 1.0.3.exe",
     icon: "/icones/projectzeroiconecircular.png"
   },
@@ -39,7 +39,7 @@ const APPS = [
     tech: "P2P, Libp2p, Criptografia End-to-End",
     status: "BRUTO & REAL",
     security: "VOCÊ MESMO",
-    downloadUrl: "/executaveis/Zero Signal Setup 1.0.10.exe",
+    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Zero.Signal.Setup.1.0.10.exe",
     installerPath: "src/executaveis/Zero Signal Setup 1.0.10.exe",
     icon: "/icones/zerosignaliconecircular.png"
   },
@@ -110,6 +110,7 @@ const APPS = [
     tech: "Projeção Pessoal, Filosofia Computacional, IA Metafísica",
     status: "PROJETANDO CAMINHOS",
     security: "OCULTO NA VERDADE",
+    downloadUrl: "https://zerofaithfully.vercel.app",
     icon: "/icones/zerofaithfullyiconecircular.png"
   },
   { 
@@ -156,12 +157,37 @@ export default function Home() {
   const [showWorldometer, setShowWorldometer] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
   const [isGlitching, setIsGlitching] = useState(false);
+  const [showConstructionModal, setShowConstructionModal] = useState(false);
+  const [joiningName, setJoiningName] = useState("");
+  const [joiningRole, setJoiningRole] = useState("");
+  const [joiningType, setJoiningType] = useState("");
+  const [pendingRequests, setPendingRequests] = useState<{name: string, role: string, type: string}[]>([]);
+  const [activeMembers, setActiveMembers] = useState<{name: string, role: string, type: string}[]>([
+    { role: 'Fundador', name: 'Anderson Moitinho', type: 'Membro' },
+    { role: 'Administrador', name: 'Chrystian Cesar', type: 'Membro' },
+    { role: 'Mediadora', name: 'Sara Brandes', type: 'Membro' },
+    { role: 'Facilitador de Cura', name: 'Sara Ellen', type: 'Amigo' },
+    { role: 'Administrador', name: 'Raphael Braga', type: 'Membro' },
+    { role: 'Facilitador', name: 'Gabriel Ricardo', type: 'Membro' }
+  ]);
+  const [showPending, setShowPending] = useState(false);
+  
+  const [isAdminAuth, setIsAdminAuth] = useState(false);
+  const [adminUser, setAdminUser] = useState("");
+  const [adminPass, setAdminPass] = useState("");
+  const [authError, setAuthError] = useState(false);
 
   useEffect(() => {
-    const glitchTimer = setInterval(() => {
-      setIsGlitching(true);
-      setTimeout(() => setIsGlitching(false), 1300);
-    }, 7000);
+    // Disable glitch on mobile for better UX/Performance
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    
+    let glitchTimer: any = null;
+    if (!isMobile) {
+      glitchTimer = setInterval(() => {
+        setIsGlitching(true);
+        setTimeout(() => setIsGlitching(false), 1300);
+      }, 7000);
+    }
     
     // 12-hour News Cycle Refresh
     const newsRefresh = setInterval(() => {
@@ -170,7 +196,7 @@ export default function Home() {
     }, 12 * 60 * 60 * 1000);
 
     return () => {
-      clearInterval(glitchTimer);
+      if (glitchTimer) clearInterval(glitchTimer);
       clearInterval(newsRefresh);
     };
   }, []);
@@ -626,12 +652,12 @@ export default function Home() {
             animate={{ 
               opacity: isGlitching ? [1, 0, 1, 0.4, 1, 0.2, 1] : 1,
               scale: isGlitching ? [1, 1.05, 0.95, 1.08, 1] : 1,
-              color: isGlitching ? ["#ff3366", "#808080", "#ff3366", "#a0a0a0", "#ff3366"] : "#ff3366",
+              color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
               textShadow: isGlitching 
                 ? [
                     '0 0 10px #ff3366, 0 0 20px #ff3366',
                     '0 0 10px #808080, 0 0 20px #808080',
-                    '0 0 10px #ff3366, 0 0 20px #ff3366'
+                    '0 0 10px #ffffff, 0 0 20px #ffffff'
                   ]
                 : '0 0 10px #ff3366, 0 0 15px rgba(255, 51, 102, 0.3)'
             }}
@@ -647,7 +673,7 @@ export default function Home() {
               x: '-50%',
               y: '-50%',
               textAlign: 'center',
-              color: '#ff3366',
+              color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
               fontSize: '0.62rem',
               fontWeight: 900,
@@ -702,12 +728,12 @@ export default function Home() {
             animate={{ 
               opacity: isGlitching ? [1, 0, 1, 0.4, 1, 0.2, 1] : 1,
               scale: isGlitching ? [1, 1.05, 0.95, 1.08, 1] : 1,
-              color: isGlitching ? ["#ff3366", "#808080", "#ff3366", "#a0a0a0", "#ff3366"] : "#ff3366",
+              color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
               textShadow: isGlitching 
                 ? [
                     '0 0 10px #ff3366, 0 0 20px #ff3366',
                     '0 0 10px #808080, 0 0 20px #808080',
-                    '0 0 10px #ff3366, 0 0 20px #ff3366'
+                    '0 0 10px #ffffff, 0 0 20px #ffffff'
                   ]
                 : '0 0 10px #ff3366, 0 0 15px rgba(255, 51, 102, 0.3)'
             }}
@@ -723,7 +749,7 @@ export default function Home() {
               x: '-50%',
               y: '-50%',
               textAlign: 'center',
-              color: '#ff3366',
+              color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
               fontSize: '0.62rem',
               fontWeight: 900,
@@ -1167,7 +1193,10 @@ export default function Home() {
                     <button 
                       className="panel-action-btn"
                       onClick={() => {
-                        if (selectedApp?.name === "ZD" || selectedApp?.name === "ZE" || selectedApp?.name === "PZ" || selectedApp?.name === "ZS") {
+                        const UNFINISHED = ["ZI", "ZSy", "ZM", "ZP", "ZC", "ZG"];
+                        if (selectedApp && UNFINISHED.includes(selectedApp.name)) {
+                          setShowConstructionModal(true);
+                        } else if (selectedApp?.name === "ZD" || selectedApp?.name === "ZE" || selectedApp?.name === "PZ" || selectedApp?.name === "ZS" || selectedApp?.name === "ZFy") {
                           window.open(selectedApp?.downloadUrl || "", "_blank");
                         } else if ((window as any).electronAPI) {
                           (window as any).electronAPI.launchOrDownloadApp({
@@ -1480,65 +1509,258 @@ export default function Home() {
               </button>
 
               <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘 𝖊 ℙ𝖆𝖗𝖙𝖎𝖈𝖎𝖕𝖆𝖈̧𝖆̃𝖔 △</h2>
+                <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
               </header>
 
-              <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
-                <div className="members-list" style={{ width: '100%', maxWidth: '500px' }}>
-                  <div className="member-card" style={{ border: '1px solid rgba(255, 51, 102, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 51, 102, 0.05)' }}>
-                    <p style={{ color: '#ff3366', margin: '0 0 5px 0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>Fundador</p>
-                    <h3 style={{ margin: 0, fontSize: '1.4rem' }}>Anderson Moitinho</h3>
-                  </div>
-                  <div className="member-card" style={{ border: '1px solid rgba(255, 51, 102, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 51, 102, 0.05)' }}>
-                    <p style={{ color: '#ff3366', margin: '0 0 5px 0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>Administrador</p>
-                    <h3 style={{ margin: 0, fontSize: '1.4rem' }}>Chrystian Cesar</h3>
-                  </div>
+              <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', transform: 'translateY(-8vh)' }}>
+                <button 
+                  className="guide-page-btn" 
+                  style={{ marginBottom: '10px', fontSize: '0.8rem', padding: '10px 20px', borderStyle: 'dashed' }}
+                  onClick={() => setShowPending(true)}
+                  title="Abrir Central de Requisições"
+                >
+                  <span style={{ fontSize: '1.2rem', marginRight: '8px', verticalAlign: 'middle' }}>🗲</span> 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘
+                </button>
+                <div 
+                  className="members-list" 
+                  style={{ 
+                    width: '100%', 
+                    maxWidth: '500px', 
+                    maxHeight: (typeof window !== 'undefined' && window.innerWidth <= 768) ? '320px' : '380px', 
+                    overflowY: 'auto', 
+                    paddingRight: '10px' 
+                  }}
+                >
+                  {activeMembers.map((member, i) => (
+                    <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 51, 102, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 51, 102, 0.05)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
+                        <p style={{ color: '#ff3366', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{member.role}</p>
+                        <span style={{ fontSize: '0.7rem', color: '#ff3366', border: '1px solid #ff3366', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
+                      </div>
+                      <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{member.name}</h3>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="participation-section" style={{ marginTop: '30px', textAlign: 'center' }}>
+                <div className="participation-section" style={{ marginTop: '30px', textAlign: 'center', width: '100%' }}>
                   <p style={{ marginBottom: '20px' }}>Você sente que este é o seu caminho?<br />Venha construir conosco este novo ciclo.</p>
                   
-                  <a 
-                    href="https://wa.me/5511985637213" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{ 
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      padding: '15px 30px',
-                      background: 'rgba(255, 51, 102, 0.1)',
-                      border: '1px solid #ff3366',
-                      color: '#ff3366',
-                      textDecoration: 'none',
-                      fontSize: '1.1rem',
-                      letterSpacing: '2px',
-                      transition: '0.3s all ease',
-                      boxShadow: '0 0 15px rgba(255, 51, 102, 0.2)'
-                    }}
-                    onMouseEnter={e => {
-                      e.currentTarget.style.background = '#ff3366';
-                      e.currentTarget.style.color = '#fff';
-                      e.currentTarget.style.boxShadow = '0 0 25px rgba(255, 51, 102, 0.5)';
-                    }}
-                    onMouseLeave={e => {
-                      e.currentTarget.style.background = 'rgba(255, 51, 102, 0.1)';
-                      e.currentTarget.style.color = '#ff3366';
-                      e.currentTarget.style.boxShadow = '0 0 15px rgba(255, 51, 102, 0.2)';
-                    }}
-                  >
-                    CHAMAR NO WHATSAPP ▷
-                  </a>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', width: '100%', maxWidth: '300px', margin: '0 auto' }}>
+                    <input 
+                      type="text" 
+                      placeholder="SEU NOME" 
+                      value={joiningName}
+                      onChange={e => setJoiningName(e.target.value)}
+                      className="phantom-input center-text" 
+                    />
+                    <select
+                      className="phantom-input center-text phantom-select" 
+                      value={joiningRole}
+                      onChange={e => setJoiningRole(e.target.value)}
+                    >
+                      <option value="" disabled>SELECIONE SUA FUNÇÃO</option>
+                      {[
+                        "Harmonizador", "Facilitador", "Conselheiro amoroso", "Acolhedor", "Mediador", "Mentor", 
+                        "Guardião do Ambiente", "Coordenador de Estudos", "Cuidador Emocional", "Organizador", 
+                        "Guardião de Valores", "Curador de Conteúdo", "Incentivador", "Observador", "Comunicador", 
+                        "Conector", "Apoio Espiritual", "Guardião das amizades", "Facilitador de Cura", 
+                        "Responsável por Parcerias", "Motivador", "Gestor de Projetos", "Cronista", 
+                        "Responsável Social", "Instrutor", "Observador Individual", "Energizador", 
+                        "Criador de Experiências", "Facilitador de Amizades", "Orientador de Relacionamentos", 
+                        "Guardião da Simplicidade", "Guerreiro da Continuidade", "Gerenciador"
+                      ].map(role => (
+                        <option key={role} value={role}>{role}</option>
+                      ))}
+                    </select>
+                    <select 
+                      className="phantom-input center-text phantom-select" 
+                      value={joiningType} 
+                      onChange={e => setJoiningType(e.target.value)}
+                    >
+                      <option value="" disabled>SELECIONAR ESSÊNCIA</option>
+                      <option value="Membro">Membro</option>
+                      <option value="Parceiro">Parceiro</option>
+                      <option value="Amigo">Amigo</option>
+                      <option value="Doador">Doador</option>
+                      <option value="Observador">Observador</option>
+                    </select>
+                    <button 
+                      className="guide-page-btn btn-next"
+                      style={{ marginTop: '5px', marginBottom: '5px' }}
+                      onClick={() => {
+                        if (joiningName.trim() && joiningRole.trim()) {
+                          setPendingRequests(prev => [...prev, { name: joiningName, role: joiningRole, type: joiningType }]);
+                          setJoiningName("");
+                          setJoiningRole("");
+                          // Optional feedback
+                        }
+                      }}
+                    >
+                      Deseja participar? ▷
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              <footer className="guide-footer-branding" style={{ marginTop: '40px' }}>
+              <footer className="guide-footer-branding" style={{ marginTop: '15px', transform: 'translateY(-8vh)' }}>
                 <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
               </footer>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Cyber-Silver Construction Modal */}
+      <AnimatePresence>
+        {showConstructionModal && (
+          <motion.div 
+            className="construction-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowConstructionModal(false)}
+          >
+            <motion.div 
+              className="construction-modal-content"
+              initial={{ scale: 0.8, y: 50, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.8, y: 50, opacity: 0 }}
+              transition={{ type: "spring", damping: 20, stiffness: 200 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="construction-modal-header">
+                <span className="construction-warning">⚠ AVISO DO SISTEMA</span>
+                <button className="construction-close-btn" onClick={() => setShowConstructionModal(false)}>×</button>
+              </div>
+              <div className="construction-modal-body">
+                <h3>MÓDULO EM FORJAMENTO</h3>
+                <p>
+                  A esfera <strong>{selectedApp?.fullName}</strong> ({selectedApp?.name}) encontra-se atualmente em fase de construção nas fornalhas da Phantom Troupe.
+                </p>
+                <div className="construction-progress">
+                  <div className="progress-bar-bg">
+                    <div className="progress-bar-fill"></div>
+                  </div>
+                  <span className="progress-eta">ETA: FINAL DE 2026</span>
+                </div>
+                <p className="construction-sub">Aguarde. A integração neural completa será estabelecida em breve.</p>
+              </div>
+              <div className="construction-modal-footer">
+                <button className="silver-btn" onClick={() => setShowConstructionModal(false)}>RECONHECIDO</button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Pending Requests Overlay */}
+      <AnimatePresence>
+        {showPending && (
+          <motion.div 
+            className="guide-overlay-container members-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowPending(false)}
+            style={{ zIndex: 12000 }}
+          >
+            <div 
+              className="guide-inner-wrap" 
+              style={{ padding: '40px', transform: 'translateY(-15vh)' }}
+              onClick={e => e.stopPropagation()}
+            >
+              <button className="guide-power-node right-power" onClick={() => setShowPending(false)} aria-label="Close Pending">
+                <div className="power-symbol"></div>
+              </button>
+
+              <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
+                <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>▽ 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘 △</h2>
+              </header>
+
+              <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
+                {!isAdminAuth ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', width: '100%', maxWidth: '300px' }}>
+                    <p style={{ color: '#ff3366', letterSpacing: '2px', fontSize: '0.9rem' }}>ACESSO RESTRITO</p>
+                    <input 
+                      type="text" 
+                      placeholder="ADMIN ID" 
+                      value={adminUser}
+                      onChange={e => setAdminUser(e.target.value)}
+                      className="phantom-input" 
+                    />
+                    <input 
+                      type="password" 
+                      placeholder="SENHA DE ACESSO" 
+                      value={adminPass}
+                      onChange={e => setAdminPass(e.target.value)}
+                      className="phantom-input" 
+                      onKeyDown={e => {
+                        if (e.key === 'Enter') {
+                          if (adminUser === "PhantomTroupeFraternidade" && adminPass === "0PTPhantomTroupeFraternidadePT0") {
+                            setIsAdminAuth(true);
+                            setAuthError(false);
+                            setAdminUser("");
+                            setAdminPass("");
+                          } else {
+                            setAuthError(true);
+                          }
+                        }
+                      }}
+                    />
+                    <button 
+                      className="guide-page-btn"
+                      onClick={() => {
+                        if (adminUser === "PhantomTroupeFraternidade" && adminPass === "0PTPhantomTroupeFraternidadePT0") {
+                          setIsAdminAuth(true);
+                          setAuthError(false);
+                          setAdminUser("");
+                          setAdminPass("");
+                        } else {
+                          setAuthError(true);
+                        }
+                      }}
+                    >
+                      AUTENTICAR ▷
+                    </button>
+                    {authError && <span style={{ color: '#ff3366', fontSize: '0.8rem', letterSpacing: '1px' }}>CREDENCIAS INVÁLIDAS</span>}
+                  </div>
+                ) : (
+                  <>
+                    {pendingRequests.length === 0 ? (
+                      <p style={{ color: '#a0a0a0', letterSpacing: '2px' }}>NENHUMA SOLICITAÇÃO ENCONTRADA</p>
+                    ) : (
+                      <div className="members-list" style={{ width: '100%', maxWidth: '500px' }}>
+                        {pendingRequests.map((req, i) => (
+                          <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 51, 102, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 51, 102, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div>
+                              <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '5px' }}>
+                                <p style={{ color: '#ff3366', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{req.role}</p>
+                                <span style={{ fontSize: '0.7rem', color: '#ff3366', border: '1px solid #ff3366', padding: '2px 6px', borderRadius: '4px' }}>{req.type}</span>
+                              </div>
+                              <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{req.name}</h3>
+                            </div>
+                            <button 
+                              className="silver-btn" 
+                              style={{ padding: '8px 20px', fontSize: '0.8rem' }}
+                              onClick={() => {
+                                setActiveMembers(prev => [...prev, req]);
+                                setPendingRequests(prev => prev.filter((_, idx) => idx !== i));
+                              }}
+                            >
+                              ACEITAR
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
 
     </main>
   );
