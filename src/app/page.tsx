@@ -158,6 +158,7 @@ export default function Home() {
   const [isLocked, setIsLocked] = useState(false);
   const [isGlitching, setIsGlitching] = useState(false);
   const [showConstructionModal, setShowConstructionModal] = useState(false);
+  const [showLaunchWarning, setShowLaunchWarning] = useState(false);
   const [joiningName, setJoiningName] = useState("");
   const [joiningRole, setJoiningRole] = useState("");
   const [joiningType, setJoiningType] = useState("");
@@ -1194,10 +1195,12 @@ export default function Home() {
                       className="panel-action-btn"
                       onClick={() => {
                         const UNFINISHED = ["ZI", "ZSy", "ZM", "ZP", "ZC", "ZG"];
+                        const NEEDS_WARNING = ["PT", "PZ", "ZS", "ZD", "ZE", "ZFy"];
+
                         if (selectedApp && UNFINISHED.includes(selectedApp.name)) {
                           setShowConstructionModal(true);
-                        } else if (selectedApp?.name === "ZD" || selectedApp?.name === "ZE" || selectedApp?.name === "PZ" || selectedApp?.name === "ZS" || selectedApp?.name === "ZFy") {
-                          window.open(selectedApp?.downloadUrl || "", "_blank");
+                        } else if (selectedApp && NEEDS_WARNING.includes(selectedApp.name)) {
+                          setShowLaunchWarning(true);
                         } else if ((window as any).electronAPI) {
                           (window as any).electronAPI.launchOrDownloadApp({
                             name: selectedApp?.name,
@@ -1206,8 +1209,6 @@ export default function Home() {
                           }).then((res: any) => {
                             console.log("App Action Result:", res);
                           });
-                        } else {
-                          console.log("ElectronAPI not accessible.", selectedApp);
                         }
                       }}
                     >
@@ -1606,6 +1607,60 @@ export default function Home() {
                 <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
               </footer>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Launch Warning Modal */}
+      <AnimatePresence>
+        {showLaunchWarning && (
+          <motion.div 
+            className="construction-modal-overlay"
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(10px)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowLaunchWarning(false)}
+          >
+            <motion.div 
+              className="construction-modal-content"
+              style={{ background: 'rgba(10, 10, 10, 0.2)', border: '1px solid rgba(255, 255, 255, 0.1)', boxShadow: '0 0 30px rgba(0,0,0,0.5)' }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="construction-modal-header">
+                <span className="construction-warning">◈ COMUNICADO DE ACESSO ◈</span>
+                <button className="construction-close-btn" onClick={() => setShowLaunchWarning(false)}>×</button>
+              </div>
+              <div className="construction-modal-body">
+                <p style={{ fontSize: '1.1rem', color: '#fff', lineHeight: '1.6', textAlign: 'center', margin: '20px 0' }}>
+                  A aplicação já está lançada e está em fase de testes, algumas coisas estão terminando de serem finalizadas para o lançamento oficial.
+                </p>
+              </div>
+              <div className="construction-modal-footer">
+                <button 
+                  className="silver-btn" 
+                  onClick={() => {
+                    setShowLaunchWarning(false);
+                    if (selectedApp) {
+                      if (selectedApp.name === "ZD" || selectedApp.name === "ZE" || selectedApp.name === "PZ" || selectedApp.name === "ZS" || selectedApp.name === "ZFy") {
+                        window.open(selectedApp.downloadUrl || "", "_blank");
+                      } else if ((window as any).electronAPI) {
+                        (window as any).electronAPI.launchOrDownloadApp({
+                          name: selectedApp.name,
+                          downloadUrl: (selectedApp as any).downloadUrl || 'https://github.com/phantomtroupe',
+                          installerPath: (selectedApp as any).installerPath
+                        });
+                      }
+                    }
+                  }}
+                >
+                  Tudo bem
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
