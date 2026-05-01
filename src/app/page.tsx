@@ -26,7 +26,7 @@ const APPS = [
     tech: "Algoritmos Celestiais, Web3, Fate-Engine",
     status: "TECENDO O DESTINO",
     security: "ARCANO",
-    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Project.Zero.Setup.1.0.4.exe",
+    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.4/Project.Zero.Setup.1.0.4.exe",
     installerPath: "src/executaveis/Project Zero Setup 1.0.4.exe",
     icon: "/icones/projectzeroiconecircular.png"
   },
@@ -39,7 +39,7 @@ const APPS = [
     tech: "P2P, Libp2p, Criptografia End-to-End",
     status: "BRUTO & REAL",
     security: "VOCÊ MESMO",
-    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Zero.Signal.Setup.1.0.10.exe",
+    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.10/Zero.Signal.Setup.1.0.10.exe",
     installerPath: "src/executaveis/Zero Signal Setup 1.0.10.exe",
     icon: "/icones/zerosignaliconecircular.png"
   },
@@ -110,7 +110,7 @@ const APPS = [
     tech: "Pesquisa Aplicada, Fabricação Real, Code & Matéria",
     status: "MOLDE INFINITO",
     security: "ALQUIMIA",
-    installerPath: "src/executaveis/Zero Signal Setup 1.0.10.exe",
+    installerPath: "src/executaveis/Zero Infinity Setup 1.0.0.exe",
     icon: "/icones/zeroinfinityiconecircular.png"
   },
   { 
@@ -1645,13 +1645,7 @@ export default function Home() {
                   onClick={() => {
                     setShowLaunchWarning(false);
                     if (selectedApp) {
-                      if ((selectedApp.name === "PZ" || selectedApp.name === "ZS") && (window as any).electronAPI) {
-                        (window as any).electronAPI.launchOrDownloadApp({
-                          name: selectedApp.name,
-                          downloadUrl: (selectedApp as any).downloadUrl || 'https://github.com/phantomtroupe',
-                          installerPath: (selectedApp as any).installerPath
-                        });
-                      } else if (selectedApp.name === "ZD" || selectedApp.name === "ZE" || selectedApp.name === "PZ" || selectedApp.name === "ZS" || selectedApp.name === "ZFy") {
+                      if (selectedApp.name === "ZD" || selectedApp.name === "ZE" || selectedApp.name === "ZFy") {
                         window.open(selectedApp.downloadUrl || "", "_blank");
                       } else if ((window as any).electronAPI) {
                         (window as any).electronAPI.launchOrDownloadApp({
@@ -1659,6 +1653,9 @@ export default function Home() {
                           downloadUrl: (selectedApp as any).downloadUrl || 'https://github.com/phantomtroupe',
                           installerPath: (selectedApp as any).installerPath
                         });
+                      } else {
+                        // Fallback para versão web
+                        window.open(selectedApp.downloadUrl || "", "_blank");
                       }
                     }
                   }}

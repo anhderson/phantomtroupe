@@ -4,5 +4,5 @@ electron/
 .git/
 node_modules/
 .next/
-# public/executaveis/
-# src/executaveis/
+public/executaveis/
+src/executaveis/
