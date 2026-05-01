@@ -26,8 +26,8 @@ const APPS = [
     tech: "Algoritmos Celestiais, Web3, Fate-Engine",
     status: "TECENDO O DESTINO",
     security: "ARCANO",
-    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Project.Zero.Setup.1.0.3.exe",
-    installerPath: "src/executaveis/Project Zero Setup 1.0.3.exe",
+    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Project.Zero.Setup.1.0.4.exe",
+    installerPath: "src/executaveis/Project Zero Setup 1.0.4.exe",
     icon: "/icones/projectzeroiconecircular.png"
   },
   { 
@@ -1645,7 +1645,13 @@ export default function Home() {
                   onClick={() => {
                     setShowLaunchWarning(false);
                     if (selectedApp) {
-                      if (selectedApp.name === "ZD" || selectedApp.name === "ZE" || selectedApp.name === "PZ" || selectedApp.name === "ZS" || selectedApp.name === "ZFy") {
+                      if ((selectedApp.name === "PZ" || selectedApp.name === "ZS") && (window as any).electronAPI) {
+                        (window as any).electronAPI.launchOrDownloadApp({
+                          name: selectedApp.name,
+                          downloadUrl: (selectedApp as any).downloadUrl || 'https://github.com/phantomtroupe',
+                          installerPath: (selectedApp as any).installerPath
+                        });
+                      } else if (selectedApp.name === "ZD" || selectedApp.name === "ZE" || selectedApp.name === "PZ" || selectedApp.name === "ZS" || selectedApp.name === "ZFy") {
                         window.open(selectedApp.downloadUrl || "", "_blank");
                       } else if ((window as any).electronAPI) {
                         (window as any).electronAPI.launchOrDownloadApp({
