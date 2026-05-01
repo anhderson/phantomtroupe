@@ -39,7 +39,7 @@ const APPS = [
     tech: "P2P, Libp2p, Criptografia End-to-End",
     status: "BRUTO & REAL",
     security: "VOCÊ MESMO",
-    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Zero.Signal.Setup.1.0.10.exe",
+    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.10/Zero.Signal.Setup.1.0.10.exe",
     installerPath: "src/executaveis/Zero Signal Setup 1.0.10.exe",
     icon: "/icones/zerosignaliconecircular.png"
   },
@@ -1195,7 +1195,7 @@ export default function Home() {
                       className="panel-action-btn"
                       onClick={() => {
                         const UNFINISHED = ["ZI", "ZSy", "ZM", "ZP", "ZC", "ZG"];
-                        const NEEDS_WARNING = ["PT", "ZD", "ZE", "ZFy"];
+                        const NEEDS_WARNING = ["PT", "PZ", "ZS", "ZD", "ZE", "ZFy"];
 
                         if (selectedApp && UNFINISHED.includes(selectedApp.name)) {
                           setShowConstructionModal(true);
@@ -1206,9 +1206,9 @@ export default function Home() {
                             name: selectedApp?.name,
                             downloadUrl: (selectedApp as any)?.downloadUrl || 'https://github.com/phantomtroupe',
                             installerPath: (selectedApp as any)?.installerPath
+                          }).then((res: any) => {
+                            console.log("App Action Result:", res);
                           });
-                        } else if (selectedApp?.downloadUrl) {
-                          window.open(selectedApp.downloadUrl, "_blank");
                         }
                       }}
                     >
