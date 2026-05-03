@@ -26,8 +26,8 @@ const APPS = [
     tech: "Algoritmos Celestiais, Web3, Fate-Engine",
     status: "TECENDO O DESTINO",
     security: "ARCANO",
-    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Project.Zero.Setup.1.0.4.exe",
-    installerPath: "src/executaveis/Project Zero Setup 1.0.4.exe",
+    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Project.Zero.Setup.1.0.5.exe",
+    installerPath: "src/executaveis/Project Zero Setup 1.0.5.exe",
     icon: "/icones/projectzeroiconecircular.png"
   },
   { 
@@ -39,8 +39,8 @@ const APPS = [
     tech: "P2P, Libp2p, Criptografia End-to-End",
     status: "BRUTO & REAL",
     security: "VOCÊ MESMO",
-    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.10/Zero.Signal.Setup.1.0.10.exe",
-    installerPath: "src/executaveis/Zero Signal Setup 1.0.10.exe",
+    downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.11/Zero.Signal.Setup.1.0.11.exe",
+    installerPath: "src/executaveis/Zero Signal Setup 1.0.11.exe",
     icon: "/icones/zerosignaliconecircular.png"
   },
   { 
