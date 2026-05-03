@@ -40,6 +40,7 @@ const APPS = [
     status: "BRUTO & REAL",
     security: "VOCÊ MESMO",
     downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.11/Zero.Signal.Setup.1.0.11.exe",
+    mobileDownloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.22/ZeroSignal_v1.0.22.apk",
     installerPath: "src/executaveis/Zero Signal Setup 1.0.11.exe",
     icon: "/icones/zerosignaliconecircular.png"
   },
@@ -1654,8 +1655,12 @@ export default function Home() {
                           installerPath: (selectedApp as any).installerPath
                         });
                       } else {
-                        // Fallback para versão web
-                        window.open(selectedApp.downloadUrl || "", "_blank");
+                        // Fallback para versão web / mobile
+                        const isMobile = window.innerWidth <= 768;
+                        const url = (isMobile && (selectedApp as any).mobileDownloadUrl) 
+                          ? (selectedApp as any).mobileDownloadUrl 
+                          : (selectedApp.downloadUrl || "");
+                        window.open(url, "_blank");
                       }
                     }
                   }}
