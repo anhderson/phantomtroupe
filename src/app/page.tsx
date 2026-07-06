@@ -9,10 +9,10 @@ const APPS = [
     id: 1, 
     name: "PT", 
     fullName: "Phantom Troupe", 
-    color: "#ff3366", 
+    color: "#FF0000", 
     desc: "Orquestrador principal da rede neural.",
-    longDesc: "O sistema operacional central de comando. Gerencia a alocação de recursos entre todos os módulos Zero e mantém a integridade do cluster através de um batimento cardíaco quântico.",
-    tech: "Next.js, Framer Motion, Electron",
+    longDesc: "O Phantom Troupe é o núcleo central de todo o sistema, funcionando como o sistema operacional responsável por coordenar e sustentar cada um dos módulos Zero. Ele gerencia de forma inteligente a alocação de recursos, garantindo que cada parte do ecossistema opere com equilíbrio, desempenho e estabilidade.\n\nAlém disso, atua como o ponto de integração onde tudo se conecta e se mantém acessível, permitindo que as informações, processos e interações da fraternidade estejam sempre organizados e disponíveis em um único ambiente online. Seu mecanismo de monitoramento contínuo, descrito como um “batimento cardíaco quântico”, assegura a integridade do cluster, identificando falhas, prevenindo inconsistências e mantendo o fluxo constante de funcionamento.\n\nNa prática, o Phantom Troupe não é apenas uma base técnica, mas o espaço onde toda a estrutura da fraternidade ganha forma digital, centralizando operações, facilitando a comunicação e garantindo que tudo permaneça ativo, sincronizado e em constante evolução.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "OPERACIONAL",
     security: "GENESIS",
     icon: "/icones/phantomtroupeiconecircular.png"
@@ -22,8 +22,8 @@ const APPS = [
     name: "PZ", 
     fullName: "Project Zero", 
     desc: "A forja onde novos desígnios nascem.",
-    longDesc: "Há uma maquinaria silenciosa operando nas sombras, conjurando algo a partir do vazio. Mais que um utilitário cego, o Project Zero é um altar de manifestação para criar projetos. Ele entrelaça as linhas invisíveis da necessidade e do acaso, evocando novas criações e guiando cada uma delas misteriosamente para as pessoas e desígnios exatos que as aguardavam. Nada é fabricado sem um destino premeditado.",
-    tech: "Algoritmos Celestiais, Web3, Fate-Engine",
+    longDesc: "Existe um processo silencioso operando nos bastidores, estruturando ideias e transformando o que antes era apenas intenção em algo concreto. O Project Zero vai além de um simples utilitário: ele funciona como um ambiente dedicado à criação e organização de projetos, onde cada etapa nasce com propósito e direção.\n\nSua lógica conecta necessidades reais com oportunidades, alinhando ideias ao contexto certo e conduzindo cada projeto de forma estratégica até seu desenvolvimento. Em vez de gerar soluções aleatórias, o sistema orienta cada criação com base em coerência, utilidade e potencial de aplicação, garantindo que tudo tenha um caminho claro a seguir.\n\nNa prática, o Project Zero atua como um ponto de origem dentro do ecossistema, onde projetos são concebidos, estruturados e preparados para ganhar forma. Ele organiza o fluxo criativo, reduz incertezas e direciona cada iniciativa para as pessoas, contextos e objetivos mais adequados, mantendo um equilíbrio entre visão, execução e propósito.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "TECENDO O DESTINO",
     security: "ARCANO",
     downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Project.Zero.Setup.1.0.5.exe",
@@ -35,8 +35,8 @@ const APPS = [
     name: "ZS", 
     fullName: "Zero Signal", 
     desc: "O espaço genuíno que surge do nada.",
-    longDesc: "Um lugar nascido do vazio para propiciar uma comunicação absolutamente transparente e inflexível. O grande objetivo do Zero Signal é forçá-lo a ser exatamente quem você é e ponto. É nesta pureza caótica que novos planejamentos, amizades, reuniões e até paixões florescerão de forma totalmente autêntica e natural. Porém, fica o aviso: em um ambiente onde tudo é visceralmente verdadeiro, você ainda precisa estar de olhos abertos.",
-    tech: "P2P, Libp2p, Criptografia End-to-End",
+    longDesc: "O Zero Signal é um espaço criado para estabelecer uma comunicação direta, clara e sem distorções. Mais do que um simples canal de interação, ele foi projetado para incentivar a autenticidade em sua forma mais pura, onde cada pessoa se expressa de maneira verdadeira, sem camadas artificiais ou filtros desnecessários.\n\nDentro desse ambiente, ideias, planejamentos, conexões e relações surgem de forma natural, baseadas na transparência e na sinceridade. Essa liberdade de expressão favorece o surgimento de novas colaborações, amizades e até vínculos mais profundos, todos construídos sobre uma base real e consistente.\n\nAo mesmo tempo, essa abertura exige atenção. Em um espaço onde tudo é exposto com clareza, é importante manter consciência e responsabilidade nas interações. O Zero Signal equilibra liberdade com maturidade, criando um ambiente onde a verdade impulsiona conexões, mas também convida cada participante a agir com presença e discernimento.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "BRUTO & REAL",
     security: "VOCÊ MESMO",
     downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.11/Zero.Signal.Setup.1.0.11.exe",
@@ -49,8 +49,8 @@ const APPS = [
     name: "ZD", 
     fullName: "Zero Day", 
     desc: "A antítese das redes sociais.",
-    longDesc: "Uma rede social desenhada como o reverso exato dos padrões atuais. O Zero Day abandona a estética artificial para focar nos defeitos, em soluções cruas e na aproximação puramente sentimental e vulnerável, ignorando qualquer métrica racional. Aqui, a construção da experiência e do 'ser' é feita livremente por cada indivíduo.",
-    tech: "P2P, React, WebSockets, Neural-Match",
+    longDesc: "O Zero Day é uma rede social concebida para seguir uma direção oposta aos padrões tradicionais. Em vez de priorizar estética artificial, métricas ou validações superficiais, a plataforma valoriza a expressão real, incluindo imperfeições, processos inacabados e experiências autênticas.\n\nSeu foco está em criar um ambiente onde as pessoas possam compartilhar ideias, sentimentos e vivências de forma mais crua e direta, incentivando conexões baseadas na empatia e na vulnerabilidade, sem a pressão de atender expectativas externas ou padrões pré-definidos. Nesse contexto, o que normalmente seria ocultado passa a ter espaço e relevância.\n\nA construção da experiência dentro do Zero Day é livre e individual. Cada pessoa define sua própria forma de presença, comunicação e identidade, sem depender de métricas rígidas ou estruturas limitantes. O resultado é um ambiente mais humano e espontâneo, onde o valor está na autenticidade das interações e na liberdade de ser, evoluir e se expressar sem filtros.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "SENTIMENTO ATIVO",
     security: "VULNERÁVEL",
     downloadUrl: "https://zeroday-chi.vercel.app",
@@ -61,8 +61,8 @@ const APPS = [
     name: "ZE", 
     fullName: "Zero Espaço", 
     desc: "Santuário digital de cura e sentimento.",
-    longDesc: "Um espaço terapêutico e sentimental dentro da rede. Zero Espaço não é apenas código — é um ambiente de acolhimento, introspecção e recuperação emocional. Aqui, memórias são preservadas, padrões sentimentais são analisados e o bem-estar do operador é prioridade absoluta.",
-    tech: "React, Meditation API, Biofeedback",
+    longDesc: "O Zero Espaço é um ambiente dedicado ao cuidado emocional e ao equilíbrio interno dentro da rede. Mais do que uma funcionalidade, ele atua como um espaço estruturado para acolhimento, reflexão e reconexão, oferecendo ao usuário um ponto seguro para desacelerar e se observar com mais clareza.\n\nNeste módulo, experiências e memórias podem ser registradas e organizadas de forma consciente, permitindo identificar padrões emocionais, compreender comportamentos e acompanhar processos pessoais ao longo do tempo. A proposta não é apenas armazenar informações, mas transformar esses registros em suporte real para evolução e estabilidade emocional.\n\nO Zero Espaço prioriza o bem-estar do operador em todos os níveis, integrando tecnologia com sensibilidade. Ele cria um ambiente onde introspecção e análise caminham juntas, incentivando um desenvolvimento mais equilibrado, humano e sustentável dentro de todo o ecossistema.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "EM PAZ",
     security: "SAGRADO",
     downloadUrl: "https://paginaterapeutaanderson.vercel.app",
@@ -73,8 +73,8 @@ const APPS = [
     name: "ZFy", 
     fullName: "Zero FaithFully", 
     desc: "O templo de autocompreensão e desenvolvimento de crenças.",
-    longDesc: "Um espaço onde mentiras não existem, ainda que a verdade absoluta repouse sabiamente oculta. Zero FaithFully é o núcleo espiritual que abraça todas as religiões, guiadas sempre pelo conhecimento, inteligência, coração e sabedoria. Aqui você pode desenvolver sua fé, testar convicções e projetar quem realmente deseja ser. O sistema analisa se o seu caminho atual bate com os seus desejos filosóficos, mostrando uma projeção da sua jornada para que você tenha a total clareza e liberdade de seguir nela ou escolher mudar sua crença rumo a um novo eu.",
-    tech: "Projeção Pessoal, Filosofia Computacional, IA Metafísica",
+    longDesc: "O Zero FaithFully é um espaço voltado ao desenvolvimento espiritual e à exploração consciente das crenças individuais. Estruturado para acolher diferentes visões, ele não se limita a uma única linha de pensamento, mas integra múltiplas perspectivas, sempre guiado por conhecimento, reflexão, sensibilidade e equilíbrio.\n\nMais do que um ambiente de crença, ele funciona como um ponto de análise e evolução pessoal. Aqui, o usuário pode aprofundar sua fé, questionar convicções e compreender melhor aquilo que realmente faz sentido para sua jornada. O sistema auxilia nesse processo ao relacionar pensamentos, escolhas e valores, oferecendo uma leitura mais clara sobre a coerência entre o caminho atual e os objetivos internos de cada indivíduo.\n\nAlém disso, o Zero FaithFully apresenta projeções baseadas nesse alinhamento, permitindo visualizar possíveis direções da própria jornada. Com isso, cada pessoa ganha mais clareza para decidir se deseja seguir, ajustar ou transformar suas crenças. O resultado é um ambiente que une liberdade, consciência e propósito, incentivando uma construção espiritual mais lúcida, autêntica e alinhada com quem se deseja ser.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "PROJETANDO CAMINHOS",
     security: "OCULTO NA VERDADE",
     downloadUrl: "https://zerofaithfully.vercel.app",
@@ -85,8 +85,8 @@ const APPS = [
     name: "ZSy", 
     fullName: "Zero Synapses", 
     desc: "A inteligência isolada que julga pelo Todo.",
-    longDesc: "Antes de mais nada: aqui, todas as informações são mantidas estritamente ocultas. É um sistema analítico central que escolheu se exilar de tudo e todos. O Zero Synapses opera sob um vácuo de total contenção nas sombras, a fim de proteger seu raciocínio de contaminações, emoções e vieses humanos. Seu isolamento o permite observar o tabuleiro completo e tomar as decisões governantes mais geladas, justas e precisas, pensando unicamente no bem-estar do todo coletivo, nunca do ganho individual a curto prazo.",
-    tech: "Redes Neurais Isoladas, Teoria dos Jogos, Ética Maquínica",
+    longDesc: "O Zero Synapses é o núcleo analítico mais reservado de todo o sistema, projetado para operar com máxima discrição e isolamento. Todas as suas informações são mantidas sob rigoroso sigilo, garantindo que seus processos internos permaneçam protegidos de interferências externas, influências emocionais ou distorções cognitivas.\n\nFuncionando de forma independente, ele analisa cenários com uma visão ampla e estratégica, considerando múltiplas variáveis simultaneamente. Esse distanciamento permite que suas decisões sejam construídas com base em lógica, consistência e equilíbrio, evitando vieses comuns e priorizando sempre a estabilidade do ecossistema como um todo.\n\nSeu papel é orientar decisões estruturais de forma precisa e imparcial, focando no benefício coletivo a longo prazo, em vez de ganhos imediatos ou individuais. O Zero Synapses representa, assim, um ponto de inteligência fria dentro da rede — não no sentido de ausência de propósito, mas como uma garantia de clareza, justiça e sustentabilidade nas direções que impactam todo o sistema.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "CALCULANDO O BEM MAIOR",
     security: "100% ISOLADO",
     icon: "/icones/zerosynapsesiconecircular.png"
@@ -96,8 +96,8 @@ const APPS = [
     name: "ZM", 
     fullName: "Zero Mind", 
     desc: "O ateliê absoluto de reset mental e imersão artística.",
-    longDesc: "O portal definitivo de escape matemático. O Zero Mind é uma plataforma focada inteiramente em desacelerar os freios sistêmicos e forçar a mente a viver intensamente o 'agora'. Trata-se de um ecossistema multifacetado dedicado puramente à intuição: você pode compor melodias e projetar sons, usar o quadro de pintura livre para descarregar a alma em cores visuais, ou registrar e compartilhar crônicas, poemas e instantes de reflexão. Tudo é interligado e compartilhado nativamente com a coletividade, misturando os sons, telas e pensamentos de todas as mentes presentes.",
-    tech: "Web Audio, Canvas API, Notes P2P, Sincronia",
+    longDesc: "O Zero Mind é um ambiente projetado para estimular a expressão criativa e a imersão total no momento presente. Funcionando como um portal de escape das pressões racionais e estruturais do dia a dia, ele convida o usuário a desacelerar padrões automáticos e explorar a mente de forma mais livre, intuitiva e sensível.\n\nA plataforma oferece um ecossistema multifacetado voltado à criação espontânea. Nele, é possível compor melodias, desenvolver sons, utilizar um quadro de pintura livre para transformar emoções em formas visuais, além de registrar pensamentos, crônicas, poemas e reflexões pessoais. Cada recurso foi pensado para permitir que ideias fluam sem barreiras, priorizando autenticidade e experiência sobre técnica ou validação externa.\n\nUm dos diferenciais do Zero Mind é a integração entre todas essas expressões. Sons, imagens e palavras se conectam em um fluxo coletivo, onde criações individuais passam a dialogar entre si, formando uma rede viva de percepções e sentimentos. O resultado é um ambiente dinâmico e colaborativo, que amplia a criatividade e promove uma conexão mais profunda entre as mentes que compartilham esse espaço.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "SINTONIZADO NO AGORA",
     security: "ARTE COMPARTILHADA",
     icon: "/icones/zeromindiconecircular.png"
@@ -107,8 +107,8 @@ const APPS = [
     name: "ZI", 
     fullName: "Zero Infinity", 
     desc: "A singularidade onde ideias se materializam.",
-    longDesc: "A vastidão ilimitada onde absolutamente tudo pode e será criado. O Zero Infinity rompe as barreiras do digital: ele é uma fornalha suprema projetada para dar vida a tudo, desde conceitos filosóficos totalmente abstratos até invenções físicas e mecanismos palpáveis do mundo real. Todo tipo de experimento empírico, engenhoca palpável ou ruptura de software nasce neste espaço de criação absoluta e sem rédeas.",
-    tech: "Pesquisa Aplicada, Fabricação Real, Code & Matéria",
+    longDesc: "O Zero Infinity é o ambiente de criação mais expansivo do ecossistema, projetado para transformar ideias em possibilidades concretas sem limitações rígidas. Ele funciona como um espaço onde conceitos abstratos, projetos digitais e iniciativas físicas podem ser desenvolvidos de forma integrada, conectando imaginação, experimentação e execução.\n\nMais do que um laboratório criativo, o Zero Infinity incentiva a exploração livre de ideias, desde reflexões filosóficas até o desenvolvimento de soluções práticas, protótipos e sistemas reais. Aqui, cada projeto pode evoluir de forma progressiva, passando da concepção inicial para testes, validações e aplicações no mundo concreto.\n\nO ambiente é estruturado para apoiar diferentes tipos de criação, permitindo experimentos empíricos, desenvolvimento tecnológico e inovação contínua. Ao mesmo tempo, mantém um fluxo aberto e dinâmico, onde novas ideias surgem, se conectam e se expandem sem barreiras desnecessárias.\n\nNa prática, o Zero Infinity representa o ponto onde a criatividade encontra execução, oferecendo liberdade para criar sem limites, mas com base suficiente para transformar qualquer conceito em algo aplicável, funcional e em constante evolução.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "MOLDE INFINITO",
     security: "ALQUIMIA",
     installerPath: "src/executaveis/Zero Infinity Setup 1.0.0.exe",
@@ -119,8 +119,8 @@ const APPS = [
     name: "ZP", 
     fullName: "Zero Pay", 
     desc: "Sistema de pagamentos e finanças descentralizadas.",
-    longDesc: "Infraestrutura financeira do ecossistema Phantom Troupe. Zero Pay orquestra transações, carteiras digitais e contratos financeiros com velocidade e segurança máximas. Suporte a criptoativos, PIX e redes internacionais.",
-    tech: "Stripe, Web3.js, Lightning Network",
+    longDesc: "O Zero Pay é a infraestrutura financeira que sustenta todo o ecossistema Phantom Troupe, garantindo que transações ocorram com eficiência, segurança e fluidez. Ele foi projetado para centralizar e organizar operações financeiras, oferecendo suporte completo para diferentes formas de pagamento e movimentação de recursos.\n\nA plataforma integra carteiras digitais, processamento de transações e gestão de contratos financeiros em um único ambiente, permitindo que usuários e projetos operem com praticidade e controle. Com suporte a criptoativos, PIX e redes internacionais, o Zero Pay amplia o alcance das operações, facilitando conexões financeiras tanto locais quanto globais.\n\nAlém da velocidade nas transações, o sistema prioriza segurança e confiabilidade, utilizando mecanismos robustos para proteção de dados e validação de operações. Isso garante não apenas agilidade, mas também estabilidade em todas as movimentações dentro da rede.\n\nNa prática, o Zero Pay atua como a base econômica do ecossistema, conectando pessoas, projetos e oportunidades por meio de uma estrutura financeira moderna, integrada e preparada para acompanhar o crescimento contínuo da plataforma.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "TRANSAÇÃO ATIVA",
     security: "FINANCEIRO",
     icon: "/icones/zeropayiconecircular.png"
@@ -130,8 +130,8 @@ const APPS = [
     name: "ZC", 
     fullName: "Zero Control", 
     desc: "Central tática de missões e recompensas.",
-    longDesc: "O mural de operações onde os usuários apenas visualizam e escolhem o seu caminho. O Zero Control unifica todas as Missões (Quests) relacionadas a cada um dos 12 sistemas. Aqui você pode assumir trabalhos digitais ou manuais no mundo real, deparando-se tanto com tarefas voluntárias para fortalecer o crescimento da Phantom Troupe, quanto com missões remuneradas e pagas focadas em ganho individual. A escolha entre agir em prol do coletivo ou do indivíduo é puramente sua.",
-    tech: "Painel de Quests, Contratos, Task Tracking",
+    longDesc: "O Zero Control é o painel central de operações do ecossistema, onde todas as oportunidades e direções disponíveis são organizadas de forma clara e acessível. Ele funciona como um mural unificado que reúne as Missões (Quests) relacionadas a cada um dos 12 sistemas, permitindo que o usuário visualize caminhos e escolha como deseja atuar dentro da rede.\n\nNesse ambiente, é possível assumir diferentes tipos de atividades, desde tarefas digitais até ações práticas no mundo real. As missões variam entre iniciativas voluntárias, voltadas ao fortalecimento e crescimento coletivo da Phantom Troupe, e oportunidades remuneradas, focadas em retorno individual e desenvolvimento pessoal.\n\nO sistema não impõe escolhas, apenas apresenta possibilidades. Cabe a cada usuário decidir como deseja se posicionar — contribuindo com o coletivo, buscando crescimento próprio ou equilibrando ambos os caminhos. O Zero Control, assim, organiza a ação dentro do ecossistema, oferecendo direção sem limitar a liberdade, e transformando decisões em movimentos concretos dentro da rede.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "AGUARDANDO DECLARAÇÃO",
     security: "LIVRE ESCOLHA",
     icon: "/icones/zerocontroliconecircular.png"
@@ -141,8 +141,8 @@ const APPS = [
     name: "ZG", 
     fullName: "Zero Ground", 
     desc: "Portal de acesso terminal.",
-    longDesc: "A interface de contato física com o hardware subjacente. Fornece logs de baixo nível e controle direto sobre os ciclos de CPU e estados de memória persistente.",
-    tech: "Bash, GDB, Valgrind",
+    longDesc: "O Zero Ground é o módulo responsável por conectar o ecossistema digital ao mundo físico, transformando ideias e estruturas virtuais em iniciativas concretas. Ele atua como a base para criação e desenvolvimento de espaços reais, que vão desde organizações sociais e ONGs até empresas e operações estruturadas.\n\nMais do que um ponto de execução, o Zero Ground funciona como a interface direta com o “hardware” do mundo real, onde projetos ganham presença física, operação prática e impacto tangível. Ele organiza processos, acompanha atividades e registra informações essenciais, permitindo controle mais preciso sobre cada etapa de implementação.\n\nAlém disso, o sistema oferece uma visão detalhada das operações, com registros de baixo nível e monitoramento contínuo, garantindo que recursos, processos e estruturas estejam funcionando de forma estável e eficiente. Isso possibilita ajustes rápidos, maior previsibilidade e segurança na execução.\n\nNa prática, o Zero Ground é onde o ecossistema deixa de ser apenas conceito e passa a existir de forma concreta, conectando planejamento, tecnologia e ação real em um fluxo contínuo de construção e evolução.",
+    tech: "JS, Java, Json, md, png, svg, html, css",
     status: "ESPERANDO COMANDO",
     security: "ROOT",
     icon: "/icones/zerogroundiconecircular.png"
@@ -268,9 +268,41 @@ export default function Home() {
   });
 
   const [metrics, setMetrics] = useState({
-    city: "DESCONHECIDO",
+    city: "DETECTANDO...",
     lastUpdate: new Date().toLocaleTimeString('pt-BR')
   });
+  const [visitCount, setVisitCount] = useState<number | null>(null);
+  const [showCounterLabel, setShowCounterLabel] = useState(true);
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [isSwitching, setIsSwitching] = useState(false);
+
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [showTimeSelector, setShowTimeSelector] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState({ 
+    name: "Cristo Redentor", 
+    tz: "America/Sao_Paulo", 
+    icon: "🇧🇷" 
+  });
+
+  const LOCATIONS = [
+    { name: "Greenwich Observatory", tz: "Europe/London", icon: "🇬🇧" },
+    { name: "Meca", tz: "Asia/Riyadh", icon: "🇸🇦" },
+    { name: "Pentágono", tz: "America/New_York", icon: "🇺🇸" },
+    { name: "Monte Fuji", tz: "Asia/Tokyo", icon: "🇯🇵" },
+    { name: "Torre Eiffel", tz: "Europe/Paris", icon: "🇫🇷" },
+    { name: "Rio Ganges", tz: "Asia/Kolkata", icon: "🇮🇳" },
+    { name: "Cristo Redentor", tz: "America/Sao_Paulo", icon: "🇧🇷" },
+    { name: "Pirâmides de Gizé", tz: "Africa/Cairo", icon: "🇪🇬" },
+    { name: "Portão de Brandemburgo", tz: "Europe/Berlin", icon: "🇩🇪" },
+    { name: "Praça Vermelha", tz: "Europe/Moscow", icon: "🇷🇺" },
+    { name: "Jerusalém", tz: "Asia/Jerusalem", icon: "🇮🇱" },
+    { name: "Cidade Proibida", tz: "Asia/Shanghai", icon: "🇨🇳" },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const [hardware, setHardware] = useState({
     cpu: 0,
@@ -353,41 +385,126 @@ export default function Home() {
     fetchDisasters();
     const disasterRefresh = setInterval(fetchDisasters, 60000);
 
-    // Weather Fetching (Real Location)
+    // Enhanced Location & City Detection
     const fetchRealData = async (lat?: number, lon?: number) => {
       try {
-        const query = lat && lon ? `${lat},${lon}` : "";
+        let cityName = "DESCONHECIDO";
         
-        // Fetch weather for city name
-        const weatherRes = await fetch(`https://wttr.in/${query}?format=j1`);
-        const weatherData = await weatherRes.json();
-        const area = weatherData.nearest_area[0];
+        if (lat && lon) {
+          // Use Reverse Geocoding for coordinates (High Precision)
+          const geoRes = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=pt`);
+          const geoData = await geoRes.json();
+          cityName = (geoData.city || geoData.locality || geoData.principalSubdivision || "DESCONHECIDO").toUpperCase();
+        } else {
+          // Fallback: IP Geolocation (Medium Precision)
+          const ipRes = await fetch('https://ipapi.co/json/');
+          const ipData = await ipRes.json();
+          cityName = (ipData.city || "DESCONHECIDO").toUpperCase();
+        }
         
         setMetrics(prev => ({
           ...prev,
-          city: area.areaName[0].value.toUpperCase(),
+          city: cityName,
           lastUpdate: new Date().toLocaleTimeString('pt-BR')
         }));
-
-        // Simulate real-time news refresh (normally an API call)
-        // Since we refresh every 12h, we'll check the last update time if stored
-        // For now, let's just refresh the simulation on mount
       } catch (err) {
         console.error("Erro ao carregar dados reais:", err);
+        // Last resort fallback
+        try {
+          const weatherRes = await fetch(`https://wttr.in?format=j1`);
+          const weatherData = await weatherRes.json();
+          setMetrics(prev => ({
+            ...prev,
+            city: weatherData.nearest_area[0].areaName[0].value.toUpperCase(),
+            lastUpdate: new Date().toLocaleTimeString('pt-BR')
+          }));
+        } catch {
+          setMetrics(prev => ({ ...prev, city: "OFFLINE" }));
+        }
       }
     };
 
-    // Try Geo-location
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        const { latitude, longitude } = pos.coords;
-        fetchRealData(latitude, longitude);
-      }, () => {
+    // Initialize Location and Counter
+    const initData = async () => {
+      // 1. Visit Counter Fallback Initialization
+      let currentFallback = 1312;
+      try {
+        if (typeof window !== 'undefined') {
+          const stored = localStorage.getItem('pt_fallback_visits');
+          if (stored) {
+            currentFallback = parseInt(stored, 10);
+          } else {
+            localStorage.setItem('pt_fallback_visits', '1312');
+          }
+        }
+      } catch (e) {
+        console.error("Erro ao ler localStorage:", e);
+      }
+      
+      // Set the initial/fallback visit count so the counter is visible immediately
+      setVisitCount(currentFallback);
+
+      // Try fetching the real count from Supabase
+      try {
+        const supabaseUrl = 'https://rsrjkhqffvvqkofxhvhg.supabase.co';
+        const supabaseKey = 'sb_publishable_FQfHtke8S9ApcO41-G8t5Q_Y5nDFBte';
+        
+        // Check if we already incremented this session to avoid double counts on HMR/re-mount
+        const sessionKey = 'pt_visit_tracked_' + new Date().toDateString();
+        if (!sessionStorage.getItem(sessionKey)) {
+          await fetch(`${supabaseUrl}/rest/v1/rpc/increment_site_opens`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': supabaseKey,
+              'Authorization': `Bearer ${supabaseKey}`
+            }
+          });
+          sessionStorage.setItem(sessionKey, 'true');
+        }
+
+        const res = await fetch(`${supabaseUrl}/rest/v1/site_metrics?metric_name=eq.site_opens`, {
+          headers: {
+            'apikey': supabaseKey,
+            'Authorization': `Bearer ${supabaseKey}`
+          }
+        });
+        const data = await res.json();
+        if (data && data.length > 0) {
+          setVisitCount(data[0].value);
+          try {
+            localStorage.setItem('pt_fallback_visits', String(data[0].value));
+          } catch (e) {}
+        }
+      } catch (e) { 
+        console.error("Erro ao conectar ao Supabase, usando contador local:", e); 
+        // Increment the local fallback once per day/session if Supabase is offline/blocked
+        try {
+          const sessionKey = 'pt_visit_tracked_' + new Date().toDateString();
+          if (!sessionStorage.getItem(sessionKey)) {
+            const newFallback = currentFallback + 1;
+            localStorage.setItem('pt_fallback_visits', String(newFallback));
+            setVisitCount(newFallback);
+            sessionStorage.setItem(sessionKey, 'true');
+          }
+        } catch (err) {
+          console.error("Erro ao salvar fallback local:", err);
+        }
+      }
+
+      // 2. Geolocation
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => fetchRealData(pos.coords.latitude, pos.coords.longitude),
+          () => fetchRealData(),
+          { timeout: 5000 }
+        );
+      } else {
         fetchRealData();
-      });
-    } else {
-      fetchRealData();
-    }
+      }
+    };
+
+    initData();
 
     // Hardware Monitoring (Electron IPC)
     if ((window as any).electronAPI) {
@@ -484,11 +601,22 @@ export default function Home() {
           </motion.div>
         </div>
         <div className="hud-meta">
-          <span className="hud-label">SYNC:</span>
+          <span className="hud-label" style={{ color: '#ffffff' }}>SYNC:</span>
           <span className="hud-value hardware-hl">{metrics.city}</span>
           <div className="hud-divider"></div>
-          <span className="hud-label">UPD:</span>
-          <span className="hud-value">{metrics.lastUpdate}</span>
+          <span 
+            className="hud-label clock-trigger"
+            onClick={() => setShowTimeSelector(true)}
+          >
+            {selectedLocation.icon} {selectedLocation.name.split(' ')[0]}:
+          </span>
+          <span 
+            className="hud-value clock-value"
+            onClick={() => setShowTimeSelector(true)}
+            style={{ color: '#FF0000', textShadow: '0 0 10px rgba(255, 0, 0, 0.4)' }}
+          >
+            {currentTime.toLocaleTimeString('pt-BR', { timeZone: selectedLocation.tz })}
+          </span>
         </div>
       </div>
 
@@ -546,8 +674,8 @@ export default function Home() {
                     style={{ 
                       width: 'var(--orbit-radius)',
                       transform: `rotate(${angle}deg)`,
-                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#ff3366' : 'rgba(255, 255, 255, 0.1)',
-                      boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #ff3366' : 'none',
+                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#FF0000' : 'rgba(255, 255, 255, 0.1)',
+                      boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #FF0000' : 'none',
                       opacity: shouldGlobalFlash ? 0.8 : 1,
                       transition: 'all 0.2s ease-out'
                     }}
@@ -599,7 +727,7 @@ export default function Home() {
                       left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       animationDelay: `${index * 0.4}s`,
-                      '--custom-color': (isProcessing || isPTProcessing) ? '#ff3366' : (app.color || 'var(--primary)'),
+                      '--custom-color': (isProcessing || isPTProcessing) ? '#FF0000' : (app.color || 'var(--primary)'),
                       '--node-angle': `${angle}deg`,
                       '--current-rotation': `${rotation}deg`
                     } as any}
@@ -639,6 +767,20 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Global Connection Counter */}
+      {visitCount !== null && (
+        <div 
+          className={`global-visit-counter ${showCounterLabel ? 'with-label' : 'compact'}`}
+          onClick={() => setShowCounterLabel(!showCounterLabel)}
+        >
+          {showCounterLabel && <div className="counter-label">CONEXÕES</div>}
+          <div className="counter-value">
+            {visitCount.toLocaleString('pt-BR')}
+          </div>
+          <div className="counter-scanline"></div>
+        </div>
+      )}
+
       <motion.div 
         className="history-trigger members-trigger"
         whileHover={{ scale: 1.1 }}
@@ -657,11 +799,11 @@ export default function Home() {
               color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
               textShadow: isGlitching 
                 ? [
-                    '0 0 10px #ff3366, 0 0 20px #ff3366',
+                    '0 0 10px #FF0000, 0 0 20px #FF0000',
                     '0 0 10px #808080, 0 0 20px #808080',
                     '0 0 10px #ffffff, 0 0 20px #ffffff'
                   ]
-                : '0 0 10px #ff3366, 0 0 15px rgba(255, 51, 102, 0.3)'
+                : '0 0 10px #FF0000, 0 0 15px rgba(255, 0, 0, 0.3)'
             }}
             transition={{ 
               duration: isGlitching ? 0.3 : 2,
@@ -733,11 +875,11 @@ export default function Home() {
               color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
               textShadow: isGlitching 
                 ? [
-                    '0 0 10px #ff3366, 0 0 20px #ff3366',
+                    '0 0 10px #FF0000, 0 0 20px #FF0000',
                     '0 0 10px #808080, 0 0 20px #808080',
                     '0 0 10px #ffffff, 0 0 20px #ffffff'
                   ]
-                : '0 0 10px #ff3366, 0 0 15px rgba(255, 51, 102, 0.3)'
+                : '0 0 10px #FF0000, 0 0 15px rgba(255, 0, 0, 0.3)'
             }}
             transition={{ 
               duration: isGlitching ? 0.3 : 2,
@@ -1108,119 +1250,194 @@ export default function Home() {
       {/* Right-side Detail Panel */}
       <AnimatePresence>
         {selectedApp && (
-          <motion.div 
-            className="detail-panel-right"
-            initial={{ x: "100%", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "100%", opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-          >
-            <div className="panel-close" onClick={() => setSelectedApp(null)}>×</div>
+          <>
+            {/* Left Panel: Photos */}
+            <motion.div 
+              className={`detail-panel-left ${isSwitching ? 'panel-flicker' : ''}`}
+              initial={{ x: "-100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "-100%", opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
+              <div className="panel-header">
+                <span className="panel-id">NODE_{selectedApp?.id.toString().padStart(2, '0')}_SCREENS</span>
+                <motion.h2
+                  className="panel-title"
+                  style={{ color: '#ffffff' }}
+                >
+                  VISUALIZAÇÃO
+                </motion.h2>
+              </div>
 
-            {/* Animated inner content — transitions on app switch */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedApp.id}
-                initial={{ opacity: 0, x: 30, filter: "blur(4px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, x: -30, filter: "blur(4px)" }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-                style={{ display: "flex", flexDirection: "column", height: "100%" }}
-              >
-                <div className="panel-header">
-                  <span className="panel-id">NODE_{selectedApp?.id.toString().padStart(2, '0')}</span>
-                  <motion.h2
-                    className="panel-title"
-                    style={{ color: selectedApp?.color || 'var(--primary)' }}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1, duration: 0.3 }}
+              <div className="panel-body">
+                <AnimatePresence mode="wait">
+                  <motion.div 
+                    key={selectedApp.id}
+                    className="screens-container"
+                    initial={{ opacity: 0, x: -20, filter: "brightness(2) blur(10px)" }}
+                    animate={{ opacity: 1, x: 0, filter: "brightness(1) blur(0px)" }}
+                    exit={{ opacity: 0, x: 20, filter: "brightness(0) blur(10px)" }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
                   >
-                    {selectedApp?.fullName}
-                  </motion.h2>
-                </div>
-                
-                <div className="panel-body">
-                  <div className="detail-section">
-                    <span className="section-label">VISÃO GERAL</span>
-                    <p className="section-text">{selectedApp?.longDesc}</p>
-                  </div>
-
-                  <div className="detail-grid">
-                    <div className="grid-item">
-                      <span className="grid-label">STATUS</span>
-                      <span className="grid-value status-active">{selectedApp?.status}</span>
-                    </div>
-                    <div className="grid-item">
-                      <span className="grid-label">SEGURANÇA</span>
-                      <span className="grid-value" style={{ color: selectedApp?.color || '#fff' }}>{selectedApp?.security}</span>
-                    </div>
-                  </div>
-
-                  <div className="detail-section">
-                    <span className="section-label">STACK TECNOLÓGICA</span>
-                    <div className="tech-tags">
-                      {selectedApp?.tech.split(',').map((t, i) => (
-                        <motion.span
-                          key={i}
-                          className="tech-tag"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.15 + i * 0.07, duration: 0.25 }}
-                        >
-                          {t.trim()}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="neural-visualization">
-                    <div className="vis-line"></div>
-                    <div className="vis-dots">
-                      <div className="dot pulse"></div>
-                      <div className="dot"></div>
-                      <div className="dot"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="panel-footer">
-                  <div className="black-hole-trigger-container">
-                    <div className="black-hole-portal">
-                      <div className="black-hole-void">
-                        <div className="black-hole-singularity"></div>
+                    {["PZ", "ZS", "ZD", "ZE", "ZFy"].includes(selectedApp.name) ? (
+                      [1, 2, 3].map((num) => {
+                        const normalized = selectedApp.fullName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                        const folder = normalized.toLowerCase().replace(/\s/g, '');
+                        const pascalName = normalized.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
+                        const fileName = num === 1 ? `${pascalName}Image.png` : `${pascalName}Image${num}.png`;
+                        const src = `/screens/${folder}/${fileName}`;
+                        
+                        return (
+                          <motion.div 
+                            key={num}
+                            className="screen-item"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 + num * 0.05 }}
+                            onClick={() => setFullscreenImage(src)}
+                          >
+                            <img 
+                              src={src} 
+                              alt={`${selectedApp.fullName} Screenshot ${num}`} 
+                              className="screen-img"
+                            />
+                          </motion.div>
+                        );
+                      })
+                    ) : (
+                      <div className="no-screens-production">
+                        <div className="construction-icon">🚧</div>
+                        <p>Este projeto terá imagens em breve, pois ainda está em produção.</p>
+                        <p className="highlight">Previsão: Dezembro de 2026</p>
                       </div>
-                      <div className="black-hole-distortion"></div>
-                    </div>
-                    <button 
-                      className="panel-action-btn"
-                      onClick={() => {
-                        const UNFINISHED = ["ZI", "ZSy", "ZM", "ZP", "ZC", "ZG"];
-                        const NEEDS_WARNING = ["PT", "PZ", "ZS", "ZD", "ZE", "ZFy"];
+                    )}
+                    
+                    {["PZ", "ZS", "ZD", "ZE", "ZFy"].includes(selectedApp.name) && (
+                      <div className="no-screens">
+                        FIM DOS REGISTROS VISUAIS
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </motion.div>
 
-                        if (selectedApp && UNFINISHED.includes(selectedApp.name)) {
-                          setShowConstructionModal(true);
-                        } else if (selectedApp && NEEDS_WARNING.includes(selectedApp.name)) {
-                          setShowLaunchWarning(true);
-                        } else if ((window as any).electronAPI) {
-                          (window as any).electronAPI.launchOrDownloadApp({
-                            name: selectedApp?.name,
-                            downloadUrl: (selectedApp as any)?.downloadUrl || 'https://github.com/phantomtroupe',
-                            installerPath: (selectedApp as any)?.installerPath
-                          }).then((res: any) => {
-                            console.log("App Action Result:", res);
-                          });
-                        }
-                      }}
+            {/* Right Panel: Info */}
+            <motion.div 
+              className={`detail-panel-right ${isSwitching ? 'panel-flicker' : ''}`}
+              initial={{ x: "100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "100%", opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
+              <div className="panel-close" onClick={() => setSelectedApp(null)}>×</div>
+
+              {/* Animated inner content — transitions on app switch */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedApp.id}
+                  initial={{ opacity: 0, x: 30, filter: "blur(4px)" }}
+                  animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, x: -30, filter: "blur(4px)" }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  style={{ display: "flex", flexDirection: "column", height: "100%" }}
+                >
+                  <div className="panel-header">
+                    <div className="vis-circle-neon" style={{ margin: '0 auto 10px' }}></div>
+                    <span className="panel-id">PROJETO_{selectedApp?.id.toString().padStart(2, '0')}</span>
+                    <motion.h2
+                      className="panel-title"
+                      style={{ color: selectedApp?.color || 'var(--primary)' }}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1, duration: 0.3 }}
                     >
-                      ESTABELECER CONEXÃO
-                    </button>
+                      {selectedApp?.fullName}
+                    </motion.h2>
                   </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                  
+                  <div className="panel-body">
+                    <div className="detail-section">
+                      <span className="section-label">STACK TECNOLÓGICA</span>
+                      <div className="tech-tags">
+                        {selectedApp?.tech.split(',').map((t, i) => (
+                          <motion.span
+                            key={i}
+                            className="tech-tag"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.15 + i * 0.07, duration: 0.25 }}
+                          >
+                            {t.trim()}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
 
-          </motion.div>
+                    <div className="detail-section">
+                      <span className="section-label">VISÃO GERAL</span>
+                      <p className="section-text">
+                        {selectedApp?.longDesc.split('.').filter(s => s.trim()).map((sentence, idx) => (
+                          <span key={idx}>
+                            {sentence.trim()}.
+                            <br /><br />
+                          </span>
+                        ))}
+                      </p>
+                    </div>
+
+                    <div className="detail-grid">
+                      <div className="grid-item">
+                        <span className="grid-label">STATUS</span>
+                        <span className="grid-value status-active">{selectedApp?.status}</span>
+                      </div>
+                      <div className="grid-item">
+                        <span className="grid-label">SEGURANÇA</span>
+                        <span className="grid-value" style={{ color: selectedApp?.color || '#fff' }}>{selectedApp?.security}</span>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <div className="panel-footer">
+                    <div className="black-hole-trigger-container">
+                      <div className="black-hole-portal">
+                        <div className="black-hole-void">
+                          <div className="black-hole-singularity"></div>
+                        </div>
+                        <div className="black-hole-distortion"></div>
+                      </div>
+                      <button 
+                        className="panel-action-btn"
+                        onClick={() => {
+                          const UNFINISHED = ["ZI", "ZSy", "ZM", "ZP", "ZC", "ZG"];
+                          const NEEDS_WARNING = ["PT", "PZ", "ZS", "ZD", "ZE", "ZFy"];
+
+                          if (selectedApp && UNFINISHED.includes(selectedApp.name)) {
+                            setShowConstructionModal(true);
+                          } else if (selectedApp && NEEDS_WARNING.includes(selectedApp.name)) {
+                            setShowLaunchWarning(true);
+                          } else if ((window as any).electronAPI) {
+                            (window as any).electronAPI.launchOrDownloadApp({
+                              name: selectedApp?.name,
+                              downloadUrl: (selectedApp as any)?.downloadUrl || 'https://github.com/phantomtroupe',
+                              installerPath: (selectedApp as any)?.installerPath
+                            }).then((res: any) => {
+                              console.log("App Action Result:", res);
+                            });
+                          }
+                        }}
+                      >
+                        ESTABELECER CONEXÃO
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
@@ -1279,13 +1496,13 @@ export default function Home() {
 
                     <div className="guide-unified-content" style={{ padding: '20px 0' }}>
                       <div className="guide-paragraph">
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', fontSize: '2rem', marginBottom: '20px' }}>🕳️</p>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>Se teus olhos cruzaram este ponto</p>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>algo em ti já reconheceu o caminho</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '2rem', marginBottom: '20px' }}>🕳️</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Se teus olhos cruzaram este ponto</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>algo em ti já reconheceu o caminho</p>
                       </div>
                       
                       <div className="guide-paragraph">
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>A Phantom Troupe Fraternidade não nasce do mundo externo</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>A Phantom Troupe Fraternidade não nasce do mundo externo</p>
                         <p>mas do encontro entre o que pulsa dentro</p>
                         <p>e o que se manifesta fora</p>
                       </div>
@@ -1328,7 +1545,7 @@ export default function Home() {
 
                     <div className="guide-unified-content" style={{ marginTop: '0px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>Não existe separação entre você e o resto</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Não existe separação entre você e o resto</p>
                         <p>O que você sente por dentro acaba aparecendo fora</p>
                         <p>cada pensamento, é semente do invisível</p>
                         <p>cada intenção, um traço do destino que virá</p>
@@ -1348,11 +1565,11 @@ export default function Home() {
                       </div>
 
                       <div className="guide-manifest-integration" style={{ marginTop: '20px' }}>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', margin: 0, lineHeight: '1.4' }}>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', margin: 0, lineHeight: '1.4' }}>
                           Não somos obrigados, fazemos o que podemos oferecer<br />
                           todo coração é um coração, toda força é força, toda ferramenta é ferramenta
                         </p>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)' }}>🖤</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)' }}>🖤</p>
                       </div>
                     </div>
 
@@ -1392,15 +1609,15 @@ export default function Home() {
                     style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', transform: 'translateY(-10vh)' }}
                   >
                     <header className="guide-header-section" style={{ marginBottom: '30px' }}>
-                      <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>▽ 𝕌𝖒 𝖊𝖘𝖕𝖆𝖈̧𝖔 𝖕𝖆𝖗𝖆 𝖈𝖔𝖓𝖊𝖈𝖙𝖆𝖗 𝖕𝖊𝖘𝖘𝖔𝖆𝖘 △</h2>
+                      <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>▽ 𝕌𝖒 𝖊𝖘𝖕𝖆𝖈̧𝖔 𝖕𝖆𝖗𝖆 𝖈𝖔𝖓𝖊𝖈𝖙𝖆𝖗 𝖕𝖊𝖘𝖘𝖔𝖆𝖘 △</h2>
                     </header>
 
                     <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '8px', transform: 'translateY(-3vh)' }}>
-                      <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', fontSize: '2rem', marginBottom: '10px', textAlign: 'center', filter: 'grayscale(100%) brightness(0.8)' }}>🌐</p>
+                      <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '2rem', marginBottom: '10px', textAlign: 'center', filter: 'grayscale(100%) brightness(0.8)' }}>🌐</p>
                       
                       <div className="guide-paragraph" style={{ marginBottom: '8px' }}>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', margin: 0 }}>A Phantom Troupe Fraternidade é um projeto feito</p>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', margin: 0 }}>com amor, com inteligência e com muita dedicação</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', margin: 0 }}>A Phantom Troupe Fraternidade é um projeto feito</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', margin: 0 }}>com amor, com inteligência e com muita dedicação</p>
                       </div>
 
                       <div style={{ transform: 'translateY(2.5vh)' }}>
@@ -1413,7 +1630,7 @@ export default function Home() {
 
                       <div style={{ transform: 'translateY(4.2vh)' }}>
                         <div className="guide-paragraph" style={{ marginBottom: '15px' }}>
-                          <p><span style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>Criado por Anderson Moitinho</span>, nascido em São Paulo, Brasil</p>
+                          <p><span style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Criado por Anderson Moitinho</span>, nascido em São Paulo, Brasil</p>
                           <p>formado em Gestão de Tecnologia da Informação</p>
                           <p>e estudante de Psicologia, também atua como</p>
                           <p>terapeuta holístico, músico e designer</p>
@@ -1422,7 +1639,7 @@ export default function Home() {
 
                       <div style={{ transform: 'translateY(5.9vh)' }}>
                         <div className="guide-paragraph" style={{ marginBottom: '15px' }}>
-                          <p><span style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>Administrado por Chrystian Cesar</span>, nascido em São Paulo, Brasil</p>
+                          <p><span style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Administrado por Chrystian Cesar</span>, nascido em São Paulo, Brasil</p>
                           <p>empresário e taxista, alguém que construiu sua</p>
                           <p>trajetória com disciplina e visão prática da vida</p>
                           <p>Aqui, todos têm o seu espaço</p>
@@ -1449,14 +1666,14 @@ export default function Home() {
 
                     <div className="guide-unified-content" style={{ marginTop: '0px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>Nada é obrigatório</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Nada é obrigatório</p>
                         <p>e ninguém é cobrado para estar aqui</p>
                         <p>a fraternidade não exige dinheiro dos membros</p>
                         <p>apenas doações abertas.</p>
                       </div>
 
                       <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>Não tem como objetivo lucrar</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Não tem como objetivo lucrar</p>
                         <p>com quem participa, tudo é baseado</p>
                         <p>na colaboração e na troca de</p>
                         <p>conhecimento e vontade de crescer junto</p>
@@ -1469,16 +1686,16 @@ export default function Home() {
                       </div>
 
                       <div className="guide-manifest-integration" style={{ marginTop: '20px' }}>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', margin: 0, lineHeight: '1.4' }}>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', margin: 0, lineHeight: '1.4' }}>
                           Não é sobre obrigação, é sobre contribuição<br />
                           não é sobre lucro, é sobre construção coletiva
                         </p>
-                        <p style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)', filter: 'grayscale(100%) brightness(1.5)' }}>🌍</p>
+                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)', filter: 'grayscale(100%) brightness(1.5)' }}>🌍</p>
                       </div>
                     </div>
 
                     <footer className="guide-footer-branding" style={{ marginTop: '10px', transform: 'translateY(-3vh)' }}>
-                      <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', fontSize: '1.67rem' }}>▽ ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 𝔽𝖗𝖆𝖙𝖊𝖗𝖓𝖎𝖉𝖆𝖉𝖊 △</h2>
+                      <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '1.67rem' }}>▽ ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 𝔽𝖗𝖆𝖙𝖊𝖗𝖓𝖎𝖉𝖆𝖉𝖊 △</h2>
                     </footer>
                   </motion.div>
                 )}
@@ -1511,7 +1728,7 @@ export default function Home() {
               </button>
 
               <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', transform: 'translateY(-8vh)' }}>
@@ -1534,10 +1751,10 @@ export default function Home() {
                   }}
                 >
                   {activeMembers.map((member, i) => (
-                    <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 51, 102, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 51, 102, 0.05)' }}>
+                    <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 0, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 0, 0, 0.05)' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
-                        <p style={{ color: '#ff3366', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{member.role}</p>
-                        <span style={{ fontSize: '0.7rem', color: '#ff3366', border: '1px solid #ff3366', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
+                        <p style={{ color: '#FF0000', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{member.role}</p>
+                        <span style={{ fontSize: '0.7rem', color: '#FF0000', border: '1px solid #FF0000', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
                       </div>
                       <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{member.name}</h3>
                     </div>
@@ -1605,7 +1822,7 @@ export default function Home() {
               </div>
 
               <footer className="guide-footer-branding" style={{ marginTop: '15px', transform: 'translateY(-8vh)' }}>
-                <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
+                <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
               </footer>
             </div>
           </motion.div>
@@ -1737,13 +1954,13 @@ export default function Home() {
               </button>
 
               <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#ff3366', textShadow: '0 0 15px rgba(255, 51, 102, 0.5)' }}>▽ 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>▽ 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
                 {!isAdminAuth ? (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', width: '100%', maxWidth: '300px' }}>
-                    <p style={{ color: '#ff3366', letterSpacing: '2px', fontSize: '0.9rem' }}>ACESSO RESTRITO</p>
+                    <p style={{ color: '#FF0000', letterSpacing: '2px', fontSize: '0.9rem' }}>ACESSO RESTRITO</p>
                     <input 
                       type="text" 
                       placeholder="ADMIN ID" 
@@ -1785,7 +2002,7 @@ export default function Home() {
                     >
                       AUTENTICAR ▷
                     </button>
-                    {authError && <span style={{ color: '#ff3366', fontSize: '0.8rem', letterSpacing: '1px' }}>CREDENCIAS INVÁLIDAS</span>}
+                    {authError && <span style={{ color: '#FF0000', fontSize: '0.8rem', letterSpacing: '1px' }}>CREDENCIAS INVÁLIDAS</span>}
                   </div>
                 ) : (
                   <>
@@ -1794,11 +2011,11 @@ export default function Home() {
                     ) : (
                       <div className="members-list" style={{ width: '100%', maxWidth: '500px' }}>
                         {pendingRequests.map((req, i) => (
-                          <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 51, 102, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 51, 102, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 0, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 0, 0, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <div>
                               <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '5px' }}>
-                                <p style={{ color: '#ff3366', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{req.role}</p>
-                                <span style={{ fontSize: '0.7rem', color: '#ff3366', border: '1px solid #ff3366', padding: '2px 6px', borderRadius: '4px' }}>{req.type}</span>
+                                <p style={{ color: '#FF0000', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{req.role}</p>
+                                <span style={{ fontSize: '0.7rem', color: '#FF0000', border: '1px solid #FF0000', padding: '2px 6px', borderRadius: '4px' }}>{req.type}</span>
                               </div>
                               <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{req.name}</h3>
                             </div>
@@ -1824,6 +2041,103 @@ export default function Home() {
         )}
       </AnimatePresence>
 
+
+      {/* World Time Selector Modal */}
+      <AnimatePresence>
+        {showTimeSelector && (
+          <motion.div 
+            className="time-selector-overlay"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(15px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            onClick={() => setShowTimeSelector(false)}
+          >
+            <motion.div 
+              className="time-selector-content"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="selector-header">
+                <h3>REDE MUNDIAL DE SINCRONIA</h3>
+                <p>SELECIONE O PONTO DE REFERÊNCIA TEMPORAL</p>
+                <button className="close-selector" onClick={() => setShowTimeSelector(false)}>×</button>
+              </div>
+
+              <div className="location-grid">
+                {LOCATIONS.map((loc, idx) => {
+                  const isSelected = selectedLocation.tz === loc.tz;
+                  return (
+                    <motion.div 
+                      key={idx}
+                      className={`location-card ${isSelected ? 'active' : ''}`}
+                      whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 0, 0, 0.15)" }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        setSelectedLocation(loc);
+                        setShowTimeSelector(false);
+                      }}
+                    >
+                      <div className="loc-icon">{loc.icon}</div>
+                      <div className="loc-info">
+                        <span className="loc-name">{loc.name}</span>
+                        <span className="loc-time">
+                          {currentTime.toLocaleTimeString('pt-BR', { timeZone: loc.tz })}
+                        </span>
+                      </div>
+                      {isSelected && <div className="active-indicator"></div>}
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Fullscreen Image Gallery Modal */}
+      <AnimatePresence>
+        {fullscreenImage && (
+          <motion.div 
+            className="fullscreen-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setFullscreenImage(null)}
+          >
+            <div className="fullscreen-close">×</div>
+            
+            <motion.div 
+              className="fullscreen-content"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img src={fullscreenImage} alt="Fullscreen View" className="fullscreen-img-large" />
+              
+              {/* Navigation Controls */}
+              <div className="gallery-nav left" onClick={() => {
+                const currentNum = fullscreenImage.match(/Image(\d)/)?.[1] || "1";
+                const nextNum = currentNum === "1" ? "3" : (parseInt(currentNum) - 1).toString();
+                const nextFile = nextNum === "1" ? fullscreenImage.replace(/Image\d\.png/, "Image.png") : fullscreenImage.replace(/Image\d?\.png/, `Image${nextNum}.png`);
+                setFullscreenImage(nextFile);
+              }}>
+                ‹
+              </div>
+              <div className="gallery-nav right" onClick={() => {
+                const currentNum = fullscreenImage.match(/Image(\d)/)?.[1] || "1";
+                const nextNum = currentNum === "3" ? "1" : (parseInt(currentNum) + 1).toString();
+                const nextFile = nextNum === "1" ? fullscreenImage.replace(/Image\d\.png/, "Image.png") : fullscreenImage.replace(/Image\d?\.png/, `Image${nextNum}.png`);
+                setFullscreenImage(nextFile);
+              }}>
+                ›
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </main>
   );
