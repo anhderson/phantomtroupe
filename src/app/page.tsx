@@ -834,7 +834,7 @@ export default function Home() {
           className={`global-visit-counter ${showCounterLabel ? 'with-label' : 'compact'}`}
           onClick={() => setShowCounterLabel(!showCounterLabel)}
         >
-          {showCounterLabel && <div className="counter-label">CONEXÕES</div>}
+          {showCounterLabel && <div className="counter-label">ACESSOS AO SITE</div>}
           <div className="counter-value">
             {visitCount.toLocaleString('pt-BR')}
           </div>
@@ -1747,43 +1747,55 @@ export default function Home() {
               </button>
 
               <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#cc44ff', textShadow: '0 0 15px rgba(204, 68, 255, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
               </header>
 
-              <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', transform: 'translateY(-8vh)' }}>
-                <button 
-                  className="guide-page-btn" 
-                  style={{ marginBottom: '10px', fontSize: '0.8rem', padding: '10px 20px', borderStyle: 'dashed' }}
-                  onClick={() => setShowPending(true)}
-                  title="Abrir Central de Requisições"
-                >
-                  <span style={{ fontSize: '1.2rem', marginRight: '8px', verticalAlign: 'middle' }}>🗲</span> 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘
-                </button>
-                <div 
-                  className="members-list" 
-                  style={{ 
-                    width: '100%', 
-                    maxWidth: '500px', 
-                    maxHeight: (typeof window !== 'undefined' && window.innerWidth <= 768) ? '320px' : '380px', 
-                    overflowY: 'auto', 
-                    paddingRight: '10px' 
-                  }}
-                >
-                  {activeMembers.map((member, i) => (
-                    <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
-                        <p style={{ color: '#FF007F', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{member.role}</p>
-                        <span style={{ fontSize: '0.7rem', color: '#FF007F', border: '1px solid #FF007F', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
+              <div className="guide-split-layout" style={{ transform: 'translateY(-2vh)', width: '100%' }}>
+                {/* Left Column: Members List */}
+                <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
+                  <button 
+                    className="guide-page-btn" 
+                    style={{ marginBottom: '20px', fontSize: '0.8rem', padding: '10px 20px', borderStyle: 'dashed', marginTop: '0px' }}
+                    onClick={() => setShowPending(true)}
+                    title="Abrir Central de Requisições"
+                  >
+                    <span style={{ fontSize: '1.2rem', marginRight: '8px', verticalAlign: 'middle' }}>🗲</span> 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘
+                  </button>
+                  <div 
+                    className="members-list" 
+                    style={{ 
+                      width: '100%', 
+                      maxWidth: '500px', 
+                      maxHeight: '380px', 
+                      overflowY: 'auto', 
+                      paddingRight: '10px' 
+                    }}
+                  >
+                    {activeMembers.map((member, i) => (
+                      <div key={i} className="member-card" style={{ padding: '15px', marginBottom: '10px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
+                          <p style={{ margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{member.role}</p>
+                          <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
+                        </div>
+                        <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{member.name}</h3>
                       </div>
-                      <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{member.name}</h3>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
 
-                <div className="participation-section" style={{ marginTop: '30px', textAlign: 'center', width: '100%' }}>
-                  <p style={{ marginBottom: '20px' }}>Você sente que este é o seu caminho?<br />Venha construir conosco este novo ciclo.</p>
+                {/* Vertical Divider Line */}
+                <div className="guide-divider-line"></div>
+
+                {/* Right Column: Participation Form */}
+                <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(191, 0, 255, 0.02)', border: '1px solid rgba(191, 0, 255, 0.15)', borderRadius: '6px' }}>
+                  <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: '#cc44ff', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(191, 0, 255, 0.15)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
+                    SEJA MEMBRO
+                  </h3>
+                  <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                    Você sente que este é o seu caminho?<br />Venha construir conosco este novo ciclo.
+                  </p>
                   
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', width: '100%', maxWidth: '300px', margin: '0 auto' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', width: '100%' }}>
                     <input 
                       type="text" 
                       placeholder="SEU NOME" 
@@ -1824,24 +1836,24 @@ export default function Home() {
                     </select>
                     <button 
                       className="guide-page-btn btn-next"
-                      style={{ marginTop: '5px', marginBottom: '5px' }}
+                      style={{ marginTop: '10px', width: '100%' }}
                       onClick={() => {
                         if (joiningName.trim() && joiningRole.trim()) {
                           setPendingRequests(prev => [...prev, { name: joiningName, role: joiningRole, type: joiningType }]);
                           setJoiningName("");
                           setJoiningRole("");
-                          // Optional feedback
+                          setJoiningType("");
                         }
                       }}
                     >
-                      Deseja participar? ▷
+                      ENVIAR SOLICITAÇÃO ▷
                     </button>
                   </div>
                 </div>
               </div>
 
-              <footer className="guide-footer-branding" style={{ marginTop: '15px', transform: 'translateY(-8vh)' }}>
-                <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
+              <footer className="guide-footer-branding" style={{ marginTop: '20px', transform: 'translateY(-2vh)' }}>
+                <h2 className="guide-heading" style={{ color: '#cc44ff', textShadow: '0 0 15px rgba(204, 68, 255, 0.5)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
               </footer>
             </div>
           </motion.div>

@@ -2978,3 +2978,137 @@ body::before {
   filter: drop-shadow(0 0 20px rgba(255, 0, 127, 0.6));
   opacity: 0.95;
 }
+
+/* Purple customizations for Members Overlay ("Seja Membro") */
+.members-overlay {
+  scrollbar-color: rgba(191, 0, 255, 0.4) transparent !important;
+}
+
+.members-overlay::-webkit-scrollbar-thumb {
+  background: rgba(191, 0, 255, 0.4) !important;
+}
+
+.members-overlay .guide-inner-wrap {
+  border: 1px solid rgba(191, 0, 255, 0.25);
+  box-shadow: 0 0 40px rgba(191, 0, 255, 0.1), inset 0 0 20px rgba(191, 0, 255, 0.05);
+  background: rgba(12, 4, 18, 0.96) !important;
+  border-radius: 8px;
+}
+
+/* Customize member cards to be purple */
+.members-overlay .member-card {
+  border: 1px solid rgba(191, 0, 255, 0.25) !important;
+  background: rgba(191, 0, 255, 0.04) !important;
+  box-shadow: 0 0 10px rgba(191, 0, 255, 0.03);
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.members-overlay .member-card:hover {
+  border-color: rgba(191, 0, 255, 0.6) !important;
+  box-shadow: 0 0 15px rgba(191, 0, 255, 0.15);
+  background: rgba(191, 0, 255, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.members-overlay .member-card p {
+  color: #bf00ff !important;
+}
+
+.members-overlay .member-card span {
+  color: #bf00ff !important;
+  border-color: #bf00ff !important;
+}
+
+/* Inputs in members overlay */
+.members-overlay .phantom-input {
+  background: rgba(191, 0, 255, 0.04) !important;
+  border: 1px solid rgba(191, 0, 255, 0.25) !important;
+  color: #fff !important;
+}
+
+.members-overlay .phantom-input:focus {
+  border-color: #bf00ff !important;
+  background: rgba(191, 0, 255, 0.08) !important;
+  box-shadow: 0 0 15px rgba(191, 0, 255, 0.25) !important;
+}
+
+.members-overlay .phantom-input::placeholder {
+  color: rgba(191, 0, 255, 0.45) !important;
+}
+
+/* Select element styling */
+.members-overlay .phantom-select {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.members-overlay .phantom-select option {
+  background-color: #12041a !important;
+  color: #fff !important;
+}
+
+/* Close buttons (power-nodes) in purple */
+.members-overlay .guide-power-node {
+  border-color: rgba(191, 0, 255, 0.35) !important;
+  box-shadow: 0 0 15px rgba(191, 0, 255, 0.12) !important;
+  background: rgba(191, 0, 255, 0.03) !important;
+}
+
+.members-overlay .guide-power-node:hover {
+  border-color: #bf00ff !important;
+  box-shadow: 0 0 25px rgba(191, 0, 255, 0.35) !important;
+  background: rgba(191, 0, 255, 0.12) !important;
+}
+
+.members-overlay .guide-power-node:hover .power-symbol {
+  background: #bf00ff !important;
+  box-shadow: 0 0 10px #bf00ff !important;
+}
+
+/* Buttons in members overlay */
+.members-overlay .guide-page-btn {
+  background: rgba(191, 0, 255, 0.08) !important;
+  border-color: rgba(191, 0, 255, 0.35) !important;
+  color: #bf00ff !important;
+  transition: all 0.3s ease;
+}
+
+.members-overlay .guide-page-btn:hover {
+  background: rgba(191, 0, 255, 0.16) !important;
+  border-color: #bf00ff !important;
+  box-shadow: 0 0 20px rgba(191, 0, 255, 0.3) !important;
+}
+
+.guide-divider-line {
+  width: 2px;
+  height: 100%;
+  background: rgba(191, 0, 255, 0.2);
+  align-self: stretch;
+}
+
+@media (max-width: 768px) {
+  .guide-split-layout {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  .guide-divider-line {
+    display: none !important;
+  }
+  .members-overlay .guide-inner-wrap {
+    transform: none !important;
+    margin-top: 20px !important;
+    padding: 25px 15px !important;
+  }
+  .guide-header-section {
+    margin-bottom: 20px !important;
+  }
+  .guide-unified-content {
+    transform: none !important;
+    padding: 10px 0 !important;
+    gap: 15px !important;
+  }
+  .guide-footer-branding {
+    transform: none !important;
+    margin-top: 20px !important;
+  }
+}
