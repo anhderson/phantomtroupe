@@ -166,6 +166,7 @@ export default function Home() {
   const [joiningRole, setJoiningRole] = useState("");
   const [joiningType, setJoiningType] = useState("");
   const [pendingRequests, setPendingRequests] = useState<{name: string, role: string, type: string}[]>([]);
+  const [hasRequestedJoin, setHasRequestedJoin] = useState(false);
   const [activeMembers, setActiveMembers] = useState<{name: string, role: string, type: string}[]>([
     { role: 'Fundador', name: 'Anderson Moitinho', type: 'Membro' },
     { role: 'Administrador', name: 'Chrystian Cesar', type: 'Membro' },
@@ -1732,41 +1733,124 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setShowMembers(false)}
+            onClick={() => { setShowMembers(false); setHasRequestedJoin(false); }}
           >
             <div 
               className="guide-inner-wrap" 
-              style={{ padding: '40px', transform: 'translateY(-15vh)' }}
+              style={{ padding: '40px', transform: 'translateY(-10vh)', position: 'relative' }}
               onClick={e => e.stopPropagation()}
             >
-              <button className="guide-power-node left-power" onClick={() => setShowMembers(false)} aria-label="Close Members">
-                <div className="power-symbol"></div>
-              </button>
-              <button className="guide-power-node right-power" onClick={() => setShowMembers(false)} aria-label="Close Members">
-                <div className="power-symbol"></div>
-              </button>
+              {/* Modern Cyberpunk Close Button in the panel */}
+              <div 
+                className="close-btn-membros" 
+                onClick={() => { setShowMembers(false); setHasRequestedJoin(false); }}
+              >
+                ×
+              </div>
 
-              <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
+              <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
                 <h2 className="guide-heading" style={{ color: '#cc44ff', textShadow: '0 0 15px rgba(204, 68, 255, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
               </header>
 
-              <div className="guide-split-layout" style={{ transform: 'translateY(-2vh)', width: '100%' }}>
-                {/* Left Column: Members List */}
+              <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>
+                {/* 1. Requests Center Button */}
+                <button 
+                  className="guide-page-btn" 
+                  style={{ fontSize: '0.8rem', padding: '10px 20px', borderStyle: 'dashed', margin: '0 auto', marginTop: '0px' }}
+                  onClick={() => setShowPending(true)}
+                  title="Abrir Central de Requisições"
+                >
+                  <span style={{ fontSize: '1.2rem', marginRight: '8px', verticalAlign: 'middle' }}>🗲</span> 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘
+                </button>
+
+                {/* 2. Seja Membro Form (at the top) */}
+                <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(191, 0, 255, 0.02)', border: '1px solid rgba(191, 0, 255, 0.15)', borderRadius: '6px' }}>
+                  {hasRequestedJoin ? (
+                    <div className="join-success-msg" style={{ padding: '20px', textAlign: 'center', background: 'rgba(191, 0, 255, 0.04)', border: '1px dashed rgba(191, 0, 255, 0.3)', borderRadius: '4px' }}>
+                      <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#cc44ff', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
+                      <p style={{ margin: 0, fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)', lineHeight: '1.4' }}>
+                        Sua solicitação de participação no projeto foi enviada com sucesso!
+                      </p>
+                    </div>
+                  ) : (
+                    <>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: '#cc44ff', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(191, 0, 255, 0.15)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
+                        SEJA MEMBRO
+                      </h3>
+                      <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                        Você sente que este é o seu caminho?<br />Venha construir conosco este novo ciclo.
+                      </p>
+                      
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', width: '100%' }}>
+                        <input 
+                          type="text" 
+                          placeholder="SEU NOME" 
+                          value={joiningName}
+                          onChange={e => setJoiningName(e.target.value)}
+                          className="phantom-input center-text" 
+                        />
+                        <select
+                          className="phantom-input center-text phantom-select" 
+                          value={joiningRole}
+                          onChange={e => setJoiningRole(e.target.value)}
+                        >
+                          <option value="" disabled>SELECIONE SUA FUNÇÃO</option>
+                          {[
+                            "Harmonizador", "Facilitador", "Conselheiro amoroso", "Acolhedor", "Mediador", "Mentor", 
+                            "Guardião do Ambiente", "Coordenador de Estudos", "Cuidador Emocional", "Organizador", 
+                            "Guardião de Valores", "Curador de Conteúdo", "Incentivador", "Observador", "Comunicador", 
+                            "Conector", "Apoio Espiritual", "Guardião das amizades", "Facilitador de Cura", 
+                            "Responsável por Parcerias", "Motivador", "Gestor de Projetos", "Cronista", 
+                            "Responsável Social", "Instrutor", "Observador Individual", "Energizador", 
+                            "Criador de Experiências", "Facilitador de Amizades", "Orientador de Relacionamentos", 
+                            "Guardião da Simplicidade", "Guerreiro da Continuidade", "Gerenciador"
+                          ].map(role => (
+                            <option key={role} value={role}>{role}</option>
+                          ))}
+                        </select>
+                        <select 
+                          className="phantom-input center-text phantom-select" 
+                          value={joiningType} 
+                          onChange={e => setJoiningType(e.target.value)}
+                        >
+                          <option value="" disabled>SELECIONAR O PROJETO</option>
+                          {APPS.map(app => (
+                            <option key={app.id} value={app.fullName}>{app.fullName}</option>
+                          ))}
+                        </select>
+                        <button 
+                          className="guide-page-btn btn-next"
+                          style={{ marginTop: '10px', width: '100%' }}
+                          onClick={() => {
+                            if (joiningName.trim() && joiningRole.trim() && joiningType.trim()) {
+                              setPendingRequests(prev => [...prev, { name: joiningName, role: joiningRole, type: joiningType }]);
+                              setJoiningName("");
+                              setJoiningRole("");
+                              setJoiningType("");
+                              setHasRequestedJoin(true);
+                            }
+                          }}
+                        >
+                          ENVIAR SOLICITAÇÃO ▷
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Horizontal Divider Line */}
+                <div style={{ height: '1px', background: 'rgba(191, 0, 255, 0.15)', width: '100%' }}></div>
+
+                {/* 3. Registered Members List (at the bottom) */}
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
-                  <button 
-                    className="guide-page-btn" 
-                    style={{ marginBottom: '20px', fontSize: '0.8rem', padding: '10px 20px', borderStyle: 'dashed', marginTop: '0px' }}
-                    onClick={() => setShowPending(true)}
-                    title="Abrir Central de Requisições"
-                  >
-                    <span style={{ fontSize: '1.2rem', marginRight: '8px', verticalAlign: 'middle' }}>🗲</span> 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘
-                  </button>
+                  <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#cc44ff', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px', textAlign: 'center' }}>
+                    MEMBROS ATIVOS
+                  </h3>
                   <div 
                     className="members-list" 
                     style={{ 
                       width: '100%', 
-                      maxWidth: '500px', 
-                      maxHeight: '380px', 
+                      maxHeight: '320px', 
                       overflowY: 'auto', 
                       paddingRight: '10px' 
                     }}
@@ -1774,80 +1858,12 @@ export default function Home() {
                     {activeMembers.map((member, i) => (
                       <div key={i} className="member-card" style={{ padding: '15px', marginBottom: '10px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
-                          <p style={{ margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{member.role}</p>
+                          <p style={{ margin: '0', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '2px' }}>{member.role}</p>
                           <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
                         </div>
-                        <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{member.name}</h3>
+                        <h3 style={{ margin: 0, fontSize: '1.25rem' }}>{member.name}</h3>
                       </div>
                     ))}
-                  </div>
-                </div>
-
-                {/* Vertical Divider Line */}
-                <div className="guide-divider-line"></div>
-
-                {/* Right Column: Participation Form */}
-                <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(191, 0, 255, 0.02)', border: '1px solid rgba(191, 0, 255, 0.15)', borderRadius: '6px' }}>
-                  <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: '#cc44ff', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(191, 0, 255, 0.15)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
-                    SEJA MEMBRO
-                  </h3>
-                  <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                    Você sente que este é o seu caminho?<br />Venha construir conosco este novo ciclo.
-                  </p>
-                  
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', width: '100%' }}>
-                    <input 
-                      type="text" 
-                      placeholder="SEU NOME" 
-                      value={joiningName}
-                      onChange={e => setJoiningName(e.target.value)}
-                      className="phantom-input center-text" 
-                    />
-                    <select
-                      className="phantom-input center-text phantom-select" 
-                      value={joiningRole}
-                      onChange={e => setJoiningRole(e.target.value)}
-                    >
-                      <option value="" disabled>SELECIONE SUA FUNÇÃO</option>
-                      {[
-                        "Harmonizador", "Facilitador", "Conselheiro amoroso", "Acolhedor", "Mediador", "Mentor", 
-                        "Guardião do Ambiente", "Coordenador de Estudos", "Cuidador Emocional", "Organizador", 
-                        "Guardião de Valores", "Curador de Conteúdo", "Incentivador", "Observador", "Comunicador", 
-                        "Conector", "Apoio Espiritual", "Guardião das amizades", "Facilitador de Cura", 
-                        "Responsável por Parcerias", "Motivador", "Gestor de Projetos", "Cronista", 
-                        "Responsável Social", "Instrutor", "Observador Individual", "Energizador", 
-                        "Criador de Experiências", "Facilitador de Amizades", "Orientador de Relacionamentos", 
-                        "Guardião da Simplicidade", "Guerreiro da Continuidade", "Gerenciador"
-                      ].map(role => (
-                        <option key={role} value={role}>{role}</option>
-                      ))}
-                    </select>
-                    <select 
-                      className="phantom-input center-text phantom-select" 
-                      value={joiningType} 
-                      onChange={e => setJoiningType(e.target.value)}
-                    >
-                      <option value="" disabled>SELECIONAR ESSÊNCIA</option>
-                      <option value="Membro">Membro</option>
-                      <option value="Parceiro">Parceiro</option>
-                      <option value="Amigo">Amigo</option>
-                      <option value="Doador">Doador</option>
-                      <option value="Observador">Observador</option>
-                    </select>
-                    <button 
-                      className="guide-page-btn btn-next"
-                      style={{ marginTop: '10px', width: '100%' }}
-                      onClick={() => {
-                        if (joiningName.trim() && joiningRole.trim()) {
-                          setPendingRequests(prev => [...prev, { name: joiningName, role: joiningRole, type: joiningType }]);
-                          setJoiningName("");
-                          setJoiningRole("");
-                          setJoiningType("");
-                        }
-                      }}
-                    >
-                      ENVIAR SOLICITAÇÃO ▷
-                    </button>
                   </div>
                 </div>
               </div>
