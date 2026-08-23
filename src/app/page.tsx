@@ -227,8 +227,8 @@ export default function Home() {
   // Ticker Velocity Control
   const tickerRef = useRef<HTMLDivElement>(null);
   const tickerX = useMotionValue(0);
-  const tickerSpeed = useMotionValue(0.15); // Default speed (px per frame approx)
-  const targetSpeed = isSlowMotion ? 0.02 : 0.22; // Reduced speed for better legibility
+  const tickerSpeed = useMotionValue(0.06); // Default speed (px per frame approx)
+  const targetSpeed = isSlowMotion ? 0.01 : 0.06; // Reduced speed for better legibility
 
   useEffect(() => {
     animate(tickerSpeed, targetSpeed, {
@@ -623,6 +623,23 @@ export default function Home() {
       <div className="scanlines"></div>
       
       <div className="visual-anchor">
+          {/* Truly Transparent SVG Spider Symbol */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="spider-center-anchor"
+          >
+            <div className="core-glow"></div>
+            <Image
+              src="/spider.svg"
+              alt="Phantom Troupe Spider Symbol"
+              width={140}
+              height={140}
+              className="spider-symbol"
+              priority
+            />
+          </motion.div>
+
           <div className="center-point">
             <div className="impact-glow red-impact"></div>
           </div>
