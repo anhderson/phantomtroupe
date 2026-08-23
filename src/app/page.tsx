@@ -9,7 +9,7 @@ const APPS = [
     id: 1, 
     name: "PT", 
     fullName: "Phantom Troupe", 
-    color: "#FF0000", 
+    color: "#FF007F", 
     desc: "Orquestrador principal da rede neural.",
     longDesc: "O Phantom Troupe é o núcleo central de todo o sistema, funcionando como o sistema operacional responsável por coordenar e sustentar cada um dos módulos Zero. Ele gerencia de forma inteligente a alocação de recursos, garantindo que cada parte do ecossistema opere com equilíbrio, desempenho e estabilidade.\n\nAlém disso, atua como o ponto de integração onde tudo se conecta e se mantém acessível, permitindo que as informações, processos e interações da fraternidade estejam sempre organizados e disponíveis em um único ambiente online. Seu mecanismo de monitoramento contínuo, descrito como um “batimento cardíaco quântico”, assegura a integridade do cluster, identificando falhas, prevenindo inconsistências e mantendo o fluxo constante de funcionamento.\n\nNa prática, o Phantom Troupe não é apenas uma base técnica, mas o espaço onde toda a estrutura da fraternidade ganha forma digital, centralizando operações, facilitando a comunicação e garantindo que tudo permaneça ativo, sincronizado e em constante evolução.",
     tech: "JS, Java, Json, md, png, svg, html, css",
@@ -311,33 +311,41 @@ export default function Home() {
     gpu: 0
   });
 
-  // Worldometer Stats (Approximate real-time seeds)
-  const [worldStats, setWorldStats] = useState({
-    population: 8124567890,
-    birthsToday: 142000,
-    birthsYear: 38456789,
-    deathsToday: 59000,
-    deathsYear: 16123456,
-    netGrowth: 83000,
-    popBrazil: 217456789,
-    // Finance
+  const [spaceNews, setSpaceNews] = useState<{title: string}[]>([
+    { title: "CARREGANDO NOTÍCIA GEOPOLÍTICA..." },
+    { title: "CARREGANDO NOTÍCIA GEOPOLÍTICA..." },
+    { title: "CARREGANDO NOTÍCIA GEOPOLÍTICA..." }
+  ]);
+
+  const [telemetryData, setTelemetryData] = useState({
+    spTemp: 22.0, spHum: 65, spAqi: 35,
+    nyTemp: 18.0, nyHum: 50, nyAqi: 25,
+    tkTemp: 25.0, tkHum: 75, tkAqi: 40,
+    lnTemp: 15.0, lnHum: 80, lnAqi: 20,
+    ilTemp: 28.0, ilHum: 55, ilAqi: 45,
+    
+    btc: 68000.0,
+    eth: 3400.0,
+    sol: 150.0,
+    usdt: 1.0000,
+    
     usd: 104.25,
     eur: 1.0842,
     gbp: 1.2654,
     jpy: 151.82,
     chf: 0.9021,
-    cny: 7.2345,
-    // Crypto
-    btc: 68432.12,
-    eth: 3456.78,
-    usdt: 1.0001,
-    // Socio-Economic
-    debt: 315245678123456,
-    gdp: 105123456789123,
-    internet: 5423123456,
-    lifeExp: 73.4,
-    disease: "NEURAL-FLUX ALPHA",
-    threats: 3
+    usdBrl: 5.45,
+    eurBrl: 5.95,
+    
+    gitStars: 0,
+    gitForks: 0,
+    gitIssues: 0,
+    
+    usaTemp: 18.0, usaHum: 50, usaWind: 12, usaAqi: 25,
+    brazilTemp: 22.0, brazilHum: 65, brazilWind: 8, brazilAqi: 35,
+    israelTemp: 28.0, israelHum: 55, israelWind: 10, israelAqi: 45,
+    
+    loading: true
   });
 
 
@@ -355,31 +363,21 @@ export default function Home() {
     const fetchDisasters = async () => {
       try {
         const res = await fetch(
-          'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson'
+          'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson'
         );
         const data = await res.json();
-        const quakes = data.features.slice(0, 12).map((f: any) => ({
-          type: '🔴',
+        const quakes = data.features.slice(0, 15).map((f: any) => ({
+          type: f.properties.mag >= 4.5 ? '🚨' : '⚡',
           title: `SISMO M${f.properties.mag.toFixed(1)} — ${f.properties.place?.toUpperCase()}`,
           mag: f.properties.mag.toFixed(1),
           time: new Date(f.properties.time).toISOString().slice(11, 16) + 'Z'
         }));
-        // Add static disasters as fallback filler
-        const staticAlerts = [
-          { type: '🌪️', title: 'TORNADO AVISO — OKLAHOMA, USA', time: 'ATIVO' },
-          { type: '🔥', title: 'INCÊNDIO FLORESTAL — CHILE, SUL-AMERICA', time: 'ATIVO' },
-          { type: '🌊', title: 'ALERTA TSUNAMI — PACÍFICO NORTE', time: 'MONIT.' },
-          { type: '🌧️', title: 'INUNDAÇÃO CRÍTICA — PAQUISTÃO', time: 'ATIVO' },
-          { type: '❄️', title: 'BLIZZARD SEVERO — CANADÁ CENTRAL', time: 'ATIVO' },
-        ];
-        setDisasterFeed([...quakes, ...staticAlerts]);
+        setDisasterFeed(quakes.length > 0 ? quakes : [{ type: '⚡', title: 'SEM ATIVIDADE SÍSMICA RECENTE', time: 'LIVE' }]);
       } catch {
         setDisasterFeed([
-          { type: '🔴', title: 'SISMO M5.8 — MAR DO JAPÃO', time: '03:12Z' },
-          { type: '🌪️', title: 'TORNADO — OKLAHOMA, USA', time: 'ATIVO' },
-          { type: '🔥', title: 'INCÊNDIO — CHILE', time: 'ATIVO' },
-          { type: '🌊', title: 'ALERTA TSUNAMI — PACÍFICO', time: 'MONIT.' },
-          { type: '🔴', title: 'SISMO M6.1 — TURQUIA', time: '01:44Z' },
+          { type: '⚡', title: 'SISMO M5.8 — REGIONAL PACÍFICO', time: '03:12Z' },
+          { type: '⚡', title: 'SISMO M4.2 — COSTA OESTE, USA', time: '03:22Z' },
+          { type: '⚡', title: 'SISMO M3.1 — CRATERA DE SÃO PAULO', time: '03:30Z' },
         ]);
       }
     };
@@ -520,37 +518,6 @@ export default function Home() {
 
     const orbitInterval = setInterval(() => {
       setRotation(prev => (prev + 0.1) % 360);
-      
-      // Stop telemetry if locked
-      if (isLocked) return;
-
-      // Update Worldometer & Finance stats
-      setWorldStats(prev => ({
-        ...prev,
-        population: prev.population + (Math.random() > 0.7 ? 1 : 0),
-        birthsToday: prev.birthsToday + (Math.random() > 0.6 ? 1 : 0),
-        birthsYear: prev.birthsYear + (Math.random() > 0.6 ? 1 : 0),
-        deathsToday: prev.deathsToday + (Math.random() > 0.8 ? 1 : 0),
-        deathsYear: prev.deathsYear + (Math.random() > 0.8 ? 1 : 0),
-        netGrowth: prev.netGrowth + (Math.random() > 0.5 ? 1 : -1),
-        popBrazil: prev.popBrazil + (Math.random() > 0.9 ? 1 : 0),
-        
-        usd: prev.usd + (Math.random() - 0.5) * 0.01,
-        eur: prev.eur + (Math.random() - 0.5) * 0.0001,
-        gbp: prev.gbp + (Math.random() - 0.5) * 0.0001,
-        jpy: prev.jpy + (Math.random() - 0.5) * 0.05,
-        chf: prev.chf + (Math.random() - 0.5) * 0.0005,
-        cny: prev.cny + (Math.random() - 0.5) * 0.0005,
-        
-        btc: prev.btc + (Math.random() - 0.5) * 15,
-        eth: prev.eth + (Math.random() - 0.5) * 2,
-        usdt: 1.00 + (Math.random() - 0.5) * 0.0002,
-        
-        debt: prev.debt + Math.random() * 100000,
-        gdp: prev.gdp + Math.random() * 50000,
-        internet: prev.internet + (Math.random() > 0.4 ? 1 : 0),
-        lifeExp: prev.lifeExp + (Math.random() - 0.5) * 0.0001
-      }));
     }, 50);
     // Rotate disaster ticker every 4 seconds
     const tickerInterval = setInterval(() => {
@@ -563,6 +530,97 @@ export default function Home() {
       clearInterval(tickerInterval);
     };
   }, [isLocked, disasterFeed.length]);
+
+  useEffect(() => {
+    if (!showWorldometer) return;
+
+    const fetchAllData = async () => {
+      try {
+        // 1. Crypto Prices (Binance)
+        const [btcData, ethData, solData] = await Promise.all([
+          fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT").then(r => r.json()).catch(() => ({ price: "68000" })),
+          fetch("https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT").then(r => r.json()).catch(() => ({ price: "3400" })),
+          fetch("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT").then(r => r.json()).catch(() => ({ price: "150" }))
+        ]);
+
+        // 2. Forex rates (er-api)
+        const forexRes = await fetch("https://open.er-api.com/v6/latest/USD").then(r => r.json()).catch(() => null);
+
+        // 3. Environmental data (Open-Meteo)
+        const meteoRes = await fetch("https://api.open-meteo.com/v1/forecast?latitude=-23.55,40.71,35.68,51.50,32.08&longitude=-46.63,-74.00,139.69,-0.12,34.78&current=temperature_2m,relative_humidity_2m,wind_speed_10m").then(r => r.json()).catch(() => null);
+        const aqiRes = await fetch("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-23.55,40.71,35.68,51.50,32.08&longitude=-46.63,-74.00,139.69,-0.12,34.78&current=us_aqi").then(r => r.json()).catch(() => null);
+
+        // 4. GitHub Repository Stats
+        const gitRes = await fetch("https://api.github.com/repos/anhderson/phantomtroupe").then(r => r.json()).catch(() => null);
+
+        // 5. Spaceflight News API (3 items)
+        const newsRes = await fetch("https://api.spaceflightnewsapi.net/v4/articles/?limit=3").then(r => r.json()).catch(() => null);
+        if (newsRes && Array.isArray(newsRes.results)) {
+          setSpaceNews(newsRes.results.map((item: any) => ({ title: item.title })));
+        }
+
+        setTelemetryData(prev => {
+          const next = { ...prev, loading: false };
+          if (btcData && btcData.price) next.btc = parseFloat(btcData.price);
+          if (ethData && ethData.price) next.eth = parseFloat(ethData.price);
+          if (solData && solData.price) next.sol = parseFloat(solData.price);
+          
+          if (forexRes && forexRes.rates) {
+            next.usd = forexRes.rates.USD || prev.usd;
+            next.eur = forexRes.rates.EUR ? 1 / forexRes.rates.EUR : prev.eur;
+            next.gbp = forexRes.rates.GBP ? 1 / forexRes.rates.GBP : prev.gbp;
+            next.jpy = forexRes.rates.JPY || prev.jpy;
+            next.chf = forexRes.rates.CHF || prev.chf;
+            next.usdBrl = forexRes.rates.BRL || prev.usdBrl;
+            next.eurBrl = forexRes.rates.EUR ? (forexRes.rates.BRL / forexRes.rates.EUR) : prev.eurBrl;
+          }
+
+          if (meteoRes && Array.isArray(meteoRes)) {
+            next.brazilTemp = meteoRes[0]?.current?.temperature_2m ?? prev.brazilTemp;
+            next.brazilHum = meteoRes[0]?.current?.relative_humidity_2m ?? prev.brazilHum;
+            next.brazilWind = meteoRes[0]?.current?.wind_speed_10m ?? prev.brazilWind;
+
+            next.usaTemp = meteoRes[1]?.current?.temperature_2m ?? prev.usaTemp;
+            next.usaHum = meteoRes[1]?.current?.relative_humidity_2m ?? prev.usaHum;
+            next.usaWind = meteoRes[1]?.current?.wind_speed_10m ?? prev.usaWind;
+
+            next.tkTemp = meteoRes[2]?.current?.temperature_2m ?? prev.tkTemp;
+            next.tkHum = meteoRes[2]?.current?.relative_humidity_2m ?? prev.tkHum;
+
+            next.lnTemp = meteoRes[3]?.current?.temperature_2m ?? prev.lnTemp;
+            next.lnHum = meteoRes[3]?.current?.relative_humidity_2m ?? prev.lnHum;
+
+            next.israelTemp = meteoRes[4]?.current?.temperature_2m ?? prev.israelTemp;
+            next.israelHum = meteoRes[4]?.current?.relative_humidity_2m ?? prev.israelHum;
+            next.israelWind = meteoRes[4]?.current?.wind_speed_10m ?? prev.israelWind;
+          }
+
+          if (aqiRes && Array.isArray(aqiRes)) {
+            next.brazilAqi = aqiRes[0]?.current?.us_aqi ?? prev.brazilAqi;
+            next.usaAqi = aqiRes[1]?.current?.us_aqi ?? prev.usaAqi;
+            next.tkAqi = aqiRes[2]?.current?.us_aqi ?? prev.tkAqi;
+            next.lnAqi = aqiRes[3]?.current?.us_aqi ?? prev.lnAqi;
+            next.israelAqi = aqiRes[4]?.current?.us_aqi ?? prev.israelAqi;
+          }
+
+          if (gitRes) {
+            next.gitStars = gitRes.stargazers_count ?? prev.gitStars;
+            next.gitForks = gitRes.forks_count ?? prev.gitForks;
+            next.gitIssues = gitRes.open_issues_count ?? prev.gitIssues;
+          }
+
+          return next;
+        });
+
+      } catch (e) {
+        console.error("Error fetching telemetry data:", e);
+      }
+    };
+
+    fetchAllData();
+    const interval = setInterval(fetchAllData, 20000);
+    return () => clearInterval(interval);
+  }, [showWorldometer]);
 
   const handleBackgroundClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
@@ -615,7 +673,7 @@ export default function Home() {
           <span 
             className="hud-value clock-value"
             onClick={() => setShowTimeSelector(true)}
-            style={{ color: '#FF0000', textShadow: '0 0 10px rgba(255, 0, 0, 0.4)' }}
+            style={{ color: '#FF007F', textShadow: '0 0 10px rgba(255, 0, 127, 0.4)' }}
           >
             {currentTime.toLocaleTimeString('pt-BR', { timeZone: selectedLocation.tz })}
           </span>
@@ -627,7 +685,7 @@ export default function Home() {
       <div className="visual-anchor">
 
           <div className="center-point">
-            <div className="impact-glow red-impact"></div>
+            <div className="impact-glow pink-impact"></div>
           </div>
 
           {/* Rotating Spider Web Structure */}
@@ -677,8 +735,8 @@ export default function Home() {
                     style={{ 
                       width: 'var(--orbit-radius)',
                       transform: `rotate(${angle}deg)`,
-                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#FF0000' : 'rgba(255, 255, 255, 0.1)',
-                      boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #FF0000' : 'none',
+                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#FF007F' : 'rgba(255, 255, 255, 0.1)',
+                      boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #FF007F' : 'none',
                       opacity: shouldGlobalFlash ? 0.8 : 1,
                       transition: 'all 0.2s ease-out'
                     }}
@@ -730,7 +788,7 @@ export default function Home() {
                       left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       animationDelay: `${index * 0.4}s`,
-                      '--custom-color': (isProcessing || isPTProcessing) ? '#FF0000' : (app.color || 'var(--primary)'),
+                      '--custom-color': (isProcessing || isPTProcessing) ? '#FF007F' : (app.color || 'var(--primary)'),
                       '--node-angle': `${angle}deg`,
                       '--current-rotation': `${rotation}deg`
                     } as any}
@@ -802,11 +860,11 @@ export default function Home() {
               color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
               textShadow: isGlitching 
                 ? [
-                    '0 0 10px #FF0000, 0 0 20px #FF0000',
+                    '0 0 10px #FF007F, 0 0 20px #FF007F',
                     '0 0 10px #808080, 0 0 20px #808080',
                     '0 0 10px #ffffff, 0 0 20px #ffffff'
                   ]
-                : '0 0 10px #FF0000, 0 0 15px rgba(255, 0, 0, 0.3)'
+                : '0 0 10px #FF007F, 0 0 15px rgba(255, 0, 127, 0.3)'
             }}
             transition={{ 
               duration: isGlitching ? 0.3 : 2,
@@ -878,11 +936,11 @@ export default function Home() {
               color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
               textShadow: isGlitching 
                 ? [
-                    '0 0 10px #FF0000, 0 0 20px #FF0000',
+                    '0 0 10px #FF007F, 0 0 20px #FF007F',
                     '0 0 10px #808080, 0 0 20px #808080',
                     '0 0 10px #ffffff, 0 0 20px #ffffff'
                   ]
-                : '0 0 10px #FF0000, 0 0 15px rgba(255, 0, 0, 0.3)'
+                : '0 0 10px #FF007F, 0 0 15px rgba(255, 0, 127, 0.3)'
             }}
             transition={{ 
               duration: isGlitching ? 0.3 : 2,
@@ -977,39 +1035,57 @@ export default function Home() {
               </div>
               
               <div className="mega-stats-container">
-                {/* Section 1: Population */}
+                {/* Section 1: Atmospheric Telemetry */}
                 <div className="stat-category">
-                  <h3 className="cat-title">BIOLOGICAL TELEMETRY</h3>
+                  <h3 className="cat-title">ATMOSPHERIC TELEMETRY</h3>
                   <div className="stat-row">
                     <div className="mini-card">
-                      <span className="mini-label">TOTAL POPULATION</span>
-                      <span className="mini-value">{worldStats.population.toLocaleString()}</span>
+                      <span className="mini-label">SÃO PAULO CLIMA</span>
+                      <span className="mini-value color-blue">
+                        {telemetryData.brazilTemp.toFixed(1)}°C / {telemetryData.brazilHum}% RH
+                      </span>
                     </div>
                     <div className="mini-card">
-                      <span className="mini-label">BRAZIL POPULATION</span>
-                      <span className="mini-value color-green">{worldStats.popBrazil.toLocaleString()}</span>
+                      <span className="mini-label">NEW YORK CLIMA</span>
+                      <span className="mini-value color-blue">
+                        {telemetryData.usaTemp.toFixed(1)}°C / {telemetryData.usaHum}% RH
+                      </span>
                     </div>
                   </div>
                   <div className="stat-row">
                     <div className="mini-card">
-                      <span className="mini-label">BIRTHS TODAY / YEAR</span>
-                      <span className="mini-value color-teal">{worldStats.birthsToday.toLocaleString()} / {worldStats.birthsYear.toLocaleString()}</span>
+                      <span className="mini-label">TOKYO CLIMA</span>
+                      <span className="mini-value color-blue">
+                        {telemetryData.tkTemp.toFixed(1)}°C / {telemetryData.tkHum}% RH
+                      </span>
+                    </div>
+                    <div className="mini-card">
+                      <span className="mini-label">LONDON CLIMA</span>
+                      <span className="mini-value color-blue">
+                        {telemetryData.lnTemp.toFixed(1)}°C / {telemetryData.lnHum}% RH
+                      </span>
                     </div>
                   </div>
                   <div className="stat-row">
                     <div className="mini-card">
-                      <span className="mini-label">DEATHS TODAY / YEAR</span>
-                      <span className="mini-value color-red">{worldStats.deathsToday.toLocaleString()} / {worldStats.deathsYear.toLocaleString()}</span>
+                      <span className="mini-label">SÃO PAULO AQI (AR)</span>
+                      <span className={`mini-value ${telemetryData.brazilAqi < 50 ? 'color-green' : telemetryData.brazilAqi < 100 ? 'color-orange' : 'color-red'}`}>
+                        {telemetryData.brazilAqi} ({telemetryData.brazilAqi < 50 ? "BOM" : telemetryData.brazilAqi < 100 ? "MODERADO" : "RUIM"})
+                      </span>
+                    </div>
+                    <div className="mini-card">
+                      <span className="mini-label">NEW YORK AQI (AR)</span>
+                      <span className={`mini-value ${telemetryData.usaAqi < 50 ? 'color-green' : telemetryData.usaAqi < 100 ? 'color-orange' : 'color-red'}`}>
+                        {telemetryData.usaAqi} ({telemetryData.usaAqi < 50 ? "BOM" : telemetryData.usaAqi < 100 ? "MODERADO" : "RUIM"})
+                      </span>
                     </div>
                   </div>
                   <div className="stat-row">
                     <div className="mini-card">
-                      <span className="mini-label">NET GROWTH</span>
-                      <span className="mini-value">{worldStats.netGrowth.toLocaleString()}</span>
-                    </div>
-                    <div className="mini-card">
-                      <span className="mini-label">LIFE EXPECTANCY</span>
-                      <span className="mini-value">{worldStats.lifeExp.toFixed(1)} YEARS</span>
+                      <span className="mini-label">LONDON AQI (AR)</span>
+                      <span className={`mini-value ${telemetryData.lnAqi < 50 ? 'color-green' : telemetryData.lnAqi < 100 ? 'color-orange' : 'color-red'}`}>
+                        {telemetryData.lnAqi} ({telemetryData.lnAqi < 50 ? "BOM" : telemetryData.lnAqi < 100 ? "MODERADO" : "RUIM"})
+                      </span>
                     </div>
                   </div>
 
@@ -1047,123 +1123,69 @@ export default function Home() {
                   <h3 className="cat-title">ECONOMICS & FIAT</h3>
                   <div className="stat-row">
                     <div className="mini-card highlight">
-                      <span className="mini-label">GLOBAL DEBT</span>
-                      <span className="mini-value color-red">${(worldStats.debt / 1e12).toFixed(2)}T</span>
+                      <span className="mini-label">US DOLLAR (USD/BRL)</span>
+                      <span className="mini-value color-blue">R$ {telemetryData.usdBrl.toFixed(2)}</span>
                     </div>
                     <div className="mini-card highlight">
-                      <span className="mini-label">WORLD GDP</span>
-                      <span className="mini-value color-green">${(worldStats.gdp / 1e12).toFixed(2)}T</span>
+                      <span className="mini-label">EURO (EUR/BRL)</span>
+                      <span className="mini-value color-blue">R$ {telemetryData.eurBrl.toFixed(2)}</span>
                     </div>
                   </div>
                   <div className="stat-grid-mini">
                     <div className="nano-card">
-                      <span className="nano-label">USD/DXY</span>
-                      <span className="nano-value">{worldStats.usd.toFixed(2)}</span>
+                      <span className="nano-label">USD INDEX (DXY)</span>
+                      <span className="nano-value color-purple">{telemetryData.usd.toFixed(2)}</span>
                     </div>
                     <div className="nano-card">
                       <span className="nano-label">EUR/USD</span>
-                      <span className="nano-value">{worldStats.eur.toFixed(4)}</span>
+                      <span className="nano-value color-purple">{telemetryData.eur.toFixed(4)}</span>
                     </div>
                     <div className="nano-card">
                       <span className="nano-label">GBP/USD</span>
-                      <span className="nano-value">{worldStats.gbp.toFixed(4)}</span>
+                      <span className="nano-value color-purple">{telemetryData.gbp.toFixed(4)}</span>
                     </div>
                     <div className="nano-card">
                       <span className="nano-label">JPY/USD</span>
-                      <span className="nano-value">{worldStats.jpy.toFixed(2)}</span>
+                      <span className="nano-value color-purple">{telemetryData.jpy.toFixed(2)}</span>
                     </div>
                     <div className="nano-card">
                       <span className="nano-label">CHF/USD</span>
-                      <span className="nano-value">{worldStats.chf.toFixed(4)}</span>
-                    </div>
-                  </div>
-
-                  {/* New Economic Crisis Metrics */}
-                  <div className="stat-row" style={{ marginTop: '1rem' }}>
-                    <div className="mini-card danger">
-                      <span className="mini-label">CHIP/ENERGY SHORTAGE</span>
-                      <span className="mini-value color-orange">NÍVEL CRÍTICO</span>
-                    </div>
-                    <div className="mini-card danger">
-                      <span className="mini-label">GLOBAL BANKING CRISIS</span>
-                      <span className="mini-value color-red">RISCO SISTÊMICO</span>
-                    </div>
-                  </div>
-
-                  <div className="stat-category-sub">
-                    <span className="mini-label">COST OF LIVING INDEX (COL)</span>
-                    <div className="stat-grid-mini">
-                      <div className="nano-card highlight">
-                        <span className="nano-label">BRASIL (BRL)</span>
-                        <span className="nano-value color-red">+12.4%</span>
-                      </div>
-                      <div className="nano-card highlight">
-                        <span className="nano-label">USA (USD)</span>
-                        <span className="nano-value color-orange">+8.2%</span>
-                      </div>
-                      <div className="nano-card highlight">
-                        <span className="nano-label">ISRAEL (ILS)</span>
-                        <span className="nano-value color-red">+15.7%</span>
-                      </div>
+                      <span className="nano-value color-purple">{telemetryData.chf.toFixed(4)}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Section 3: Digital & Threats */}
+                {/* Section 3: Digital & Geopolitical */}
                 <div className="stat-category">
                   <h3 className="cat-title">DIGITAL & GEOPOLITICAL</h3>
                   <div className="stat-row">
                     <div className="mini-card">
                       <span className="mini-label">BITCOIN (BTC)</span>
-                      <span className="mini-value color-gold">${worldStats.btc.toLocaleString()}</span>
+                      <span className="mini-value color-gold">${telemetryData.btc.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     <div className="mini-card">
                       <span className="mini-label">ETHEREUM (ETH)</span>
-                      <span className="mini-value color-purple">${worldStats.eth.toLocaleString()}</span>
+                      <span className="mini-value color-purple">${telemetryData.eth.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     <div className="mini-card">
-                      <span className="mini-label">TETHER (USDT)</span>
-                      <span className="mini-value color-teal">${worldStats.usdt.toFixed(4)}</span>
-                    </div>
-                  </div>
-                   <div className="stat-row">
-                    <div className="mini-card">
-                      <span className="mini-label">INTERNET USERS</span>
-                      <span className="mini-value color-blue">{worldStats.internet.toLocaleString()}</span>
-                    </div>
-                    <div className="mini-card danger">
-                      <span className="mini-label">FAKE NEWS / MANIPULATION</span>
-                      <span className="mini-value color-red">78.4% DETECTED</span>
+                      <span className="mini-label">SOLANA (SOL)</span>
+                      <span className="mini-value color-blue">${telemetryData.sol.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                   </div>
                   <div className="stat-row">
-                    <div className="mini-card highlight">
-                      <span className="mini-label">PSYCHOLOGICAL OVERLOAD</span>
-                      <span className="mini-value color-orange">NÍVEL CRÍTICO</span>
+                    <div className="mini-card">
+                      <span className="mini-label">GITHUB STARS</span>
+                      <span className="mini-value color-blue">{telemetryData.gitStars}</span>
+                    </div>
+                    <div className="mini-card">
+                      <span className="mini-label">GITHUB FORKS</span>
+                      <span className="mini-value color-purple">{telemetryData.gitForks}</span>
                     </div>
                   </div>
                   <div className="stat-row">
-                    <div className="mini-card danger-pulse">
-                      <span className="mini-label">WAR THREATS (ACTIVE)</span>
-                      <div className="threats-inline">
-                        <span className="threat-tag"><span className="threat-region">EUROPA</span><span className="threat-country color-red">RÚSSIA/UCRÂNIA</span></span>
-                        <span className="threat-tag"><span className="threat-region">ORIENTE</span><span className="threat-country color-red">ISRAEL/PALESTINA</span></span>
-                        <span className="threat-tag"><span className="threat-region">ÁFRICA</span><span className="threat-country color-red">SUDÃO/CONGO</span></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="stat-row">
-                    <div className="mini-card danger">
-                      <span className="mini-label">ACTIVE PATHOGEN</span>
-                      <span className="mini-value color-red">{selectedApp?.id === 1 ? "NEURAL-FLUX v2.1" : "ISOLATED"}</span>
-                    </div>
                     <div className="mini-card">
-                      <span className="mini-label">#01 TREND</span>
-                      <span className="mini-value">AI_GOV</span>
-                    </div>
-                    <div className="mini-card">
-                      <span className="mini-label">#02 TREND</span>
-                      <span className="mini-value">QUANTUM</span>
+                      <span className="mini-label">GITHUB OPEN ISSUES</span>
+                      <span className="mini-value color-red">{telemetryData.gitIssues}</span>
                     </div>
                   </div>
                 </div>
@@ -1175,21 +1197,19 @@ export default function Home() {
                     {/* USA */}
                     <div className="g3-column">
                       <div className="g3-header-card">
-                        <span className="mini-label">UNITED STATES</span>
-                        <span className="mini-value color-gold">LEVEL: ORANGE</span>
+                        <span className="mini-label">UNITED STATES (NY)</span>
+                        <span className={`mini-value ${telemetryData.usaAqi < 50 ? 'color-green' : telemetryData.usaAqi < 100 ? 'color-orange' : 'color-red'}`}>
+                          {telemetryData.usaAqi < 50 ? "LEVEL: NORMAL" : telemetryData.usaAqi < 100 ? "LEVEL: WARNING" : "LEVEL: CRITICAL"}
+                        </span>
                       </div>
                       <div className="g3-stat-list">
-                        <div className="g3-item"><span className="g3-label">EPIDEMIAS</span><span className="g3-val">ESTÁVEL</span></div>
-                        <div className="g3-item"><span className="g3-label">VIOLÊNCIA</span><span className="g3-val color-orange">MODERADA</span></div>
-                        <div className="g3-item"><span className="g3-label">DESASTRES</span><span className="g3-val">INCÊNDIOS (WEST)</span></div>
-                        <div className="g3-item"><span className="g3-label">AQI (AR)</span><span className="g3-val">42 (GOOD)</span></div>
-                        <div className="g3-item"><span className="g3-label">RADIAÇÃO</span><span className="g3-val">0.14 μSv/h</span></div>
-                        <div className="threat-divider"></div>
-                        <div className="g3-item"><span className="g3-label">ABRIGOS</span><span className="g3-val">12.4K ATIVOS</span></div>
-                        <div className="g3-item"><span className="g3-label">ROTAS FUGA</span><span className="g3-val color-green">OPERACIONAIS</span></div>
+                        <div className="g3-item"><span className="g3-label">TEMP</span><span className="g3-val">{telemetryData.usaTemp.toFixed(1)}°C</span></div>
+                        <div className="g3-item"><span className="g3-label">UMIDADE</span><span className="g3-val">{telemetryData.usaHum}% RH</span></div>
+                        <div className="g3-item"><span className="g3-label">VENTO</span><span className="g3-val">{telemetryData.usaWind.toFixed(1)} KM/H</span></div>
+                        <div className="g3-item"><span className="g3-label">AQI (AR)</span><span className={`g3-val ${telemetryData.usaAqi < 50 ? 'color-green' : telemetryData.usaAqi < 100 ? 'color-orange' : 'color-red'}`}>{telemetryData.usaAqi}</span></div>
                         <div className="g3-news-card">
                           <span className="nano-label">NOTÍCIA CRÍTICA</span>
-                          <p className="nano-text">SENADO APROVA LEI DE EMERGÊNCIA CIBERNÉTICA.</p>
+                          <p className="nano-text">{spaceNews[0]?.title ? spaceNews[0].title.toUpperCase() : "AGUARDANDO ATUALIZAÇÃO CIBERNÉTICA..."}</p>
                         </div>
                       </div>
                     </div>
@@ -1197,21 +1217,19 @@ export default function Home() {
                     {/* BRASIL */}
                     <div className="g3-column highlighted">
                       <div className="g3-header-card">
-                        <span className="mini-label">BRASIL</span>
-                        <span className="mini-value color-red">LEVEL: RED</span>
+                        <span className="mini-label">BRASIL (SP)</span>
+                        <span className={`mini-value ${telemetryData.brazilAqi < 50 ? 'color-green' : telemetryData.brazilAqi < 100 ? 'color-orange' : 'color-red'}`}>
+                          {telemetryData.brazilAqi < 50 ? "LEVEL: NORMAL" : telemetryData.brazilAqi < 100 ? "LEVEL: WARNING" : "LEVEL: CRITICAL"}
+                        </span>
                       </div>
                       <div className="g3-stat-list">
-                        <div className="g3-item"><span className="g3-label">EPIDEMIAS</span><span className="g3-val color-red">DENGUE TYPE-3</span></div>
-                        <div className="g3-item"><span className="g3-label">VIOLÊNCIA</span><span className="g3-val color-red">CRÍTICA</span></div>
-                        <div className="g3-item"><span className="g3-label">DESASTRES</span><span className="g3-val">INUNDAÇÕES</span></div>
-                        <div className="g3-item"><span className="g3-label">AQI (AR)</span><span className="g3-val color-orange">105 (POOR)</span></div>
-                        <div className="g3-item"><span className="g3-label">RADIAÇÃO</span><span className="g3-val">0.09 μSv/h</span></div>
-                        <div className="threat-divider"></div>
-                        <div className="g3-item"><span className="g3-label">ABRIGOS</span><span className="g3-val color-red">CAPACIDADE 94%</span></div>
-                        <div className="g3-item"><span className="g3-label">ROTAS FUGA</span><span className="g3-val color-orange">BLOQUEIO PARCIAL</span></div>
+                        <div className="g3-item"><span className="g3-label">TEMP</span><span className="g3-val">{telemetryData.brazilTemp.toFixed(1)}°C</span></div>
+                        <div className="g3-item"><span className="g3-label">UMIDADE</span><span className="g3-val">{telemetryData.brazilHum}% RH</span></div>
+                        <div className="g3-item"><span className="g3-label">VENTO</span><span className="g3-val">{telemetryData.brazilWind.toFixed(1)} KM/H</span></div>
+                        <div className="g3-item"><span className="g3-label">AQI (AR)</span><span className={`g3-val ${telemetryData.brazilAqi < 50 ? 'color-green' : telemetryData.brazilAqi < 100 ? 'color-orange' : 'color-red'}`}>{telemetryData.brazilAqi}</span></div>
                         <div className="g3-news-card">
                           <span className="nano-label">NOTÍCIA CRÍTICA</span>
-                          <p className="nano-text">INSTABILIDADE NA REDE ELÉTRICA EM SÃO PAULO.</p>
+                          <p className="nano-text">{spaceNews[1]?.title ? spaceNews[1].title.toUpperCase() : "AGUARDANDO ATUALIZAÇÃO CIBERNÉTICA..."}</p>
                         </div>
                       </div>
                     </div>
@@ -1219,21 +1237,19 @@ export default function Home() {
                     {/* ISRAEL */}
                     <div className="g3-column">
                       <div className="g3-header-card">
-                        <span className="mini-label">ISRAEL</span>
-                        <span className="mini-value color-red">LEVEL: BLACK</span>
+                        <span className="mini-label">ISRAEL (TEL AVIV)</span>
+                        <span className={`mini-value ${telemetryData.israelAqi < 50 ? 'color-green' : telemetryData.israelAqi < 100 ? 'color-orange' : 'color-red'}`}>
+                          {telemetryData.israelAqi < 50 ? "LEVEL: NORMAL" : telemetryData.israelAqi < 100 ? "LEVEL: WARNING" : "LEVEL: CRITICAL"}
+                        </span>
                       </div>
                       <div className="g3-stat-list">
-                        <div className="g3-item"><span className="g3-label">EPIDEMIAS</span><span className="g3-val">ESTÁVEL</span></div>
-                        <div className="g3-item"><span className="g3-label">VIOLÊNCIA</span><span className="g3-val color-red">CONFLITO ATIVO</span></div>
-                        <div className="g3-item"><span className="g3-label">DESASTRES</span><span className="g3-val">NENHUM</span></div>
-                        <div className="g3-item"><span className="g3-label">AQI (AR)</span><span className="g3-val">58 (MODERATE)</span></div>
-                        <div className="g3-item"><span className="g3-label">RADIAÇÃO</span><span className="g3-val">0.11 μSv/h</span></div>
-                        <div className="threat-divider"></div>
-                        <div className="g3-item"><span className="g3-label">ABRIGOS</span><span className="g3-val color-green">100% OPERACIONAIS</span></div>
-                        <div className="g3-item"><span className="g3-label">ROTAS FUGA</span><span className="g3-val color-red">ZONA DE EXCLUSÃO</span></div>
+                        <div className="g3-item"><span className="g3-label">TEMP</span><span className="g3-val">{telemetryData.israelTemp.toFixed(1)}°C</span></div>
+                        <div className="g3-item"><span className="g3-label">UMIDADE</span><span className="g3-val">{telemetryData.israelHum}% RH</span></div>
+                        <div className="g3-item"><span className="g3-label">VENTO</span><span className="g3-val">{telemetryData.israelWind.toFixed(1)} KM/H</span></div>
+                        <div className="g3-item"><span className="g3-label">AQI (AR)</span><span className={`g3-val ${telemetryData.israelAqi < 50 ? 'color-green' : telemetryData.israelAqi < 100 ? 'color-orange' : 'color-red'}`}>{telemetryData.israelAqi}</span></div>
                         <div className="g3-news-card">
                           <span className="nano-label">NOTÍCIA CRÍTICA</span>
-                          <p className="nano-text">SISTEMA IRON-DOME EM ALERTA MÁXIMO (100% SYNC).</p>
+                          <p className="nano-text">{spaceNews[2]?.title ? spaceNews[2].title.toUpperCase() : "AGUARDANDO ATUALIZAÇÃO CIBERNÉTICA..."}</p>
                         </div>
                       </div>
                     </div>
@@ -1499,13 +1515,13 @@ export default function Home() {
 
                     <div className="guide-unified-content" style={{ padding: '20px 0' }}>
                       <div className="guide-paragraph">
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '2rem', marginBottom: '20px' }}>🕳️</p>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Se teus olhos cruzaram este ponto</p>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>algo em ti já reconheceu o caminho</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '2rem', marginBottom: '20px' }}>🕳️</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Se teus olhos cruzaram este ponto</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>algo em ti já reconheceu o caminho</p>
                       </div>
                       
                       <div className="guide-paragraph">
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>A Phantom Troupe Fraternidade não nasce do mundo externo</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>A Phantom Troupe Fraternidade não nasce do mundo externo</p>
                         <p>mas do encontro entre o que pulsa dentro</p>
                         <p>e o que se manifesta fora</p>
                       </div>
@@ -1548,7 +1564,7 @@ export default function Home() {
 
                     <div className="guide-unified-content" style={{ marginTop: '0px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Não existe separação entre você e o resto</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Não existe separação entre você e o resto</p>
                         <p>O que você sente por dentro acaba aparecendo fora</p>
                         <p>cada pensamento, é semente do invisível</p>
                         <p>cada intenção, um traço do destino que virá</p>
@@ -1568,11 +1584,11 @@ export default function Home() {
                       </div>
 
                       <div className="guide-manifest-integration" style={{ marginTop: '20px' }}>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', margin: 0, lineHeight: '1.4' }}>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', margin: 0, lineHeight: '1.4' }}>
                           Não somos obrigados, fazemos o que podemos oferecer<br />
                           todo coração é um coração, toda força é força, toda ferramenta é ferramenta
                         </p>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)' }}>🖤</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)' }}>🖤</p>
                       </div>
                     </div>
 
@@ -1612,15 +1628,15 @@ export default function Home() {
                     style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', transform: 'translateY(-10vh)' }}
                   >
                     <header className="guide-header-section" style={{ marginBottom: '30px' }}>
-                      <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>▽ 𝕌𝖒 𝖊𝖘𝖕𝖆𝖈̧𝖔 𝖕𝖆𝖗𝖆 𝖈𝖔𝖓𝖊𝖈𝖙𝖆𝖗 𝖕𝖊𝖘𝖘𝖔𝖆𝖘 △</h2>
+                      <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝕌𝖒 𝖊𝖘𝖕𝖆𝖈̧𝖔 𝖕𝖆𝖗𝖆 𝖈𝖔𝖓𝖊𝖈𝖙𝖆𝖗 𝖕𝖊𝖘𝖘𝖔𝖆𝖘 △</h2>
                     </header>
 
                     <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '8px', transform: 'translateY(-3vh)' }}>
-                      <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '2rem', marginBottom: '10px', textAlign: 'center', filter: 'grayscale(100%) brightness(0.8)' }}>🌐</p>
+                      <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '2rem', marginBottom: '10px', textAlign: 'center', filter: 'grayscale(100%) brightness(0.8)' }}>🌐</p>
                       
                       <div className="guide-paragraph" style={{ marginBottom: '8px' }}>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', margin: 0 }}>A Phantom Troupe Fraternidade é um projeto feito</p>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', margin: 0 }}>com amor, com inteligência e com muita dedicação</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', margin: 0 }}>A Phantom Troupe Fraternidade é um projeto feito</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', margin: 0 }}>com amor, com inteligência e com muita dedicação</p>
                       </div>
 
                       <div style={{ transform: 'translateY(2.5vh)' }}>
@@ -1633,7 +1649,7 @@ export default function Home() {
 
                       <div style={{ transform: 'translateY(4.2vh)' }}>
                         <div className="guide-paragraph" style={{ marginBottom: '15px' }}>
-                          <p><span style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Criado por Anderson Moitinho</span>, nascido em São Paulo, Brasil</p>
+                          <p><span style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Criado por Anderson Moitinho</span>, nascido em São Paulo, Brasil</p>
                           <p>formado em Gestão de Tecnologia da Informação</p>
                           <p>e estudante de Psicologia, também atua como</p>
                           <p>terapeuta holístico, músico e designer</p>
@@ -1642,7 +1658,7 @@ export default function Home() {
 
                       <div style={{ transform: 'translateY(5.9vh)' }}>
                         <div className="guide-paragraph" style={{ marginBottom: '15px' }}>
-                          <p><span style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Administrado por Chrystian Cesar</span>, nascido em São Paulo, Brasil</p>
+                          <p><span style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Administrado por Chrystian Cesar</span>, nascido em São Paulo, Brasil</p>
                           <p>empresário e taxista, alguém que construiu sua</p>
                           <p>trajetória com disciplina e visão prática da vida</p>
                           <p>Aqui, todos têm o seu espaço</p>
@@ -1669,14 +1685,14 @@ export default function Home() {
 
                     <div className="guide-unified-content" style={{ marginTop: '0px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Nada é obrigatório</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Nada é obrigatório</p>
                         <p>e ninguém é cobrado para estar aqui</p>
                         <p>a fraternidade não exige dinheiro dos membros</p>
                         <p>apenas doações abertas.</p>
                       </div>
 
                       <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>Não tem como objetivo lucrar</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Não tem como objetivo lucrar</p>
                         <p>com quem participa, tudo é baseado</p>
                         <p>na colaboração e na troca de</p>
                         <p>conhecimento e vontade de crescer junto</p>
@@ -1689,16 +1705,16 @@ export default function Home() {
                       </div>
 
                       <div className="guide-manifest-integration" style={{ marginTop: '20px' }}>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', margin: 0, lineHeight: '1.4' }}>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', margin: 0, lineHeight: '1.4' }}>
                           Não é sobre obrigação, é sobre contribuição<br />
                           não é sobre lucro, é sobre construção coletiva
                         </p>
-                        <p style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)', filter: 'grayscale(100%) brightness(1.5)' }}>🌍</p>
+                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)', filter: 'grayscale(100%) brightness(1.5)' }}>🌍</p>
                       </div>
                     </div>
 
                     <footer className="guide-footer-branding" style={{ marginTop: '10px', transform: 'translateY(-3vh)' }}>
-                      <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '1.67rem' }}>▽ ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 𝔽𝖗𝖆𝖙𝖊𝖗𝖓𝖎𝖉𝖆𝖉𝖊 △</h2>
+                      <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '1.67rem' }}>▽ ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 𝔽𝖗𝖆𝖙𝖊𝖗𝖓𝖎𝖉𝖆𝖉𝖊 △</h2>
                     </footer>
                   </motion.div>
                 )}
@@ -1731,7 +1747,7 @@ export default function Home() {
               </button>
 
               <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', transform: 'translateY(-8vh)' }}>
@@ -1754,10 +1770,10 @@ export default function Home() {
                   }}
                 >
                   {activeMembers.map((member, i) => (
-                    <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 0, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 0, 0, 0.05)' }}>
+                    <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
-                        <p style={{ color: '#FF0000', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{member.role}</p>
-                        <span style={{ fontSize: '0.7rem', color: '#FF0000', border: '1px solid #FF0000', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
+                        <p style={{ color: '#FF007F', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{member.role}</p>
+                        <span style={{ fontSize: '0.7rem', color: '#FF007F', border: '1px solid #FF007F', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
                       </div>
                       <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{member.name}</h3>
                     </div>
@@ -1825,7 +1841,7 @@ export default function Home() {
               </div>
 
               <footer className="guide-footer-branding" style={{ marginTop: '15px', transform: 'translateY(-8vh)' }}>
-                <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
+                <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
               </footer>
             </div>
           </motion.div>
@@ -1957,13 +1973,13 @@ export default function Home() {
               </button>
 
               <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#FF0000', textShadow: '0 0 15px rgba(255, 0, 0, 0.5)' }}>▽ 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
                 {!isAdminAuth ? (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', width: '100%', maxWidth: '300px' }}>
-                    <p style={{ color: '#FF0000', letterSpacing: '2px', fontSize: '0.9rem' }}>ACESSO RESTRITO</p>
+                    <p style={{ color: '#FF007F', letterSpacing: '2px', fontSize: '0.9rem' }}>ACESSO RESTRITO</p>
                     <input 
                       type="text" 
                       placeholder="ADMIN ID" 
@@ -2005,7 +2021,7 @@ export default function Home() {
                     >
                       AUTENTICAR ▷
                     </button>
-                    {authError && <span style={{ color: '#FF0000', fontSize: '0.8rem', letterSpacing: '1px' }}>CREDENCIAS INVÁLIDAS</span>}
+                    {authError && <span style={{ color: '#FF007F', fontSize: '0.8rem', letterSpacing: '1px' }}>CREDENCIAS INVÁLIDAS</span>}
                   </div>
                 ) : (
                   <>
@@ -2014,11 +2030,11 @@ export default function Home() {
                     ) : (
                       <div className="members-list" style={{ width: '100%', maxWidth: '500px' }}>
                         {pendingRequests.map((req, i) => (
-                          <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 0, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 0, 0, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <div>
                               <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '5px' }}>
-                                <p style={{ color: '#FF0000', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{req.role}</p>
-                                <span style={{ fontSize: '0.7rem', color: '#FF0000', border: '1px solid #FF0000', padding: '2px 6px', borderRadius: '4px' }}>{req.type}</span>
+                                <p style={{ color: '#FF007F', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{req.role}</p>
+                                <span style={{ fontSize: '0.7rem', color: '#FF007F', border: '1px solid #FF007F', padding: '2px 6px', borderRadius: '4px' }}>{req.type}</span>
                               </div>
                               <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{req.name}</h3>
                             </div>
@@ -2075,7 +2091,7 @@ export default function Home() {
                     <motion.div 
                       key={idx}
                       className={`location-card ${isSelected ? 'active' : ''}`}
-                      whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 0, 0, 0.15)" }}
+                      whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 0, 127, 0.15)" }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => {
                         setSelectedLocation(loc);
