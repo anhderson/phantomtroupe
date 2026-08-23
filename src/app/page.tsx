@@ -1553,17 +1553,7 @@ export default function Home() {
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>
-                {/* 1. Requests Center Button */}
-                <button 
-                  className="guide-page-btn" 
-                  style={{ fontSize: '0.8rem', padding: '10px 20px', borderStyle: 'dashed', margin: '0 auto', marginTop: '0px' }}
-                  onClick={() => setShowPending(true)}
-                  title="Abrir Central de Requisições"
-                >
-                  <span style={{ fontSize: '1.2rem', marginRight: '8px', verticalAlign: 'middle' }}>🗲</span> 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘
-                </button>
-
-                {/* 2. Seja Membro Form (at the top) */}
+                {/* 1. Seja Membro Form (at the top) */}
                 <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(191, 0, 255, 0.02)', border: '1px solid rgba(191, 0, 255, 0.15)', borderRadius: '6px' }}>
                   {hasRequestedJoin ? (
                     <div className="join-success-msg" style={{ padding: '20px', textAlign: 'center', background: 'rgba(191, 0, 255, 0.04)', border: '1px dashed rgba(191, 0, 255, 0.3)', borderRadius: '4px' }}>
@@ -1639,7 +1629,7 @@ export default function Home() {
                 </div>
 
                 {/* Horizontal Divider Line */}
-                <div style={{ height: '1px', background: 'rgba(191, 0, 255, 0.15)', width: '100%' }}></div>
+                <div style={{ height: '1px', background: 'rgba(191, 0, 255, 0.15)', width: '100%', margin: '20px 0' }}></div>
 
                 {/* 3. Registered Members List (at the bottom) */}
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
@@ -1666,6 +1656,16 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
+
+                {/* 4. Requests Center Button (now at the bottom) */}
+                <button 
+                  className="guide-page-btn" 
+                  style={{ fontSize: '0.8rem', padding: '10px 20px', borderStyle: 'dashed', margin: '0 auto', display: 'block' }}
+                  onClick={() => setShowPending(true)}
+                  title="Abrir Central de Requisições"
+                >
+                  <span style={{ fontSize: '1.2rem', marginRight: '8px', verticalAlign: 'middle' }}>🗲</span> 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘
+                </button>
               </div>
 
               <footer className="guide-footer-branding" style={{ marginTop: '20px', transform: 'translateY(-2vh)' }}>
@@ -1784,7 +1784,7 @@ export default function Home() {
       <AnimatePresence>
         {showPending && (
           <motion.div 
-            className="guide-overlay-container members-overlay"
+            className="guide-overlay-container pending-requests-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -1792,13 +1792,17 @@ export default function Home() {
             style={{ zIndex: 12000 }}
           >
             <div 
-              className="guide-inner-wrap" 
-              style={{ padding: '40px', transform: 'translateY(-15vh)' }}
+              className="guide-inner-wrap pending-inner-wrap" 
+              style={{ padding: '40px', transform: 'translateY(-10vh)', position: 'relative' }}
               onClick={e => e.stopPropagation()}
             >
-              <button className="guide-power-node right-power" onClick={() => setShowPending(false)} aria-label="Close Pending">
-                <div className="power-symbol"></div>
-              </button>
+              {/* Cyberpunk Inner Close Button */}
+              <div 
+                className="close-btn-pending" 
+                onClick={() => setShowPending(false)}
+              >
+                ×
+              </div>
 
               <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
                 <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘 △</h2>

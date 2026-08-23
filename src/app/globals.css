@@ -2980,7 +2980,15 @@ body::before {
   opacity: 0.95;
 }
 
-/* Purple customizations for Members Overlay ("Seja Membro") */
+/* Spacing & Scrolling for Overlays (Do not touch the screen borders, float centered) */
+.members-overlay,
+.pending-requests-overlay {
+  overflow-y: auto !important;
+  display: block !important;
+  padding: 6vh 20px !important;
+  z-index: 10005;
+}
+
 .members-overlay {
   scrollbar-color: rgba(191, 0, 255, 0.4) transparent !important;
 }
@@ -2989,11 +2997,54 @@ body::before {
   background: rgba(191, 0, 255, 0.4) !important;
 }
 
+.pending-requests-overlay {
+  scrollbar-color: rgba(255, 0, 127, 0.4) transparent !important;
+}
+
+.pending-requests-overlay::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 127, 0.4) !important;
+}
+
 .members-overlay .guide-inner-wrap {
   border: 1px solid rgba(191, 0, 255, 0.25);
   box-shadow: 0 0 40px rgba(191, 0, 255, 0.1), inset 0 0 20px rgba(191, 0, 255, 0.05);
   background: rgba(12, 4, 18, 0.96) !important;
   border-radius: 8px;
+  max-width: 600px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  transform: none !important;
+}
+
+/* Custom dashed pink border for Pending Requests modal */
+.pending-inner-wrap {
+  border: 2px dashed rgba(255, 0, 127, 0.35) !important;
+  box-shadow: 0 0 40px rgba(255, 0, 127, 0.15), inset 0 0 20px rgba(255, 0, 127, 0.05) !important;
+  background: rgba(12, 1, 6, 0.97) !important;
+  border-radius: 12px !important;
+  max-width: 550px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  transform: none !important;
+}
+
+/* Cyberpunk pending overlay close button */
+.close-btn-pending {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10100;
+  line-height: 1;
+}
+
+.close-btn-pending:hover {
+  color: #ff007f;
+  text-shadow: 0 0 15px #ff007f;
+  transform: rotate(90deg);
 }
 
 /* Customize member cards to be purple */
