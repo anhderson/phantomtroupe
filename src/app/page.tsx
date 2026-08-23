@@ -58,13 +58,6 @@ const APPS = [
   },
   { 
     id: 5, 
-    name: "ZE", 
-    fullName: "Zero Espaço", 
-    desc: "Santuário digital de cura e sentimento.",
-    longDesc: "O Zero Espaço é um ambiente dedicado ao cuidado emocional e ao equilíbrio interno dentro da rede. Mais do que uma funcionalidade, ele atua como um espaço estruturado para acolhimento, reflexão e reconexão, oferecendo ao usuário um ponto seguro para desacelerar e se observar com mais clareza.\n\nNeste módulo, experiências e memórias podem ser registradas e organizadas de forma consciente, permitindo identificar padrões emocionais, compreender comportamentos e acompanhar processos pessoais ao longo do tempo. A proposta não é apenas armazenar informações, mas transformar esses registros em suporte real para evolução e estabilidade emocional.\n\nO Zero Espaço prioriza o bem-estar do operador em todos os níveis, integrando tecnologia com sensibilidade. Ele cria um ambiente onde introspecção e análise caminham juntas, incentivando um desenvolvimento mais equilibrado, humano e sustentável dentro de todo o ecossistema.",
-    tech: "JS, Java, Json, md, png, svg, html, css",
-    status: "EM PAZ",
-    security: "SAGRADO",
     downloadUrl: "https://paginaterapeutaanderson.vercel.app",
     icon: "/icones/zeroespacoiconecircular.png"
   },
@@ -150,6 +143,8 @@ const APPS = [
 ];
 
 const WEB_LAYERS = 12; 
+
+
 
 export default function Home() {
   const [selectedApp, setSelectedApp] = useState<typeof APPS[0] | null>(null);
@@ -2155,7 +2150,6 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-
     </main>
   );
 }
