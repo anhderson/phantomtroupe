@@ -1549,25 +1549,25 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#cc44ff', textShadow: '0 0 15px rgba(204, 68, 255, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#ff007f', textShadow: '0 0 15px rgba(255, 0, 127, 0.3)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>
                 {/* 1. Seja Membro Form (at the top) */}
-                <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(191, 0, 255, 0.02)', border: '1px solid rgba(191, 0, 255, 0.15)', borderRadius: '6px' }}>
+                <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(255, 101, 132, 0.3)', borderRadius: '6px' }}>
                   {hasRequestedJoin ? (
-                    <div className="join-success-msg" style={{ padding: '20px', textAlign: 'center', background: 'rgba(191, 0, 255, 0.04)', border: '1px dashed rgba(191, 0, 255, 0.3)', borderRadius: '4px' }}>
-                      <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#cc44ff', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
-                      <p style={{ margin: 0, fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)', lineHeight: '1.4' }}>
+                    <div className="join-success-msg" style={{ padding: '20px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #ff6584', borderRadius: '4px' }}>
+                      <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#ff007f', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
+                      <p style={{ margin: 0, fontSize: '0.85rem', color: '#5d4037', lineHeight: '1.4' }}>
                         Sua solicitação de participação no projeto foi enviada com sucesso!
                       </p>
                     </div>
                   ) : (
                     <>
-                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: '#cc44ff', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(191, 0, 255, 0.15)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: '#ff007f', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255, 101, 132, 0.2)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
                         SEJA MEMBRO
                       </h3>
-                      <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                      <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5', color: '#5d4037' }}>
                         Você sente que este é o seu caminho?<br />Venha construir conosco este novo ciclo.
                       </p>
                       
@@ -1629,11 +1629,11 @@ export default function Home() {
                 </div>
 
                 {/* Horizontal Divider Line */}
-                <div style={{ height: '1px', background: 'rgba(191, 0, 255, 0.15)', width: '100%', margin: '20px 0' }}></div>
+                <div style={{ height: '1px', background: 'rgba(255, 101, 132, 0.2)', width: '100%', margin: '20px 0' }}></div>
 
                 {/* 3. Registered Members List (at the bottom) */}
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
-                  <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#cc44ff', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px', textAlign: 'center' }}>
+                  <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#ff007f', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px', textAlign: 'center' }}>
                     MEMBROS ATIVOS
                   </h3>
                   <div 
@@ -1669,7 +1669,7 @@ export default function Home() {
               </div>
 
               <footer className="guide-footer-branding" style={{ marginTop: '20px', transform: 'translateY(-2vh)' }}>
-                <h2 className="guide-heading" style={{ color: '#cc44ff', textShadow: '0 0 15px rgba(204, 68, 255, 0.5)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
+                <h2 className="guide-heading" style={{ color: '#ff007f', textShadow: '0 0 15px rgba(255, 0, 127, 0.3)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
               </footer>
             </div>
           </motion.div>
