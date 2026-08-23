@@ -625,22 +625,6 @@ export default function Home() {
       <div className="scanlines"></div>
       
       <div className="visual-anchor">
-          {/* Truly Transparent SVG Spider Symbol */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="spider-center-anchor"
-          >
-            <div className="core-glow"></div>
-            <Image
-              src="/spider.svg"
-              alt="Phantom Troupe Spider Symbol"
-              width={140}
-              height={140}
-              className="spider-symbol"
-              priority
-            />
-          </motion.div>
 
           <div className="center-point">
             <div className="impact-glow red-impact"></div>
