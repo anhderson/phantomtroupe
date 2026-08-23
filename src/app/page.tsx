@@ -1465,9 +1465,7 @@ export default function Home() {
       <button 
         className={`side-nav-node left-trigger ${isGlitching ? 'is-glitching' : ''}`} 
         onClick={() => {
-          setShowHistory(false);
           setShowGuide(true);
-          setGuidePage(1);
         }}
         aria-label="Welcome Guide / Enter Node"
       >
@@ -1477,9 +1475,7 @@ export default function Home() {
       <button 
         className={`side-nav-node right-trigger ${isGlitching ? 'is-glitching' : ''}`}
         onClick={() => {
-          setShowGuide(false);
-          setShowHistory(true);
-          setHistoryPage(1);
+          setShowGuide(true);
         }}
         aria-label="System Node / Enter Node"
       >
@@ -1490,237 +1486,41 @@ export default function Home() {
       <AnimatePresence>
         {showGuide && (
           <motion.div 
-            className="guide-overlay-container"
+            className="cute-welcome-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setShowGuide(false)}
           >
-            <div 
-              className="guide-inner-wrap" 
-              style={{ padding: '40px' }}
+            <motion.div 
+              className="cute-welcome-banner"
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 180 }}
+              onClick={e => e.stopPropagation()}
             >
+              {/* Cute close button */}
+              <div className="cute-close-btn" onClick={() => setShowGuide(false)}>×</div>
+              
+              <div className="cute-emoji-header">🌸 ✨ 💖 ✨ 🌸</div>
+              
+              <h2 className="cute-title">Bem-vindo(a) à Phantom Troupe!</h2>
+              
+              <div className="cute-text-content">
+                <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: '#ff3366', marginBottom: '15px' }}>Que bom ter você aqui. ❤️</p>
+                <p>Este é um espaço para criar, compartilhar, conversar e ajudar uns aos outros.</p>
+                <p>Você pode pedir ajuda ou oferecer aquilo que sabe fazer — através da arte, música, desenho, poesia, jogos ou simplesmente de uma boa conversa.</p>
+                <p style={{ marginTop: '15px', fontWeight: 'bold' }}>Chegue como você é. Aqui, toda pequena contribuição pode fazer diferença. ✨</p>
+              </div>
 
-              <AnimatePresence mode="wait">
-                {guidePage === 1 ? (
-                  <motion.div
-                    key="guide1"
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                    style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', transform: 'translateY(-10vh)' }}
-                  >
-                    <header className="guide-header-section" style={{ marginBottom: '30px' }}>
-                      <h2 className="guide-heading">▽ 𝔸𝖖𝖚𝖎, 𝖓𝖆𝖉𝖆 𝖈𝖔𝖒𝖊𝖈̧𝖆 𝖕𝖔𝖗 𝖆𝖈𝖆𝖘𝖔 △</h2>
-                    </header>
-
-                    <div className="guide-unified-content" style={{ padding: '20px 0' }}>
-                      <div className="guide-paragraph">
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '2rem', marginBottom: '20px' }}>🕳️</p>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Se teus olhos cruzaram este ponto</p>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>algo em ti já reconheceu o caminho</p>
-                      </div>
-                      
-                      <div className="guide-paragraph">
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>A Phantom Troupe Fraternidade não nasce do mundo externo</p>
-                        <p>mas do encontro entre o que pulsa dentro</p>
-                        <p>e o que se manifesta fora</p>
-                      </div>
-
-                      <div className="guide-paragraph">
-                        <p>Não há separação entre espírito e matéria</p>
-                        <p>tudo que és, se expande</p>
-                        <p>Tudo que sentes, se molda</p>
-                        <p>Tudo que deseja, encontra forma</p>
-                      </div>
-
-                      <div className="guide-paragraph">
-                        <p>Caminhamos sem exigir retorno</p>
-                        <p>pois o verdadeiro movimento nasce do amor que não cobra</p>
-                        <p>da bondade que não é vista</p>
-                        <p>da entrega que não espera</p>
-                      </div>
-                    </div>
-
-                    <button className="guide-page-btn btn-next" onClick={() => setGuidePage(2)} style={{ marginTop: '30px' }}>
-                      AVANÇAR PÁGINA ▷
-                    </button>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="guide2"
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                    style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', transform: 'translateY(-23vh)' }}
-                  >
-                    <button className="guide-page-btn btn-next" onClick={() => {
-                        setShowGuide(false);
-                        setShowHistory(true);
-                        setHistoryPage(1);
-                      }} style={{ marginBottom: '20px' }}>
-                      AVANÇAR PARA NODE DO SISTEMA ▷
-                    </button>
-
-                    <div className="guide-unified-content" style={{ marginTop: '0px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Não existe separação entre você e o resto</p>
-                        <p>O que você sente por dentro acaba aparecendo fora</p>
-                        <p>cada pensamento, é semente do invisível</p>
-                        <p>cada intenção, um traço do destino que virá</p>
-                      </div>
-
-                      <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p>A realidade não é algo fixo</p>
-                        <p>ela se curva ao olhar que insiste</p>
-                        <p>e floresce na mente que acredita</p>
-                        <p>e materializa para quem cria</p>
-                      </div>
-
-                      <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p>A vida é um infinito, inefável mistério</p>
-                        <p>Cada momento, um instante singular e revelador</p>
-                        <p>O impossível vai se tornando questão de opinião.</p>
-                      </div>
-
-                      <div className="guide-manifest-integration" style={{ marginTop: '20px' }}>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', margin: 0, lineHeight: '1.4' }}>
-                          Não somos obrigados, fazemos o que podemos oferecer<br />
-                          todo coração é um coração, toda força é força, toda ferramenta é ferramenta
-                        </p>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)' }}>🖤</p>
-                      </div>
-                    </div>
-
-                    <footer className="guide-footer-branding" style={{ marginTop: '10px', transform: 'translateY(-3vh)' }}>
-                      <h2 className="guide-heading brand-sigil">▽ ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 𝔽𝖗𝖆𝖙𝖊𝖗𝖓𝖎𝖉𝖆𝖉𝖊 △</h2>
-                    </footer>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* History Guide Overlay */}
-      <AnimatePresence>
-        {showHistory && (
-          <motion.div 
-            className="guide-overlay-container history-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <div 
-              className="guide-inner-wrap" 
-              style={{ padding: '40px' }}
-            >
-
-              <AnimatePresence mode="wait">
-                {historyPage === 1 ? (
-                  <motion.div
-                    key="history1"
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                    style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', transform: 'translateY(-10vh)' }}
-                  >
-                    <header className="guide-header-section" style={{ marginBottom: '30px' }}>
-                      <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝕌𝖒 𝖊𝖘𝖕𝖆𝖈̧𝖔 𝖕𝖆𝖗𝖆 𝖈𝖔𝖓𝖊𝖈𝖙𝖆𝖗 𝖕𝖊𝖘𝖘𝖔𝖆𝖘 △</h2>
-                    </header>
-
-                    <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '8px', transform: 'translateY(-3vh)' }}>
-                      <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '2rem', marginBottom: '10px', textAlign: 'center', filter: 'grayscale(100%) brightness(0.8)' }}>🌐</p>
-                      
-                      <div className="guide-paragraph" style={{ marginBottom: '8px' }}>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', margin: 0 }}>A Phantom Troupe Fraternidade é um projeto feito</p>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', margin: 0 }}>com amor, com inteligência e com muita dedicação</p>
-                      </div>
-
-                      <div style={{ transform: 'translateY(2.5vh)' }}>
-                        <div className="guide-paragraph" style={{ marginBottom: '15px' }}>
-                          <p>Cada pessoa contribui with o que sabe</p>
-                          <p>aprende com o que o outro oferece</p>
-                          <p>criando um ambiente saudável e divertido</p>
-                        </div>
-                      </div>
-
-                      <div style={{ transform: 'translateY(4.2vh)' }}>
-                        <div className="guide-paragraph" style={{ marginBottom: '15px' }}>
-                          <p><span style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Criado por Anderson Moitinho</span>, nascido em São Paulo, Brasil</p>
-                          <p>formado em Gestão de Tecnologia da Informação</p>
-                          <p>e estudante de Psicologia, também atua como</p>
-                          <p>terapeuta holístico, músico e designer</p>
-                        </div>
-                      </div>
-
-                      <div style={{ transform: 'translateY(5.9vh)' }}>
-                        <div className="guide-paragraph" style={{ marginBottom: '15px' }}>
-                          <p><span style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Administrado por Chrystian Cesar</span>, nascido em São Paulo, Brasil</p>
-                          <p>empresário e taxista, alguém que construiu sua</p>
-                          <p>trajetória com disciplina e visão prática da vida</p>
-                          <p>Aqui, todos têm o seu espaço</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <button className="guide-page-btn btn-next" onClick={() => setHistoryPage(2)} style={{ marginTop: '30px' }}>
-                      AVANÇAR PÁGINA ▷
-                    </button>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="history2"
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                    style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', transform: 'translateY(-23vh)' }}
-                  >
-                    <button className="guide-page-btn btn-next" onClick={() => setShowHistory(false)} style={{ marginBottom: '20px' }}>
-                      AVANÇAR E CONCLUIR ▷
-                    </button>
-
-                    <div className="guide-unified-content" style={{ marginTop: '0px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Nada é obrigatório</p>
-                        <p>e ninguém é cobrado para estar aqui</p>
-                        <p>a fraternidade não exige dinheiro dos membros</p>
-                        <p>apenas doações abertas.</p>
-                      </div>
-
-                      <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>Não tem como objetivo lucrar</p>
-                        <p>com quem participa, tudo é baseado</p>
-                        <p>na colaboração e na troca de</p>
-                        <p>conhecimento e vontade de crescer junto</p>
-                      </div>
-
-                      <div className="guide-paragraph" style={{ marginBottom: '10px' }}>
-                        <p>A ideia nasceu da vontade se unir e</p>
-                        <p>de transformar, funciona como uma rede de pessoas</p>
-                        <p>que se ajudam no que podem</p>
-                      </div>
-
-                      <div className="guide-manifest-integration" style={{ marginTop: '20px' }}>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', margin: 0, lineHeight: '1.4' }}>
-                          Não é sobre obrigação, é sobre contribuição<br />
-                          não é sobre lucro, é sobre construção coletiva
-                        </p>
-                        <p style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '2rem', marginTop: '15px', transform: 'translateY(-0.5vh)', filter: 'grayscale(100%) brightness(1.5)' }}>🌍</p>
-                      </div>
-                    </div>
-
-                    <footer className="guide-footer-branding" style={{ marginTop: '10px', transform: 'translateY(-3vh)' }}>
-                      <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)', fontSize: '1.67rem' }}>▽ ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 𝔽𝖗𝖆𝖙𝖊𝖗𝖓𝖎𝖉𝖆𝖉𝖊 △</h2>
-                    </footer>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+              <button 
+                className="cute-action-btn"
+                onClick={() => setShowGuide(false)}
+              >
+                Começar ▷
+              </button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

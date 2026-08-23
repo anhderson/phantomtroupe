@@ -91,6 +91,7 @@ body::before {
   perspective: 1000px;
   overflow: hidden;
   position: relative;
+  background: radial-gradient(circle at center, rgba(255, 105, 180, 0.12) 0%, rgba(10, 1, 5, 0.9) 100%);
 }
 
 .visual-anchor {
@@ -3111,4 +3112,103 @@ body::before {
     transform: none !important;
     margin-top: 20px !important;
   }
+}
+
+/* Cute Welcome Banner Styles */
+.cute-welcome-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 182, 193, 0.45); /* Soft pink transparent overlay */
+  backdrop-filter: blur(12px);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.cute-welcome-banner {
+  background: linear-gradient(135deg, #fff5f8 0%, #ffe3ec 100%);
+  border: 3px solid #ff85a2;
+  box-shadow: 0 0 35px rgba(255, 105, 180, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.cute-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: #ff6584;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.cute-close-btn:hover {
+  color: #ff3366;
+  transform: scale(1.2);
+}
+
+.cute-emoji-header {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  animation: cute-bounce 2s infinite ease-in-out;
+}
+
+@keyframes cute-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.cute-title {
+  color: #d81b60;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+  letter-spacing: 1px;
+}
+
+.cute-text-content {
+  color: #5d4037;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+}
+
+.cute-text-content p {
+  margin: 12px 0;
+}
+
+.cute-action-btn {
+  background: #ff6584;
+  border: 2px solid #ff3366;
+  color: #fff;
+  padding: 12px 35px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 5px 15px rgba(255, 101, 132, 0.4);
+}
+
+.cute-action-btn:hover {
+  background: #ff3366;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 51, 102, 0.6);
 }
