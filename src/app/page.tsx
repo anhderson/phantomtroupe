@@ -1696,7 +1696,8 @@ export default function Home() {
                   >
                     {["PZ", "ZS", "ZD", "ZE", "ZFy"].includes(selectedApp.name) ? (
                       [1, 2, 3].map((num) => {
-                        const normalized = selectedApp.fullName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                        const baseName = selectedApp.fullName.split(/[-—]/)[0].trim();
+                        const normalized = baseName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                         const folder = normalized.toLowerCase().replace(/\s/g, '');
                         const pascalName = normalized.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
                         const fileName = num === 1 ? `${pascalName}Image.png` : `${pascalName}Image${num}.png`;
