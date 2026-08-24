@@ -736,7 +736,7 @@ export default function Home() {
                     style={{ 
                       width: 'var(--orbit-radius)',
                       transform: `rotate(${angle}deg)`,
-                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#FF007F' : 'rgba(255, 255, 255, 0.1)',
+                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#FF007F' : 'rgba(255, 0, 127, 0.15)',
                       boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #FF007F' : 'none',
                       opacity: shouldGlobalFlash ? 0.8 : 1,
                       transition: 'all 0.2s ease-out'
@@ -747,7 +747,7 @@ export default function Home() {
                     style={{ 
                       width: 'calc(var(--orbit-radius) - (var(--node-size) / 2))',
                       transform: `rotate(${angle}deg)`,
-                      background: `linear-gradient(90deg, rgba(255,255,255,0.05) 0%, ${app.color || 'var(--primary)'} 100%)`, 
+                      background: `linear-gradient(90deg, rgba(255, 0, 127, 0.05) 0%, ${app.color || 'var(--primary)'} 100%)`, 
                       opacity: 0.3
                     }}
                   >

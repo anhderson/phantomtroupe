@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
 
 :root {
-  --background: #020202;
-  --primary: #ffffff;
+  --background: #ffffff;
+  --primary: #FF007F;
   --secondary: #ff00ea;
-  --accent: #fff;
+  --accent: #111111;
   --void: #000;
   /* Responsive Units */
   --orbit-radius: clamp(150px, 35vmin, 350px);
   --node-size: clamp(60px, 12vmin, 100px);
   --black-hole-size: clamp(80px, 20vmin, 180px);
-  --silk-color: rgba(255, 255, 255, 0.4);
+  --silk-color: rgba(255, 0, 127, 0.4);
 }
 
 /* Forced Red Accents for Navigation Triggers */
@@ -75,7 +75,7 @@ body::before {
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
     url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
-  opacity: 0.3;
+  opacity: 0.05;
   pointer-events: none;
   z-index: -1;
 }
@@ -91,7 +91,7 @@ body::before {
   perspective: 1000px;
   overflow: hidden;
   position: relative;
-  background: radial-gradient(circle at center, rgba(255, 105, 180, 0.12) 0%, rgba(10, 1, 5, 0.9) 100%);
+  background: radial-gradient(circle at center, #ffffff 0%, #f2f2f4 100%);
 }
 
 .visual-anchor {
@@ -141,9 +141,9 @@ body::before {
 .web-segment {
   position: absolute;
   height: 1px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 0, 127, 0.15);
   transform-origin: left center;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 5px rgba(255, 0, 127, 0.05);
 }
 
 /* Runic Node Design - More Web-like */
