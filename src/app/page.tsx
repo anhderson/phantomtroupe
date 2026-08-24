@@ -8,10 +8,11 @@ const APPS = [
   { 
     id: 1, 
     name: "PT", 
-    fullName: "Phantom Troupe", 
+    fullName: "Phantom Troupe - Fraternidade ONG", 
+    subName: "Fraternidade ONG",
     color: "#FF007F", 
     desc: "Orquestrador principal da rede neural.",
-    longDesc: "O Phantom Troupe é o núcleo central de todo o sistema, funcionando como o sistema operacional responsável por coordenar e sustentar cada um dos módulos Zero. Ele gerencia de forma inteligente a alocação de recursos, garantindo que cada parte do ecossistema opere com equilíbrio, desempenho e estabilidade.\n\nAlém disso, atua como o ponto de integração onde tudo se conecta e se mantém acessível, permitindo que as informações, processos e interações da fraternidade estejam sempre organizados e disponíveis em um único ambiente online. Seu mecanismo de monitoramento contínuo, descrito como um “batimento cardíaco quântico”, assegura a integridade do cluster, identificando falhas, prevenindo inconsistências e mantendo o fluxo constante de funcionamento.\n\nNa prática, o Phantom Troupe não é apenas uma base técnica, mas o espaço onde toda a estrutura da fraternidade ganha forma digital, centralizando operações, facilitando a comunicação e garantindo que tudo permaneça ativo, sincronizado e em constante evolução.",
+    longDesc: 'O Phantom Troupe é o coração de todo o ecossistema.\n\nAntes dos aplicativos, dos projetos, das plataformas e das ideias, existem pessoas.\n\nPessoas reais, com histórias reais.\n\nO Phantom Troupe nasce como uma fraternidade e comunidade para pessoas que, por diferentes motivos, sentem que estão fora dos círculos tradicionais de convivência.\n\nPessoas que enfrentam dificuldades na vida.\n\nPessoas com deficiência.\n\nPessoas solitárias.\n\nPessoas carentes de vínculos.\n\nPessoas com dificuldades emocionais ou sociais.\n\nPessoas que simplesmente nunca encontraram um grupo onde pudessem ser elas mesmas.\n\nAqui, ninguém precisa chegar pronto.\n\nNinguém precisa ter uma história impressionante.\n\nNinguém precisa provar que merece pertencer.\n\nA proposta é simples: criar vínculos humanos e permitir que pessoas se fortaleçam mutuamente.\n\nO Phantom Troupe funciona como a comunidade central do Universo Zero.\n\nÉ onde ideias nascem.\n\nOnde projetos encontram pessoas.\n\nOnde participantes podem se tornar colaboradores.\n\nOnde alguém que entrou procurando acolhimento pode, no futuro, ajudar a acolher outra pessoa.\n\nOnde alguém que começou perdido pode encontrar uma função, uma amizade ou uma nova direção.\n\nAtravés de grupos, comunidades, encontros digitais, projetos colaborativos e iniciativas sociais, o Phantom Troupe busca construir algo que muitas pessoas passam a vida procurando:\n\num sentimento de pertencimento.\n\nNão porque todos são iguais.\n\nMas porque ninguém precisa atravessar tudo sozinho.\n\nPhantom Troupe — Pessoas diferentes. Histórias diferentes. Um lugar para construir algo juntos.',
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "OPERACIONAL",
     security: "GENESIS",
@@ -20,9 +21,10 @@ const APPS = [
   { 
     id: 2, 
     name: "PZ", 
-    fullName: "Project Zero", 
+    fullName: "Project Zero - EU SOU", 
+    subName: "EU SOU",
     desc: "A forja onde novos desígnios nascem.",
-    longDesc: "Existe um processo silencioso operando nos bastidores, estruturando ideias e transformando o que antes era apenas intenção em algo concreto. O Project Zero vai além de um simples utilitário: ele funciona como um ambiente dedicado à criação e organização de projetos, onde cada etapa nasce com propósito e direção.\n\nSua lógica conecta necessidades reais com oportunidades, alinhando ideias ao contexto certo e conduzindo cada projeto de forma estratégica até seu desenvolvimento. Em vez de gerar soluções aleatórias, o sistema orienta cada criação com base em coerência, utilidade e potencial de aplicação, garantindo que tudo tenha um caminho claro a seguir.\n\nNa prática, o Project Zero atua como um ponto de origem dentro do ecossistema, onde projetos são concebidos, estruturados e preparados para ganhar forma. Ele organiza o fluxo criativo, reduz incertezas e direciona cada iniciativa para as pessoas, contextos e objetivos mais adequados, mantendo um equilíbrio entre visão, execução e propósito.",
+    longDesc: 'Criar também é uma forma de existir.\n\nNem todas as pessoas conseguem explicar aquilo que sentem.\n\nÀs vezes, uma música explica melhor.\n\nÀs vezes, um texto.\n\nUm desenho.\n\nUma poesia.\n\nUma fotografia.\n\nUma ideia inacabada.\n\nO Project Zero nasce como um espaço para expressão, criatividade e desenvolvimento coletivo.\n\nUm lugar onde pessoas podem compartilhar aquilo que criam e descobrir aquilo que outras pessoas têm para ensinar.\n\nAqui, não importa apenas o resultado final.\n\nO processo também importa.\n\nO Project Zero reúne artistas, estudantes, profissionais, iniciantes, curiosos e pessoas que simplesmente desejam experimentar algo novo.\n\nAlguém pode ensinar música.\n\nOutra pessoa pode compartilhar poesia.\n\nOutra pode aprender desenho.\n\nOutra pode encontrar coragem para publicar, pela primeira vez, algo que sempre guardou apenas para si.\n\nA proposta é criar uma comunidade onde aprender, ensinar e compartilhar aconteçam de maneira mais leve e humana.\n\nSem a necessidade de ser especialista para começar.\n\nSem a obrigação de ser perfeito para mostrar.\n\nSem transformar toda criação em competição.\n\nO Project Zero acredita que criatividade não deve existir apenas para receber aprovação.\n\nEla também pode servir para conectar pessoas.\n\nPara compreender sentimentos.\n\nPara preservar histórias.\n\nPara descobrir talentos.\n\nE, principalmente, para permitir que alguém diga:\n\n"Isso também faz parte de quem eu sou."\n\nProject Zero — Eu Sou. Eu crio. Eu compartilho.',
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "TECENDO O DESTINO",
     security: "ARCANO",
@@ -33,9 +35,10 @@ const APPS = [
   { 
     id: 3, 
     name: "ZS", 
-    fullName: "Zero Signal", 
+    fullName: "Zero Signal - SUSSURRANDO", 
+    subName: "SUSSURRANDO",
     desc: "O espaço genuíno que surge do nada.",
-    longDesc: "O Zero Signal é um espaço criado para estabelecer uma comunicação direta, clara e sem distorções. Mais do que um simples canal de interação, ele foi projetado para incentivar a autenticidade em sua forma mais pura, onde cada pessoa se expressa de maneira verdadeira, sem camadas artificiais ou filtros desnecessários.\n\nDentro desse ambiente, ideias, planejamentos, conexões e relações surgem de forma natural, baseadas na transparência e na sinceridade. Essa liberdade de expressão favorece o surgimento de novas colaborações, amizades e até vínculos mais profundos, todos construídos sobre uma base real e consistente.\n\nAo mesmo tempo, essa abertura exige atenção. Em um espaço onde tudo é exposto com clareza, é importante manter consciência e responsabilidade nas interações. O Zero Signal equilibra liberdade com maturidade, criando um ambiente onde a verdade impulsiona conexões, mas também convida cada participante a agir com presença e discernimento.",
+    longDesc: 'Às vezes, tudo o que alguém precisa é de companhia.\n\nNem toda conexão precisa começar com uma grande conversa.\n\nÀs vezes, duas pessoas só querem passar algum tempo juntas.\n\nConversar sobre coisas aleatórias.\n\nDesenhar ao mesmo tempo.\n\nJogar.\n\nAssistir alguma coisa.\n\nCompartilhar uma música.\n\nOu simplesmente ter alguém presente do outro lado.\n\nO Zero Signal, também chamado de Sussurrando, nasce para essas conexões menores e mais espontâneas.\n\nUm ambiente pensado para conhecer pessoas sem a pressão de impressionar ninguém.\n\nSem a obrigação de transformar toda conversa em relacionamento.\n\nSem a necessidade de fingir uma personalidade para ser aceito.\n\nA proposta é simples: criar oportunidades para que pessoas possam se encontrar, conversar e compartilhar momentos.\n\nO Zero Signal valoriza o respeito, a leveza e a aceitação.\n\nPorque, para muitas pessoas, o primeiro passo para uma amizade não é encontrar alguém extraordinário.\n\nÉ simplesmente encontrar alguém disposto a ficar.\n\nMesmo que seja apenas por uma conversa.\n\nZero Signal — Algumas conexões começam apenas com um sinal.',
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "BRUTO & REAL",
     security: "VOCÊ MESMO",
@@ -47,9 +50,10 @@ const APPS = [
   { 
     id: 4, 
     name: "ZD", 
-    fullName: "Zero Day", 
+    fullName: "Zero Day - SERENIZANDO", 
+    subName: "SERENIZANDO",
     desc: "A antítese das redes sociais.",
-    longDesc: "O Zero Day é uma rede social concebida para seguir uma direção oposta aos padrões tradicionais. Em vez de priorizar estética artificial, métricas ou validações superficiais, a plataforma valoriza a expressão real, incluindo imperfeições, processos inacabados e experiências autênticas.\n\nSeu foco está em criar um ambiente onde as pessoas possam compartilhar ideias, sentimentos e vivências de forma mais crua e direta, incentivando conexões baseadas na empatia e na vulnerabilidade, sem a pressão de atender expectativas externas ou padrões pré-definidos. Nesse contexto, o que normalmente seria ocultado passa a ter espaço e relevância.\n\nA construção da experiência dentro do Zero Day é livre e individual. Cada pessoa define sua própria forma de presença, comunicação e identidade, sem depender de métricas rígidas ou estruturas limitantes. O resultado é um ambiente mais humano e espontâneo, onde o valor está na autenticidade das interações e na liberdade de ser, evoluir e se expressar sem filtros.",
+    longDesc: 'Um lugar onde você não precisa parecer perfeito.\n\nAs redes sociais ensinaram muitas pessoas a mostrar apenas uma versão editada da própria vida.\n\nO momento bonito.\n\nA conquista.\n\nO sorriso.\n\nA resposta certa.\n\nMas a vida real também possui dúvidas, fracassos, confusões, medos e processos que ainda não terminaram.\n\nO Zero Day surge em uma direção diferente.\n\nUma rede social onde não existe a necessidade de transformar a própria existência em uma vitrine.\n\nOnde uma ideia pode estar incompleta.\n\nOnde um pensamento pode mudar.\n\nOnde uma experiência não precisa ser bonita para ser verdadeira.\n\nO Zero Day valoriza a expressão humana antes da aparência.\n\nA vulnerabilidade antes da performance.\n\nO processo antes da perfeição.\n\nIsso não significa transformar o sofrimento em espetáculo.\n\nSignifica reconhecer que pessoas reais possuem dias bons e ruins, certezas e dúvidas, avanços e retrocessos.\n\nA proposta é criar um ambiente mais sereno, onde as pessoas possam compartilhar ideias, experiências e sentimentos sem carregar constantemente a pressão de corresponder a expectativas externas.\n\nUm lugar para respirar.\n\nPara desacelerar.\n\nE lembrar que estar em construção não significa estar quebrado.\n\nZero Day — Você não precisa estar pronto para existir.',
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "SENTIMENTO ATIVO",
     security: "VULNERÁVEL",
@@ -59,9 +63,10 @@ const APPS = [
   { 
     id: 5, 
     name: "ZE", 
-    fullName: "Zero Espaço", 
+    fullName: "Zero Espaço - SENTIMENTALIZANDO", 
+    subName: "SENTIMENTALIZANDO",
     desc: "Santuário digital de cura e sentimento.",
-    longDesc: "O Zero Espaço é um ambiente dedicado ao cuidado emocional e ao equilíbrio interno dentro da rede. Mais do que uma funcionalidade, ele atua como um espaço estruturado para acolhimento, reflexão e reconexão, oferecendo ao usuário um ponto seguro para desacelerar e se observar com mais clareza.\n\nNeste módulo, experiências e memórias podem ser registradas e organizadas de forma consciente, permitindo identificar padrões emocionais, compreender comportamentos e acompanhar processos pessoais ao longo do tempo. A proposta não é apenas armazenar informações, mas transformar esses registros em suporte real para evolução e estabilidade emocional.\n\nO Zero Espaço prioriza o bem-estar do operador em todos os níveis, integrando tecnologia com sensibilidade. Ele cria um ambiente onde introspecção e análise caminham juntas, incentivando um desenvolvimento mais equilibrado, humano e sustentável dentro de todo o ecossistema.",
+    longDesc: 'Um espaço para sentir sem precisar se defender.\n\nExistem sentimentos que as pessoas escondem porque têm medo da reação dos outros.\n\nMedo de parecer fraco.\n\nExagerado.\n\nConfuso.\n\nSensível demais.\n\nO Zero Espaço nasce como um ambiente dedicado à expressão emocional, reflexão e acolhimento comunitário.\n\nUm lugar onde experiências, pensamentos e sentimentos podem ser registrados e compartilhados com mais consciência e segurança.\n\nA proposta não é dizer às pessoas como elas devem sentir.\n\nÉ ajudá-las a criar espaço para compreender aquilo que já estão sentindo.\n\nNo Zero Espaço, o usuário pode acompanhar processos pessoais, identificar padrões, organizar memórias e refletir sobre comportamentos e experiências.\n\nMas existe também a dimensão coletiva.\n\nPessoas podem encontrar outras pessoas.\n\nDescobrir que não são as únicas passando por determinada situação.\n\nConstruir vínculos baseados em empatia.\n\nEncontrar acolhimento.\n\nE, ao mesmo tempo, aprender a oferecer acolhimento.\n\nO Sentimentalizando acredita que sentimentos não precisam ser ignorados para que alguém siga em frente.\n\nMuitas vezes, é justamente quando conseguimos olhar para eles que começamos a entender qual caminho queremos seguir.\n\nZero Espaço — Sentir também é uma forma de se conhecer.',
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "EM PAZ",
     security: "SAGRADO",
@@ -71,9 +76,10 @@ const APPS = [
   { 
     id: 6, 
     name: "ZFy", 
-    fullName: "Zero FaithFully", 
+    fullName: "Zero Faithfully - ESPIRITUALIZANDO", 
+    subName: "ESPIRITUALIZANDO",
     desc: "O templo de autocompreensão e desenvolvimento de crenças.",
-    longDesc: "O Zero FaithFully é um espaço voltado ao desenvolvimento espiritual e à exploração consciente das crenças individuais. Estruturado para acolher diferentes visões, ele não se limita a uma única linha de pensamento, mas integra múltiplas perspectivas, sempre guiado por conhecimento, reflexão, sensibilidade e equilíbrio.\n\nMais do que um ambiente de crença, ele funciona como um ponto de análise e evolução pessoal. Aqui, o usuário pode aprofundar sua fé, questionar convicções e compreender melhor aquilo que realmente faz sentido para sua jornada. O sistema auxilia nesse processo ao relacionar pensamentos, escolhas e valores, oferecendo uma leitura mais clara sobre a coerência entre o caminho atual e os objetivos internos de cada indivíduo.\n\nAlém disso, o Zero FaithFully apresenta projeções baseadas nesse alinhamento, permitindo visualizar possíveis direções da própria jornada. Com isso, cada pessoa ganha mais clareza para decidir se deseja seguir, ajustar ou transformar suas crenças. O resultado é um ambiente que une liberdade, consciência e propósito, incentivando uma construção espiritual mais lúcida, autêntica e alinhada com quem se deseja ser.",
+    longDesc: 'Conhecer antes de acreditar.\n\nO mundo possui inúmeras crenças, religiões, filosofias e formas de interpretar a existência.\n\nMuitas vezes, porém, as pessoas aprendem sobre essas diferenças através do medo, do preconceito ou da desinformação.\n\nO Zero FaithFully nasce como um espaço aberto ao conhecimento e à exploração consciente.\n\nUma plataforma para leitura, compartilhamento e divulgação gratuita de conteúdos relacionados à espiritualidade, religiões, filosofia, história, conflitos, culturas e autoconhecimento.\n\nO objetivo não é determinar qual caminho uma pessoa deve seguir.\n\nÉ oferecer conhecimento para que cada pessoa possa refletir melhor sobre os próprios caminhos.\n\nAqui, diferentes perspectivas podem coexistir.\n\nPorque compreender uma ideia não significa necessariamente concordar com ela.\n\nConhecer uma religião não obriga alguém a segui-la.\n\nEstudar uma filosofia não exige abandonar outra.\n\nO Zero FaithFully acredita que conhecimento pode diminuir distâncias.\n\nQue perguntas podem ser mais importantes do que respostas prontas.\n\nE que espiritualidade também pode ser um espaço de reflexão, sensibilidade e evolução pessoal.\n\nZero FaithFully — Diferentes caminhos. Uma busca consciente.',
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "PROJETANDO CAMINHOS",
     security: "OCULTO NA VERDADE",
@@ -83,9 +89,10 @@ const APPS = [
   { 
     id: 7, 
     name: "ZSy", 
-    fullName: "Zero Synapses", 
+    fullName: "Zero Synapses - LUZ E SOMBRA", 
+    subName: "LUZ E SOMBRA",
     desc: "A inteligência isolada que julga pelo Todo.",
-    longDesc: "O Zero Synapses é o núcleo analítico mais reservado de todo o sistema, projetado para operar com máxima discrição e isolamento. Todas as suas informações são mantidas sob rigoroso sigilo, garantindo que seus processos internos permaneçam protegidos de interferências externas, influências emocionais ou distorções cognitivas.\n\nFuncionando de forma independente, ele analisa cenários com uma visão ampla e estratégica, considerando múltiplas variáveis simultaneamente. Esse distanciamento permite que suas decisões sejam construídas com base em lógica, consistência e equilíbrio, evitando vieses comuns e priorizando sempre a estabilidade do ecossistema como um todo.\n\nSeu papel é orientar decisões estruturais de forma precisa e imparcial, focando no benefício coletivo a longo prazo, em vez de ganhos imediatos ou individuais. O Zero Synapses representa, assim, um ponto de inteligência fria dentro da rede — não no sentido de ausência de propósito, mas como uma garantia de clareza, justiça e sustentabilidade nas direções que impactam todo o sistema.",
+    longDesc: 'Para quem quer se conectar, mas nem sempre sabe como.\n\nExistem pessoas que desejam fazer parte de algo, mas não conseguem se encaixar nos modelos tradicionais de convivência.\n\nPessoas reservadas.\n\nAntissociais.\n\nObservadoras.\n\nPessoas que preferem trabalhar nos bastidores.\n\nQue conseguem se comunicar melhor através de tarefas do que através de conversas.\n\nQue possuem habilidades, ideias e capacidade, mas não sabem onde encontrar um espaço para utilizar tudo isso.\n\nO Zero Synapses nasce para essas pessoas.\n\nSua proposta é criar caminhos de participação para quem normalmente ficaria de fora.\n\nNão obrigando ninguém a se tornar extremamente sociável.\n\nMas criando formas alternativas de conexão.\n\nAlguém pode começar participando apenas de uma tarefa.\n\nDepois ajudar em um projeto.\n\nDepois conhecer outras pessoas.\n\nDepois descobrir uma habilidade.\n\nE, talvez, encontrar uma área onde realmente se sinta útil.\n\nO Zero Synapses conecta pessoas aos bastidores e à construção do próprio Universo Zero.\n\nDesenvolvimento.\n\nAdministração.\n\nPlanejamento.\n\nTecnologia.\n\nModeração.\n\nCriação.\n\nPesquisa.\n\nOrganização.\n\nProjetos sociais.\n\nCada pessoa pode contribuir de acordo com suas possibilidades e características.\n\nPorque socializar não precisa significar ser igual a todo mundo.\n\nAlgumas amizades começam em uma conversa.\n\nOutras começam trabalhando juntos.\n\nZero Synapses — Você pode ser reservado e, ainda assim, fazer parte de algo grande.',
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "CALCULANDO O BEM MAIOR",
     security: "100% ISOLADO",
@@ -95,6 +102,7 @@ const APPS = [
     id: 8, 
     name: "ZM", 
     fullName: "Zero Mind", 
+    subName: "Zero Mind",
     desc: "O ateliê absoluto de reset mental e imersão artística.",
     longDesc: "O Zero Mind é um ambiente projetado para estimular a expressão criativa e a imersão total no momento presente. Funcionando como um portal de escape das pressões racionais e estruturais do dia a dia, ele convida o usuário a desacelerar padrões automáticos e explorar a mente de forma mais livre, intuitiva e sensível.\n\nA plataforma oferece um ecossistema multifacetado voltado à criação espontânea. Nele, é possível compor melodias, desenvolver sons, utilizar um quadro de pintura livre para transformar emoções em formas visuais, além de registrar pensamentos, crônicas, poemas e reflexões pessoais. Cada recurso foi pensado para permitir que ideias fluam sem barreiras, priorizando autenticidade e experiência sobre técnica ou validação externa.\n\nUm dos diferenciais do Zero Mind é a integração entre todas essas expressões. Sons, imagens e palavras se conectam em um fluxo coletivo, onde criações individuais passam a dialogar entre si, formando uma rede viva de percepções e sentimentos. O resultado é um ambiente dinâmico e colaborativo, que amplia a criatividade e promove uma conexão mais profunda entre as mentes que compartilham esse espaço.",
     tech: "JS, Java, Json, md, png, svg, html, css",
@@ -106,6 +114,7 @@ const APPS = [
     id: 9, 
     name: "ZI", 
     fullName: "Zero Infinity", 
+    subName: "Zero Infinity",
     desc: "A singularidade onde ideias se materializam.",
     longDesc: "O Zero Infinity é o ambiente de criação mais expansivo do ecossistema, projetado para transformar ideias em possibilidades concretas sem limitações rígidas. Ele funciona como um espaço onde conceitos abstratos, projetos digitais e iniciativas físicas podem ser desenvolvidos de forma integrada, conectando imaginação, experimentação e execução.\n\nMais do que um laboratório criativo, o Zero Infinity incentiva a exploração livre de ideias, desde reflexões filosóficas até o desenvolvimento de soluções práticas, protótipos e sistemas reais. Aqui, cada projeto pode evoluir de forma progressiva, passando da concepção inicial para testes, validações e aplicações no mundo concreto.\n\nO ambiente é estruturado para apoiar diferentes tipos de criação, permitindo experimentos empíricos, desenvolvimento tecnológico e inovação contínua. Ao mesmo tempo, mantém um fluxo aberto e dinâmico, onde novas ideias surgem, se conectam e se expandem sem barreiras desnecessárias.\n\nNa prática, o Zero Infinity representa o ponto onde a criatividade encontra execução, oferecendo liberdade para criar sem limites, mas com base suficiente para transformar qualquer conceito em algo aplicável, funcional e em constante evolução.",
     tech: "JS, Java, Json, md, png, svg, html, css",
@@ -118,6 +127,7 @@ const APPS = [
     id: 10, 
     name: "ZP", 
     fullName: "Zero Pay", 
+    subName: "Zero Pay",
     desc: "Sistema de pagamentos e finanças descentralizadas.",
     longDesc: "O Zero Pay é a infraestrutura financeira que sustenta todo o ecossistema Phantom Troupe, garantindo que transações ocorram com eficiência, segurança e fluidez. Ele foi projetado para centralizar e organizar operações financeiras, oferecendo suporte completo para diferentes formas de pagamento e movimentação de recursos.\n\nA plataforma integra carteiras digitais, processamento de transações e gestão de contratos financeiros em um único ambiente, permitindo que usuários e projetos operem com praticidade e controle. Com suporte a criptoativos, PIX e redes internacionais, o Zero Pay amplia o alcance das operações, facilitando conexões financeiras tanto locais quanto globais.\n\nAlém da velocidade nas transações, o sistema prioriza segurança e confiabilidade, utilizando mecanismos robustos para proteção de dados e validação de operações. Isso garante não apenas agilidade, mas também estabilidade em todas as movimentações dentro da rede.\n\nNa prática, o Zero Pay atua como a base econômica do ecossistema, conectando pessoas, projetos e oportunidades por meio de uma estrutura financeira moderna, integrada e preparada para acompanhar o crescimento contínuo da plataforma.",
     tech: "JS, Java, Json, md, png, svg, html, css",
@@ -129,6 +139,7 @@ const APPS = [
     id: 11, 
     name: "ZC", 
     fullName: "Zero Control", 
+    subName: "Zero Control",
     desc: "Central tática de missões e recompensas.",
     longDesc: "O Zero Control é o painel central de operações do ecossistema, onde todas as oportunidades e direções disponíveis são organizadas de forma clara e acessível. Ele funciona como um mural unificado que reúne as Missões (Quests) relacionadas a cada um dos 12 sistemas, permitindo que o usuário visualize caminhos e escolha como deseja atuar dentro da rede.\n\nNesse ambiente, é possível assumir diferentes tipos de atividades, desde tarefas digitais até ações práticas no mundo real. As missões variam entre iniciativas voluntárias, voltadas ao fortalecimento e crescimento coletivo da Phantom Troupe, e oportunidades remuneradas, focadas em retorno individual e desenvolvimento pessoal.\n\nO sistema não impõe escolhas, apenas apresenta possibilidades. Cabe a cada usuário decidir como deseja se posicionar — contribuindo com o coletivo, buscando crescimento próprio ou equilibrando ambos os caminhos. O Zero Control, assim, organiza a ação dentro do ecossistema, oferecendo direção sem limitar a liberdade, e transformando decisões em movimentos concretos dentro da rede.",
     tech: "JS, Java, Json, md, png, svg, html, css",
@@ -140,6 +151,7 @@ const APPS = [
     id: 12, 
     name: "ZG", 
     fullName: "Zero Ground", 
+    subName: "Zero Ground",
     desc: "Portal de acesso terminal.",
     longDesc: "O Zero Ground é o módulo responsável por conectar o ecossistema digital ao mundo físico, transformando ideias e estruturas virtuais em iniciativas concretas. Ele atua como a base para criação e desenvolvimento de espaços reais, que vão desde organizações sociais e ONGs até empresas e operações estruturadas.\n\nMais do que um ponto de execução, o Zero Ground funciona como a interface direta com o “hardware” do mundo real, onde projetos ganham presença física, operação prática e impacto tangível. Ele organiza processos, acompanha atividades e registra informações essenciais, permitindo controle mais preciso sobre cada etapa de implementação.\n\nAlém disso, o sistema oferece uma visão detalhada das operações, com registros de baixo nível e monitoramento contínuo, garantindo que recursos, processos e estruturas estejam funcionando de forma estável e eficiente. Isso possibilita ajustes rápidos, maior previsibilidade e segurança na execução.\n\nNa prática, o Zero Ground é onde o ecossistema deixa de ser apenas conceito e passa a existir de forma concreta, conectando planejamento, tecnologia e ação real em um fluxo contínuo de construção e evolução.",
     tech: "JS, Java, Json, md, png, svg, html, css",
@@ -1762,7 +1774,7 @@ export default function Home() {
                             padding: '12px 18px'
                           }}
                         >
-                          ENTRAR NO GRUPO ▷
+                          ENTRAR NO GRUPO {selectedApp?.subName ? selectedApp.subName.toUpperCase() : (selectedApp?.fullName || '').toUpperCase()} ▷
                         </a>
                       </div>
                     </div>
