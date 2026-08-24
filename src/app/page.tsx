@@ -1698,7 +1698,7 @@ export default function Home() {
                   {hasRequestedJoin ? (
                     <div className="join-success-msg" style={{ padding: '20px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #ff6584', borderRadius: '4px' }}>
                       <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#ff007f', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
-                      <p style={{ margin: 0, fontSize: '0.85rem', color: '#5d4037', lineHeight: '1.4' }}>
+                      <p style={{ margin: 0, fontSize: '0.85rem', color: '#333333', lineHeight: '1.4' }}>
                         Sua solicitação de participação no projeto foi enviada com sucesso!
                       </p>
                     </div>
@@ -1707,7 +1707,7 @@ export default function Home() {
                       <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: '#ff007f', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255, 101, 132, 0.2)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
                         SEJA MEMBRO
                       </h3>
-                      <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5', color: '#5d4037' }}>
+                      <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5', color: '#333333' }}>
                         Você sente que este é o seu caminho?<br />Venha construir conosco este novo ciclo.
                       </p>
                       

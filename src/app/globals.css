@@ -3022,13 +3022,13 @@ body::before {
 .members-overlay .guide-inner-wrap {
   border: 1px solid rgba(255, 101, 132, 0.4) !important;
   box-shadow: 0 0 45px rgba(255, 105, 180, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.8) !important;
-  background: rgba(255, 235, 243, 0.98) !important; /* Translucent Light Pink */
+  background: linear-gradient(135deg, #ffffff 0%, #ffeaf2 100%) !important; /* White and Light Pink gradient */
   border-radius: 12px !important;
   max-width: 600px !important;
   width: 100% !important;
   margin: 0 auto !important;
   transform: none !important;
-  color: #4e342e !important;
+  color: #1a1a1a !important; /* Dark grey for readability */
 }
 
 /* Custom dashed pink border for Pending Requests modal */
