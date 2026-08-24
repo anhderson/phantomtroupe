@@ -1931,7 +1931,8 @@ body::before {
 .members-overlay {
   width: 100vw;
   z-index: 10005;
-  background: radial-gradient(circle at center, #ffffff 0%, #ffeaf2 100%) !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
 }
 
 .guide-split-layout {
