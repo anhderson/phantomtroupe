@@ -176,6 +176,7 @@ export default function Home() {
     { role: 'Facilitador', name: 'Gabriel Ricardo', type: 'Membro' }
   ]);
   const [showPending, setShowPending] = useState(false);
+  const [showUniversoZero, setShowUniversoZero] = useState(false);
   
   const [isAdminAuth, setIsAdminAuth] = useState(false);
   const [adminUser, setAdminUser] = useState("");
@@ -685,7 +686,12 @@ export default function Home() {
       
       <div className="visual-anchor">
 
-          <div className="center-point">
+          <div 
+            className="center-point" 
+            onClick={() => setShowUniversoZero(true)} 
+            style={{ cursor: 'pointer' }}
+            title="Universo Zero"
+          >
             <div className="impact-glow pink-impact"></div>
           </div>
 
@@ -1986,6 +1992,101 @@ export default function Home() {
                 ›
               </div>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Universo Zero Modal Overlay */}
+      <AnimatePresence>
+        {showUniversoZero && (
+          <motion.div 
+            className="guide-overlay-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ overflowY: 'auto', padding: '5vh 20px' }}
+          >
+            <div 
+              className="guide-inner-wrap"
+              style={{ 
+                transform: 'none', 
+                maxWidth: '800px', 
+                background: 'rgba(5, 5, 5, 0.85)', 
+                backdropFilter: 'blur(30px)', 
+                border: '1px solid rgba(255, 0, 127, 0.2)',
+                padding: '40px 30px', 
+                borderRadius: '8px', 
+                boxShadow: '0 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 0, 127, 0.1)'
+              }}
+            >
+              <div 
+                className="close-btn" 
+                onClick={() => setShowUniversoZero(false)}
+                style={{ top: '20px', right: '20px', fontSize: '2rem' }}
+              >
+                ×
+              </div>
+
+              <header className="panel-header" style={{ marginBottom: '30px', textAlign: 'center', width: '100%' }}>
+                <span className="panel-id" style={{ fontSize: '0.8rem', letterSpacing: '3px' }}>◇ APRESENTAÇÃO COLETIVA ◇</span>
+                <h2 className="panel-title" style={{ color: '#FF007F', fontSize: '2.2rem', textShadow: '0 0 20px rgba(255, 0, 127, 0.6)', marginTop: '10px' }}>
+                  UNIVERSO ZERO
+                </h2>
+                <p style={{ color: '#a0a0a0', fontFamily: 'Orbitron, sans-serif', fontSize: '0.8rem', letterSpacing: '1px', marginTop: '5px' }}>
+                  Um ecossistema criado por pessoas para pessoas
+                </p>
+              </header>
+
+              <div 
+                className="section-text" 
+                style={{ 
+                  color: 'rgba(255, 255, 255, 0.85)', 
+                  fontSize: '1.05rem', 
+                  lineHeight: '1.8', 
+                  textAlign: 'left', 
+                  fontFamily: 'Inter, sans-serif',
+                  maxHeight: '60vh',
+                  overflowY: 'auto',
+                  paddingRight: '15px',
+                  scrollbarWidth: 'thin'
+                }}
+              >
+                <p>Existem pessoas que não sabem onde se encaixam.</p>
+                <br />
+                <p>Pessoas que carregam problemas que não conseguem explicar. Pessoas com dificuldades sociais, emocionais ou pessoais. Pessoas que se sentem sozinhas mesmo estando cercadas de outras pessoas. Pessoas que têm talento, criatividade, sensibilidade e inteligência, mas nunca encontraram um ambiente onde pudessem realmente desenvolver essas partes de si mesmas.</p>
+                <br />
+                <p>Algumas precisam conversar.</p>
+                <p>Outras precisam ser ouvidas.</p>
+                <p>Algumas precisam aprender.</p>
+                <p>Outras precisam ensinar.</p>
+                <p>Algumas querem criar.</p>
+                <p>Outras simplesmente precisam descobrir que ainda existe um lugar onde podem pertencer.</p>
+                <br />
+                <p>O Universo Zero nasce a partir dessa ideia.</p>
+                <br />
+                <p>Não como uma solução mágica para os problemas humanos e nem como uma promessa de transformar alguém em outra pessoa.</p>
+                <br />
+                <p>Mas como uma tentativa de criar espaços onde pessoas possam encontrar pessoas.</p>
+                <br />
+                <p>Espaços diferentes para necessidades diferentes.</p>
+                <br />
+                <p>Alguns voltados para expressão. Outros para amizade. Alguns para reflexão emocional, aprendizado, espiritualidade, criatividade ou desenvolvimento de projetos.</p>
+                <br />
+                <p>Juntos, esses espaços formam uma rede.</p>
+                <br />
+                <p>Uma rede onde alguém pode chegar procurando apenas uma conversa e, com o tempo, descobrir uma amizade.</p>
+                <br />
+                <p>Pode entrar para compartilhar um desenho e acabar aprendendo uma nova habilidade.</p>
+                <br />
+                <p>Pode chegar sem direção e encontrar uma oportunidade de participar da construção de algo.</p>
+                <br />
+                <p>Pode sentir que não pertence a lugar nenhum e descobrir que existem outras pessoas que também estão tentando encontrar o seu lugar.</p>
+                <br />
+                <p>O Universo Zero não parte da ideia de que todas as pessoas precisam ser iguais.</p>
+                <br />
+                <p>Ele parte da ideia de que as diferenças também podem construir conexões.</p>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
