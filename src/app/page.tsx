@@ -844,7 +844,7 @@ export default function Home() {
       <div className="scanlines"></div>
       
       <div className="visual-anchor">
-        {!showMembers && (
+        {!showMembers && !showGeneralNews && (
           <>
             <div 
               className="center-point" 
@@ -1192,7 +1192,7 @@ export default function Home() {
               {/* Button to Global News (Telemetria) */}
               <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
                 <button 
-                  className="guide-page-btn btn-next"
+                  className="guide-page-btn btn-next btn-grey"
                   style={{ marginTop: 0, padding: '10px 20px', fontSize: '0.85rem' }}
                   onClick={() => {
                     setShowGeneralNews(false);
@@ -1979,7 +1979,7 @@ export default function Home() {
                           ))}
                         </select>
                         <button 
-                          className="guide-page-btn btn-next"
+                          className="guide-page-btn btn-next btn-grey"
                           style={{ marginTop: '10px', width: '100%' }}
                           onClick={() => {
                             if (joiningName.trim() && joiningRole.trim() && joiningType.trim()) {
@@ -2029,7 +2029,7 @@ export default function Home() {
 
                 {/* 4. Requests Center Button (now at the bottom) */}
                 <button 
-                  className="guide-page-btn" 
+                  className="guide-page-btn btn-grey" 
                   style={{ fontSize: '0.8rem', padding: '10px 20px', borderStyle: 'dashed', margin: '0 auto', display: 'block' }}
                   onClick={() => setShowPending(true)}
                   title="Abrir Central de Requisições"
