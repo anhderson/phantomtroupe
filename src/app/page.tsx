@@ -256,31 +256,16 @@ export default function Home() {
 
     // Create an offscreen canvas to load the image
     const revealImg = new window.Image();
-    revealImg.src = '/reveal-bg.jpg';
-
-    // We'll draw the reveal image onto an offscreen canvas once loaded to get pixel data or draw directly
     let imgLoaded = false;
+
+    // We'll draw the reveal image onto the canvas once loaded
     revealImg.onload = () => {
       imgLoaded = true;
       drawCanvas();
     };
+    revealImg.src = '/reveal-bg.jpg';
 
-    // Store points drawn by mouse (or directly to alpha mask)
-    // To make it look like a spray/reveal effect, we use globalCompositeOperation = 'destination-out'
-    // or we draw the image and mask it.
-    // Cleanest way:
-    // 1. Draw the reveal image covering the whole canvas.
-    // 2. Set globalCompositeOperation = 'destination-in' (only show where we draw) OR
-    // we draw the image on top of a transparent canvas, but we want it to be *hidden* by default and revealed.
-    // Actually, we can draw the background image onto the canvas, and use a mask.
-    // Even simpler:
-    // - Canvas starts transparent.
-    // - On mousemove, we draw on an offscreen mask canvas, or we draw directly to the canvas using a clip/brush.
-    // Let's keep a history of mouse movements or draw to a persistent black/opaque mask that gets cleared by the brush,
-    // then draw the image using globalCompositeOperation = 'source-in' (revealing it).
-    
-    // We create a persistent mask canvas that starts fully transparent (or black).
-    // Let's create an offscreen canvas for the mask
+    // We create a persistent mask canvas that starts fully transparent
     const maskCanvas = document.createElement('canvas');
     maskCanvas.width = width;
     maskCanvas.height = height;
@@ -297,31 +282,60 @@ export default function Home() {
 
     window.addEventListener('resize', handleResize);
 
+    // Keep track of the last mouse position to draw continuous paths
+    let lastX: number | null = null;
+    let lastY: number | null = null;
+
     // Mouse reveal logic
     const handleMouseMove = (e: MouseEvent) => {
       if (!maskCtx) return;
-      const x = e.clientX;
-      const y = e.clientY;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-      // Draw a radial gradient/circle on the mask to reveal the background
+      // Draw a soft spray/brush onto the mask canvas
       maskCtx.save();
-      const radius = 90; // Brush size
-      const gradient = maskCtx.createRadialGradient(x, y, 0, x, y, radius);
-      gradient.addColorStop(0, 'rgba(0, 0, 0, 1.0)');
-      gradient.addColorStop(0.5, 'rgba(0, 0, 0, 0.4)');
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      
+      // We set the brush size and soft blur
+      maskCtx.strokeStyle = 'rgba(0, 0, 0, 1)';
+      maskCtx.fillStyle = 'rgba(0, 0, 0, 1)';
+      maskCtx.lineWidth = 140; // Brush diameter
+      maskCtx.lineCap = 'round';
+      maskCtx.lineJoin = 'round';
+      
+      // Use shadow to create a soft spray-paint edge
+      maskCtx.shadowBlur = 45;
+      maskCtx.shadowColor = 'rgba(0, 0, 0, 1)';
 
-      maskCtx.fillStyle = gradient;
-      maskCtx.beginPath();
-      maskCtx.arc(x, y, radius, 0, Math.PI * 2);
-      maskCtx.fill();
+      if (lastX !== null && lastY !== null) {
+        // Draw line from last position to current position
+        maskCtx.beginPath();
+        maskCtx.moveTo(lastX, lastY);
+        maskCtx.lineTo(x, y);
+        maskCtx.stroke();
+      } else {
+        // Draw single dot if we just started
+        maskCtx.beginPath();
+        maskCtx.arc(x, y, 70, 0, Math.PI * 2);
+        maskCtx.fill();
+      }
+      
       maskCtx.restore();
+
+      lastX = x;
+      lastY = y;
 
       drawCanvas();
     };
 
-    // Throttle / Listen to mouse move on document
+    const handleMouseLeave = () => {
+      lastX = null;
+      lastY = null;
+    };
+
+    // Listen to mouse events on document
     document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
 
     const drawCanvas = () => {
       if (!ctx || !imgLoaded) return;
@@ -329,7 +343,7 @@ export default function Home() {
       // Clear main canvas
       ctx.clearRect(0, 0, width, height);
 
-      // Draw the mask first
+      // Draw reveal image
       ctx.save();
       
       // Calculate background cover dimensions
@@ -344,7 +358,6 @@ export default function Home() {
         dx = (width - dw) / 2;
       }
 
-      // Draw reveal image
       ctx.drawImage(revealImg, dx, dy, dw, dh);
 
       // Use globalCompositeOperation to only keep where the mask has been drawn
@@ -370,6 +383,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
       if (timer) clearTimeout(timer);
     };
   }, []);
