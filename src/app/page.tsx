@@ -1787,7 +1787,7 @@ export default function Home() {
                             padding: '12px 18px'
                           }}
                         >
-                          ENTRAR NO GRUPO {selectedApp?.subName ? selectedApp.subName.toUpperCase() : (selectedApp?.fullName || '').toUpperCase()} ▷
+                          {selectedApp?.subName ? selectedApp.subName.toUpperCase() : (selectedApp?.fullName || '').toUpperCase()} ▷
                         </a>
                       </div>
                     </div>
