@@ -1748,19 +1748,22 @@ export default function Home() {
                   
                   <div className="panel-body">
                     <div className="detail-section">
-                      <span className="section-label">STACK TECNOLÓGICA</span>
-                      <div className="tech-tags">
-                        {selectedApp?.tech.split(',').map((t, i) => (
-                          <motion.span
-                            key={i}
-                            className="tech-tag"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.15 + i * 0.07, duration: 0.25 }}
-                          >
-                            {t.trim()}
-                          </motion.span>
-                        ))}
+                      <span className="section-label">GRUPO PARA ACESSO</span>
+                      <div style={{ marginTop: '10px' }}>
+                        <a 
+                          href="https://wa.me/5543996172699" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="panel-action-btn"
+                          style={{ 
+                            display: 'block', 
+                            textAlign: 'center', 
+                            textDecoration: 'none',
+                            padding: '12px 18px'
+                          }}
+                        >
+                          ENTRAR NO GRUPO ▷
+                        </a>
                       </div>
                     </div>
 
