@@ -298,7 +298,7 @@ export default function Home() {
     // We'll draw the reveal image onto the canvas once loaded
     revealImg.onload = () => {
       imgLoaded = true;
-      drawCanvas();
+      needsRedraw = true;
     };
     revealImg.src = '/reveal-bg.jpg';
 
@@ -308,13 +308,55 @@ export default function Home() {
     maskCanvas.height = height;
     const maskCtx = maskCanvas.getContext('2d');
 
+    let needsRedraw = false;
+    let animFrameId: number;
+
+    const drawCanvas = () => {
+      if (!ctx || !imgLoaded) return;
+
+      // Clear main canvas
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw reveal image
+      ctx.save();
+      
+      // Calculate background cover dimensions
+      const imgRatio = revealImg.width / revealImg.height;
+      const canvasRatio = width / height;
+      let dx = 0, dy = 0, dw = width, dh = height;
+      if (canvasRatio > imgRatio) {
+        dh = width / imgRatio;
+        dy = (height - dh) / 2;
+      } else {
+        dw = height * imgRatio;
+        dx = (width - dw) / 2;
+      }
+
+      ctx.drawImage(revealImg, dx, dy, dw, dh);
+
+      // Use globalCompositeOperation to only keep where the mask has been drawn
+      ctx.globalCompositeOperation = 'destination-in';
+      ctx.drawImage(maskCanvas, 0, 0);
+
+      ctx.restore();
+    };
+
+    const tick = () => {
+      if (needsRedraw) {
+        drawCanvas();
+        needsRedraw = false;
+      }
+      animFrameId = requestAnimationFrame(tick);
+    };
+    animFrameId = requestAnimationFrame(tick);
+
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       maskCanvas.width = width;
       maskCanvas.height = height;
-      drawCanvas();
+      needsRedraw = true;
     };
 
     window.addEventListener('resize', handleResize);
@@ -362,7 +404,7 @@ export default function Home() {
       lastX = x;
       lastY = y;
 
-      drawCanvas();
+      needsRedraw = true;
     };
 
     const handleMouseLeave = () => {
@@ -373,36 +415,6 @@ export default function Home() {
     // Listen to mouse events on document
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
-
-    const drawCanvas = () => {
-      if (!ctx || !imgLoaded) return;
-
-      // Clear main canvas
-      ctx.clearRect(0, 0, width, height);
-
-      // Draw reveal image
-      ctx.save();
-      
-      // Calculate background cover dimensions
-      const imgRatio = revealImg.width / revealImg.height;
-      const canvasRatio = width / height;
-      let dx = 0, dy = 0, dw = width, dh = height;
-      if (canvasRatio > imgRatio) {
-        dh = width / imgRatio;
-        dy = (height - dh) / 2;
-      } else {
-        dw = height * imgRatio;
-        dx = (width - dw) / 2;
-      }
-
-      ctx.drawImage(revealImg, dx, dy, dw, dh);
-
-      // Use globalCompositeOperation to only keep where the mask has been drawn
-      ctx.globalCompositeOperation = 'destination-in';
-      ctx.drawImage(maskCanvas, 0, 0);
-
-      ctx.restore();
-    };
 
     const today = new Date().toLocaleDateString('pt-BR');
     const lastDailyVisit = localStorage.getItem('phantom_troupe_daily_visit');
@@ -421,6 +433,7 @@ export default function Home() {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      cancelAnimationFrame(animFrameId);
       if (timer) clearTimeout(timer);
     };
   }, []);
