@@ -1689,7 +1689,7 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#ff007f', textShadow: '0 0 15px rgba(255, 0, 127, 0.3)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: 'var(--primary)', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>
@@ -1704,7 +1704,7 @@ export default function Home() {
                     </div>
                   ) : (
                     <>
-                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: '#ff007f', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255, 101, 132, 0.2)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: 'var(--primary)', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255, 101, 132, 0.2)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
                         SEJA MEMBRO
                       </h3>
                       <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5', color: '#333333' }}>
@@ -1773,7 +1773,7 @@ export default function Home() {
 
                 {/* 3. Registered Members List (at the bottom) */}
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
-                  <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#ff007f', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px', textAlign: 'center' }}>
+                  <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: 'var(--primary)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px', textAlign: 'center' }}>
                     MEMBROS ATIVOS
                   </h3>
                   <div 
