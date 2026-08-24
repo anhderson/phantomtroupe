@@ -158,6 +158,31 @@ export default function Home() {
   const [rotation, setRotation] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [showWorldometer, setShowWorldometer] = useState(false);
+  const [showGeneralNews, setShowGeneralNews] = useState(false);
+  const [generalNewsList, setGeneralNewsList] = useState<{id: string, date: string, title: string, content: string}[]>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('phantom_general_news');
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+    return [
+      { id: '1', date: '24/08/2026', title: 'Boas-vindas ao Universo Zero', content: 'Início da nova jornada coletiva. Este espaço foi desenhado para conectar propósitos e criar de forma descentralizada.' },
+      { id: '2', date: '23/08/2026', title: 'Integração dos 12 Módulos', content: 'Todos os 12 botões e projetos da constelação foram vinculados com sucesso ao núcleo central.' }
+    ];
+  });
+  const [newNewsTitle, setNewNewsTitle] = useState("");
+  const [newNewsContent, setNewNewsContent] = useState("");
+  const [showAdminLoginInNews, setShowAdminLoginInNews] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('phantom_general_news', JSON.stringify(generalNewsList));
+  }, [generalNewsList]);
+
   const [isLocked, setIsLocked] = useState(false);
   const [isGlitching, setIsGlitching] = useState(false);
   const [showConstructionModal, setShowConstructionModal] = useState(false);
@@ -819,21 +844,22 @@ export default function Home() {
       <div className="scanlines"></div>
       
       <div className="visual-anchor">
+        {!showMembers && (
+          <>
+            <div 
+              className="center-point" 
+              onClick={() => setShowUniversoZero(true)} 
+              style={{ cursor: 'pointer' }}
+              title="Universo Zero"
+            >
+              <div className="impact-glow pink-impact"></div>
+            </div>
 
-          <div 
-            className="center-point" 
-            onClick={() => setShowUniversoZero(true)} 
-            style={{ cursor: 'pointer' }}
-            title="Universo Zero"
-          >
-            <div className="impact-glow pink-impact"></div>
-          </div>
-
-          {/* Rotating Spider Web Structure */}
-          <div 
-            className="orbit"
-            style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
-          >
+            {/* Rotating Spider Web Structure */}
+            <div 
+              className="orbit"
+              style={{ transform: `translate(-50%, -50%) rotate(${rotation}deg)` }}
+            >
             {/* Global Resonance Flash Overlay */}
             {isPTProcessing && (
               <motion.div 
@@ -959,7 +985,9 @@ export default function Home() {
               );
             })}
           </div>
-      </div>
+        </>
+      )}
+    </div>
 
       {/* Top Gateway Sphere */}
       <div className="top-gateway-container">
@@ -1063,12 +1091,12 @@ export default function Home() {
         className="planet-trigger"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => setShowWorldometer(!showWorldometer)}
+        onClick={() => setShowGeneralNews(!showGeneralNews)}
       >
         <div className="earth-sphere">
           <div className="earth-clouds"></div>
           
-          {/* Animated "Global News" Text Overlay - Persistent */}
+          {/* Animated "Notícias Gerais" Text Overlay - Persistent */}
           <motion.div 
             className="global-news-flicker-text"
             animate={{ 
@@ -1114,7 +1142,7 @@ export default function Home() {
               filter: isGlitching ? 'hue-rotate(15deg) contrast(1.5)' : 'none'
             }}
           >
-            GLOBAL{"\n"}NEWS
+            NOTÍCIAS{"\n"}GERAIS
           </motion.div>
         </div>
         
@@ -1133,6 +1161,208 @@ export default function Home() {
           ))}
         </div>
       </motion.div>
+
+      {/* General News Overlay (Notícias Gerais) */}
+      <AnimatePresence>
+        {showGeneralNews && (
+          <motion.div 
+            className="guide-overlay-container members-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => { setShowGeneralNews(false); setShowAdminLoginInNews(false); }}
+          >
+            <div 
+              className="guide-inner-wrap" 
+              style={{ padding: '40px', transform: 'translateY(-10vh)', position: 'relative', display: 'flex', flexDirection: 'column', gap: '20px' }}
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <div 
+                className="close-btn-membros" 
+                onClick={() => { setShowGeneralNews(false); setShowAdminLoginInNews(false); }}
+              >
+                ×
+              </div>
+
+              <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
+                <h2 className="guide-heading" style={{ color: 'var(--primary)', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 𝔾𝖊𝖗𝖆𝖎𝖘 △</h2>
+              </header>
+
+              {/* Button to Global News (Telemetria) */}
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
+                <button 
+                  className="guide-page-btn btn-next"
+                  style={{ marginTop: 0, padding: '10px 20px', fontSize: '0.85rem' }}
+                  onClick={() => {
+                    setShowGeneralNews(false);
+                    setShowWorldometer(true);
+                  }}
+                >
+                  ACESSAR TELEMETRIA GLOBAL / GLOBAL NEWS ▷
+                </button>
+              </div>
+
+              {/* News List */}
+              <div className="members-list" style={{ width: '100%', maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '5px' }}>
+                {generalNewsList.length === 0 ? (
+                  <p style={{ textAlign: 'center', color: '#666', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhuma notícia registrada ainda.</p>
+                ) : (
+                  [...generalNewsList].reverse().map((news) => (
+                    <div 
+                      key={news.id} 
+                      className="member-card"
+                      style={{ 
+                        padding: '15px', 
+                        background: 'rgba(255, 255, 255, 0.75)', 
+                        border: '1px solid rgba(255, 0, 127, 0.2)', 
+                        borderRadius: '6px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '6px'
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>{news.date}</span>
+                        {isAdminAuth && (
+                          <button 
+                            style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', padding: 0 }}
+                            onClick={() => {
+                              setGeneralNewsList(prev => prev.filter(item => item.id !== news.id));
+                            }}
+                          >
+                            [Excluir]
+                          </button>
+                        )}
+                      </div>
+                      <h3 style={{ margin: '0', fontSize: '1.1rem', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '1px' }}>{news.title}</h3>
+                      <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: '1.4', color: '#333333' }}>{news.content}</p>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              {/* Admin Area */}
+              <div style={{ borderTop: '1px solid rgba(255, 101, 132, 0.2)', paddingTop: '15px', marginTop: '10px' }}>
+                {!isAdminAuth ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    {!showAdminLoginInNews ? (
+                      <button 
+                        style={{ background: 'transparent', border: 'none', color: 'var(--primary)', cursor: 'pointer', fontSize: '0.8rem', letterSpacing: '1px', textDecoration: 'underline', fontWeight: 'bold' }}
+                        onClick={() => setShowAdminLoginInNews(true)}
+                      >
+                        + ADICIONAR NOTÍCIA (ACESSO RESTRITO)
+                      </button>
+                    ) : (
+                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
+                        <input 
+                          type="text" 
+                          placeholder="ADMIN ID" 
+                          value={adminUser}
+                          onChange={e => setAdminUser(e.target.value)}
+                          className="phantom-input center-text" 
+                          style={{ padding: '6px 10px', fontSize: '0.8rem', width: '120px' }}
+                        />
+                        <input 
+                          type="password" 
+                          placeholder="SENHA" 
+                          value={adminPass}
+                          onChange={e => setAdminPass(e.target.value)}
+                          className="phantom-input center-text" 
+                          style={{ padding: '6px 10px', fontSize: '0.8rem', width: '120px' }}
+                          onKeyDown={e => {
+                            if (e.key === 'Enter') {
+                              if (adminUser === "PhantomTroupeFraternidade" && adminPass === "0PTPhantomTroupeFraternidadePT0") {
+                                setIsAdminAuth(true);
+                                setAdminUser("");
+                                setAdminPass("");
+                                setShowAdminLoginInNews(false);
+                              } else {
+                                alert("Credenciais inválidas!");
+                              }
+                            }
+                          }}
+                        />
+                        <button 
+                          className="guide-page-btn"
+                          style={{ padding: '6px 12px', fontSize: '0.8rem', marginTop: 0 }}
+                          onClick={() => {
+                            if (adminUser === "PhantomTroupeFraternidade" && adminPass === "0PTPhantomTroupeFraternidadePT0") {
+                              setIsAdminAuth(true);
+                              setAdminUser("");
+                              setAdminPass("");
+                              setShowAdminLoginInNews(false);
+                            } else {
+                              alert("Credenciais inválidas!");
+                            }
+                          }}
+                        >
+                          ENTRAR
+                        </button>
+                        <button 
+                          style={{ background: 'transparent', border: 'none', color: '#666', cursor: 'pointer', fontSize: '0.8rem' }}
+                          onClick={() => setShowAdminLoginInNews(false)}
+                        >
+                          ×
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>ADICIONAR NOVA NOTÍCIA</span>
+                      <button 
+                        style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', textDecoration: 'underline' }}
+                        onClick={() => setIsAdminAuth(false)}
+                      >
+                        Sair do Painel
+                      </button>
+                    </div>
+                    <input 
+                      type="text" 
+                      placeholder="TÍTULO DA NOTÍCIA" 
+                      value={newNewsTitle}
+                      onChange={e => setNewNewsTitle(e.target.value)}
+                      className="phantom-input center-text" 
+                      style={{ padding: '8px', fontSize: '0.85rem' }}
+                    />
+                    <textarea 
+                      placeholder="CONTEÚDO DA NOTÍCIA (FORMATO LINEAR)..." 
+                      value={newNewsContent}
+                      onChange={e => setNewNewsContent(e.target.value)}
+                      className="phantom-input" 
+                      style={{ padding: '8px', fontSize: '0.85rem', minHeight: '60px', width: '100%', resize: 'vertical', fontFamily: 'inherit' }}
+                    />
+                    <button 
+                      className="guide-page-btn btn-next"
+                      style={{ padding: '8px 15px', marginTop: 0, width: '100%' }}
+                      onClick={() => {
+                        if (newNewsTitle.trim() && newNewsContent.trim()) {
+                          const newNews = {
+                            id: Date.now().toString(),
+                            date: new Date().toLocaleDateString('pt-BR'),
+                            title: newNewsTitle,
+                            content: newNewsContent
+                          };
+                          setGeneralNewsList(prev => [...prev, newNews]);
+                          setNewNewsTitle("");
+                          setNewNewsContent("");
+                        } else {
+                          alert("Preencha todos os campos!");
+                        }
+                      }}
+                    >
+                      PUBLICAR NOTÍCIA ▷
+                    </button>
+                  </div>
+                )}
+              </div>
+
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Worldometer Overlay */}
       <AnimatePresence>
