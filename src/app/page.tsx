@@ -242,19 +242,136 @@ export default function Home() {
   }, [isSlowMotion, targetSpeed, tickerSpeed]);
 
   // Initial Daily Boot Sequence
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    // Create an offscreen canvas to load the image
+    const revealImg = new window.Image();
+    revealImg.src = '/reveal-bg.jpg';
+
+    // We'll draw the reveal image onto an offscreen canvas once loaded to get pixel data or draw directly
+    let imgLoaded = false;
+    revealImg.onload = () => {
+      imgLoaded = true;
+      drawCanvas();
+    };
+
+    // Store points drawn by mouse (or directly to alpha mask)
+    // To make it look like a spray/reveal effect, we use globalCompositeOperation = 'destination-out'
+    // or we draw the image and mask it.
+    // Cleanest way:
+    // 1. Draw the reveal image covering the whole canvas.
+    // 2. Set globalCompositeOperation = 'destination-in' (only show where we draw) OR
+    // we draw the image on top of a transparent canvas, but we want it to be *hidden* by default and revealed.
+    // Actually, we can draw the background image onto the canvas, and use a mask.
+    // Even simpler:
+    // - Canvas starts transparent.
+    // - On mousemove, we draw on an offscreen mask canvas, or we draw directly to the canvas using a clip/brush.
+    // Let's keep a history of mouse movements or draw to a persistent black/opaque mask that gets cleared by the brush,
+    // then draw the image using globalCompositeOperation = 'source-in' (revealing it).
+    
+    // We create a persistent mask canvas that starts fully transparent (or black).
+    // Let's create an offscreen canvas for the mask
+    const maskCanvas = document.createElement('canvas');
+    maskCanvas.width = width;
+    maskCanvas.height = height;
+    const maskCtx = maskCanvas.getContext('2d');
+
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      maskCanvas.width = width;
+      maskCanvas.height = height;
+      drawCanvas();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Mouse reveal logic
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!maskCtx) return;
+      const x = e.clientX;
+      const y = e.clientY;
+
+      // Draw a radial gradient/circle on the mask to reveal the background
+      maskCtx.save();
+      const radius = 90; // Brush size
+      const gradient = maskCtx.createRadialGradient(x, y, 0, x, y, radius);
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 1.0)');
+      gradient.addColorStop(0.5, 'rgba(0, 0, 0, 0.4)');
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+      maskCtx.fillStyle = gradient;
+      maskCtx.beginPath();
+      maskCtx.arc(x, y, radius, 0, Math.PI * 2);
+      maskCtx.fill();
+      maskCtx.restore();
+
+      drawCanvas();
+    };
+
+    // Throttle / Listen to mouse move on document
+    document.addEventListener('mousemove', handleMouseMove);
+
+    const drawCanvas = () => {
+      if (!ctx || !imgLoaded) return;
+
+      // Clear main canvas
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw the mask first
+      ctx.save();
+      
+      // Calculate background cover dimensions
+      const imgRatio = revealImg.width / revealImg.height;
+      const canvasRatio = width / height;
+      let dx = 0, dy = 0, dw = width, dh = height;
+      if (canvasRatio > imgRatio) {
+        dh = width / imgRatio;
+        dy = (height - dh) / 2;
+      } else {
+        dw = height * imgRatio;
+        dx = (width - dw) / 2;
+      }
+
+      // Draw reveal image
+      ctx.drawImage(revealImg, dx, dy, dw, dh);
+
+      // Use globalCompositeOperation to only keep where the mask has been drawn
+      ctx.globalCompositeOperation = 'destination-in';
+      ctx.drawImage(maskCanvas, 0, 0);
+
+      ctx.restore();
+    };
+
     const today = new Date().toLocaleDateString('pt-BR');
     const lastDailyVisit = localStorage.getItem('phantom_troupe_daily_visit');
     
+    let timer: any = null;
     if (lastDailyVisit !== today) {
       localStorage.setItem('phantom_troupe_daily_visit', today);
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setShowHistory(false);
         setGuidePage(1);
         setShowGuide(true);
       }, 800); // Ritualistic pause before opening
-      return () => clearTimeout(timer);
     }
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('mousemove', handleMouseMove);
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   useAnimationFrame(() => {
@@ -645,6 +762,9 @@ export default function Home() {
       className={`black-hole-container ${isGlitching ? 'cyber-blackout-active' : ''} ${isSlowMotion ? 'slow-mo-active' : ''}`}
       onClick={handleBackgroundClick}
     >
+      {/* Background Canvas Reveal Layer */}
+      <canvas ref={canvasRef} className="reveal-canvas" />
+
       {/* Orbital HUD */}
       <div className={`survival-hud ${isSlowMotion ? 'hud-highlight' : ''}`}>
         <div className="news-ticker-container">
