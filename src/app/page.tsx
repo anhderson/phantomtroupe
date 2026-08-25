@@ -204,6 +204,17 @@ export default function Home() {
   const [joiningType, setJoiningType] = useState("");
   const [pendingRequests, setPendingRequests] = useState<{name: string, role: string, type: string}[]>([]);
   const [hasRequestedJoin, setHasRequestedJoin] = useState(false);
+  
+  // Donations State
+  const [showDonations, setShowDonations] = useState(false);
+  const [donorName, setDonorName] = useState("");
+  const [donorContact, setDonorContact] = useState("");
+  const [donationType, setDonationType] = useState("");
+  const [donationDetails, setDonationDetails] = useState("");
+  const [copiedPix, setCopiedPix] = useState(false);
+  const [pendingDonations, setPendingDonations] = useState<{name: string, contact: string, type: string, details: string}[]>([]);
+  const [hasRequestedDonation, setHasRequestedDonation] = useState(false);
+
   const [activeMembers, setActiveMembers] = useState<{name: string, role: string, type: string}[]>([
     { role: 'Fundador', name: 'Anderson Moitinho', type: 'Membro' },
     { role: 'Administrador', name: 'Chrystian Cesar', type: 'Membro' },
@@ -1035,6 +1046,80 @@ export default function Home() {
           <div className="counter-scanline"></div>
         </div>
       )}
+
+      {/* Ajudas e Doações Button (Top Left - Symmetrical to Seja Membro) */}
+      <motion.div 
+        className="donations-trigger members-trigger"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => setShowDonations(true)}
+      >
+        <div className="history-sphere">
+          <div className="history-pattern"></div>
+          
+          <motion.div 
+            className="seja-membro-flicker-text"
+            animate={{ 
+              opacity: isGlitching ? [1, 0, 1, 0.4, 1, 0.2, 1] : 1,
+              scale: isGlitching ? [1, 1.05, 0.95, 1.08, 1] : 1,
+              color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
+              textShadow: isGlitching 
+                ? [
+                    '0 0 10px #FF007F, 0 0 20px #FF007F',
+                    '0 0 10px #808080, 0 0 20px #808080',
+                    '0 0 10px #ffffff, 0 0 20px #ffffff'
+                  ]
+                : '0 0 10px #FF007F, 0 0 15px rgba(255, 0, 127, 0.3)'
+            }}
+            transition={{ 
+              duration: isGlitching ? 0.3 : 2,
+              repeat: isGlitching ? Infinity : Infinity,
+              repeatType: "reverse"
+            }}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              x: '-50%',
+              y: '-50%',
+              textAlign: 'center',
+              color: '#ffffff',
+              fontFamily: '"Orbitron", sans-serif',
+              fontSize: '0.58rem',
+              fontWeight: 900,
+              letterSpacing: '1px',
+              lineHeight: '1.2',
+              zIndex: 30,
+              pointerEvents: 'none',
+              whiteSpace: 'pre-line',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%',
+              padding: '10px',
+              boxSizing: 'border-box',
+              filter: isGlitching ? 'hue-rotate(15deg) contrast(1.5)' : 'none'
+            }}
+          >
+            AJUDAS{"\n"}& DOAÇÕES
+          </motion.div>
+        </div>
+        
+        <div className="history-scan-overlay">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div 
+              key={i} 
+              className="history-scan-line" 
+              style={{ 
+                top: `${(i + 1) * 7.5}%`,
+                animationDuration: `${0.3 + Math.random() * 0.7}s`,
+                animationDelay: `${Math.random() * 0.5}s`
+              }} 
+            />
+          ))}
+        </div>
+      </motion.div>
 
       <motion.div 
         className="history-trigger members-trigger"
@@ -1902,15 +1987,47 @@ export default function Home() {
               {/* Cute close button */}
               <div className="cute-close-btn" onClick={() => setShowGuide(false)}>×</div>
               
-              <div className="cute-emoji-header">🌸 ✨ 💖 ✨ 🌸</div>
+              <div className="cute-welcome-projects-grid">
+                {APPS.map((app) => (
+                  <img
+                    key={app.id}
+                    src={app.icon}
+                    alt={app.fullName}
+                    title={app.fullName}
+                    className="cute-welcome-project-icon"
+                  />
+                ))}
+              </div>
               
               <h2 className="cute-title">Bem-vindo(a) à Phantom Troupe!</h2>
               
               <div className="cute-text-content">
-                <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: '#ff3366', marginBottom: '15px' }}>Que bom ter você aqui. ❤️</p>
-                <p>Este é um espaço para criar, compartilhar, conversar e ajudar uns aos outros.</p>
-                <p>Você pode pedir ajuda ou oferecer aquilo que sabe fazer — através da arte, música, desenho, poesia, jogos ou simplesmente de uma boa conversa.</p>
-                <p style={{ marginTop: '15px', fontWeight: 'bold' }}>Chegue como você é. Aqui, toda pequena contribuição pode fazer diferença. ✨</p>
+                <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: '#ff3366', marginBottom: '15px' }}>Que bom ter você aqui! ❤️</p>
+                <p style={{ marginBottom: '15px' }}>Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:</p>
+                
+                <div style={{ textAlign: 'left', marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '15px', padding: '0 10px' }}>
+                  <div>
+                    <h4 style={{ color: '#ff3366', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>🤝 1. Acolhimento e Comunidade</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4' }}>Um espaço seguro para quem se sente fora dos círculos tradicionais, permitindo criar vínculos reais e encontrar apoio mútuo.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 style={{ color: '#ff3366', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>🎨 2. Expressão e Arte</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4' }}>Compartilhe sua arte, música, desenho, poesia ou crônicas. O processo criativo aqui é livre de julgamentos e competições.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 style={{ color: '#ff3366', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>💬 3. Conexão Espontânea</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4' }}>Conecte-se de forma leve, seja em conversas tranquilas, ouvindo músicas juntos, jogando ou apenas dividindo momentos simples.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 style={{ color: '#ff3366', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>🚀 4. Missões e Impacto Real</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4' }}>Participe da construção do próprio ecossistema através de tarefas de desenvolvimento, design, moderação ou projetos sociais no mundo físico.</p>
+                  </div>
+                </div>
+
+                <p style={{ marginTop: '20px', fontWeight: 'bold', color: '#5d4037' }}>Chegue como você é. Cada pequena contribuição e cada história importam! ✨</p>
               </div>
 
               <button 
@@ -2070,6 +2187,144 @@ export default function Home() {
               <footer className="guide-footer-branding" style={{ marginTop: '20px', transform: 'translateY(-2vh)' }}>
                 <h2 className="guide-heading" style={{ color: '#ff007f', textShadow: '0 0 15px rgba(255, 0, 127, 0.3)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
               </footer>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Ajudas e Doações Overlay */}
+      <AnimatePresence>
+        {showDonations && (
+          <motion.div 
+            className="guide-overlay-container members-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => { setShowDonations(false); setHasRequestedDonation(false); }}
+          >
+            <div 
+              className="guide-inner-wrap" 
+              style={{ padding: '40px', transform: 'translateY(-10vh)', position: 'relative' }}
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <div 
+                className="close-btn-membros" 
+                style={{ position: 'absolute', top: '20px', right: '25px', fontSize: '2rem', color: '#ff6584', cursor: 'pointer' }}
+                onClick={() => { setShowDonations(false); setHasRequestedDonation(false); }}
+              >
+                ×
+              </div>
+
+              <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
+                <h2 className="guide-heading" style={{ color: 'var(--primary)', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝔸𝖏𝖚𝖉𝖆𝖘 𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 △</h2>
+              </header>
+
+              <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '20px', transform: 'translateY(-2vh)' }}>
+                
+                {/* Info Text about Donations */}
+                <p style={{ margin: '0 0 10px 0', fontSize: '0.9rem', lineHeight: '1.5', color: '#333333', textAlign: 'center' }}>
+                  A Phantom Troupe é mantida por colaboração mútua. Você pode nos ajudar com equipamentos para oficinas, ferramentas de desenvolvimento ou apoio financeiro direto.
+                </p>
+
+                {hasRequestedDonation ? (
+                  <div className="join-success-msg" style={{ padding: '25px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #ff6584', borderRadius: '4px' }}>
+                    <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#ff007f', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
+                    <p style={{ margin: 0, fontSize: '0.85rem', color: '#333333', lineHeight: '1.4' }}>
+                      Sua proposta de ajuda/doação foi enviada com sucesso! Entraremos em contato em breve para alinhar os detalhes. Agradecemos muito pelo apoio! ❤️
+                    </p>
+                    <button 
+                      className="guide-page-btn btn-grey" 
+                      style={{ marginTop: '15px', padding: '8px 20px', fontSize: '0.8rem' }}
+                      onClick={() => setHasRequestedDonation(false)}
+                    >
+                      REALIZAR OUTRA DOAÇÃO
+                    </button>
+                  </div>
+                ) : (
+                  <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(255, 101, 132, 0.3)', borderRadius: '6px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                    <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: 'var(--primary)', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255, 101, 132, 0.2)', paddingBottom: '10px', marginBottom: '10px', textAlign: 'center' }}>
+                      REGISTRAR DOAÇÃO
+                    </h3>
+                    
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center', width: '100%' }}>
+                      <input 
+                        type="text" 
+                        placeholder="SEU NOME" 
+                        value={donorName}
+                        onChange={e => setDonorName(e.target.value)}
+                        className="phantom-input center-text" 
+                      />
+                      
+                      <input 
+                        type="text" 
+                        placeholder="CONTATO (WHATSAPP OU E-MAIL)" 
+                        value={donorContact}
+                        onChange={e => setDonorContact(e.target.value)}
+                        className="phantom-input center-text" 
+                      />
+
+                      <select 
+                        className="phantom-input center-text phantom-select" 
+                        value={donationType} 
+                        onChange={e => setDonationType(e.target.value)}
+                      >
+                        <option value="" disabled>TIPO DE AJUDA / DOAÇÃO</option>
+                        <option value="Apoio Financeiro (PIX)">Apoio Financeiro (PIX)</option>
+                        <option value="Objetos (Livros, Roupas, etc.)">Objetos (Livros, Roupas, etc.)</option>
+                        <option value="Equipamentos (Computadores, etc.)">Equipamentos (Computadores, etc.)</option>
+                        <option value="Ferramentas (Trabalho, etc.)">Ferramentas (Trabalho, etc.)</option>
+                        <option value="Instrumentos (Música, Som, etc.)">Instrumentos (Música, Som, etc.)</option>
+                      </select>
+
+                      {donationType === "Apoio Financeiro (PIX)" && (
+                        <div className="pix-donation-box" style={{ background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #ff6584', borderRadius: '4px', padding: '15px', textAlign: 'center', width: '100%', boxSizing: 'border-box' }}>
+                          <p style={{ fontSize: '0.85rem', color: '#555', marginBottom: '10px', lineHeight: '1.4' }}>
+                            Você pode fazer uma transferência de qualquer valor usando nossa chave PIX abaixo:
+                          </p>
+                          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', alignItems: 'center', background: 'rgba(255,255,255,0.9)', padding: '8px 12px', borderRadius: '4px', border: '1px solid rgba(255,101,132,0.3)', width: '100%', boxSizing: 'border-box' }}>
+                            <code style={{ fontSize: '0.9rem', color: '#ff3366', fontFamily: 'monospace', fontWeight: 'bold', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '70%' }}>pix@phantomtroupe.org</code>
+                            <button 
+                              onClick={() => {
+                                navigator.clipboard.writeText('pix@phantomtroupe.org');
+                                setCopiedPix(true);
+                                setTimeout(() => setCopiedPix(false), 2000);
+                              }}
+                              style={{ background: '#ff6584', border: 'none', color: '#fff', padding: '6px 12px', borderRadius: '4px', fontSize: '0.75rem', cursor: 'pointer', fontFamily: 'Orbitron, sans-serif', fontWeight: 'bold' }}
+                            >
+                              {copiedPix ? "COPIADO!" : "COPIAR"}
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
+                      <textarea 
+                        placeholder="DETALHES DA DOAÇÃO (O que deseja doar, marca, estado de conservação, observações adicionais...)" 
+                        value={donationDetails}
+                        onChange={e => setDonationDetails(e.target.value)}
+                        className="phantom-input center-text" 
+                        style={{ height: '80px', padding: '10px', fontFamily: 'inherit', resize: 'none', textAlign: 'center' }}
+                      />
+
+                      <button 
+                        className="guide-page-btn btn-next btn-grey"
+                        style={{ marginTop: '10px', width: '100%' }}
+                        onClick={() => {
+                          if (donorName.trim() && donorContact.trim() && donationType.trim()) {
+                            setPendingDonations(prev => [...prev, { name: donorName, contact: donorContact, type: donationType, details: donationDetails }]);
+                            setDonorName("");
+                            setDonorContact("");
+                            setDonationDetails("");
+                            setHasRequestedDonation(true);
+                          }
+                        }}
+                      >
+                        REGISTRAR DOAÇÃO ▷
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </motion.div>
         )}
@@ -2255,35 +2510,77 @@ export default function Home() {
                     {authError && <span style={{ color: '#FF007F', fontSize: '0.8rem', letterSpacing: '1px' }}>CREDENCIAS INVÁLIDAS</span>}
                   </div>
                 ) : (
-                  <>
-                    {pendingRequests.length === 0 ? (
-                      <p style={{ color: '#a0a0a0', letterSpacing: '2px' }}>NENHUMA SOLICITAÇÃO ENCONTRADA</p>
-                    ) : (
-                      <div className="members-list" style={{ width: '100%', maxWidth: '500px' }}>
-                        {pendingRequests.map((req, i) => (
-                          <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '15px', marginBottom: '10px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <div>
-                              <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '5px' }}>
-                                <p style={{ color: '#FF007F', margin: '0', textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '2px' }}>{req.role}</p>
-                                <span style={{ fontSize: '0.7rem', color: '#FF007F', border: '1px solid #FF007F', padding: '2px 6px', borderRadius: '4px' }}>{req.type}</span>
+                  <div style={{ width: '100%', maxWidth: '600px', display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                    {/* Seção Membros */}
+                    <div style={{ width: '100%' }}>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#FF007F', letterSpacing: '2px', borderBottom: '1px solid rgba(255, 0, 127, 0.2)', paddingBottom: '8px', marginBottom: '15px', textAlign: 'center' }}>
+                        MEMBROS PENDENTES
+                      </h3>
+                      {pendingRequests.length === 0 ? (
+                        <p style={{ color: '#a0a0a0', letterSpacing: '2px', fontSize: '0.9rem', textAlign: 'center' }}>NENHUMA SOLICITAÇÃO DE MEMBRO</p>
+                      ) : (
+                        <div className="members-list" style={{ width: '100%', maxHeight: '200px', overflowY: 'auto' }}>
+                          {pendingRequests.map((req, i) => (
+                            <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <div>
+                                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '3px' }}>
+                                  <p style={{ color: '#FF007F', margin: '0', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '2px' }}>{req.role}</p>
+                                  <span style={{ fontSize: '0.65rem', color: '#FF007F', border: '1px solid #FF007F', padding: '1px 4px', borderRadius: '4px' }}>{req.type}</span>
+                                </div>
+                                <h3 style={{ margin: 0, fontSize: '1.15rem' }}>{req.name}</h3>
                               </div>
-                              <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{req.name}</h3>
+                              <button 
+                                className="silver-btn" 
+                                style={{ padding: '6px 15px', fontSize: '0.75rem' }}
+                                onClick={() => {
+                                  setActiveMembers(prev => [...prev, req]);
+                                  setPendingRequests(prev => prev.filter((_, idx) => idx !== i));
+                                }}
+                              >
+                                ACEITAR
+                              </button>
                             </div>
-                            <button 
-                              className="silver-btn" 
-                              style={{ padding: '8px 20px', fontSize: '0.8rem' }}
-                              onClick={() => {
-                                setActiveMembers(prev => [...prev, req]);
-                                setPendingRequests(prev => prev.filter((_, idx) => idx !== i));
-                              }}
-                            >
-                              ACEITAR
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Seção Doações */}
+                    <div style={{ width: '100%' }}>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#FF007F', letterSpacing: '2px', borderBottom: '1px solid rgba(255, 0, 127, 0.2)', paddingBottom: '8px', marginBottom: '15px', textAlign: 'center' }}>
+                        DOAÇÕES REGISTRADAS
+                      </h3>
+                      {pendingDonations.length === 0 ? (
+                        <p style={{ color: '#a0a0a0', letterSpacing: '2px', fontSize: '0.9rem', textAlign: 'center' }}>NENHUMA DOAÇÃO REGISTRADA</p>
+                      ) : (
+                        <div className="members-list" style={{ width: '100%', maxHeight: '200px', overflowY: 'auto' }}>
+                          {pendingDonations.map((don, i) => (
+                            <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)', display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'stretch' }}>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div>
+                                  <span style={{ fontSize: '0.65rem', color: '#FF007F', border: '1px solid #FF007F', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>{don.type}</span>
+                                  <h3 style={{ margin: '5px 0 0 0', fontSize: '1.15rem' }}>{don.name}</h3>
+                                </div>
+                                <button 
+                                  className="silver-btn" 
+                                  style={{ padding: '6px 15px', fontSize: '0.75rem', alignSelf: 'center' }}
+                                  onClick={() => {
+                                    setPendingDonations(prev => prev.filter((_, idx) => idx !== i));
+                                  }}
+                                >
+                                  CONCLUIR
+                                </button>
+                              </div>
+                              <div style={{ fontSize: '0.8rem', color: '#555', borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '6px' }}>
+                                <p style={{ margin: '0 0 3px 0' }}><strong>Contato:</strong> {don.contact}</p>
+                                {don.details && <p style={{ margin: 0 }}><strong>Detalhes:</strong> {don.details}</p>}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 )}
               </div>
             </div>

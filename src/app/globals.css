@@ -655,10 +655,23 @@ body::before {
   justify-content: center;
 }
 
-/* History Trigger - Left Side */
 .history-trigger {
   position: fixed;
   bottom: 110px;
+  left: 40px;
+  width: 115px;
+  height: 115px;
+  cursor: pointer;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Donations Trigger - Top Left (Symmetrical to Seja Membro) */
+.donations-trigger {
+  position: fixed;
+  top: 110px;
   left: 40px;
   width: 115px;
   height: 115px;
@@ -3221,7 +3234,7 @@ body::before {
   box-shadow: 0 0 35px rgba(255, 105, 180, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.6);
   border-radius: 20px;
   padding: 40px 30px;
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
   text-align: center;
   position: relative;
@@ -3248,6 +3261,32 @@ body::before {
   font-size: 1.5rem;
   margin-bottom: 15px;
   animation: cute-bounce 2s infinite ease-in-out;
+}
+
+/* Cute Welcome Icons Grid */
+.cute-welcome-projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.cute-welcome-project-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #ff85a2;
+  background: white;
+  object-fit: cover;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.cute-welcome-project-icon:hover {
+  transform: scale(1.2) rotate(5deg);
+  border-color: #ff3366;
+  box-shadow: 0 0 8px rgba(255, 51, 102, 0.4);
 }
 
 @keyframes cute-bounce {
