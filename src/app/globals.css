@@ -691,6 +691,22 @@ body::before {
   backdrop-filter: none !important;
 }
 
+.donations-trigger:hover .donation-heart-shape svg {
+  animation: heartPulse 0.8s infinite alternate ease-in-out;
+  transform-origin: center center;
+}
+
+@keyframes heartPulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.6));
+  }
+  100% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 20px rgba(255, 0, 127, 1)) brightness(1.2);
+  }
+}
+
 .history-sphere {
   width: 70px;
   height: 70px;
