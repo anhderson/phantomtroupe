@@ -682,6 +682,15 @@ body::before {
   justify-content: center;
 }
 
+.donation-heart-shape {
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  backdrop-filter: none !important;
+}
+
 .history-sphere {
   width: 70px;
   height: 70px;

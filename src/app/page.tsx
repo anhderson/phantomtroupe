@@ -1050,12 +1050,26 @@ export default function Home() {
       {/* Ajudas e Doações Button (Top Left - Symmetrical to Seja Membro) */}
       <motion.div 
         className="donations-trigger members-trigger"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={selectedApp ? {} : { scale: 1.1 }}
+        whileTap={selectedApp ? {} : { scale: 0.9 }}
+        animate={{ 
+          opacity: selectedApp ? 0 : 1,
+          pointerEvents: selectedApp ? 'none' : 'auto'
+        }}
+        transition={{ duration: 0.3 }}
         onClick={() => setShowDonations(true)}
       >
-        <div className="history-sphere">
-          <div className="history-pattern"></div>
+        <div className="history-sphere donation-heart-shape" style={{ width: '75px', height: '75px', position: 'relative' }}>
+          <svg viewBox="0 0 32 32" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'drop-shadow(0 0 10px rgba(255, 0, 127, 0.6))', zIndex: 1 }}>
+            <path 
+              d="M16 28.2C16 28.2 3 20.2 3 11.2C3 6.2 7 3 12 3C14.8 3 16 5.5 16 5.5C16 5.5 17.2 3 20 3C25 3 29 6.2 29 11.2C29 20.2 16 28.2 16 28.2Z" 
+              fill="rgba(255, 0, 127, 0.2)" 
+              stroke="#FF007F" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          </svg>
           
           <motion.div 
             className="seja-membro-flicker-text"
@@ -1078,14 +1092,14 @@ export default function Home() {
             }}
             style={{
               position: 'absolute',
-              top: '50%',
+              top: '43%',
               left: '50%',
               x: '-50%',
               y: '-50%',
               textAlign: 'center',
               color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
-              fontSize: '0.58rem',
+              fontSize: '0.54rem',
               fontWeight: 900,
               letterSpacing: '1px',
               lineHeight: '1.2',
@@ -1097,7 +1111,7 @@ export default function Home() {
               justifyContent: 'center',
               width: '100%',
               height: '100%',
-              padding: '10px',
+              padding: '12px',
               boxSizing: 'border-box',
               filter: isGlitching ? 'hue-rotate(15deg) contrast(1.5)' : 'none'
             }}
@@ -1106,7 +1120,7 @@ export default function Home() {
           </motion.div>
         </div>
         
-        <div className="history-scan-overlay">
+        <div className="history-scan-overlay" style={{ clipPath: "path('M37.5,66 C37.5,66 7.5,47.3 7.5,26.2 C7.5,14.5 17.5,7 30,7 C37.5,7 37.5,12.8 37.5,12.8 C37.5,12.8 37.5,7 45,7 C57.5,7 67.5,14.5 67.5,26.2 C67.5,47.3 37.5,66 37.5,66 Z')" }}>
           {Array.from({ length: 12 }).map((_, i) => (
             <div 
               key={i} 
@@ -1121,10 +1135,16 @@ export default function Home() {
         </div>
       </motion.div>
 
+      {/* Seja Membro Button */}
       <motion.div 
         className="history-trigger members-trigger"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={selectedApp ? {} : { scale: 1.1 }}
+        whileTap={selectedApp ? {} : { scale: 0.9 }}
+        animate={{ 
+          opacity: selectedApp ? 0 : 1,
+          pointerEvents: selectedApp ? 'none' : 'auto'
+        }}
+        transition={{ duration: 0.3 }}
         onClick={() => setShowMembers(true)}
       >
         <div className="history-sphere">
@@ -1199,8 +1219,13 @@ export default function Home() {
       {/* Worldometer Button (Planet Earth) */}
       <motion.div 
         className="planet-trigger"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={selectedApp ? {} : { scale: 1.1 }}
+        whileTap={selectedApp ? {} : { scale: 0.9 }}
+        animate={{ 
+          opacity: selectedApp ? 0 : 1,
+          pointerEvents: selectedApp ? 'none' : 'auto'
+        }}
+        transition={{ duration: 0.3 }}
         onClick={() => setShowGeneralNews(!showGeneralNews)}
       >
         <div className="earth-sphere">
