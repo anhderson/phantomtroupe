@@ -646,8 +646,8 @@ body::before {
   position: fixed;
   bottom: 110px;
   right: 40px;
-  width: 115px;
-  height: 115px;
+  width: 132px;
+  height: 132px;
   cursor: pointer;
   z-index: 10000;
   display: flex;
@@ -659,8 +659,8 @@ body::before {
   position: fixed;
   bottom: 110px;
   left: 40px;
-  width: 115px;
-  height: 115px;
+  width: 132px;
+  height: 132px;
   cursor: pointer;
   z-index: 10000;
   display: flex;
@@ -708,8 +708,8 @@ body::before {
 }
 
 .history-sphere {
-  width: 70px;
-  height: 70px;
+  width: 81px;
+  height: 81px;
   background: rgba(255, 0, 127, 0.05); /* Tinted Glass */
   backdrop-filter: blur(5px);
   border-radius: 50%;
@@ -799,8 +799,8 @@ body::before {
 }
 
 .earth-sphere {
-  width: 70px;
-  height: 70px;
+  width: 81px;
+  height: 81px;
   background: rgba(255, 255, 255, 0.05); /* Transparent Glass */
   backdrop-filter: blur(5px);
   border-radius: 50%;

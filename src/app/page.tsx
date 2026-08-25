@@ -1361,7 +1361,7 @@ export default function Home() {
               textAlign: 'center',
               color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
-              fontSize: '0.62rem',
+              fontSize: '0.71rem',
               fontWeight: 900,
               letterSpacing: '1px',
               lineHeight: '1.2',
@@ -1442,7 +1442,7 @@ export default function Home() {
               textAlign: 'center',
               color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
-              fontSize: '0.62rem',
+              fontSize: '0.71rem',
               fontWeight: 900,
               letterSpacing: '1px',
               lineHeight: '1.2',
@@ -2717,7 +2717,7 @@ export default function Home() {
                       {/* Botão de Adicionar Imagem do Projeto */}
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '6px', marginBottom: '10px' }}>
                         <label 
-                          className="guide-page-btn btn-grey" 
+                          className="guide-page-btn btn-next btn-grey" 
                           style={{ cursor: 'pointer', fontSize: '0.8rem', padding: '8px 15px', display: 'flex', alignItems: 'center', gap: '8px', borderStyle: 'dashed', marginTop: 0 }}
                         >
                           ADICIONAR IMAGEM DO PROJETO
