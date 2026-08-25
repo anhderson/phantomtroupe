@@ -212,8 +212,49 @@ export default function Home() {
   const [donationType, setDonationType] = useState("");
   const [donationDetails, setDonationDetails] = useState("");
   const [copiedPix, setCopiedPix] = useState(false);
-  const [pendingDonations, setPendingDonations] = useState<{name: string, contact: string, type: string, details: string}[]>([]);
+  const [pendingDonations, setPendingDonations] = useState<{name: string, contact: string, type: string, details: string}[]>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('phantom_pending_donations');
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+    return [];
+  });
   const [hasRequestedDonation, setHasRequestedDonation] = useState(false);
+
+  // Public Donations Mural List
+  const [donationsList, setDonationsList] = useState<{id: string, date: string, name: string, contact: string, type: string, details: string}[]>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('phantom_donations');
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+    return [
+      { id: '1', date: '22/08/2026', name: 'Aline Souza', contact: 'aline@gmail.com', type: 'Instrumentos (Música, Som, etc.)', details: 'Teclado musical Yamaha 5 oitavas em bom estado.' },
+      { id: '2', date: '20/08/2026', name: 'Carlos Mendes', contact: 'carlos@gmail.com', type: 'Equipamentos (Computadores, etc.)', details: '2 Computadores Desktop para a sala de informática.' },
+      { id: '3', date: '18/08/2026', name: 'Mariana Costa', contact: 'mariana@gmail.com', type: 'Apoio Financeiro (PIX)', details: 'Contribuição mensal para apoiar as oficinas de arte.' }
+    ];
+  });
+
+  const [newsTab, setNewsTab] = useState<'select' | 'news' | 'records'>('select');
+
+  useEffect(() => {
+    localStorage.setItem('phantom_pending_donations', JSON.stringify(pendingDonations));
+  }, [pendingDonations]);
+
+  useEffect(() => {
+    localStorage.setItem('phantom_donations', JSON.stringify(donationsList));
+  }, [donationsList]);
 
   const [activeMembers, setActiveMembers] = useState<{name: string, role: string, type: string}[]>([
     { role: 'Fundador', name: 'Anderson Moitinho', type: 'Membro' },
@@ -1068,7 +1109,7 @@ export default function Home() {
         transition={{ duration: 0.3 }}
         onClick={() => setShowDonations(true)}
       >
-        <div className="history-sphere donation-heart-shape" style={{ width: '85px', height: '85px', position: 'relative' }}>
+        <div className="history-sphere donation-heart-shape" style={{ width: '95px', height: '95px', position: 'relative' }}>
           <svg viewBox="0 0 1 1" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'drop-shadow(0 0 10px rgba(255, 0, 127, 0.6))', zIndex: 1 }}>
             <path 
               d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" 
@@ -1108,7 +1149,7 @@ export default function Home() {
               textAlign: 'center',
               color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
-              fontSize: '0.58rem',
+              fontSize: '0.62rem',
               fontWeight: 900,
               letterSpacing: '1px',
               lineHeight: '1.2',
@@ -1235,7 +1276,7 @@ export default function Home() {
           pointerEvents: selectedApp ? 'none' : 'auto'
         }}
         transition={{ duration: 0.3 }}
-        onClick={() => setShowGeneralNews(!showGeneralNews)}
+        onClick={() => { setShowGeneralNews(!showGeneralNews); setNewsTab('select'); }}
       >
         <div className="earth-sphere">
           <div className="earth-clouds"></div>
@@ -1286,7 +1327,7 @@ export default function Home() {
               filter: isGlitching ? 'hue-rotate(15deg) contrast(1.5)' : 'none'
             }}
           >
-            NOTÍCIAS{"\n"}GERAIS
+            NOTÍCIAS{"\n"}& REGISTROS
           </motion.div>
         </div>
         
@@ -1330,178 +1371,283 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: 'var(--primary)', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 𝔾𝖊𝖗𝖆𝖎𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: 'var(--primary)', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>
+                  {newsTab === 'select' && "▽ ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 & ℝ𝖊𝖌𝖎𝖘𝖙𝖗𝖔𝖘 △"}
+                  {newsTab === 'news' && "▽ Últimas Notícias △"}
+                  {newsTab === 'records' && "▽ Mural de Doações & Ajudas △"}
+                </h2>
               </header>
 
-              {/* Button to Global News (Telemetria) */}
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
-                <button 
-                  className="guide-page-btn btn-next btn-grey"
-                  style={{ marginTop: 0, padding: '10px 20px', fontSize: '0.85rem' }}
-                  onClick={() => {
-                    setShowGeneralNews(false);
-                    setShowWorldometer(true);
-                  }}
-                >
-                  ACESSAR TELEMETRIA GLOBAL / GLOBAL NEWS ▷
-                </button>
-              </div>
-
-              {/* News List */}
-              <div className="members-list" style={{ width: '100%', maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '5px' }}>
-                {generalNewsList.length === 0 ? (
-                  <p style={{ textAlign: 'center', color: '#666', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhuma notícia registrada ainda.</p>
-                ) : (
-                  [...generalNewsList].reverse().map((news) => (
-                    <div 
-                      key={news.id} 
-                      className="member-card"
-                      style={{ 
-                        padding: '15px', 
-                        background: 'rgba(255, 255, 255, 0.75)', 
-                        border: '1px solid rgba(255, 0, 127, 0.2)', 
-                        borderRadius: '6px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '6px'
+              {/* Aba 1: Seletor de Painéis */}
+              {newsTab === 'select' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', width: '100%', padding: '10px 0' }}>
+                  <p style={{ color: '#333333', fontSize: '0.9rem', lineHeight: '1.5', textAlign: 'center', marginBottom: '10px', maxWidth: '450px' }}>
+                    Selecione o painel que deseja visualizar no terminal da fraternidade:
+                  </p>
+                  <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '500px', justifyContent: 'center' }}>
+                    <button 
+                      className="guide-page-btn" 
+                      style={{ flex: 1, padding: '20px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', height: 'auto', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(255, 0, 127, 0.3)', borderRadius: '6px' }}
+                      onClick={() => setNewsTab('news')}
+                    >
+                      <span style={{ fontSize: '2rem' }}>📰</span>
+                      NOTÍCIAS
+                    </button>
+                    <button 
+                      className="guide-page-btn" 
+                      style={{ flex: 1, padding: '20px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', height: 'auto', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(255, 0, 127, 0.3)', borderRadius: '6px' }}
+                      onClick={() => setNewsTab('records')}
+                    >
+                      <span style={{ fontSize: '2rem' }}>💖</span>
+                      REGISTROS (MURAL)
+                    </button>
+                  </div>
+                  {/* Button to Global News (Telemetria) */}
+                  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
+                    <button 
+                      className="guide-page-btn btn-next btn-grey"
+                      style={{ marginTop: 0, padding: '8px 15px', fontSize: '0.75rem' }}
+                      onClick={() => {
+                        setShowGeneralNews(false);
+                        setShowWorldometer(true);
                       }}
                     >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>{news.date}</span>
-                        {isAdminAuth && (
+                      ACESSAR TELEMETRIA GLOBAL / GLOBAL NEWS ▷
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Aba 2: Lista de Notícias */}
+              {newsTab === 'news' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%' }}>
+                  <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
+                    <button 
+                      className="silver-btn" 
+                      style={{ padding: '6px 15px', fontSize: '0.75rem', letterSpacing: '1px' }}
+                      onClick={() => setNewsTab('select')}
+                    >
+                      ◀ VOLTAR AO MENU
+                    </button>
+                  </div>
+
+                  <div className="members-list" style={{ width: '100%', maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '5px' }}>
+                    {generalNewsList.length === 0 ? (
+                      <p style={{ textAlign: 'center', color: '#666', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhuma notícia registrada ainda.</p>
+                    ) : (
+                      [...generalNewsList].reverse().map((news) => (
+                        <div 
+                          key={news.id} 
+                          className="member-card"
+                          style={{ 
+                            padding: '15px', 
+                            background: 'rgba(255, 255, 255, 0.75)', 
+                            border: '1px solid rgba(255, 0, 127, 0.2)', 
+                            borderRadius: '6px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '6px'
+                          }}
+                        >
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>{news.date}</span>
+                            {isAdminAuth && (
+                              <button 
+                                style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', padding: 0 }}
+                                onClick={() => {
+                                  setGeneralNewsList(prev => prev.filter(item => item.id !== news.id));
+                                }}
+                              >
+                                [Excluir]
+                              </button>
+                            )}
+                          </div>
+                          <h3 style={{ margin: '0', fontSize: '1.1rem', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '1px' }}>{news.title}</h3>
+                          <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: '1.4', color: '#333333' }}>{news.content}</p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+
+                  {/* Admin Area */}
+                  <div style={{ borderTop: '1px solid rgba(255, 101, 132, 0.2)', paddingTop: '15px', marginTop: '5px' }}>
+                    {!isAdminAuth ? (
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        {!showAdminLoginInNews ? (
                           <button 
-                            style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', padding: 0 }}
-                            onClick={() => {
-                              setGeneralNewsList(prev => prev.filter(item => item.id !== news.id));
-                            }}
+                            style={{ background: 'transparent', border: 'none', color: 'var(--primary)', cursor: 'pointer', fontSize: '0.8rem', letterSpacing: '1px', textDecoration: 'underline', fontWeight: 'bold' }}
+                            onClick={() => setShowAdminLoginInNews(true)}
                           >
-                            [Excluir]
+                            + ADICIONAR NOTÍCIA (ACESSO RESTRITO)
                           </button>
+                        ) : (
+                          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
+                            <input 
+                              type="text" 
+                              placeholder="ADMIN ID" 
+                              value={adminUser}
+                              onChange={e => setAdminUser(e.target.value)}
+                              className="phantom-input center-text" 
+                              style={{ padding: '6px 10px', fontSize: '0.8rem', width: '120px' }}
+                            />
+                            <input 
+                              type="password" 
+                              placeholder="SENHA" 
+                              value={adminPass}
+                              onChange={e => setAdminPass(e.target.value)}
+                              className="phantom-input center-text" 
+                              style={{ padding: '6px 10px', fontSize: '0.8rem', width: '120px' }}
+                              onKeyDown={e => {
+                                if (e.key === 'Enter') {
+                                  if (adminUser === "PhantomTroupeFraternidade" && adminPass === "0PTPhantomTroupeFraternidadePT0") {
+                                    setIsAdminAuth(true);
+                                    setAdminUser("");
+                                    setAdminPass("");
+                                    setShowAdminLoginInNews(false);
+                                  } else {
+                                    alert("Credenciais inválidas!");
+                                  }
+                                }
+                              }}
+                            />
+                            <button 
+                              className="guide-page-btn"
+                              style={{ padding: '6px 12px', fontSize: '0.8rem', marginTop: 0 }}
+                              onClick={() => {
+                                if (adminUser === "PhantomTroupeFraternidade" && adminPass === "0PTPhantomTroupeFraternidadePT0") {
+                                  setIsAdminAuth(true);
+                                  setAdminUser("");
+                                  setAdminPass("");
+                                  setShowAdminLoginInNews(false);
+                                } else {
+                                  alert("Credenciais inválidas!");
+                                }
+                              }}
+                            >
+                              ENTRAR
+                            </button>
+                            <button 
+                              style={{ background: 'transparent', border: 'none', color: '#666', cursor: 'pointer', fontSize: '0.8rem' }}
+                              onClick={() => setShowAdminLoginInNews(false)}
+                            >
+                              ×
+                            </button>
+                          </div>
                         )}
                       </div>
-                      <h3 style={{ margin: '0', fontSize: '1.1rem', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '1px' }}>{news.title}</h3>
-                      <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: '1.4', color: '#333333' }}>{news.content}</p>
-                    </div>
-                  ))
-                )}
-              </div>
-
-              {/* Admin Area */}
-              <div style={{ borderTop: '1px solid rgba(255, 101, 132, 0.2)', paddingTop: '15px', marginTop: '10px' }}>
-                {!isAdminAuth ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    {!showAdminLoginInNews ? (
-                      <button 
-                        style={{ background: 'transparent', border: 'none', color: 'var(--primary)', cursor: 'pointer', fontSize: '0.8rem', letterSpacing: '1px', textDecoration: 'underline', fontWeight: 'bold' }}
-                        onClick={() => setShowAdminLoginInNews(true)}
-                      >
-                        + ADICIONAR NOTÍCIA (ACESSO RESTRITO)
-                      </button>
                     ) : (
-                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>ADICIONAR NOVA NOTÍCIA</span>
+                          <button 
+                            style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', textDecoration: 'underline' }}
+                            onClick={() => setIsAdminAuth(false)}
+                          >
+                            Sair do Painel
+                          </button>
+                        </div>
                         <input 
                           type="text" 
-                          placeholder="ADMIN ID" 
-                          value={adminUser}
-                          onChange={e => setAdminUser(e.target.value)}
+                          placeholder="TÍTULO DA NOTÍCIA" 
+                          value={newNewsTitle}
+                          onChange={e => setNewNewsTitle(e.target.value)}
                           className="phantom-input center-text" 
-                          style={{ padding: '6px 10px', fontSize: '0.8rem', width: '120px' }}
+                          style={{ padding: '8px', fontSize: '0.85rem' }}
                         />
-                        <input 
-                          type="password" 
-                          placeholder="SENHA" 
-                          value={adminPass}
-                          onChange={e => setAdminPass(e.target.value)}
-                          className="phantom-input center-text" 
-                          style={{ padding: '6px 10px', fontSize: '0.8rem', width: '120px' }}
-                          onKeyDown={e => {
-                            if (e.key === 'Enter') {
-                              if (adminUser === "PhantomTroupeFraternidade" && adminPass === "0PTPhantomTroupeFraternidadePT0") {
-                                setIsAdminAuth(true);
-                                setAdminUser("");
-                                setAdminPass("");
-                                setShowAdminLoginInNews(false);
-                              } else {
-                                alert("Credenciais inválidas!");
-                              }
-                            }
-                          }}
+                        <textarea 
+                          placeholder="CONTEÚDO DA NOTÍCIA (FORMATO LINEAR)..." 
+                          value={newNewsContent}
+                          onChange={e => setNewNewsContent(e.target.value)}
+                          className="phantom-input" 
+                          style={{ padding: '8px', fontSize: '0.85rem', minHeight: '60px', width: '100%', resize: 'vertical', fontFamily: 'inherit' }}
                         />
                         <button 
-                          className="guide-page-btn"
-                          style={{ padding: '6px 12px', fontSize: '0.8rem', marginTop: 0 }}
+                          className="guide-page-btn btn-next"
+                          style={{ padding: '8px 15px', marginTop: 0, width: '100%' }}
                           onClick={() => {
-                            if (adminUser === "PhantomTroupeFraternidade" && adminPass === "0PTPhantomTroupeFraternidadePT0") {
-                              setIsAdminAuth(true);
-                              setAdminUser("");
-                              setAdminPass("");
-                              setShowAdminLoginInNews(false);
+                            if (newNewsTitle.trim() && newNewsContent.trim()) {
+                              const newNews = {
+                                id: Date.now().toString(),
+                                date: new Date().toLocaleDateString('pt-BR'),
+                                title: newNewsTitle,
+                                content: newNewsContent
+                              };
+                              setGeneralNewsList(prev => [...prev, newNews]);
+                              setNewNewsTitle("");
+                              setNewNewsContent("");
                             } else {
-                              alert("Credenciais inválidas!");
+                              alert("Preencha todos os campos!");
                             }
                           }}
                         >
-                          ENTRAR
-                        </button>
-                        <button 
-                          style={{ background: 'transparent', border: 'none', color: '#666', cursor: 'pointer', fontSize: '0.8rem' }}
-                          onClick={() => setShowAdminLoginInNews(false)}
-                        >
-                          ×
+                          PUBLICAR NOTÍCIA ▷
                         </button>
                       </div>
                     )}
                   </div>
-                ) : (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>ADICIONAR NOVA NOTÍCIA</span>
-                      <button 
-                        style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', textDecoration: 'underline' }}
-                        onClick={() => setIsAdminAuth(false)}
-                      >
-                        Sair do Painel
-                      </button>
-                    </div>
-                    <input 
-                      type="text" 
-                      placeholder="TÍTULO DA NOTÍCIA" 
-                      value={newNewsTitle}
-                      onChange={e => setNewNewsTitle(e.target.value)}
-                      className="phantom-input center-text" 
-                      style={{ padding: '8px', fontSize: '0.85rem' }}
-                    />
-                    <textarea 
-                      placeholder="CONTEÚDO DA NOTÍCIA (FORMATO LINEAR)..." 
-                      value={newNewsContent}
-                      onChange={e => setNewNewsContent(e.target.value)}
-                      className="phantom-input" 
-                      style={{ padding: '8px', fontSize: '0.85rem', minHeight: '60px', width: '100%', resize: 'vertical', fontFamily: 'inherit' }}
-                    />
+                </div>
+              )}
+
+              {/* Aba 3: Mural de Registros públicos */}
+              {newsTab === 'records' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%' }}>
+                  <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
                     <button 
-                      className="guide-page-btn btn-next"
-                      style={{ padding: '8px 15px', marginTop: 0, width: '100%' }}
-                      onClick={() => {
-                        if (newNewsTitle.trim() && newNewsContent.trim()) {
-                          const newNews = {
-                            id: Date.now().toString(),
-                            date: new Date().toLocaleDateString('pt-BR'),
-                            title: newNewsTitle,
-                            content: newNewsContent
-                          };
-                          setGeneralNewsList(prev => [...prev, newNews]);
-                          setNewNewsTitle("");
-                          setNewNewsContent("");
-                        } else {
-                          alert("Preencha todos os campos!");
-                        }
-                      }}
+                      className="silver-btn" 
+                      style={{ padding: '6px 15px', fontSize: '0.75rem', letterSpacing: '1px' }}
+                      onClick={() => setNewsTab('select')}
                     >
-                      PUBLICAR NOTÍCIA ▷
+                      ◀ VOLTAR AO MENU
                     </button>
                   </div>
-                )}
-              </div>
+
+                  <p style={{ margin: '0 0 10px 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#333333', textAlign: 'center' }}>
+                    Registros públicos de ajudas e doações propostas por nossa fraternidade. Gratidão a todos que colaboram com o ecossistema! ❤️
+                  </p>
+
+                  <div className="members-list" style={{ width: '100%', maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '5px' }}>
+                    {donationsList.length === 0 ? (
+                      <p style={{ textAlign: 'center', color: '#666', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhum registro no mural ainda.</p>
+                    ) : (
+                      [...donationsList].reverse().map((record) => (
+                        <div 
+                          key={record.id} 
+                          className="member-card"
+                          style={{ 
+                            padding: '15px', 
+                            background: 'rgba(255, 255, 255, 0.75)', 
+                            border: '1px solid rgba(255, 0, 127, 0.2)', 
+                            borderRadius: '6px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '6px'
+                          }}
+                        >
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>{record.date}</span>
+                            <span style={{ fontSize: '0.65rem', color: '#ff007f', border: '1px solid #ff007f', padding: '1px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>{record.type}</span>
+                          </div>
+                          <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '1px' }}>Doador: {record.name}</h3>
+                          {record.details && <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: '1.4', color: '#333333' }}>{record.details}</p>}
+                          {isAdminAuth && (
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px', borderTop: '1px dashed rgba(0,0,0,0.05)', paddingTop: '5px' }}>
+                              <span style={{ fontSize: '0.75rem', color: '#666' }}><strong>Contato:</strong> {record.contact}</span>
+                              <button 
+                                style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', padding: 0 }}
+                                onClick={() => {
+                                  setDonationsList(prev => prev.filter(item => item.id !== record.id));
+                                }}
+                              >
+                                [Remover do Mural]
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              )}
 
             </div>
           </motion.div>
@@ -2345,9 +2491,30 @@ export default function Home() {
                         style={{ marginTop: '10px', width: '100%' }}
                         onClick={() => {
                           if (donorName.trim() && donorContact.trim() && donationType.trim()) {
-                            setPendingDonations(prev => [...prev, { name: donorName, contact: donorContact, type: donationType, details: donationDetails }]);
+                            // 1. Registrar doação pendente (para o painel administrativo)
+                            const donationItem = { 
+                              name: donorName, 
+                              contact: donorContact, 
+                              type: donationType, 
+                              details: donationDetails 
+                            };
+                            setPendingDonations(prev => [...prev, donationItem]);
+
+                            // 2. Registrar doação pública no Mural (Notícias & Registros)
+                            const newRecord = {
+                              id: Date.now().toString(),
+                              date: new Date().toLocaleDateString('pt-BR'),
+                              name: donorName,
+                              contact: donorContact,
+                              type: donationType,
+                              details: donationDetails
+                            };
+                            setDonationsList(prev => [...prev, newRecord]);
+
+                            // 3. Resetar estados do formulário
                             setDonorName("");
                             setDonorContact("");
+                            setDonationType("");
                             setDonationDetails("");
                             setHasRequestedDonation(true);
                           }
