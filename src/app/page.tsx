@@ -233,7 +233,7 @@ export default function Home() {
   const [showConstructionModal, setShowConstructionModal] = useState(false);
   const [showLaunchWarning, setShowLaunchWarning] = useState(false);
   const [joiningName, setJoiningName] = useState("");
-  const [joiningRole, setJoiningRole] = useState("");
+  const [joiningRoles, setJoiningRoles] = useState<string[]>([]);
   const [joiningType, setJoiningType] = useState("");
   const [pendingRequests, setPendingRequests] = useState<{name: string, role: string, type: string}[]>([]);
   const [hasRequestedJoin, setHasRequestedJoin] = useState(false);
@@ -1519,7 +1519,7 @@ export default function Home() {
                   <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '500px', justifyContent: 'center' }}>
                     <button 
                       className="guide-page-btn" 
-                      style={{ flex: 1, padding: '20px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', height: 'auto', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(255, 0, 127, 0.3)', borderRadius: '6px' }}
+                      style={{ flex: 1, padding: '20px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', height: 'auto', background: 'rgba(225, 190, 231, 0.75)', border: '1px solid rgba(171, 71, 188, 0.6)', borderRadius: '6px', color: '#2c1a16' }}
                       onClick={() => setNewsTab('news')}
                     >
                       <span style={{ fontSize: '2rem' }}>📰</span>
@@ -1527,7 +1527,7 @@ export default function Home() {
                     </button>
                     <button 
                       className="guide-page-btn" 
-                      style={{ flex: 1, padding: '20px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', height: 'auto', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(255, 0, 127, 0.3)', borderRadius: '6px' }}
+                      style={{ flex: 1, padding: '20px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', height: 'auto', background: 'rgba(225, 190, 231, 0.75)', border: '1px solid rgba(171, 71, 188, 0.6)', borderRadius: '6px', color: '#2c1a16' }}
                       onClick={() => setNewsTab('records')}
                     >
                       <span style={{ fontSize: '2rem' }}>💖</span>
@@ -2432,44 +2432,86 @@ export default function Home() {
                           onChange={e => setJoiningName(e.target.value)}
                           className="phantom-input center-text" 
                         />
+                        {joiningRoles.length > 0 && (
+                          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center', margin: '4px 0 8px 0', width: '100%' }}>
+                            <span style={{ fontSize: '0.7rem', color: '#ff6584', fontFamily: 'Orbitron, sans-serif', width: '100%', textAlign: 'center', letterSpacing: '1px' }}>
+                              FUNÇÕES SELECIONADAS ({joiningRoles.length}/2):
+                            </span>
+                            {joiningRoles.map((role) => (
+                              <span 
+                                key={role} 
+                                onClick={() => setJoiningRoles(prev => prev.filter(r => r !== role))}
+                                style={{ 
+                                  background: '#ff6584', 
+                                  color: '#fff', 
+                                  fontSize: '0.75rem', 
+                                  padding: '4px 10px', 
+                                  borderRadius: '15px', 
+                                  cursor: 'pointer', 
+                                  display: 'flex', 
+                                  alignItems: 'center', 
+                                  gap: '6px',
+                                  fontFamily: 'Orbitron, sans-serif',
+                                  boxShadow: '0 2px 5px rgba(255, 101, 132, 0.4)'
+                                }}
+                                title="Clique para remover"
+                              >
+                                ✓ {role} <span style={{ fontWeight: 'bold', marginLeft: '2px' }}>×</span>
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
                         <select
                           className="phantom-input center-text phantom-select" 
-                          value={joiningRole}
-                          onChange={e => setJoiningRole(e.target.value)}
+                          value=""
+                          onChange={e => {
+                            const val = e.target.value;
+                            if (!val) return;
+                            if (joiningRoles.includes(val)) {
+                              setJoiningRoles(prev => prev.filter(r => r !== val));
+                            } else {
+                              if (joiningRoles.length >= 2) {
+                                alert("Você pode selecionar no máximo 2 funções!");
+                              } else {
+                                setJoiningRoles(prev => [...prev, val]);
+                              }
+                            }
+                          }}
                         >
-                          <option value="" disabled>SELECIONE SUA FUNÇÃO</option>
+                          <option value="" disabled>SELECIONE SUA FUNÇÃO (MÁXIMO 2)</option>
                           <optgroup label="🎨 Artes Visuais">
-                            {["Pintor","Ilustrador","Desenhista","Artista Visual","Muralista","Grafiteiro","Escultor","Fotógrafo","Colagista","Gravurista","Retratista","Colorista","Arte-Educador","Curador Artístico","Diretor de Arte"].map(r => <option key={r} value={r} style={{ background: '#e8f5e9', color: '#2e7d32' }}>{r}</option>)}
+                            {["Pintor","Ilustrador","Desenhista","Artista Visual","Muralista","Grafiteiro","Escultor","Fotógrafo","Colagista","Gravurista","Retratista","Colorista","Arte-Educador","Curador Artístico","Diretor de Arte"].map(r => <option key={r} value={r} style={{ background: '#e8f5e9', color: '#2e7d32' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="✍️ Escrita e Poesia">
-                            {["Poeta","Escritor","Compositor","Cronista","Contista","Roteirista","Narrador","Letrista","Declamador","Slammer","Contador de Histórias","Criador Literário","Guardião das Palavras","Tecelão de Histórias"].map(r => <option key={r} value={r} style={{ background: '#e3f2fd', color: '#1565c0' }}>{r}</option>)}
+                            {["Poeta","Escritor","Compositor","Cronista","Contista","Roteirista","Narrador","Letrista","Declamador","Slammer","Contador de Histórias","Criador Literário","Guardião das Palavras","Tecelão de Histórias"].map(r => <option key={r} value={r} style={{ background: '#e3f2fd', color: '#1565c0' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="🎵 Música">
-                            {["Compositor Musical","Músico","Cantor","Instrumentista","Produtor Musical","Beatmaker","DJ","Arranjador","Intérprete Musical","Criador Sonoro","Maestro","Regente","Pesquisador Musical"].map(r => <option key={r} value={r} style={{ background: '#fff3e0', color: '#e65100' }}>{r}</option>)}
+                            {["Compositor Musical","Músico","Cantor","Instrumentista","Produtor Musical","Beatmaker","DJ","Arranjador","Intérprete Musical","Criador Sonoro","Maestro","Regente","Pesquisador Musical"].map(r => <option key={r} value={r} style={{ background: '#fff3e0', color: '#e65100' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="🎭 Teatro e Performance">
-                            {["Ator","Atriz","Performista","Diretor Teatral","Dramaturgo","Cenógrafo","Figurinista","Coreógrafo","Dançarino","Intérprete","Artista Cênico","Mestre de Cerimônias"].map(r => <option key={r} value={r} style={{ background: '#fce4ec', color: '#c62828' }}>{r}</option>)}
+                            {["Ator","Atriz","Performista","Diretor Teatral","Dramaturgo","Cenógrafo","Figurinista","Coreógrafo","Dançarino","Intérprete","Artista Cênico","Mestre de Cerimônias"].map(r => <option key={r} value={r} style={{ background: '#fce4ec', color: '#c62828' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="🎬 Audiovisual e Digital">
-                            {["Cineasta","Videomaker","Editor de Vídeo","Animador","Motion Designer","Designer","Criador Digital","Diretor Criativo","Produtor Audiovisual","Streamer","Criador de Conteúdo","Documentarista"].map(r => <option key={r} value={r} style={{ background: '#e8eaf6', color: '#283593' }}>{r}</option>)}
+                            {["Cineasta","Videomaker","Editor de Vídeo","Animador","Motion Designer","Designer","Criador Digital","Diretor Criativo","Produtor Audiovisual","Streamer","Criador de Conteúdo","Documentarista"].map(r => <option key={r} value={r} style={{ background: '#e8eaf6', color: '#283593' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="👑 Direção">
-                            {["Fundador","Cofundador","Diretor Geral","Vice-Diretor"].map(r => <option key={r} value={r} style={{ background: '#fff9c4', color: '#f57f17' }}>{r}</option>)}
+                            {["Fundador","Cofundador","Diretor Geral","Vice-Diretor"].map(r => <option key={r} value={r} style={{ background: '#fff9c4', color: '#f57f17' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="📋 Gestão">
-                            {["Coordenador Geral","Coordenador de Núcleo","Gestor de Projetos","Administrador","Supervisor"].map(r => <option key={r} value={r} style={{ background: '#e0f7fa', color: '#00695c' }}>{r}</option>)}
+                            {["Coordenador Geral","Coordenador de Núcleo","Gestor de Projetos","Administrador","Supervisor"].map(r => <option key={r} value={r} style={{ background: '#e0f7fa', color: '#00695c' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="🤝 Comunidade">
-                            {["Gestor de Pessoas","Moderador","Mediador","Coordenador de Membros","Mentor"].map(r => <option key={r} value={r} style={{ background: '#f3e5f5', color: '#6a1b9a' }}>{r}</option>)}
+                            {["Gestor de Pessoas","Moderador","Mediador","Coordenador de Membros","Mentor"].map(r => <option key={r} value={r} style={{ background: '#f3e5f5', color: '#6a1b9a' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="⚙️ Operações">
-                            {["Organizador","Coordenador de Eventos","Gestor de Operações","Responsável por Parcerias"].map(r => <option key={r} value={r} style={{ background: '#efebe9', color: '#4e342e' }}>{r}</option>)}
+                            {["Organizador","Coordenador de Eventos","Gestor de Operações","Responsável por Parcerias"].map(r => <option key={r} value={r} style={{ background: '#efebe9', color: '#4e342e' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="📢 Comunicação">
-                            {["Coordenador de Comunicação","Gestor de Redes Sociais","Relações Públicas","Porta-Voz"].map(r => <option key={r} value={r} style={{ background: '#e0f2f1', color: '#00796b' }}>{r}</option>)}
+                            {["Coordenador de Comunicação","Gestor de Redes Sociais","Relações Públicas","Porta-Voz"].map(r => <option key={r} value={r} style={{ background: '#e0f2f1', color: '#00796b' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                           <optgroup label="📊 Recursos e Estratégia">
-                            {["Gestor Financeiro","Tesoureiro","Coordenador Estratégico"].map(r => <option key={r} value={r} style={{ background: '#fbe9e7', color: '#bf360c' }}>{r}</option>)}
+                            {["Gestor Financeiro","Tesoureiro","Coordenador Estratégico"].map(r => <option key={r} value={r} style={{ background: '#fbe9e7', color: '#bf360c' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                         </select>
                         <select 
@@ -2486,12 +2528,14 @@ export default function Home() {
                           className="guide-page-btn btn-next btn-grey"
                           style={{ marginTop: '10px', width: '100%' }}
                           onClick={() => {
-                            if (joiningName.trim() && joiningRole.trim() && joiningType.trim()) {
-                              setPendingRequests(prev => [...prev, { name: joiningName, role: joiningRole, type: joiningType }]);
+                            if (joiningName.trim() && joiningRoles.length > 0 && joiningType.trim()) {
+                              setPendingRequests(prev => [...prev, { name: joiningName, role: joiningRoles.join(" & "), type: joiningType }]);
                               setJoiningName("");
-                              setJoiningRole("");
+                              setJoiningRoles([]);
                               setJoiningType("");
                               setHasRequestedJoin(true);
+                            } else {
+                              alert("Por favor, preencha seu Nome, selecione pelo menos 1 Função e escolha um Projeto!");
                             }
                           }}
                         >
