@@ -1421,7 +1421,6 @@ body::before {
   box-shadow: 
     0 0 40px var(--primary),
     inset 0 0 25px var(--primary);
-}.3);
   animation: resonance-pulse 0.4s infinite alternate ease-in-out;
 }
 
