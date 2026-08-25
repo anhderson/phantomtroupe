@@ -1380,24 +1380,22 @@ body::before {
     width: 100%;
     z-index: 10000;
   }
-}
-
-/* Efeito de transmutação quando passa pelo Gateway */
+}/* Efeito de transmutação quando passa pelo Gateway */
 .runic-node.is-processing {
-  border-color: #FF007F !important;
+  border-color: var(--primary) !important;
   box-shadow: 
-    0 0 30px rgba(255, 0, 127, 0.8),
-    inset 0 0 20px rgba(255, 0, 127, 0.5) !important;
+    0 0 30px var(--primary),
+    inset 0 0 20px var(--primary) !important;
   transition: all 0.3s ease-out;
 }
 
 .runic-node.is-processing .initials {
-  color: #FF007F !important;
-  text-shadow: 0 0 15px rgba(255, 0, 127, 1);
+  color: var(--primary) !important;
+  text-shadow: 0 0 15px var(--primary);
 }
 
 .runic-node.is-processing .runic-node-border {
-  border-color: rgba(255, 0, 127, 0.8) !important;
+  border-color: var(--primary) !important;
   border-width: 2px;
   animation: processing-flicker 0.15s infinite;
 }
@@ -1416,13 +1414,14 @@ body::before {
   transform: translate(-50%, -50%);
   width: calc(var(--orbit-radius) * 2);
   height: calc(var(--orbit-radius) * 2);
-  border: 4px double #FF007F;
+  border: 4px double var(--primary);
   border-radius: 50%;
   pointer-events: none;
   z-index: 10;
   box-shadow: 
-    0 0 40px rgba(255, 0, 127, 0.5),
-    inset 0 0 25px rgba(255, 0, 127, 0.3);
+    0 0 40px var(--primary),
+    inset 0 0 25px var(--primary);
+}.3);
   animation: resonance-pulse 0.4s infinite alternate ease-in-out;
 }
 
@@ -3372,14 +3371,14 @@ body::before {
 
 /* TEMA 2: Modo Claro / Light Dark */
 .theme-2 .runic-node {
-  background: rgba(225, 225, 225, 0.92) !important;
+  background: rgba(50, 50, 50, 0.88) !important;
   border-color: rgba(255, 0, 127, 0.7) !important;
   box-shadow: 0 0 15px rgba(255, 0, 127, 0.3) !important;
 }
 .theme-2 .runic-node .initials,
 .theme-2 .runic-node .full-name {
-  color: #111111 !important;
-  text-shadow: none !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 5px rgba(255, 0, 127, 0.5) !important;
   font-weight: 900 !important;
 }
 .theme-2 .global-visit-counter {
@@ -3457,7 +3456,7 @@ body::before {
   --silk-color: rgba(179, 157, 219, 0.4) !important;
 }
 .theme-4 .runic-node {
-  background: rgba(243, 229, 245, 0.35) !important;
+  background: rgba(20, 16, 28, 0.85) !important;
   border-color: #b39ddb !important;
   box-shadow: 0 0 12px rgba(179, 157, 219, 0.3) !important;
 }
