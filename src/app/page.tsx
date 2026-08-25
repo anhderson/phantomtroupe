@@ -313,14 +313,32 @@ export default function Home() {
         }
       }
     }
-    return [
-      { id: '1', date: '22/08/2026', name: 'Aline Souza', contact: 'aline@gmail.com', type: 'Instrumentos (Música, Som, etc.)', title: 'Teclado Yamaha', items: 'Teclado musical Yamaha 5 oitavas em bom estado.', testimonial: 'Espero que este teclado ajude nas oficinas de música!', image: null },
-      { id: '2', date: '20/08/2026', name: 'Carlos Mendes', contact: 'carlos@gmail.com', type: 'Equipamentos (Computadores, etc.)', title: 'Computadores Desktop', items: '2 Computadores Desktop para a sala de informática.', testimonial: 'Apoio a inclusão digital de nossos jovens!', image: null },
-      { id: '3', date: '18/08/2026', name: 'Mariana Costa', contact: 'mariana@gmail.com', type: 'Apoio Financeiro (PIX)', title: 'Apoio Mensal PIX', items: 'Contribuição financeira mensal via PIX.', testimonial: 'Muito orgulho de fazer parte e apoiar!', image: null }
-    ];
+    return [];
   });
 
   const [newsTab, setNewsTab] = useState<'select' | 'news' | 'records'>('select');
+
+  // Donations History (all attempts with their status)
+  const [donationsHistory, setDonationsHistory] = useState<{
+    name: string;
+    contact: string;
+    type: string;
+    title: string;
+    items: string;
+    testimonial: string;
+    image: string | null;
+    status: 'approved' | 'rejected';
+    date: string;
+  }[]>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('phantom_donations_history');
+      if (saved) {
+        try { return JSON.parse(saved); } catch (e) { console.error(e); }
+      }
+    }
+    return [];
+  });
+  const [showDonationsHistory, setShowDonationsHistory] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('phantom_pending_donations', JSON.stringify(pendingDonations));
@@ -329,6 +347,10 @@ export default function Home() {
   useEffect(() => {
     localStorage.setItem('phantom_donations', JSON.stringify(donationsList));
   }, [donationsList]);
+
+  useEffect(() => {
+    localStorage.setItem('phantom_donations_history', JSON.stringify(donationsHistory));
+  }, [donationsHistory]);
 
   const [activeMembers, setActiveMembers] = useState<{name: string, role: string, type: string}[]>([
     { role: 'Fundador', name: 'Anderson Moitinho', type: 'Membro' },
@@ -2380,18 +2402,39 @@ export default function Home() {
                           onChange={e => setJoiningRole(e.target.value)}
                         >
                           <option value="" disabled>SELECIONE SUA FUNÇÃO</option>
-                          {[
-                            "Harmonizador", "Facilitador", "Conselheiro amoroso", "Acolhedor", "Mediador", "Mentor", 
-                            "Guardião do Ambiente", "Coordenador de Estudos", "Cuidador Emocional", "Organizador", 
-                            "Guardião de Valores", "Curador de Conteúdo", "Incentivador", "Observador", "Comunicador", 
-                            "Conector", "Apoio Espiritual", "Guardião das amizades", "Facilitador de Cura", 
-                            "Responsável por Parcerias", "Motivador", "Gestor de Projetos", "Cronista", 
-                            "Responsável Social", "Instrutor", "Observador Individual", "Energizador", 
-                            "Criador de Experiências", "Facilitador de Amizades", "Orientador de Relacionamentos", 
-                            "Guardião da Simplicidade", "Guerreiro da Continuidade", "Gerenciador"
-                          ].map(role => (
-                            <option key={role} value={role}>{role}</option>
-                          ))}
+                          <optgroup label="🎨 Artes Visuais">
+                            {["Pintor","Ilustrador","Desenhista","Artista Visual","Muralista","Grafiteiro","Escultor","Fotógrafo","Colagista","Gravurista","Retratista","Colorista","Arte-Educador","Curador Artístico","Diretor de Arte"].map(r => <option key={r} value={r} style={{ background: '#e8f5e9', color: '#2e7d32' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="✍️ Escrita e Poesia">
+                            {["Poeta","Escritor","Compositor","Cronista","Contista","Roteirista","Narrador","Letrista","Declamador","Slammer","Contador de Histórias","Criador Literário","Guardião das Palavras","Tecelão de Histórias"].map(r => <option key={r} value={r} style={{ background: '#e3f2fd', color: '#1565c0' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="🎵 Música">
+                            {["Compositor Musical","Músico","Cantor","Instrumentista","Produtor Musical","Beatmaker","DJ","Arranjador","Intérprete Musical","Criador Sonoro","Maestro","Regente","Pesquisador Musical"].map(r => <option key={r} value={r} style={{ background: '#fff3e0', color: '#e65100' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="🎭 Teatro e Performance">
+                            {["Ator","Atriz","Performista","Diretor Teatral","Dramaturgo","Cenógrafo","Figurinista","Coreógrafo","Dançarino","Intérprete","Artista Cênico","Mestre de Cerimônias"].map(r => <option key={r} value={r} style={{ background: '#fce4ec', color: '#c62828' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="🎬 Audiovisual e Digital">
+                            {["Cineasta","Videomaker","Editor de Vídeo","Animador","Motion Designer","Designer","Criador Digital","Diretor Criativo","Produtor Audiovisual","Streamer","Criador de Conteúdo","Documentarista"].map(r => <option key={r} value={r} style={{ background: '#e8eaf6', color: '#283593' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="👑 Direção">
+                            {["Fundador","Cofundador","Diretor Geral","Vice-Diretor"].map(r => <option key={r} value={r} style={{ background: '#fff9c4', color: '#f57f17' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="📋 Gestão">
+                            {["Coordenador Geral","Coordenador de Núcleo","Gestor de Projetos","Administrador","Supervisor"].map(r => <option key={r} value={r} style={{ background: '#e0f7fa', color: '#00695c' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="🤝 Comunidade">
+                            {["Gestor de Pessoas","Moderador","Mediador","Coordenador de Membros","Mentor"].map(r => <option key={r} value={r} style={{ background: '#f3e5f5', color: '#6a1b9a' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="⚙️ Operações">
+                            {["Organizador","Coordenador de Eventos","Gestor de Operações","Responsável por Parcerias"].map(r => <option key={r} value={r} style={{ background: '#efebe9', color: '#4e342e' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="📢 Comunicação">
+                            {["Coordenador de Comunicação","Gestor de Redes Sociais","Relações Públicas","Porta-Voz"].map(r => <option key={r} value={r} style={{ background: '#e0f2f1', color: '#00796b' }}>{r}</option>)}
+                          </optgroup>
+                          <optgroup label="📊 Recursos e Estratégia">
+                            {["Gestor Financeiro","Tesoureiro","Coordenador Estratégico"].map(r => <option key={r} value={r} style={{ background: '#fbe9e7', color: '#bf360c' }}>{r}</option>)}
+                          </optgroup>
                         </select>
                         <select 
                           className="phantom-input center-text phantom-select" 
@@ -2908,13 +2951,13 @@ export default function Home() {
                       )}
                     </div>
 
-                    {/* Seção Doações */}
+                    {/* Seção Doações Pendentes */}
                     <div style={{ width: '100%' }}>
                       <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#FF007F', letterSpacing: '2px', borderBottom: '1px solid rgba(255, 0, 127, 0.2)', paddingBottom: '8px', marginBottom: '15px', textAlign: 'center' }}>
-                        DOAÇÕES REGISTRADAS
+                        SOLICITAÇÕES PENDENTES
                       </h3>
                       {pendingDonations.length === 0 ? (
-                        <p style={{ color: '#a0a0a0', letterSpacing: '2px', fontSize: '0.9rem', textAlign: 'center' }}>NENHUMA DOAÇÃO REGISTRADA</p>
+                        <p style={{ color: '#a0a0a0', letterSpacing: '2px', fontSize: '0.9rem', textAlign: 'center' }}>NENHUMA SOLICITAÇÃO PENDENTE</p>
                       ) : (
                         <div className="members-list" style={{ width: '100%', maxHeight: '200px', overflowY: 'auto' }}>
                           {pendingDonations.map((don, i) => (
@@ -2922,7 +2965,7 @@ export default function Home() {
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <div>
                                   <span style={{ fontSize: '0.65rem', color: '#FF007F', border: '1px solid #FF007F', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>{don.type}</span>
-                                  <h3 style={{ margin: '5px 0 0 0', fontSize: '1.15rem' }}>{don.name}</h3>
+                                  <h3 style={{ margin: '5px 0 0 0', fontSize: '1.15rem', color: '#ffffff' }}>{don.name}</h3>
                                 </div>
                                 <div style={{ display: 'flex', gap: '8px', alignSelf: 'center' }}>
                                   <button 
@@ -2942,7 +2985,9 @@ export default function Home() {
                                         image: don.image
                                       };
                                       setDonationsList(prev => [...prev, newRecord]);
-                                      // 2. Remover das solicitações pendentes
+                                      // 2. Salvar no histórico como aprovada
+                                      setDonationsHistory(prev => [...prev, { ...don, status: 'approved', date: new Date().toLocaleDateString('pt-BR') }]);
+                                      // 3. Remover das solicitações pendentes
                                       setPendingDonations(prev => prev.filter((_, idx) => idx !== i));
                                     }}
                                   >
@@ -2952,7 +2997,9 @@ export default function Home() {
                                     className="silver-btn" 
                                     style={{ padding: '6px 12px', fontSize: '0.7rem' }}
                                     onClick={() => {
-                                      // Apenas recusar e remover de pendentes
+                                      // 1. Salvar no histórico como rejeitada
+                                      setDonationsHistory(prev => [...prev, { ...don, status: 'rejected', date: new Date().toLocaleDateString('pt-BR') }]);
+                                      // 2. Remover de pendentes
                                       setPendingDonations(prev => prev.filter((_, idx) => idx !== i));
                                     }}
                                   >
@@ -2966,7 +3013,7 @@ export default function Home() {
                                     <img src={don.image} alt={don.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                   </div>
                                 )}
-                                <div style={{ flex: 1, minWidth: '150px', display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '0.8rem', color: '#1a1a1a' }}>
+                                <div style={{ flex: 1, minWidth: '150px', display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '0.8rem', color: '#ffffff' }}>
                                   <p style={{ margin: 0 }}><strong>Contato:</strong> {don.contact}</p>
                                   <p style={{ margin: 0 }}><strong>Título:</strong> {don.title}</p>
                                   <p style={{ margin: 0 }}><strong>Itens:</strong> {don.items}</p>
@@ -2975,6 +3022,45 @@ export default function Home() {
                               </div>
                             </div>
                           ))}
+                        </div>
+                      )}
+
+                      {/* Botão para ver Histórico de Tentativas */}
+                      <button 
+                        className="guide-page-btn btn-grey" 
+                        style={{ marginTop: '15px', width: '100%', fontSize: '0.8rem', padding: '10px' }}
+                        onClick={() => setShowDonationsHistory(!showDonationsHistory)}
+                      >
+                        {showDonationsHistory ? '▲ OCULTAR HISTÓRICO' : '▼ HISTÓRICO DE TENTATIVAS DE REGISTRO'}
+                      </button>
+
+                      {showDonationsHistory && (
+                        <div style={{ marginTop: '10px', width: '100%', maxHeight: '250px', overflowY: 'auto' }}>
+                          {donationsHistory.length === 0 ? (
+                            <p style={{ color: '#a0a0a0', letterSpacing: '1px', fontSize: '0.85rem', textAlign: 'center' }}>NENHUM HISTÓRICO AINDA</p>
+                          ) : (
+                            [...donationsHistory].reverse().map((h, i) => (
+                              <div key={i} style={{ border: `1px solid ${h.status === 'approved' ? 'rgba(0, 255, 102, 0.4)' : 'rgba(255, 60, 60, 0.4)'}`, padding: '10px', marginBottom: '6px', borderRadius: '4px', background: h.status === 'approved' ? 'rgba(0, 255, 102, 0.08)' : 'rgba(255, 60, 60, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                                  <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#ffffff' }}>{h.name}</span>
+                                  <span style={{ fontSize: '0.65rem', color: '#cccccc' }}>{h.title} — {h.type}</span>
+                                  <span style={{ fontSize: '0.6rem', color: '#999999' }}>{h.date}</span>
+                                </div>
+                                <span style={{ 
+                                  fontSize: '0.65rem', 
+                                  fontFamily: 'Orbitron, sans-serif',
+                                  letterSpacing: '1px',
+                                  padding: '3px 8px', 
+                                  borderRadius: '4px', 
+                                  background: h.status === 'approved' ? 'rgba(0, 255, 102, 0.2)' : 'rgba(255, 60, 60, 0.2)',
+                                  color: h.status === 'approved' ? '#00ff66' : '#ff3c3c',
+                                  border: `1px solid ${h.status === 'approved' ? '#00ff66' : '#ff3c3c'}`
+                                }}>
+                                  {h.status === 'approved' ? 'APROVADA' : 'REJEITADA'}
+                                </span>
+                              </div>
+                            ))
+                          )}
                         </div>
                       )}
                     </div>
