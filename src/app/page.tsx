@@ -156,14 +156,47 @@ const APPS = [
     longDesc: "O Zero Ground é o módulo responsável por conectar o ecossistema digital ao mundo físico, transformando ideias e estruturas virtuais em iniciativas concretas. Ele atua como a base para criação e desenvolvimento de espaços reais, que vão desde organizações sociais e ONGs até empresas e operações estruturadas.\n\nMais do que um ponto de execução, o Zero Ground funciona como a interface direta com o “hardware” do mundo real, onde projetos ganham presença física, operação prática e impacto tangível. Ele organiza processos, acompanha atividades e registra informações essenciais, permitindo controle mais preciso sobre cada etapa de implementação.\n\nAlém disso, o sistema oferece uma visão detalhada das operações, com registros de baixo nível e monitoramento contínuo, garantindo que recursos, processos e estruturas estejam funcionando de forma estável e eficiente. Isso possibilita ajustes rápidos, maior previsibilidade e segurança na execução.\n\nNa prática, o Zero Ground é onde o ecossistema deixa de ser apenas conceito e passa a existir de forma concreta, conectando planejamento, tecnologia e ação real em um fluxo contínuo de construção e evolução.",
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "ESPERANDO COMANDO",
-    security: "ROOT",
-    icon: "/icones/zerogroundiconecircular.png"
   },
 ];
 
-const WEB_LAYERS = 12; 
+const WEB_LAYERS = 12;
 
+const resizeImage = (file: File): Promise<string> => {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new window.Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const MAX_WIDTH = 400;
+        const MAX_HEIGHT = 400;
+        let width = img.width;
+        let height = img.height;
 
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, width, height);
+        }
+        resolve(canvas.toDataURL('image/jpeg', 0.7));
+      };
+      img.src = e.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  });
+};
 
 export default function Home() {
   const [selectedApp, setSelectedApp] = useState<typeof APPS[0] | null>(null);
@@ -210,14 +243,34 @@ export default function Home() {
   const [donorName, setDonorName] = useState("");
   const [donorContact, setDonorContact] = useState("");
   const [donationType, setDonationType] = useState("");
-  const [donationDetails, setDonationDetails] = useState("");
+  const [donationTitle, setDonationTitle] = useState("");
+  const [donationItems, setDonationItems] = useState("");
+  const [donationTestimonial, setDonationTestimonial] = useState("");
+  const [donationImage, setDonationImage] = useState<string | null>(null);
   const [copiedPix, setCopiedPix] = useState(false);
-  const [pendingDonations, setPendingDonations] = useState<{name: string, contact: string, type: string, details: string}[]>(() => {
+  const [pendingDonations, setPendingDonations] = useState<{
+    name: string;
+    contact: string;
+    type: string;
+    title: string;
+    items: string;
+    testimonial: string;
+    image: string | null;
+  }[]>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('phantom_pending_donations');
       if (saved) {
         try {
-          return JSON.parse(saved);
+          const parsed = JSON.parse(saved);
+          return parsed.map((item: any) => ({
+            name: item.name || "",
+            contact: item.contact || "",
+            type: item.type || "",
+            title: item.title || "Doação Registrada",
+            items: item.items || item.details || "",
+            testimonial: item.testimonial || "",
+            image: item.image || null
+          }));
         } catch (e) {
           console.error(e);
         }
@@ -228,21 +281,42 @@ export default function Home() {
   const [hasRequestedDonation, setHasRequestedDonation] = useState(false);
 
   // Public Donations Mural List
-  const [donationsList, setDonationsList] = useState<{id: string, date: string, name: string, contact: string, type: string, details: string}[]>(() => {
+  const [donationsList, setDonationsList] = useState<{
+    id: string;
+    date: string;
+    name: string;
+    contact: string;
+    type: string;
+    title: string;
+    items: string;
+    testimonial: string;
+    image: string | null;
+  }[]>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('phantom_donations');
       if (saved) {
         try {
-          return JSON.parse(saved);
+          const parsed = JSON.parse(saved);
+          return parsed.map((item: any) => ({
+            id: item.id || Date.now().toString(),
+            date: item.date || new Date().toLocaleDateString('pt-BR'),
+            name: item.name || "",
+            contact: item.contact || "",
+            type: item.type || "",
+            title: item.title || "Doação Registrada",
+            items: item.items || item.details || "",
+            testimonial: item.testimonial || "",
+            image: item.image || null
+          }));
         } catch (e) {
           console.error(e);
         }
       }
     }
     return [
-      { id: '1', date: '22/08/2026', name: 'Aline Souza', contact: 'aline@gmail.com', type: 'Instrumentos (Música, Som, etc.)', details: 'Teclado musical Yamaha 5 oitavas em bom estado.' },
-      { id: '2', date: '20/08/2026', name: 'Carlos Mendes', contact: 'carlos@gmail.com', type: 'Equipamentos (Computadores, etc.)', details: '2 Computadores Desktop para a sala de informática.' },
-      { id: '3', date: '18/08/2026', name: 'Mariana Costa', contact: 'mariana@gmail.com', type: 'Apoio Financeiro (PIX)', details: 'Contribuição mensal para apoiar as oficinas de arte.' }
+      { id: '1', date: '22/08/2026', name: 'Aline Souza', contact: 'aline@gmail.com', type: 'Instrumentos (Música, Som, etc.)', title: 'Teclado Yamaha', items: 'Teclado musical Yamaha 5 oitavas em bom estado.', testimonial: 'Espero que este teclado ajude nas oficinas de música!', image: null },
+      { id: '2', date: '20/08/2026', name: 'Carlos Mendes', contact: 'carlos@gmail.com', type: 'Equipamentos (Computadores, etc.)', title: 'Computadores Desktop', items: '2 Computadores Desktop para a sala de informática.', testimonial: 'Apoio a inclusão digital de nossos jovens!', image: null },
+      { id: '3', date: '18/08/2026', name: 'Mariana Costa', contact: 'mariana@gmail.com', type: 'Apoio Financeiro (PIX)', title: 'Apoio Mensal PIX', items: 'Contribuição financeira mensal via PIX.', testimonial: 'Muito orgulho de fazer parte e apoiar!', image: null }
     ];
   });
 
@@ -1620,15 +1694,40 @@ export default function Home() {
                             borderRadius: '6px',
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '6px'
+                            gap: '10px'
                           }}
                         >
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>{record.date}</span>
                             <span style={{ fontSize: '0.65rem', color: '#ff007f', border: '1px solid #ff007f', padding: '1px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>{record.type}</span>
                           </div>
-                          <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '1px' }}>Doador: {record.name}</h3>
-                          {record.details && <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: '1.4', color: '#333333' }}>{record.details}</p>}
+                          
+                          <div style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+                            {record.image && (
+                              <div style={{ width: '90px', height: '90px', border: '1px solid rgba(255, 0, 127, 0.2)', borderRadius: '4px', overflow: 'hidden', background: '#fff', flexShrink: 0 }}>
+                                <img src={record.image} alt={record.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                              </div>
+                            )}
+                            <div style={{ flex: 1, minWidth: '150px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                              <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                                {record.title || "Doação Registrada"}
+                              </h3>
+                              <p style={{ margin: 0, fontSize: '0.8rem', color: '#666' }}>
+                                <strong>Doador:</strong> {record.name}
+                              </p>
+                              {record.items && (
+                                <p style={{ margin: 0, fontSize: '0.85rem', lineHeight: '1.4', color: '#333333' }}>
+                                  <strong>Doado:</strong> {record.items}
+                                </p>
+                              )}
+                              {record.testimonial && (
+                                <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#555', fontStyle: 'italic', background: 'rgba(255, 101, 132, 0.05)', padding: '6px 10px', borderRadius: '4px', borderLeft: '2px solid #ff007f' }}>
+                                  "{record.testimonial}"
+                                </p>
+                              )}
+                            </div>
+                          </div>
+
                           {isAdminAuth && (
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px', borderTop: '1px dashed rgba(0,0,0,0.05)', paddingTop: '5px' }}>
                               <span style={{ fontSize: '0.75rem', color: '#666' }}><strong>Contato:</strong> {record.contact}</span>
@@ -2491,25 +2590,77 @@ export default function Home() {
                         </div>
                       )}
 
-                      <textarea 
-                        placeholder="DETALHES DA DOAÇÃO (O que deseja doar, marca, estado de conservação, observações adicionais...)" 
-                        value={donationDetails}
-                        onChange={e => setDonationDetails(e.target.value)}
+                      <input 
+                        type="text" 
+                        placeholder="TÍTULO DA DOAÇÃO" 
+                        value={donationTitle}
+                        onChange={e => setDonationTitle(e.target.value)}
                         className="phantom-input center-text" 
-                        style={{ height: '80px', padding: '10px', fontFamily: 'inherit', resize: 'none', textAlign: 'center' }}
                       />
+
+                      <textarea 
+                        placeholder="O QUE ESTÁ SENDO DOADO (Itens, quantidades, marca, etc.)" 
+                        value={donationItems}
+                        onChange={e => setDonationItems(e.target.value)}
+                        className="phantom-input center-text" 
+                        style={{ height: '70px', padding: '8px', fontFamily: 'inherit', resize: 'none', textAlign: 'center' }}
+                      />
+
+                      <textarea 
+                        placeholder="DEPOIMENTO DE DOAÇÃO (Deixe uma mensagem para o mural, opcional)" 
+                        value={donationTestimonial}
+                        onChange={e => setDonationTestimonial(e.target.value)}
+                        className="phantom-input center-text" 
+                        style={{ height: '60px', padding: '8px', fontFamily: 'inherit', resize: 'none', textAlign: 'center' }}
+                      />
+
+                      {/* Botão de Adicionar Imagem */}
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '8px' }}>
+                        <label 
+                          className="guide-page-btn btn-grey" 
+                          style={{ cursor: 'pointer', fontSize: '0.8rem', padding: '8px 15px', display: 'flex', alignItems: 'center', gap: '8px', borderStyle: 'dashed', marginTop: 0 }}
+                        >
+                          📷 ADICIONAR IMAGEM
+                          <input 
+                            type="file" 
+                            accept="image/*" 
+                            style={{ display: 'none' }} 
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (file) {
+                                const base64 = await resizeImage(file);
+                                setDonationImage(base64);
+                              }
+                            }}
+                          />
+                        </label>
+                        {donationImage && (
+                          <div style={{ position: 'relative', width: '80px', height: '80px', border: '1px solid rgba(255, 101, 132, 0.4)', borderRadius: '4px', overflow: 'hidden', background: '#fff' }}>
+                            <img src={donationImage} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <button 
+                              onClick={() => setDonationImage(null)}
+                              style={{ position: 'absolute', top: '2px', right: '2px', background: 'rgba(0,0,0,0.6)', border: 'none', color: '#fff', borderRadius: '50%', width: '18px', height: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', cursor: 'pointer', padding: 0 }}
+                            >
+                              ×
+                            </button>
+                          </div>
+                        )}
+                      </div>
 
                       <button 
                         className="guide-page-btn btn-next btn-grey"
                         style={{ marginTop: '10px', width: '100%' }}
                         onClick={() => {
-                          if (donorName.trim() && donorContact.trim() && donationType.trim()) {
+                          if (donorName.trim() && donorContact.trim() && donationType.trim() && donationTitle.trim() && donationItems.trim()) {
                             // 1. Registrar doação pendente (para o painel administrativo)
                             const donationItem = { 
                               name: donorName, 
                               contact: donorContact, 
                               type: donationType, 
-                              details: donationDetails 
+                              title: donationTitle,
+                              items: donationItems,
+                              testimonial: donationTestimonial,
+                              image: donationImage
                             };
                             setPendingDonations(prev => [...prev, donationItem]);
 
@@ -2520,7 +2671,10 @@ export default function Home() {
                               name: donorName,
                               contact: donorContact,
                               type: donationType,
-                              details: donationDetails
+                              title: donationTitle,
+                              items: donationItems,
+                              testimonial: donationTestimonial,
+                              image: donationImage
                             };
                             setDonationsList(prev => [...prev, newRecord]);
 
@@ -2528,8 +2682,13 @@ export default function Home() {
                             setDonorName("");
                             setDonorContact("");
                             setDonationType("");
-                            setDonationDetails("");
+                            setDonationTitle("");
+                            setDonationItems("");
+                            setDonationTestimonial("");
+                            setDonationImage(null);
                             setHasRequestedDonation(true);
+                          } else {
+                            alert("Por favor, preencha o Nome, Contato, Tipo, Título e Itens a serem doados!");
                           }
                         }}
                       >
@@ -2769,7 +2928,7 @@ export default function Home() {
                       ) : (
                         <div className="members-list" style={{ width: '100%', maxHeight: '200px', overflowY: 'auto' }}>
                           {pendingDonations.map((don, i) => (
-                            <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)', display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'stretch' }}>
+                            <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'stretch' }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <div>
                                   <span style={{ fontSize: '0.65rem', color: '#FF007F', border: '1px solid #FF007F', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>{don.type}</span>
@@ -2785,9 +2944,18 @@ export default function Home() {
                                   CONCLUIR
                                 </button>
                               </div>
-                              <div style={{ fontSize: '0.8rem', color: '#555', borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '6px' }}>
-                                <p style={{ margin: '0 0 3px 0' }}><strong>Contato:</strong> {don.contact}</p>
-                                {don.details && <p style={{ margin: 0 }}><strong>Detalhes:</strong> {don.details}</p>}
+                              <div style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', flexWrap: 'wrap', borderTop: '1px solid rgba(255, 0, 127, 0.1)', paddingTop: '10px' }}>
+                                {don.image && (
+                                  <div style={{ width: '60px', height: '60px', border: '1px solid rgba(255, 0, 127, 0.2)', borderRadius: '4px', overflow: 'hidden', background: '#fff', flexShrink: 0 }}>
+                                    <img src={don.image} alt={don.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                  </div>
+                                )}
+                                <div style={{ flex: 1, minWidth: '150px', display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '0.8rem', color: '#1a1a1a' }}>
+                                  <p style={{ margin: 0 }}><strong>Contato:</strong> {don.contact}</p>
+                                  <p style={{ margin: 0 }}><strong>Título:</strong> {don.title}</p>
+                                  <p style={{ margin: 0 }}><strong>Itens:</strong> {don.items}</p>
+                                  {don.testimonial && <p style={{ margin: 0 }}><strong>Depoimento:</strong> {don.testimonial}</p>}
+                                </div>
                               </div>
                             </div>
                           ))}
