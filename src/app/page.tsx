@@ -1058,7 +1058,7 @@ export default function Home() {
 
       {/* Ajudas e Doações Button (Top Left - Symmetrical to Seja Membro) */}
       <motion.div 
-        className="donations-trigger members-trigger"
+        className="donations-trigger"
         whileHover={selectedApp ? {} : { scale: 1.1 }}
         whileTap={selectedApp ? {} : { scale: 0.9 }}
         animate={{ 
@@ -1074,7 +1074,7 @@ export default function Home() {
               d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" 
               fill="rgba(255, 0, 127, 0.15)" 
               stroke="#FF007F" 
-              strokeWidth="0.04" 
+              strokeWidth="0.013" 
               strokeLinecap="round" 
               strokeLinejoin="round"
             />
