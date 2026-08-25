@@ -3361,48 +3361,54 @@ body::before {
 }
 
 /* ==========================================================================
-   4 SYSTEM VISUAL THEMES
-   Theme 1: Default (Dark + Neon Pink)
-   Theme 2: Light Dark (Fundo dos 12 botões cinza e Acessos ao Site claro)
-   Theme 3: Neon Purple (Tudo que é Rosa vira Roxo Neon)
-   Theme 4: Pastel Purple (Roxo Pastel suave)
+   4 SYSTEM VISUAL THEMES (Baseados nos horários do dia ou trocados via botão)
+   Theme 1 (06h-12h): Manhã - Modo Claro / Cinza
+   Theme 2 (12h-18h): Tarde - Modo Padrão Dark Rosa
+   Theme 3 (18h-00h): Noite - Modo Roxo Neon (Com sombreamento branco por trás do texto)
+   Theme 4 (00h-06h): Madrugada - Modo Roxo Pastel (Texto em Preto Claro)
    ========================================================================== */
 
-/* TEMA 2: Modo Claro / Light Dark */
-.theme-2 .runic-node {
+/* TEMA 1: Manhã (06h-12h) - Modo Claro / Cinza */
+.theme-1 .runic-node {
   background: rgba(50, 50, 50, 0.88) !important;
   border-color: rgba(255, 0, 127, 0.7) !important;
   box-shadow: 0 0 15px rgba(255, 0, 127, 0.3) !important;
 }
-.theme-2 .runic-node .initials,
-.theme-2 .runic-node .full-name {
+.theme-1 .runic-node .initials,
+.theme-1 .runic-node .full-name {
   color: #ffffff !important;
   text-shadow: 0 0 5px rgba(255, 0, 127, 0.5) !important;
   font-weight: 900 !important;
 }
-.theme-2 .global-visit-counter {
+.theme-1 .global-visit-counter {
   background: rgba(240, 240, 240, 0.95) !important;
   border: 1px solid rgba(255, 0, 127, 0.5) !important;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15) !important;
 }
-.theme-2 .global-visit-counter .counter-value,
-.theme-2 .global-visit-counter .counter-label {
+.theme-1 .global-visit-counter .counter-value,
+.theme-1 .global-visit-counter .counter-label {
   color: #111111 !important;
   text-shadow: none !important;
 }
-.theme-2 .survival-hud {
+.theme-1 .survival-hud {
   background: rgba(235, 235, 235, 0.95) !important;
   border-color: rgba(255, 0, 127, 0.4) !important;
 }
-.theme-2 .hud-news-item .hud-value,
-.theme-2 .hud-meta .hud-value {
+.theme-1 .hud-news-item .hud-value,
+.theme-1 .hud-meta .hud-value {
   color: #111111 !important;
 }
-.theme-2 .hud-label {
+.theme-1 .hud-label {
   color: #555555 !important;
 }
 
-/* TEMA 3: Roxo Neon (Tudo que é Rosa vira Roxo Neon) */
+/* TEMA 2: Tarde (12h-18h) - Modo Dark Rosa */
+.theme-2 {
+  --primary: #FF007F !important;
+  --secondary: #ff00ea !important;
+}
+
+/* TEMA 3: Noite (18h-00h) - Modo Roxo Neon */
 .theme-3 {
   --primary: #ab47bc !important;
   --secondary: #e040fb !important;
@@ -3426,11 +3432,21 @@ body::before {
   background: radial-gradient(circle, #ab47bc 0%, transparent 70%) !important;
   box-shadow: 0 0 30px #ab47bc !important;
 }
-.theme-3 .guide-heading,
-.theme-3 .seja-membro-flicker-text,
-.theme-3 .global-news-flicker-text {
+.theme-3 .guide-heading {
   color: #e040fb !important;
   text-shadow: 0 0 15px rgba(171, 71, 188, 0.8) !important;
+}
+/* Sombreamento branco por trás dos textos dos botões no Tema 3 */
+.theme-3 .seja-membro-flicker-text,
+.theme-3 .global-news-flicker-text,
+.theme-3 .runic-node .initials,
+.theme-3 .runic-node .full-name {
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 8px #ffffff,
+    0 0 16px #ffffff,
+    0 0 25px rgba(224, 64, 251, 0.9),
+    0 0 35px rgba(171, 71, 188, 0.8) !important;
 }
 .theme-3 .guide-page-btn::after {
   background: linear-gradient(90deg, transparent, rgba(171, 71, 188, 0.3), rgba(224, 64, 251, 0.8), rgba(171, 71, 188, 0.3), transparent) !important;
@@ -3448,7 +3464,7 @@ body::before {
   box-shadow: 0 0 15px rgba(171, 71, 188, 0.3) !important;
 }
 
-/* TEMA 4: Roxo Pastel */
+/* TEMA 4: Madrugada (00h-06h) - Modo Roxo Pastel */
 .theme-4 {
   --primary: #b39ddb !important;
   --secondary: #d1c4e9 !important;
@@ -3459,10 +3475,14 @@ body::before {
   border-color: #b39ddb !important;
   box-shadow: 0 0 12px rgba(179, 157, 219, 0.3) !important;
 }
+/* Cor do texto dos botões em Preto claro no Tema 4 */
+.theme-4 .seja-membro-flicker-text,
+.theme-4 .global-news-flicker-text,
 .theme-4 .runic-node .initials,
 .theme-4 .runic-node .full-name {
-  color: #ede7f6 !important;
-  text-shadow: 0 0 8px rgba(179, 157, 219, 0.6) !important;
+  color: #2b2236 !important;
+  text-shadow: 0 0 6px rgba(209, 196, 233, 0.9), 0 0 12px rgba(255, 255, 255, 0.7) !important;
+  font-weight: 900 !important;
 }
 .theme-4 .members-trigger .history-sphere,
 .theme-4 .planet-trigger .earth-sphere {
@@ -3474,9 +3494,7 @@ body::before {
   background: radial-gradient(circle, #b39ddb 0%, transparent 70%) !important;
   box-shadow: 0 0 25px #b39ddb !important;
 }
-.theme-4 .guide-heading,
-.theme-4 .seja-membro-flicker-text,
-.theme-4 .global-news-flicker-text {
+.theme-4 .guide-heading {
   color: #d1c4e9 !important;
   text-shadow: 0 0 10px rgba(179, 157, 219, 0.7) !important;
 }

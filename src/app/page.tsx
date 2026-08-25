@@ -239,8 +239,13 @@ export default function Home() {
         const num = parseInt(saved, 10);
         if (num >= 1 && num <= 4) return num as 1 | 2 | 3 | 4;
       }
+      const hour = new Date().getHours();
+      if (hour >= 6 && hour < 12) return 1;
+      if (hour >= 12 && hour < 18) return 2;
+      if (hour >= 18 && hour < 24) return 3;
+      return 4;
     }
-    return 1;
+    return 2;
   });
   const [joiningName, setJoiningName] = useState("");
   const [joiningRoles, setJoiningRoles] = useState<string[]>([]);
@@ -1034,7 +1039,7 @@ export default function Home() {
 
       {/* Orbital HUD */}
       <div className={`survival-hud ${isSlowMotion ? 'hud-highlight' : ''}`}>
-        {/* Botão de Troca de Temas (Menu Superior Esquerdo) */}
+        {/* Botão de Troca de Temas (Círculo Compacto no Menu Superior Esquerdo) */}
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -1045,29 +1050,33 @@ export default function Home() {
             }
           }}
           style={{
-            background: 'rgba(255, 255, 255, 0.15)',
-            border: '1px solid var(--primary)',
-            color: '#ffffff',
-            fontSize: '0.6rem',
-            padding: '3px 8px',
-            borderRadius: '4px',
+            width: '18px',
+            height: '18px',
+            borderRadius: '50%',
             cursor: 'pointer',
-            fontFamily: '"Orbitron", sans-serif',
-            fontWeight: 'bold',
-            letterSpacing: '1px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '4px',
-            marginRight: '8px',
+            border: currentTheme === 1 ? '2px solid #ff007f' :
+                    currentTheme === 2 ? '2px solid #ff007f' :
+                    currentTheme === 3 ? '2px solid #e040fb' : '2px solid #b39ddb',
+            background: currentTheme === 1 ? 'radial-gradient(circle, #e0e0e0 0%, #555555 100%)' :
+                        currentTheme === 2 ? 'radial-gradient(circle, #ff007f 0%, #111111 100%)' :
+                        currentTheme === 3 ? 'radial-gradient(circle, #e040fb 0%, #6a1b9a 100%)' :
+                        'radial-gradient(circle, #d1c4e9 0%, #311b92 100%)',
+            boxShadow: currentTheme === 3 ? '0 0 10px #e040fb' : currentTheme === 4 ? '0 0 10px #b39ddb' : '0 0 10px #ff007f',
+            marginRight: '10px',
             alignSelf: 'center',
             zIndex: 30,
-            whiteSpace: 'nowrap',
-            flexShrink: 0
+            flexShrink: 0,
+            padding: 0,
+            outline: 'none',
+            transition: 'all 0.3s ease'
           }}
-          title={`Tema Visual ${currentTheme}/4 (Clique para alterar)`}
-        >
-          🎨 TEMA {currentTheme}
-        </button>
+          title={
+            currentTheme === 1 ? 'Tema 1: Manhã (06h-12h) - Modo Claro / Cinza' :
+            currentTheme === 2 ? 'Tema 2: Tarde (12h-18h) - Modo Dark Rosa' :
+            currentTheme === 3 ? 'Tema 3: Noite (18h-00h) - Modo Roxo Neon' :
+            'Tema 4: Madrugada (00h-06h) - Modo Roxo Pastel'
+          }
+        />
 
         <div className="news-ticker-container">
           <motion.div 
