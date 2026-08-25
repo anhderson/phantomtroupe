@@ -280,6 +280,18 @@ export default function Home() {
   });
   const [hasRequestedDonation, setHasRequestedDonation] = useState(false);
 
+  const initialAndersonDonation = {
+    id: 'anderson_1',
+    date: '25/08/2026',
+    name: 'Anderson Costa Moitinho',
+    contact: '47863135800',
+    type: 'Apoio Financeiro (PIX)',
+    title: 'Doação PIX R$ 100,00',
+    items: 'Doação financeira no valor de R$ 100,00 via PIX para fortalecimento dos projetos.',
+    testimonial: 'Contribuição para o fortalecimento dos projetos e expansão da Phantom Troupe!',
+    image: null
+  };
+
   const [donationsList, setDonationsList] = useState<{
     id: string;
     date: string;
@@ -298,7 +310,7 @@ export default function Home() {
           const parsed = JSON.parse(saved);
           const fakeNames = ['Aline Souza', 'Carlos Mendes', 'Mariana Costa'];
           const fakeTitles = ['Teclado Yamaha', 'Computadores Desktop', 'Apoio Mensal PIX'];
-          const cleanList = parsed
+          let cleanList = parsed
             .filter((item: any) => 
               item.id !== '1' && 
               item.id !== '2' && 
@@ -317,7 +329,11 @@ export default function Home() {
               testimonial: item.testimonial || "",
               image: item.image || null
             }));
-          // Salva imediatamente a lista limpa no localStorage para descarte permanente dos fakes
+
+          const hasAnderson = cleanList.some((item: any) => item.name.includes('Anderson'));
+          if (!hasAnderson) {
+            cleanList = [initialAndersonDonation, ...cleanList];
+          }
           localStorage.setItem('phantom_donations', JSON.stringify(cleanList));
           return cleanList;
         } catch (e) {
@@ -325,7 +341,7 @@ export default function Home() {
         }
       }
     }
-    return [];
+    return [initialAndersonDonation];
   });
 
   const [newsTab, setNewsTab] = useState<'select' | 'news' | 'records'>('select');
@@ -345,10 +361,17 @@ export default function Home() {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('phantom_donations_history');
       if (saved) {
-        try { return JSON.parse(saved); } catch (e) { console.error(e); }
+        try { 
+          const parsed = JSON.parse(saved);
+          const hasAnderson = parsed.some((item: any) => item.name.includes('Anderson'));
+          if (!hasAnderson) {
+            return [{ ...initialAndersonDonation, status: 'approved' as const }, ...parsed];
+          }
+          return parsed;
+        } catch (e) { console.error(e); }
       }
     }
-    return [];
+    return [{ ...initialAndersonDonation, status: 'approved' as const }];
   });
   const [showDonationsHistory, setShowDonationsHistory] = useState(false);
   const [showPublishedDonations, setShowPublishedDonations] = useState(false);
