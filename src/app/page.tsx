@@ -2458,19 +2458,32 @@ export default function Home() {
                       </select>
 
                       {donationType === "Apoio Financeiro (PIX)" && (
-                        <div className="pix-donation-box" style={{ background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #ff6584', borderRadius: '4px', padding: '15px', textAlign: 'center', width: '100%', boxSizing: 'border-box' }}>
-                          <p style={{ fontSize: '0.85rem', color: '#555', marginBottom: '10px', lineHeight: '1.4' }}>
-                            Você pode fazer uma transferência de qualquer valor usando nossa chave PIX abaixo:
+                        <div className="pix-donation-box" style={{ background: 'rgba(255, 255, 255, 0.85)', border: '1px dashed #ff6584', borderRadius: '6px', padding: '15px', textAlign: 'center', width: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                          <p style={{ fontSize: '0.85rem', color: '#333333', margin: 0, lineHeight: '1.4' }}>
+                            Escaneie o QR Code ou copie a chave CPF abaixo para realizar a transferência via Banco Inter:
                           </p>
+                          
+                          {/* QR Code Image */}
+                          <div style={{ background: '#fff', padding: '8px', borderRadius: '6px', border: '1px solid rgba(255,101,132,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '150px', height: '150px', boxShadow: '0 0 10px rgba(0,0,0,0.05)' }}>
+                            <img 
+                              src="/pix_qrcode.jpg" 
+                              alt="Banco Inter PIX QR Code" 
+                              style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '4px' }} 
+                            />
+                          </div>
+                          
                           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', alignItems: 'center', background: 'rgba(255,255,255,0.9)', padding: '8px 12px', borderRadius: '4px', border: '1px solid rgba(255,101,132,0.3)', width: '100%', boxSizing: 'border-box' }}>
-                            <code style={{ fontSize: '0.9rem', color: '#ff3366', fontFamily: 'monospace', fontWeight: 'bold', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '70%' }}>pix@phantomtroupe.org</code>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', maxWidth: '70%', textAlign: 'left' }}>
+                              <span style={{ fontSize: '0.65rem', color: '#ff6584', fontWeight: 'bold', fontFamily: 'Orbitron, sans-serif' }}>CHAVE CPF (BANCO INTER)</span>
+                              <code style={{ fontSize: '0.9rem', color: '#ff3366', fontFamily: 'monospace', fontWeight: 'bold' }}>478.631.358-00</code>
+                            </div>
                             <button 
                               onClick={() => {
-                                navigator.clipboard.writeText('pix@phantomtroupe.org');
+                                navigator.clipboard.writeText('47863135800');
                                 setCopiedPix(true);
                                 setTimeout(() => setCopiedPix(false), 2000);
                               }}
-                              style={{ background: '#ff6584', border: 'none', color: '#fff', padding: '6px 12px', borderRadius: '4px', fontSize: '0.75rem', cursor: 'pointer', fontFamily: 'Orbitron, sans-serif', fontWeight: 'bold' }}
+                              style={{ background: '#ff6584', border: 'none', color: '#fff', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75rem', cursor: 'pointer', fontFamily: 'Orbitron, sans-serif', fontWeight: 'bold', alignSelf: 'center' }}
                             >
                               {copiedPix ? "COPIADO!" : "COPIAR"}
                             </button>
