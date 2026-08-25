@@ -2590,6 +2590,42 @@ export default function Home() {
                         </div>
                       )}
 
+                      {/* Botão de Adicionar Imagem do Projeto */}
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '6px', marginBottom: '10px' }}>
+                        <label 
+                          className="guide-page-btn btn-grey" 
+                          style={{ cursor: 'pointer', fontSize: '0.8rem', padding: '8px 15px', display: 'flex', alignItems: 'center', gap: '8px', borderStyle: 'dashed', marginTop: 0 }}
+                        >
+                          📷 ADICIONAR IMAGEM DO PROJETO
+                          <input 
+                            type="file" 
+                            accept="image/*" 
+                            style={{ display: 'none' }} 
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (file) {
+                                const base64 = await resizeImage(file);
+                                setDonationImage(base64);
+                              }
+                            }}
+                          />
+                        </label>
+                        <span style={{ fontSize: '0.68rem', color: '#ff6584', fontFamily: 'Orbitron, sans-serif', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                          A IMAGEM É OPCIONAL
+                        </span>
+                        {donationImage && (
+                          <div style={{ position: 'relative', width: '80px', height: '80px', border: '1px solid rgba(255, 101, 132, 0.4)', borderRadius: '4px', overflow: 'hidden', background: '#fff', marginTop: '4px' }}>
+                            <img src={donationImage} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <button 
+                              onClick={() => setDonationImage(null)}
+                              style={{ position: 'absolute', top: '2px', right: '2px', background: 'rgba(0,0,0,0.6)', border: 'none', color: '#fff', borderRadius: '50%', width: '18px', height: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', cursor: 'pointer', padding: 0 }}
+                            >
+                              ×
+                            </button>
+                          </div>
+                        )}
+                      </div>
+
                       <input 
                         type="text" 
                         placeholder="TÍTULO DA DOAÇÃO" 
@@ -2613,39 +2649,6 @@ export default function Home() {
                         className="phantom-input center-text" 
                         style={{ height: '60px', padding: '8px', fontFamily: 'inherit', resize: 'none', textAlign: 'center' }}
                       />
-
-                      {/* Botão de Adicionar Imagem */}
-                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '8px' }}>
-                        <label 
-                          className="guide-page-btn btn-grey" 
-                          style={{ cursor: 'pointer', fontSize: '0.8rem', padding: '8px 15px', display: 'flex', alignItems: 'center', gap: '8px', borderStyle: 'dashed', marginTop: 0 }}
-                        >
-                          📷 ADICIONAR IMAGEM
-                          <input 
-                            type="file" 
-                            accept="image/*" 
-                            style={{ display: 'none' }} 
-                            onChange={async (e) => {
-                              const file = e.target.files?.[0];
-                              if (file) {
-                                const base64 = await resizeImage(file);
-                                setDonationImage(base64);
-                              }
-                            }}
-                          />
-                        </label>
-                        {donationImage && (
-                          <div style={{ position: 'relative', width: '80px', height: '80px', border: '1px solid rgba(255, 101, 132, 0.4)', borderRadius: '4px', overflow: 'hidden', background: '#fff' }}>
-                            <img src={donationImage} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                            <button 
-                              onClick={() => setDonationImage(null)}
-                              style={{ position: 'absolute', top: '2px', right: '2px', background: 'rgba(0,0,0,0.6)', border: 'none', color: '#fff', borderRadius: '50%', width: '18px', height: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', cursor: 'pointer', padding: 0 }}
-                            >
-                              ×
-                            </button>
-                          </div>
-                        )}
-                      </div>
 
                       <button 
                         className="guide-page-btn btn-next btn-grey"
