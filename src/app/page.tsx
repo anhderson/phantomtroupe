@@ -232,6 +232,16 @@ export default function Home() {
   const [isGlitching, setIsGlitching] = useState(false);
   const [showConstructionModal, setShowConstructionModal] = useState(false);
   const [showLaunchWarning, setShowLaunchWarning] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState<1 | 2 | 3 | 4>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('phantom_theme');
+      if (saved) {
+        const num = parseInt(saved, 10);
+        if (num >= 1 && num <= 4) return num as 1 | 2 | 3 | 4;
+      }
+    }
+    return 1;
+  });
   const [joiningName, setJoiningName] = useState("");
   const [joiningRoles, setJoiningRoles] = useState<string[]>([]);
   const [joiningType, setJoiningType] = useState("");
@@ -1007,7 +1017,7 @@ export default function Home() {
 
   return (
     <main 
-      className={`black-hole-container ${isGlitching ? 'cyber-blackout-active' : ''} ${isSlowMotion ? 'slow-mo-active' : ''}`}
+      className={`black-hole-container ${isGlitching ? 'cyber-blackout-active' : ''} ${isSlowMotion ? 'slow-mo-active' : ''} theme-${currentTheme}`}
       onClick={handleBackgroundClick}
     >
       {/* SVG ClipPaths definitions */}
@@ -1024,6 +1034,41 @@ export default function Home() {
 
       {/* Orbital HUD */}
       <div className={`survival-hud ${isSlowMotion ? 'hud-highlight' : ''}`}>
+        {/* Botão de Troca de Temas (Menu Superior Esquerdo) */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            const next = ((currentTheme % 4) + 1) as 1 | 2 | 3 | 4;
+            setCurrentTheme(next);
+            if (typeof window !== 'undefined') {
+              localStorage.setItem('phantom_theme', next.toString());
+            }
+          }}
+          style={{
+            background: 'rgba(255, 255, 255, 0.15)',
+            border: '1px solid var(--primary)',
+            color: '#ffffff',
+            fontSize: '0.6rem',
+            padding: '3px 8px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontFamily: '"Orbitron", sans-serif',
+            fontWeight: 'bold',
+            letterSpacing: '1px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
+            marginRight: '8px',
+            alignSelf: 'center',
+            zIndex: 30,
+            whiteSpace: 'nowrap',
+            flexShrink: 0
+          }}
+          title={`Tema Visual ${currentTheme}/4 (Clique para alterar)`}
+        >
+          🎨 TEMA {currentTheme}
+        </button>
+
         <div className="news-ticker-container">
           <motion.div 
             ref={tickerRef}
@@ -1459,7 +1504,7 @@ export default function Home() {
               filter: isGlitching ? 'hue-rotate(15deg) contrast(1.5)' : 'none'
             }}
           >
-            NOTÍCIAS{"\n"}& REGISTROS
+            NOTÍCIAS{"\n"}& MURAL
           </motion.div>
         </div>
         
@@ -1504,7 +1549,7 @@ export default function Home() {
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
                 <h2 className="guide-heading" style={{ color: 'var(--primary)', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>
-                  {newsTab === 'select' && "▽ ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 & ℝ𝖊𝖌𝖎𝖘𝖙𝖗𝖔𝖘 △"}
+                  {newsTab === 'select' && "▽ ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 & 𝕄𝖚𝖗𝖆𝖑 △"}
                   {newsTab === 'news' && "▽ Últimas Notícias △"}
                   {newsTab === 'records' && "▽ Mural de Doações & Ajudas △"}
                 </h2>

@@ -3361,3 +3361,144 @@ body::before {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(255, 51, 102, 0.6);
 }
+
+/* ==========================================================================
+   4 SYSTEM VISUAL THEMES
+   Theme 1: Default (Dark + Neon Pink)
+   Theme 2: Light Dark (Fundo dos 12 botões cinza e Acessos ao Site claro)
+   Theme 3: Neon Purple (Tudo que é Rosa vira Roxo Neon)
+   Theme 4: Pastel Purple (Roxo Pastel suave)
+   ========================================================================== */
+
+/* TEMA 2: Modo Claro / Light Dark */
+.theme-2 .runic-node {
+  background: rgba(225, 225, 225, 0.92) !important;
+  border-color: rgba(255, 0, 127, 0.7) !important;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3) !important;
+}
+.theme-2 .runic-node .initials,
+.theme-2 .runic-node .full-name {
+  color: #111111 !important;
+  text-shadow: none !important;
+  font-weight: 900 !important;
+}
+.theme-2 .global-visit-counter {
+  background: rgba(240, 240, 240, 0.95) !important;
+  border: 1px solid rgba(255, 0, 127, 0.5) !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15) !important;
+}
+.theme-2 .global-visit-counter .counter-value,
+.theme-2 .global-visit-counter .counter-label {
+  color: #111111 !important;
+  text-shadow: none !important;
+}
+.theme-2 .survival-hud {
+  background: rgba(235, 235, 235, 0.95) !important;
+  border-color: rgba(255, 0, 127, 0.4) !important;
+}
+.theme-2 .hud-news-item .hud-value,
+.theme-2 .hud-meta .hud-value {
+  color: #111111 !important;
+}
+.theme-2 .hud-label {
+  color: #555555 !important;
+}
+
+/* TEMA 3: Roxo Neon (Tudo que é Rosa vira Roxo Neon) */
+.theme-3 {
+  --primary: #ab47bc !important;
+  --secondary: #e040fb !important;
+  --silk-color: rgba(171, 71, 188, 0.4) !important;
+}
+.theme-3 .side-nav-node {
+  background: rgba(171, 71, 188, 0.1) !important;
+  border-color: rgba(171, 71, 188, 0.3) !important;
+  box-shadow: 0 0 10px rgba(171, 71, 188, 0.2) !important;
+}
+.theme-3 .side-nav-node::after {
+  background: #ab47bc !important;
+}
+.theme-3 .members-trigger .history-sphere,
+.theme-3 .planet-trigger .earth-sphere {
+  border-color: #ab47bc !important;
+  box-shadow: 0 0 20px rgba(171, 71, 188, 0.6) !important;
+  background: rgba(171, 71, 188, 0.2) !important;
+}
+.theme-3 .pink-impact {
+  background: radial-gradient(circle, #ab47bc 0%, transparent 70%) !important;
+  box-shadow: 0 0 30px #ab47bc !important;
+}
+.theme-3 .guide-heading,
+.theme-3 .seja-membro-flicker-text,
+.theme-3 .global-news-flicker-text {
+  color: #e040fb !important;
+  text-shadow: 0 0 15px rgba(171, 71, 188, 0.8) !important;
+}
+.theme-3 .guide-page-btn::after {
+  background: linear-gradient(90deg, transparent, rgba(171, 71, 188, 0.3), rgba(224, 64, 251, 0.8), rgba(171, 71, 188, 0.3), transparent) !important;
+}
+.theme-3 .guide-page-btn:hover {
+  border-color: #ab47bc !important;
+  box-shadow: 0 0 20px rgba(171, 71, 188, 0.4) !important;
+}
+.theme-3 .donation-heart-shape path {
+  fill: rgba(171, 71, 188, 0.15) !important;
+  stroke: #ab47bc !important;
+}
+.theme-3 .global-visit-counter {
+  border-color: rgba(171, 71, 188, 0.5) !important;
+  box-shadow: 0 0 15px rgba(171, 71, 188, 0.3) !important;
+}
+
+/* TEMA 4: Roxo Pastel */
+.theme-4 {
+  --primary: #b39ddb !important;
+  --secondary: #d1c4e9 !important;
+  --silk-color: rgba(179, 157, 219, 0.4) !important;
+}
+.theme-4 .runic-node {
+  background: rgba(243, 229, 245, 0.35) !important;
+  border-color: #b39ddb !important;
+  box-shadow: 0 0 12px rgba(179, 157, 219, 0.3) !important;
+}
+.theme-4 .runic-node .initials,
+.theme-4 .runic-node .full-name {
+  color: #ede7f6 !important;
+  text-shadow: 0 0 8px rgba(179, 157, 219, 0.6) !important;
+}
+.theme-4 .members-trigger .history-sphere,
+.theme-4 .planet-trigger .earth-sphere {
+  border-color: #b39ddb !important;
+  box-shadow: 0 0 15px rgba(179, 157, 219, 0.5) !important;
+  background: rgba(179, 157, 219, 0.25) !important;
+}
+.theme-4 .pink-impact {
+  background: radial-gradient(circle, #b39ddb 0%, transparent 70%) !important;
+  box-shadow: 0 0 25px #b39ddb !important;
+}
+.theme-4 .guide-heading,
+.theme-4 .seja-membro-flicker-text,
+.theme-4 .global-news-flicker-text {
+  color: #d1c4e9 !important;
+  text-shadow: 0 0 10px rgba(179, 157, 219, 0.7) !important;
+}
+.theme-4 .guide-page-btn::after {
+  background: linear-gradient(90deg, transparent, rgba(179, 157, 219, 0.3), rgba(209, 196, 233, 0.8), rgba(179, 157, 219, 0.3), transparent) !important;
+}
+.theme-4 .guide-page-btn:hover {
+  border-color: #b39ddb !important;
+  box-shadow: 0 0 15px rgba(179, 157, 219, 0.4) !important;
+}
+.theme-4 .donation-heart-shape path {
+  fill: rgba(179, 157, 219, 0.2) !important;
+  stroke: #b39ddb !important;
+}
+.theme-4 .global-visit-counter {
+  background: rgba(243, 229, 245, 0.9) !important;
+  border-color: rgba(179, 157, 219, 0.5) !important;
+  color: #311b92 !important;
+}
+.theme-4 .global-visit-counter .counter-value,
+.theme-4 .global-visit-counter .counter-label {
+  color: #311b92 !important;
+}
