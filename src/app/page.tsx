@@ -2668,21 +2668,7 @@ export default function Home() {
                             };
                             setPendingDonations(prev => [...prev, donationItem]);
 
-                            // 2. Registrar doação pública no Mural (Notícias & Registros)
-                            const newRecord = {
-                              id: Date.now().toString(),
-                              date: new Date().toLocaleDateString('pt-BR'),
-                              name: donorName,
-                              contact: donorContact,
-                              type: donationType,
-                              title: donationTitle,
-                              items: donationItems,
-                              testimonial: donationTestimonial,
-                              image: donationImage
-                            };
-                            setDonationsList(prev => [...prev, newRecord]);
-
-                            // 3. Resetar estados do formulário
+                            // 2. Resetar estados do formulário
                             setDonorName("");
                             setDonorContact("");
                             setDonationType("");
@@ -2938,15 +2924,41 @@ export default function Home() {
                                   <span style={{ fontSize: '0.65rem', color: '#FF007F', border: '1px solid #FF007F', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>{don.type}</span>
                                   <h3 style={{ margin: '5px 0 0 0', fontSize: '1.15rem' }}>{don.name}</h3>
                                 </div>
-                                <button 
-                                  className="silver-btn" 
-                                  style={{ padding: '6px 15px', fontSize: '0.75rem', alignSelf: 'center' }}
-                                  onClick={() => {
-                                    setPendingDonations(prev => prev.filter((_, idx) => idx !== i));
-                                  }}
-                                >
-                                  CONCLUIR
-                                </button>
+                                <div style={{ display: 'flex', gap: '8px', alignSelf: 'center' }}>
+                                  <button 
+                                    className="silver-btn" 
+                                    style={{ padding: '6px 12px', fontSize: '0.7rem', background: '#00ff66', border: '1px solid #00cc55', color: '#000', fontWeight: 'bold' }}
+                                    onClick={() => {
+                                      // 1. Publicar no mural de Registros público
+                                      const newRecord = {
+                                        id: Date.now().toString(),
+                                        date: new Date().toLocaleDateString('pt-BR'),
+                                        name: don.name,
+                                        contact: don.contact,
+                                        type: don.type,
+                                        title: don.title,
+                                        items: don.items,
+                                        testimonial: don.testimonial,
+                                        image: don.image
+                                      };
+                                      setDonationsList(prev => [...prev, newRecord]);
+                                      // 2. Remover das solicitações pendentes
+                                      setPendingDonations(prev => prev.filter((_, idx) => idx !== i));
+                                    }}
+                                  >
+                                    APROVAR
+                                  </button>
+                                  <button 
+                                    className="silver-btn" 
+                                    style={{ padding: '6px 12px', fontSize: '0.7rem' }}
+                                    onClick={() => {
+                                      // Apenas recusar e remover de pendentes
+                                      setPendingDonations(prev => prev.filter((_, idx) => idx !== i));
+                                    }}
+                                  >
+                                    REJEITAR
+                                  </button>
+                                </div>
                               </div>
                               <div style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', flexWrap: 'wrap', borderTop: '1px solid rgba(255, 0, 127, 0.1)', paddingTop: '10px' }}>
                                 {don.image && (
