@@ -837,6 +837,15 @@ export default function Home() {
       className={`black-hole-container ${isGlitching ? 'cyber-blackout-active' : ''} ${isSlowMotion ? 'slow-mo-active' : ''}`}
       onClick={handleBackgroundClick}
     >
+      {/* SVG ClipPaths definitions */}
+      <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none' }}>
+        <defs>
+          <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+            <path d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
       {/* Background Canvas Reveal Layer */}
       <canvas ref={canvasRef} className="reveal-canvas" />
 
@@ -1059,13 +1068,13 @@ export default function Home() {
         transition={{ duration: 0.3 }}
         onClick={() => setShowDonations(true)}
       >
-        <div className="history-sphere donation-heart-shape" style={{ width: '75px', height: '75px', position: 'relative' }}>
-          <svg viewBox="0 0 32 32" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'drop-shadow(0 0 10px rgba(255, 0, 127, 0.6))', zIndex: 1 }}>
+        <div className="history-sphere donation-heart-shape" style={{ width: '85px', height: '85px', position: 'relative' }}>
+          <svg viewBox="0 0 1 1" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'drop-shadow(0 0 10px rgba(255, 0, 127, 0.6))', zIndex: 1 }}>
             <path 
-              d="M16 28.2C16 28.2 3 20.2 3 11.2C3 6.2 7 3 12 3C14.8 3 16 5.5 16 5.5C16 5.5 17.2 3 20 3C25 3 29 6.2 29 11.2C29 20.2 16 28.2 16 28.2Z" 
-              fill="rgba(255, 0, 127, 0.2)" 
+              d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" 
+              fill="rgba(255, 0, 127, 0.15)" 
               stroke="#FF007F" 
-              strokeWidth="2" 
+              strokeWidth="0.04" 
               strokeLinecap="round" 
               strokeLinejoin="round"
             />
@@ -1099,7 +1108,7 @@ export default function Home() {
               textAlign: 'center',
               color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
-              fontSize: '0.54rem',
+              fontSize: '0.58rem',
               fontWeight: 900,
               letterSpacing: '1px',
               lineHeight: '1.2',
@@ -1120,7 +1129,7 @@ export default function Home() {
           </motion.div>
         </div>
         
-        <div className="history-scan-overlay" style={{ clipPath: "path('M37.5,66 C37.5,66 7.5,47.3 7.5,26.2 C7.5,14.5 17.5,7 30,7 C37.5,7 37.5,12.8 37.5,12.8 C37.5,12.8 37.5,7 45,7 C57.5,7 67.5,14.5 67.5,26.2 C67.5,47.3 37.5,66 37.5,66 Z')" }}>
+        <div className="history-scan-overlay" style={{ clipPath: 'url(#heart-clip)' }}>
           {Array.from({ length: 12 }).map((_, i) => (
             <div 
               key={i} 
