@@ -280,7 +280,6 @@ export default function Home() {
   });
   const [hasRequestedDonation, setHasRequestedDonation] = useState(false);
 
-  // Public Donations Mural List
   const [donationsList, setDonationsList] = useState<{
     id: string;
     date: string;
@@ -297,17 +296,30 @@ export default function Home() {
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
-          return parsed.map((item: any) => ({
-            id: item.id || Date.now().toString(),
-            date: item.date || new Date().toLocaleDateString('pt-BR'),
-            name: item.name || "",
-            contact: item.contact || "",
-            type: item.type || "",
-            title: item.title || "Doação Registrada",
-            items: item.items || item.details || "",
-            testimonial: item.testimonial || "",
-            image: item.image || null
-          }));
+          const fakeNames = ['Aline Souza', 'Carlos Mendes', 'Mariana Costa'];
+          const fakeTitles = ['Teclado Yamaha', 'Computadores Desktop', 'Apoio Mensal PIX'];
+          const cleanList = parsed
+            .filter((item: any) => 
+              item.id !== '1' && 
+              item.id !== '2' && 
+              item.id !== '3' && 
+              !fakeNames.includes(item.name) && 
+              !fakeTitles.includes(item.title)
+            )
+            .map((item: any) => ({
+              id: item.id || Date.now().toString(),
+              date: item.date || new Date().toLocaleDateString('pt-BR'),
+              name: item.name || "",
+              contact: item.contact || "",
+              type: item.type || "",
+              title: item.title || "Doação Registrada",
+              items: item.items || item.details || "",
+              testimonial: item.testimonial || "",
+              image: item.image || null
+            }));
+          // Salva imediatamente a lista limpa no localStorage para descarte permanente dos fakes
+          localStorage.setItem('phantom_donations', JSON.stringify(cleanList));
+          return cleanList;
         } catch (e) {
           console.error(e);
         }
@@ -339,6 +351,7 @@ export default function Home() {
     return [];
   });
   const [showDonationsHistory, setShowDonationsHistory] = useState(false);
+  const [showPublishedDonations, setShowPublishedDonations] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('phantom_pending_donations', JSON.stringify(pendingDonations));
@@ -3058,6 +3071,41 @@ export default function Home() {
                                 }}>
                                   {h.status === 'approved' ? 'APROVADA' : 'REJEITADA'}
                                 </span>
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      )}
+
+                      {/* Botão para gerenciar registros publicados no Mural */}
+                      <button 
+                        className="guide-page-btn btn-grey" 
+                        style={{ marginTop: '10px', width: '100%', fontSize: '0.8rem', padding: '10px' }}
+                        onClick={() => setShowPublishedDonations(!showPublishedDonations)}
+                      >
+                        {showPublishedDonations ? '▲ OCULTAR REGISTROS DO MURAL' : '▼ GERENCIAR REGISTROS PUBLICADOS NO MURAL'}
+                      </button>
+
+                      {showPublishedDonations && (
+                        <div style={{ marginTop: '10px', width: '100%', maxHeight: '250px', overflowY: 'auto' }}>
+                          {donationsList.length === 0 ? (
+                            <p style={{ color: '#a0a0a0', letterSpacing: '1px', fontSize: '0.85rem', textAlign: 'center' }}>NENHUM REGISTRO PUBLICADO NO MURAL</p>
+                          ) : (
+                            [...donationsList].reverse().map((rec) => (
+                              <div key={rec.id} style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '10px', marginBottom: '6px', borderRadius: '4px', background: 'rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                                  <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#ffffff' }}>{rec.title} ({rec.name})</span>
+                                  <span style={{ fontSize: '0.65rem', color: '#cccccc' }}>{rec.type} — {rec.date}</span>
+                                </div>
+                                <button 
+                                  className="silver-btn" 
+                                  style={{ padding: '4px 10px', fontSize: '0.65rem', background: '#ff3366', border: 'none', color: '#fff' }}
+                                  onClick={() => {
+                                    setDonationsList(prev => prev.filter(item => item.id !== rec.id));
+                                  }}
+                                >
+                                  REMOVER
+                                </button>
                               </div>
                             ))
                           )}
