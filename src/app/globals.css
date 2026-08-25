@@ -3144,7 +3144,7 @@ body::before {
 
 /* Inputs in members overlay */
 .members-overlay .phantom-input {
-  background: #ffffff !important;
+  background: #f4f4f4 !important;
   border: 1px solid rgba(255, 101, 132, 0.4) !important;
   color: #2c1a16 !important;
   border-radius: 4px;
@@ -3152,7 +3152,7 @@ body::before {
 
 .members-overlay .phantom-input:focus {
   border-color: #ff007f !important;
-  background: #ffffff !important;
+  background: #fcfcfc !important;
   box-shadow: 0 0 10px rgba(255, 0, 127, 0.2) !important;
 }
 

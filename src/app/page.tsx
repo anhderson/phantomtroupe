@@ -2554,6 +2554,7 @@ export default function Home() {
                         <option value="Equipamentos (Computadores, etc.)">Equipamentos (Computadores, etc.)</option>
                         <option value="Ferramentas (Trabalho, etc.)">Ferramentas (Trabalho, etc.)</option>
                         <option value="Instrumentos (Música, Som, etc.)">Instrumentos (Música, Som, etc.)</option>
+                        <option value="Outros">Outros</option>
                       </select>
 
                       {donationType === "Apoio Financeiro (PIX)" && (
@@ -2596,7 +2597,7 @@ export default function Home() {
                           className="guide-page-btn btn-grey" 
                           style={{ cursor: 'pointer', fontSize: '0.8rem', padding: '8px 15px', display: 'flex', alignItems: 'center', gap: '8px', borderStyle: 'dashed', marginTop: 0 }}
                         >
-                          📷 ADICIONAR IMAGEM DO PROJETO
+                          ADICIONAR IMAGEM DO PROJETO
                           <input 
                             type="file" 
                             accept="image/*" 
