@@ -1624,7 +1624,7 @@ export default function Home() {
           >
             <div 
               className="guide-inner-wrap" 
-              style={{ padding: '40px', transform: 'translateY(-10vh)', position: 'relative', display: 'flex', flexDirection: 'column', gap: '20px' }}
+              style={{ padding: '40px', position: 'relative', display: 'flex', flexDirection: 'column', gap: '20px', margin: 'auto' }}
               onClick={e => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -1652,18 +1652,16 @@ export default function Home() {
                   <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '500px', justifyContent: 'center' }}>
                     <button 
                       className="guide-page-btn" 
-                      style={{ flex: 1, padding: '20px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', height: 'auto', background: 'rgba(225, 190, 231, 0.75)', border: '1px solid rgba(171, 71, 188, 0.6)', borderRadius: '6px', color: '#2c1a16' }}
+                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%)', border: '1px solid #6b7280', borderRadius: '6px', color: '#111827', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)' }}
                       onClick={() => setNewsTab('news')}
                     >
-                      <span style={{ fontSize: '2rem' }}>📰</span>
                       NOTÍCIAS
                     </button>
                     <button 
                       className="guide-page-btn" 
-                      style={{ flex: 1, padding: '20px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', height: 'auto', background: 'rgba(225, 190, 231, 0.75)', border: '1px solid rgba(171, 71, 188, 0.6)', borderRadius: '6px', color: '#2c1a16' }}
+                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%)', border: '1px solid #6b7280', borderRadius: '6px', color: '#111827', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)' }}
                       onClick={() => setNewsTab('records')}
                     >
-                      <span style={{ fontSize: '2rem' }}>💖</span>
                       REGISTROS (MURAL)
                     </button>
                   </div>
@@ -1874,7 +1872,12 @@ export default function Home() {
                     {donationsList.length === 0 ? (
                       <p style={{ textAlign: 'center', color: '#666', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhum registro no mural ainda.</p>
                     ) : (
-                      [...donationsList].reverse().map((record) => (
+                      [...donationsList]
+                        .filter((record, idx, arr) => 
+                          arr.findIndex(r => r.title === record.title && r.items === record.items && r.name === record.name) === idx
+                        )
+                        .reverse()
+                        .map((record) => (
                         <div 
                           key={record.id} 
                           className="member-card"
