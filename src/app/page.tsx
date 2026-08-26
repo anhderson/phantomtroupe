@@ -2439,42 +2439,77 @@ export default function Home() {
               <div className="cute-welcome-projects-grid">
                 {APPS.map((app, index) => {
                   const isBrasaoActive = activeBrasaoIndex === index;
-                  const brasaoSrc = app.icon.replace('circular', '');
+                  const brasaoSrc = `/Brasoes/${app.id}.png`;
+
                   return (
                     <div 
                       key={app.id} 
-                      style={{ position: 'relative', width: '36px', height: '36px' }}
+                      style={{ position: 'relative', width: '38px', height: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                     >
-                      {/* Ícone Circular (padrão) */}
-                      <img
+                      {/* 1. Ícone Circular Base */}
+                      <motion.img
                         src={app.icon}
                         alt={app.fullName}
                         title={app.fullName}
                         className="cute-welcome-project-icon"
+                        animate={{
+                          scale: isBrasaoActive ? [1, 0] : 1,
+                          opacity: isBrasaoActive ? [1, 0] : 1
+                        }}
+                        transition={{ duration: 0.5, ease: "easeIn" }}
                         style={{
                           position: 'absolute',
                           top: 0,
                           left: 0,
                           width: '100%',
-                          height: '100%',
-                          opacity: isBrasaoActive ? 0 : 1,
-                          transition: 'opacity 1s ease-in-out'
+                          height: '100%'
                         }}
                       />
-                      {/* Ícone do Brasão (esmaece surgindo a cada 3s) */}
-                      <img
+
+                      {/* 2. Ponto de Luz Branco no Centro que Cresce */}
+                      <AnimatePresence>
+                        {isBrasaoActive && (
+                          <motion.div
+                            key={`light-${app.id}`}
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{ 
+                              scale: [0, 1.8, 0], 
+                              opacity: [0, 1, 0] 
+                            }}
+                            exit={{ scale: 0, opacity: 0 }}
+                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                            style={{
+                              position: 'absolute',
+                              width: '20px',
+                              height: '20px',
+                              borderRadius: '50%',
+                              background: '#ffffff',
+                              boxShadow: '0 0 25px #ffffff, 0 0 45px #ffffff, 0 0 60px #ffffff',
+                              pointerEvents: 'none',
+                              zIndex: 10
+                            }}
+                          />
+                        )}
+                      </AnimatePresence>
+
+                      {/* 3. Imagem do Brasão (/Brasoes/X.png) tomando a forma */}
+                      <motion.img
                         src={brasaoSrc}
                         alt={`${app.fullName} Brasão`}
                         title={`${app.fullName} Brasão`}
                         className="cute-welcome-project-icon"
+                        animate={{
+                          scale: isBrasaoActive ? [0, 1.1, 1] : 0,
+                          opacity: isBrasaoActive ? [0, 1, 1] : 0
+                        }}
+                        transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
                         style={{
                           position: 'absolute',
                           top: 0,
                           left: 0,
                           width: '100%',
                           height: '100%',
-                          opacity: isBrasaoActive ? 1 : 0,
-                          transition: 'opacity 1s ease-in-out'
+                          zIndex: 5
                         }}
                       />
                     </div>
