@@ -1636,7 +1636,13 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: 'var(--primary)', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>
+                <h2 
+                  className="guide-heading" 
+                  style={{ 
+                    color: newsTab === 'records' ? '#d1c4e9' : 'var(--primary)', 
+                    textShadow: newsTab === 'records' ? '0 0 15px rgba(179, 136, 255, 0.6)' : '0 0 15px rgba(255, 0, 127, 0.5)' 
+                  }}
+                >
                   {newsTab === 'select' && "▽ ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 & 𝕄𝖚𝖗𝖆𝖑 △"}
                   {newsTab === 'news' && "▽ Últimas Notícias △"}
                   {newsTab === 'records' && "▽ Mural de Doações & Ajudas △"}
@@ -1652,14 +1658,14 @@ export default function Home() {
                   <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '500px', justifyContent: 'center' }}>
                     <button 
                       className="guide-page-btn" 
-                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%)', border: '1px solid #6b7280', borderRadius: '6px', color: '#111827', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)' }}
+                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'linear-gradient(135deg, rgba(240, 240, 240, 0.75) 0%, rgba(180, 180, 180, 0.75) 100%)', backdropFilter: 'blur(8px)', border: '1px solid rgba(160, 160, 160, 0.6)', borderRadius: '6px', color: '#111827', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)' }}
                       onClick={() => setNewsTab('news')}
                     >
                       NOTÍCIAS
                     </button>
                     <button 
                       className="guide-page-btn" 
-                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%)', border: '1px solid #6b7280', borderRadius: '6px', color: '#111827', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)' }}
+                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'linear-gradient(135deg, rgba(209, 196, 233, 0.75) 0%, rgba(179, 136, 255, 0.75) 100%)', backdropFilter: 'blur(8px)', border: '1px solid rgba(179, 136, 255, 0.6)', borderRadius: '6px', color: '#1a0933', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)' }}
                       onClick={() => setNewsTab('records')}
                     >
                       REGISTROS (MURAL)
@@ -1684,7 +1690,7 @@ export default function Home() {
               {/* Aba 2: Lista de Notícias */}
               {newsTab === 'news' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%' }}>
-                  <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
+                  <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                     <button 
                       className="silver-btn" 
                       style={{ padding: '6px 15px', fontSize: '0.75rem', letterSpacing: '1px' }}
@@ -1854,7 +1860,7 @@ export default function Home() {
               {/* Aba 3: Mural de Registros públicos */}
               {newsTab === 'records' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%' }}>
-                  <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
+                  <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                     <button 
                       className="silver-btn" 
                       style={{ padding: '6px 15px', fontSize: '0.75rem', letterSpacing: '1px' }}
