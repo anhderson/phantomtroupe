@@ -502,6 +502,7 @@ export default function Home() {
   const [hoveredPillar, setHoveredPillar] = useState<number | null>(null);
   const [clickedPillars, setClickedPillars] = useState<number[]>([]);
   const [mobileAutoRevealed, setMobileAutoRevealed] = useState(false);
+  const [activeBrasaoIndex, setActiveBrasaoIndex] = useState(0);
 
   useEffect(() => {
     // Apenas no mobile (window.innerWidth <= 768), mostrar os textos dos titulos apos 7 segundos
@@ -511,6 +512,14 @@ export default function Home() {
       }, 7000);
       return () => clearTimeout(timer);
     }
+  }, []);
+
+  useEffect(() => {
+    // A cada 3 segundos esmaecer desaparecendo a imagem circular e mostrar o Brasao correspondente
+    const interval = setInterval(() => {
+      setActiveBrasaoIndex((prev) => (prev + 1) % APPS.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
   
   // Ticker Velocity Control
@@ -2428,20 +2437,54 @@ export default function Home() {
               <div className="cute-close-btn" onClick={() => setShowGuide(false)}>×</div>
               
               <div className="cute-welcome-projects-grid">
-                {APPS.map((app) => (
-                  <img
-                    key={app.id}
-                    src={app.icon}
-                    alt={app.fullName}
-                    title={app.fullName}
-                    className="cute-welcome-project-icon"
-                  />
-                ))}
+                {APPS.map((app, index) => {
+                  const isBrasaoActive = activeBrasaoIndex === index;
+                  const brasaoSrc = app.icon.replace('circular', '');
+                  return (
+                    <div 
+                      key={app.id} 
+                      style={{ position: 'relative', width: '36px', height: '36px' }}
+                    >
+                      {/* Ícone Circular (padrão) */}
+                      <img
+                        src={app.icon}
+                        alt={app.fullName}
+                        title={app.fullName}
+                        className="cute-welcome-project-icon"
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          opacity: isBrasaoActive ? 0 : 1,
+                          transition: 'opacity 1s ease-in-out'
+                        }}
+                      />
+                      {/* Ícone do Brasão (esmaece surgindo a cada 3s) */}
+                      <img
+                        src={brasaoSrc}
+                        alt={`${app.fullName} Brasão`}
+                        title={`${app.fullName} Brasão`}
+                        className="cute-welcome-project-icon"
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          opacity: isBrasaoActive ? 1 : 0,
+                          transition: 'opacity 1s ease-in-out'
+                        }}
+                      />
+                    </div>
+                  );
+                })}
               </div>
               
-              <h2 className="cute-title cute-gradient-title">Bem-vindo(a) à Phantom Troupe Fraternidade!</h2>
+              <h2 className="cute-title">Bem-vindo(a) à Phantom Troupe Fraternidade!</h2>
               
-              <p className="cute-tagline-pulse" style={{ marginBottom: '20px', fontWeight: 'bold', color: '#ffffff', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}>
+              <p className="cute-tagline-pulse" style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}>
                 Chegue como você é. Cada pequena contribuição e cada história importam!
               </p>
 
