@@ -3319,11 +3319,11 @@ body::before {
 }
 
 .cute-title {
-  color: #d81b60;
+  color: #ffffff !important;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.6rem;
   margin-bottom: 25px;
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
   letter-spacing: 1px;
 }
 
