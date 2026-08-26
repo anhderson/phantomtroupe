@@ -503,6 +503,7 @@ export default function Home() {
   const [clickedPillars, setClickedPillars] = useState<number[]>([]);
   const [mobileAutoRevealed, setMobileAutoRevealed] = useState(false);
   const [activeBrasaoIndex, setActiveBrasaoIndex] = useState(0);
+  const [clickedBrasoes, setClickedBrasoes] = useState<number[]>([]);
 
   useEffect(() => {
     // Apenas no mobile (window.innerWidth <= 768), mostrar os textos dos titulos apos 7 segundos
@@ -2438,13 +2439,19 @@ export default function Home() {
               
               <div className="cute-welcome-projects-grid">
                 {APPS.map((app, index) => {
-                  const isBrasaoActive = activeBrasaoIndex === index;
+                  const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
                   const brasaoSrc = `/Brasoes/${app.id}.png`;
 
                   return (
                     <div 
                       key={app.id} 
-                      style={{ position: 'relative', width: '38px', height: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                      onClick={() => {
+                        setClickedBrasoes(prev => 
+                          prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+                        );
+                        setActiveBrasaoIndex(index);
+                      }}
+                      style={{ position: 'relative', width: '38px', height: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
                     >
                       {/* 1. Ícone Circular Base */}
                       <motion.img
