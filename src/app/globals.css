@@ -3354,45 +3354,26 @@ body::before {
 @keyframes tagline-pulse-glow {
   0% {
     transform: scale(0.96);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+    text-shadow: 0 0 5px #ffffff, 0 0 10px rgba(255, 255, 255, 0.4);
     opacity: 0.88;
   }
   50% {
     transform: scale(1.06);
-    filter: drop-shadow(0 0 10px #ffffff) drop-shadow(0 0 20px rgba(0, 0, 0, 1)) drop-shadow(0 4px 15px #000000);
+    text-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff, 0 0 45px rgba(255, 255, 255, 0.9), 0 4px 20px #000000;
     opacity: 1;
   }
   100% {
     transform: scale(0.96);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+    text-shadow: 0 0 5px #ffffff, 0 0 10px rgba(255, 255, 255, 0.4);
     opacity: 0.88;
   }
 }
 
 .cute-tagline-pulse {
   display: inline-block;
-  animation: tagline-pulse-glow 3.5s infinite ease-in-out, cute-gradient-shimmer 20s infinite ease-in-out;
-  background: linear-gradient(
-    120deg,
-    #ff3366, /* 1. Vermelho */
-    #ff6633, /* 2. Vermelho-Laranja */
-    #ff9900, /* 3. Laranja */
-    #ffcc00, /* 4. Laranja-Amarelo */
-    #ffee00, /* 5. Amarelo */
-    #99ff33, /* 6. Amarelo-Verde */
-    #33cc66, /* 7. Verde */
-    #00ffcc, /* 8. Verde-Azul */
-    #00ccff, /* 9. Azul */
-    #3366ff, /* 10. Anil */
-    #9933ff, /* 11. Violeta */
-    #ff00cc, /* 12. Magenta/Rosa */
-    #ff3366  /* Volta ao inicio */
-  );
-  background-size: 400% 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent !important;
+  color: #ffffff !important;
+  font-weight: bold;
+  animation: tagline-pulse-glow 3.5s infinite ease-in-out;
 }
 
 .cute-text-content p {

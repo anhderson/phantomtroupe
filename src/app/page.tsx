@@ -2526,12 +2526,13 @@ export default function Home() {
               
               <h2 className="cute-title">Bem-vindo(a) à Phantom Troupe Fraternidade!</h2>
               
-              <p className="cute-tagline-pulse" style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}>
-                Chegue como você é. Cada pequena contribuição e cada história importam!
-              </p>
-
               <div className="cute-text-content">
-                <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--primary)', marginBottom: '15px' }}>Que bom ter você aqui!</p>
+                <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--primary)', marginBottom: '10px' }}>Que bom ter você aqui!</p>
+                
+                <p className="cute-tagline-pulse" style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}>
+                  Chegue como você é. Cada pequena contribuição e cada história importam!
+                </p>
+
                 <p style={{ marginBottom: '15px', color: '#ffffff' }}>Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:</p>
                 
                 <div style={{ textAlign: 'left', marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '12px', padding: '0 10px' }}>
