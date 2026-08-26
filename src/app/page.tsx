@@ -250,7 +250,24 @@ export default function Home() {
   const [joiningName, setJoiningName] = useState("");
   const [joiningRoles, setJoiningRoles] = useState<string[]>([]);
   const [joiningType, setJoiningType] = useState("");
-  const [pendingRequests, setPendingRequests] = useState<{name: string, role: string, type: string}[]>([]);
+  const [joiningProfession, setJoiningProfession] = useState("");
+  const [joiningBirthDate, setJoiningBirthDate] = useState("");
+  
+  const [pendingRequests, setPendingRequests] = useState<{
+    name: string;
+    role: string;
+    type: string;
+    profession?: string;
+    birthDate?: string;
+  }[]>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('phantom_pending_requests');
+      if (saved) {
+        try { return JSON.parse(saved); } catch (e) { console.error(e); }
+      }
+    }
+    return [];
+  });
   const [hasRequestedJoin, setHasRequestedJoin] = useState(false);
   
   // Donations State
@@ -400,17 +417,34 @@ export default function Home() {
   }, [donationsList]);
 
   useEffect(() => {
+    localStorage.setItem('phantom_pending_requests', JSON.stringify(pendingRequests));
+  }, [pendingRequests]);
+
+  useEffect(() => {
     localStorage.setItem('phantom_donations_history', JSON.stringify(donationsHistory));
   }, [donationsHistory]);
 
-  const [activeMembers, setActiveMembers] = useState<{name: string, role: string, type: string}[]>([
-    { role: 'Fundador', name: 'Anderson Moitinho', type: 'Membro' },
-    { role: 'Administrador', name: 'Chrystian Cesar', type: 'Membro' },
-    { role: 'Mediadora', name: 'Sara Brandes', type: 'Membro' },
-    { role: 'Facilitador de Cura', name: 'Sara Ellen', type: 'Amigo' },
-    { role: 'Administrador', name: 'Raphael Braga', type: 'Membro' },
-    { role: 'Facilitador', name: 'Gabriel Ricardo', type: 'Membro' }
-  ]);
+  const [activeMembers, setActiveMembers] = useState<{name: string, role: string, type: string, profession?: string, birthDate?: string}[]>(() => {
+    const defaultMembers = [
+      { role: 'Fundador', name: 'Anderson Moitinho', type: 'Membro' },
+      { role: 'Administrador', name: 'Chrystian Cesar', type: 'Membro' },
+      { role: 'Mediadora', name: 'Sara Brandes', type: 'Membro' },
+      { role: 'Facilitador de Cura', name: 'Sara Ellen', type: 'Amigo' },
+      { role: 'Administrador', name: 'Raphael Braga', type: 'Membro' },
+      { role: 'Facilitador', name: 'Gabriel Ricardo', type: 'Membro' }
+    ];
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('phantom_active_members');
+      if (saved) {
+        try { return JSON.parse(saved); } catch (e) { console.error(e); }
+      }
+    }
+    return defaultMembers;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('phantom_active_members', JSON.stringify(activeMembers));
+  }, [activeMembers]);
   const [showPending, setShowPending] = useState(false);
   const [showUniversoZero, setShowUniversoZero] = useState(false);
   
@@ -2578,15 +2612,40 @@ export default function Home() {
                             <option key={app.id} value={app.fullName}>{app.fullName}</option>
                           ))}
                         </select>
+
+                        <input 
+                          type="text" 
+                          placeholder="DIGITE SUA PROFISSÃO (OPCIONAL)" 
+                          value={joiningProfession}
+                          onChange={e => setJoiningProfession(e.target.value)}
+                          className="phantom-input center-text" 
+                        />
+
+                        <input 
+                          type="text" 
+                          placeholder="DIGITE SUA DATA DE NASCIMENTO (OPCIONAL)" 
+                          value={joiningBirthDate}
+                          onChange={e => setJoiningBirthDate(e.target.value)}
+                          className="phantom-input center-text" 
+                        />
+
                         <button 
                           className="guide-page-btn btn-next btn-grey"
                           style={{ marginTop: '10px', width: '100%' }}
                           onClick={() => {
                             if (joiningName.trim() && joiningRoles.length > 0 && joiningType.trim()) {
-                              setPendingRequests(prev => [...prev, { name: joiningName, role: joiningRoles.join(" & "), type: joiningType }]);
+                              setPendingRequests(prev => [...prev, { 
+                                name: joiningName.trim(), 
+                                role: joiningRoles.join(" & "), 
+                                type: joiningType.trim(),
+                                profession: joiningProfession.trim() || undefined,
+                                birthDate: joiningBirthDate.trim() || undefined
+                              }]);
                               setJoiningName("");
                               setJoiningRoles([]);
                               setJoiningType("");
+                              setJoiningProfession("");
+                              setJoiningBirthDate("");
                               setHasRequestedJoin(true);
                             } else {
                               alert("Por favor, preencha seu Nome, selecione pelo menos 1 Função e escolha um Projeto!");
@@ -2623,7 +2682,9 @@ export default function Home() {
                           <p style={{ margin: '0', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '2px' }}>{member.role}</p>
                           <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
                         </div>
-                        <h3 style={{ margin: 0, fontSize: '1.25rem' }}>{member.name}</h3>
+                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#ffffff' }}>{member.name}</h3>
+                        {member.profession && <p style={{ margin: '3px 0 0 0', fontSize: '0.75rem', color: '#cccccc' }}><strong>Profissão:</strong> {member.profession}</p>}
+                        {member.birthDate && <p style={{ margin: '2px 0 0 0', fontSize: '0.75rem', color: '#cccccc' }}><strong>Data de Nasc.:</strong> {member.birthDate}</p>}
                       </div>
                     ))}
                   </div>
@@ -3064,21 +3125,34 @@ export default function Home() {
                             <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                               <div>
                                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '3px' }}>
-                                  <p style={{ color: '#FF007F', margin: '0', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '2px' }}>{req.role}</p>
+                                  <p style={{ color: '#FF007F', margin: '0', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '2px', fontWeight: 'bold' }}>{req.role}</p>
                                   <span style={{ fontSize: '0.65rem', color: '#FF007F', border: '1px solid #FF007F', padding: '1px 4px', borderRadius: '4px' }}>{req.type}</span>
                                 </div>
-                                <h3 style={{ margin: 0, fontSize: '1.15rem' }}>{req.name}</h3>
+                                <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#ffffff' }}>{req.name}</h3>
+                                {req.profession && <p style={{ margin: '3px 0 0 0', fontSize: '0.75rem', color: '#dddddd' }}><strong>Profissão:</strong> {req.profession}</p>}
+                                {req.birthDate && <p style={{ margin: '2px 0 0 0', fontSize: '0.75rem', color: '#dddddd' }}><strong>Data de Nasc.:</strong> {req.birthDate}</p>}
                               </div>
-                              <button 
-                                className="silver-btn" 
-                                style={{ padding: '6px 15px', fontSize: '0.75rem' }}
-                                onClick={() => {
-                                  setActiveMembers(prev => [...prev, req]);
-                                  setPendingRequests(prev => prev.filter((_, idx) => idx !== i));
-                                }}
-                              >
-                                ACEITAR
-                              </button>
+                              <div style={{ display: 'flex', gap: '8px', alignSelf: 'center' }}>
+                                <button 
+                                  className="silver-btn" 
+                                  style={{ padding: '6px 12px', fontSize: '0.7rem', background: '#00ff66', border: '1px solid #00cc55', color: '#000', fontWeight: 'bold' }}
+                                  onClick={() => {
+                                    setActiveMembers(prev => [...prev, req]);
+                                    setPendingRequests(prev => prev.filter((_, idx) => idx !== i));
+                                  }}
+                                >
+                                  ACEITAR
+                                </button>
+                                <button 
+                                  className="silver-btn" 
+                                  style={{ padding: '6px 12px', fontSize: '0.7rem' }}
+                                  onClick={() => {
+                                    setPendingRequests(prev => prev.filter((_, idx) => idx !== i));
+                                  }}
+                                >
+                                  REJEITAR
+                                </button>
+                              </div>
                             </div>
                           ))}
                         </div>
