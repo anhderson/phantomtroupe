@@ -504,11 +504,13 @@ export default function Home() {
   const [mobileAutoRevealed, setMobileAutoRevealed] = useState(false);
 
   useEffect(() => {
-    // A cada 7 segundos no mobile (ou geral), mostrar os textos dos titulos normalmente
-    const timer = setTimeout(() => {
-      setMobileAutoRevealed(true);
-    }, 7000);
-    return () => clearTimeout(timer);
+    // Apenas no mobile (window.innerWidth <= 768), mostrar os textos dos titulos apos 7 segundos
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      const timer = setTimeout(() => {
+        setMobileAutoRevealed(true);
+      }, 7000);
+      return () => clearTimeout(timer);
+    }
   }, []);
   
   // Ticker Velocity Control
@@ -2437,7 +2439,7 @@ export default function Home() {
                 ))}
               </div>
               
-              <h2 className="cute-title" style={{ color: '#ffffff', marginBottom: '10px' }}>Bem-vindo(a) à Phantom Troupe Fraternidade!</h2>
+              <h2 className="cute-title cute-gradient-title">Bem-vindo(a) à Phantom Troupe Fraternidade!</h2>
               
               <p style={{ marginBottom: '20px', fontWeight: 'bold', color: '#ffffff', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}>
                 Chegue como você é. Cada pequena contribuição e cada história importam!

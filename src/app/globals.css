@@ -3322,13 +3322,43 @@ body::before {
   50% { transform: translateY(-5px); }
 }
 
+@keyframes cute-gradient-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .cute-title {
-  color: #ffffff !important;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.6rem;
-  margin-bottom: 25px;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  margin-bottom: 10px;
   letter-spacing: 1px;
+}
+
+.cute-gradient-title {
+  background: linear-gradient(
+    120deg,
+    #ff85a2, /* rosa */
+    #ffb6c1, /* rosa claro */
+    #b388ff, /* roxo */
+    #d1c4e9, /* roxo claro */
+    #80d8ff, /* azul bebê */
+    #e0e0e0, /* cinza */
+    #ff85a2  /* rosa */
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  animation: cute-gradient-shimmer 6s infinite ease-in-out;
+  filter: drop-shadow(0 0 8px rgba(255, 182, 193, 0.3));
 }
 
 .cute-text-content {
