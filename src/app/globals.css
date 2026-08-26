@@ -3344,21 +3344,27 @@ body::before {
 .cute-gradient-title {
   background: linear-gradient(
     120deg,
-    #ff85a2, /* rosa */
-    #ffb6c1, /* rosa claro */
-    #b388ff, /* roxo */
-    #d1c4e9, /* roxo claro */
-    #80d8ff, /* azul bebê */
-    #e0e0e0, /* cinza */
-    #ff85a2  /* rosa */
+    #ff3366, /* 1. Vermelho */
+    #ff6633, /* 2. Vermelho-Laranja */
+    #ff9900, /* 3. Laranja */
+    #ffcc00, /* 4. Laranja-Amarelo */
+    #ffee00, /* 5. Amarelo */
+    #99ff33, /* 6. Amarelo-Verde */
+    #33cc66, /* 7. Verde */
+    #00ffcc, /* 8. Verde-Azul */
+    #00ccff, /* 9. Azul */
+    #3366ff, /* 10. Anil */
+    #9933ff, /* 11. Violeta */
+    #ff00cc, /* 12. Magenta/Rosa */
+    #ff3366  /* Volta ao inicio */
   );
-  background-size: 300% 300%;
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent !important;
-  animation: cute-gradient-shimmer 6s infinite ease-in-out;
-  filter: drop-shadow(0 0 8px rgba(255, 182, 193, 0.3));
+  animation: cute-gradient-shimmer 20s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.35));
 }
 
 .cute-text-content {
