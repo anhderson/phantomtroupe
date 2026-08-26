@@ -1870,13 +1870,13 @@ export default function Home() {
                     </button>
                   </div>
 
-                  <p style={{ margin: '0 0 10px 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#d1c4e9', textAlign: 'center', fontWeight: 'bold' }}>
+                  <p style={{ margin: '0 0 10px 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#ffffff', textAlign: 'center', fontWeight: 'bold' }}>
                     Registros públicos de ajudas e doações propostas por nossa fraternidade. Gratidão a todos que colaboram com o ecossistema! ❤️
                   </p>
 
                   <div className="members-list" style={{ width: '100%', maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '5px' }}>
                     {donationsList.length === 0 ? (
-                      <p style={{ textAlign: 'center', color: '#d1c4e9', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhum registro no mural ainda.</p>
+                      <p style={{ textAlign: 'center', color: '#ffffff', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhum registro no mural ainda.</p>
                     ) : (
                       [...donationsList]
                         .filter((record, idx, arr) => 
@@ -1889,17 +1889,18 @@ export default function Home() {
                           className="member-card"
                           style={{ 
                             padding: '15px', 
-                            background: 'rgba(255, 255, 255, 0.9)', 
-                            border: '1px solid rgba(179, 136, 255, 0.5)', 
+                            background: 'rgba(40, 25, 65, 0.85)', 
+                            border: '1px solid rgba(179, 136, 255, 0.4)', 
                             borderRadius: '6px',
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '10px'
+                            gap: '10px',
+                            backdropFilter: 'blur(4px)'
                           }}
                         >
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#7b1fa2', letterSpacing: '1px' }}>{record.date}</span>
-                            <span style={{ fontSize: '0.65rem', color: '#6a1b9a', border: '1px solid #7b1fa2', background: 'rgba(209, 196, 233, 0.3)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>{record.type}</span>
+                            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#d1c4e9', letterSpacing: '1px' }}>{record.date}</span>
+                            <span style={{ fontSize: '0.65rem', color: '#d1c4e9', border: '1px solid #b388ff', background: 'rgba(179, 136, 255, 0.25)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>{record.type}</span>
                           </div>
                           
                           <div style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
@@ -1909,19 +1910,19 @@ export default function Home() {
                               </div>
                             )}
                             <div style={{ flex: 1, minWidth: '150px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                              <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#4a148c', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>
+                              <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#d1c4e9', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>
                                 {record.title || "Doação Registrada"}
                               </h3>
-                              <p style={{ margin: 0, fontSize: '0.8rem', color: '#6a1b9a' }}>
-                                <strong style={{ color: '#4a148c' }}>Doador:</strong> {record.name}
+                              <p style={{ margin: 0, fontSize: '0.8rem', color: '#ffffff' }}>
+                                <strong style={{ color: '#ffffff' }}>Doador:</strong> {record.name}
                               </p>
                               {record.items && (
-                                <p style={{ margin: 0, fontSize: '0.85rem', lineHeight: '1.4', color: '#4a148c' }}>
-                                  <strong style={{ color: '#4a148c' }}>Doado:</strong> {record.items}
+                                <p style={{ margin: 0, fontSize: '0.85rem', lineHeight: '1.4', color: '#ffffff' }}>
+                                  <strong style={{ color: '#ffffff' }}>Doado:</strong> {record.items}
                                 </p>
                               )}
                               {record.testimonial && (
-                                <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#4a148c', fontStyle: 'italic', background: 'rgba(209, 196, 233, 0.25)', padding: '6px 10px', borderRadius: '4px', borderLeft: '3px solid #7b1fa2' }}>
+                                <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#e0d6f7', fontStyle: 'italic', background: 'rgba(179, 136, 255, 0.15)', padding: '6px 10px', borderRadius: '4px', borderLeft: '3px solid #b388ff' }}>
                                   "{record.testimonial}"
                                 </p>
                               )}
