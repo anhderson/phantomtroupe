@@ -2441,7 +2441,7 @@ export default function Home() {
               
               <h2 className="cute-title cute-gradient-title">Bem-vindo(a) à Phantom Troupe Fraternidade!</h2>
               
-              <p style={{ marginBottom: '20px', fontWeight: 'bold', color: '#ffffff', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}>
+              <p className="cute-tagline-pulse" style={{ marginBottom: '20px', fontWeight: 'bold', color: '#ffffff', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}>
                 Chegue como você é. Cada pequena contribuição e cada história importam!
               </p>
 

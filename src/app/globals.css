@@ -3375,6 +3375,29 @@ body::before {
   letter-spacing: 0.5px;
 }
 
+@keyframes tagline-pulse-glow {
+  0% {
+    transform: scale(0.96);
+    text-shadow: 0 0 0px transparent;
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    text-shadow: 0 0 12px #ffffff, 0 0 22px rgba(255, 0, 127, 0.8), 0 0 32px rgba(0, 204, 255, 0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.96);
+    text-shadow: 0 0 0px transparent;
+    opacity: 0.85;
+  }
+}
+
+.cute-tagline-pulse {
+  display: inline-block;
+  animation: tagline-pulse-glow 3.5s infinite ease-in-out;
+}
+
 .cute-text-content p {
   margin: 12px 0;
 }
