@@ -3242,8 +3242,8 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(255, 182, 193, 0.45); /* Soft pink transparent overlay */
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
   z-index: 10000;
   display: flex;
   justify-content: center;
@@ -3252,9 +3252,9 @@ body::before {
 }
 
 .cute-welcome-banner {
-  background: linear-gradient(135deg, #fff5f8 0%, #ffe3ec 100%);
-  border: 3px solid #ff85a2;
-  box-shadow: 0 0 35px rgba(255, 105, 180, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.6);
+  background: rgba(15, 15, 25, 0.92);
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 40px rgba(255, 0, 127, 0.4), inset 0 0 20px rgba(255, 0, 127, 0.2);
   border-radius: 20px;
   padding: 40px 30px;
   max-width: 600px;
@@ -3262,6 +3262,7 @@ body::before {
   text-align: center;
   position: relative;
   font-family: 'Rajdhani', sans-serif;
+  color: #ffffff;
 }
 
 .cute-close-btn {

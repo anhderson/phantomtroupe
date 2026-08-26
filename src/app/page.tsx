@@ -493,7 +493,7 @@ export default function Home() {
   ]);
 
   const [isSlowMotion, setIsSlowMotion] = useState(false);
-  const [showGuide, setShowGuide] = useState(false);
+  const [showGuide, setShowGuide] = useState(true);
   const [guidePage, setGuidePage] = useState(1);
   const [showHistory, setShowHistory] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
@@ -2428,32 +2428,32 @@ export default function Home() {
               <h2 className="cute-title">Bem-vindo(a) à Phantom Troupe!</h2>
               
               <div className="cute-text-content">
-                <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: '#ff3366', marginBottom: '15px' }}>Que bom ter você aqui! ❤️</p>
-                <p style={{ marginBottom: '15px' }}>Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:</p>
+                <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--primary)', marginBottom: '15px' }}>Que bom ter você aqui! ❤️</p>
+                <p style={{ marginBottom: '15px', color: '#e0e0e0' }}>Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:</p>
                 
                 <div style={{ textAlign: 'left', marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '15px', padding: '0 10px' }}>
-                  <div>
-                    <h4 style={{ color: '#ff3366', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>🤝 1. Acolhimento e Comunidade</h4>
-                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4' }}>Um espaço seguro para quem se sente fora dos círculos tradicionais, permitindo criar vínculos reais e encontrar apoio mútuo.</p>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                    <h4 style={{ color: 'var(--primary)', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>🤝 1. Acolhimento e Comunidade</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#cccccc' }}>Um espaço seguro para quem se sente fora dos círculos tradicionais, permitindo criar vínculos reais e encontrar apoio mútuo.</p>
                   </div>
                   
-                  <div>
-                    <h4 style={{ color: '#ff3366', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>🎨 2. Expressão e Arte</h4>
-                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4' }}>Compartilhe sua arte, música, desenho, poesia ou crônicas. O processo criativo aqui é livre de julgamentos e competições.</p>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                    <h4 style={{ color: 'var(--primary)', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>🎨 2. Expressão e Arte</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#cccccc' }}>Compartilhe sua arte, música, desenho, poesia ou crônicas. O processo criativo aqui é livre de julgamentos e competições.</p>
                   </div>
                   
-                  <div>
-                    <h4 style={{ color: '#ff3366', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>💬 3. Conexão Espontânea</h4>
-                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4' }}>Conecte-se de forma leve, seja em conversas tranquilas, ouvindo músicas juntos, jogando ou apenas dividindo momentos simples.</p>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                    <h4 style={{ color: 'var(--primary)', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>💬 3. Conexão Espontânea</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#cccccc' }}>Conecte-se de forma leve, seja em conversas tranquilas, ouvindo músicas juntos, jogando ou apenas dividindo momentos simples.</p>
                   </div>
                   
-                  <div>
-                    <h4 style={{ color: '#ff3366', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>🚀 4. Missões e Impacto Real</h4>
-                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4' }}>Participe da construção do próprio ecossistema através de tarefas de desenvolvimento, design, moderação ou projetos sociais no mundo físico.</p>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                    <h4 style={{ color: 'var(--primary)', fontWeight: 'bold', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>🚀 4. Missões e Impacto Real</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#cccccc' }}>Participe da construção do próprio ecossistema através de tarefas de desenvolvimento, design, moderação ou projetos sociais no mundo físico.</p>
                   </div>
                 </div>
 
-                <p style={{ marginTop: '20px', fontWeight: 'bold', color: '#5d4037' }}>Chegue como você é. Cada pequena contribuição e cada história importam! ✨</p>
+                <p style={{ marginTop: '20px', fontWeight: 'bold', color: '#ffffff' }}>Chegue como você é. Cada pequena contribuição e cada história importam! ✨</p>
               </div>
 
               <button 
