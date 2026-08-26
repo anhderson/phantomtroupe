@@ -1693,7 +1693,7 @@ export default function Home() {
                   <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                     <button 
                       className="silver-btn" 
-                      style={{ padding: '6px 15px', fontSize: '0.75rem', letterSpacing: '1px' }}
+                      style={{ padding: '6px 15px', fontSize: '0.75rem', letterSpacing: '1px', color: '#000000', fontWeight: 'bold' }}
                       onClick={() => setNewsTab('select')}
                     >
                       ◀ VOLTAR AO MENU
@@ -1863,20 +1863,20 @@ export default function Home() {
                   <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                     <button 
                       className="silver-btn" 
-                      style={{ padding: '6px 15px', fontSize: '0.75rem', letterSpacing: '1px' }}
+                      style={{ padding: '6px 15px', fontSize: '0.75rem', letterSpacing: '1px', color: '#000000', fontWeight: 'bold' }}
                       onClick={() => setNewsTab('select')}
                     >
                       ◀ VOLTAR AO MENU
                     </button>
                   </div>
 
-                  <p style={{ margin: '0 0 10px 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#333333', textAlign: 'center' }}>
+                  <p style={{ margin: '0 0 10px 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#d1c4e9', textAlign: 'center', fontWeight: 'bold' }}>
                     Registros públicos de ajudas e doações propostas por nossa fraternidade. Gratidão a todos que colaboram com o ecossistema! ❤️
                   </p>
 
                   <div className="members-list" style={{ width: '100%', maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '5px' }}>
                     {donationsList.length === 0 ? (
-                      <p style={{ textAlign: 'center', color: '#666', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhum registro no mural ainda.</p>
+                      <p style={{ textAlign: 'center', color: '#d1c4e9', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhum registro no mural ainda.</p>
                     ) : (
                       [...donationsList]
                         .filter((record, idx, arr) => 
@@ -1889,8 +1889,8 @@ export default function Home() {
                           className="member-card"
                           style={{ 
                             padding: '15px', 
-                            background: 'rgba(255, 255, 255, 0.75)', 
-                            border: '1px solid rgba(255, 0, 127, 0.2)', 
+                            background: 'rgba(255, 255, 255, 0.9)', 
+                            border: '1px solid rgba(179, 136, 255, 0.5)', 
                             borderRadius: '6px',
                             display: 'flex',
                             flexDirection: 'column',
@@ -1898,30 +1898,30 @@ export default function Home() {
                           }}
                         >
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>{record.date}</span>
-                            <span style={{ fontSize: '0.65rem', color: '#ff007f', border: '1px solid #ff007f', padding: '1px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>{record.type}</span>
+                            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#7b1fa2', letterSpacing: '1px' }}>{record.date}</span>
+                            <span style={{ fontSize: '0.65rem', color: '#6a1b9a', border: '1px solid #7b1fa2', background: 'rgba(209, 196, 233, 0.3)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>{record.type}</span>
                           </div>
                           
                           <div style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
                             {record.image && (
-                              <div style={{ width: '90px', height: '90px', border: '1px solid rgba(255, 0, 127, 0.2)', borderRadius: '4px', overflow: 'hidden', background: '#fff', flexShrink: 0 }}>
+                              <div style={{ width: '90px', height: '90px', border: '1px solid rgba(179, 136, 255, 0.4)', borderRadius: '4px', overflow: 'hidden', background: '#fff', flexShrink: 0 }}>
                                 <img src={record.image} alt={record.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                               </div>
                             )}
                             <div style={{ flex: 1, minWidth: '150px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                              <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                              <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#4a148c', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>
                                 {record.title || "Doação Registrada"}
                               </h3>
-                              <p style={{ margin: 0, fontSize: '0.8rem', color: '#666' }}>
-                                <strong>Doador:</strong> {record.name}
+                              <p style={{ margin: 0, fontSize: '0.8rem', color: '#6a1b9a' }}>
+                                <strong style={{ color: '#4a148c' }}>Doador:</strong> {record.name}
                               </p>
                               {record.items && (
-                                <p style={{ margin: 0, fontSize: '0.85rem', lineHeight: '1.4', color: '#333333' }}>
-                                  <strong>Doado:</strong> {record.items}
+                                <p style={{ margin: 0, fontSize: '0.85rem', lineHeight: '1.4', color: '#4a148c' }}>
+                                  <strong style={{ color: '#4a148c' }}>Doado:</strong> {record.items}
                                 </p>
                               )}
                               {record.testimonial && (
-                                <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#555', fontStyle: 'italic', background: 'rgba(255, 101, 132, 0.05)', padding: '6px 10px', borderRadius: '4px', borderLeft: '2px solid #ff007f' }}>
+                                <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#4a148c', fontStyle: 'italic', background: 'rgba(209, 196, 233, 0.25)', padding: '6px 10px', borderRadius: '4px', borderLeft: '3px solid #7b1fa2' }}>
                                   "{record.testimonial}"
                                 </p>
                               )}
@@ -1929,10 +1929,10 @@ export default function Home() {
                           </div>
 
                           {isAdminAuth && (
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px', borderTop: '1px dashed rgba(0,0,0,0.05)', paddingTop: '5px' }}>
-                              <span style={{ fontSize: '0.75rem', color: '#666' }}><strong>Contato:</strong> {record.contact}</span>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px', borderTop: '1px dashed rgba(123, 31, 162, 0.2)', paddingTop: '5px' }}>
+                              <span style={{ fontSize: '0.75rem', color: '#6a1b9a' }}><strong style={{ color: '#4a148c' }}>Contato:</strong> {record.contact}</span>
                               <button 
-                                style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', padding: 0 }}
+                                style={{ background: 'transparent', border: 'none', color: '#d50000', cursor: 'pointer', fontSize: '0.75rem', padding: 0, fontWeight: 'bold' }}
                                 onClick={() => {
                                   setDonationsList(prev => prev.filter(item => item.id !== record.id));
                                 }}
