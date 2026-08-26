@@ -1397,7 +1397,7 @@ export default function Home() {
             }}
             style={{
               position: 'absolute',
-              top: '46%',
+              top: 'calc(46% - 0.5vh)',
               left: '50%',
               x: '-50%',
               y: '-50%',
