@@ -2540,29 +2540,33 @@ export default function Home() {
                     {
                       id: 1,
                       title: "1. Acolhimento e Comunidade",
-                      titleColor: "#ff9ebb", // Rosa mais claro
                       text: "Um espaço seguro para quem se sente fora dos círculos tradicionais, permitindo criar vínculos reais e encontrar apoio mútuo."
                     },
                     {
                       id: 2,
                       title: "2. Expressão e Arte",
-                      titleColor: "#ff007f", // Rosa
                       text: "Compartilhe sua arte, música, desenho, poesia ou crônicas. O processo criativo aqui é livre de julgamentos e competições."
                     },
                     {
                       id: 3,
                       title: "3. Conexão Espontânea",
-                      titleColor: "#c77dff", // Roxo claro
                       text: "Conecte-se de forma leve, seja em conversas tranquilas, ouvindo músicas juntos, jogando ou apenas dividindo momentos simples."
                     },
                     {
                       id: 4,
                       title: "4. Missões e Impacto Real",
-                      titleColor: "#9d4edd", // Roxo escuro
                       text: "Participe da construção do próprio ecossistema através de tarefas de desenvolvimento, design, moderação ou projetos sociais no mundo físico."
                     }
                   ].map((pilar) => {
                     const isRevealed = mobileAutoRevealed || hoveredPillar === pilar.id || clickedPillars.includes(pilar.id);
+                    const isHovered = hoveredPillar === pilar.id;
+                    let titleColor = 'var(--primary)';
+                    if (isHovered) {
+                      if (pilar.id === 1) titleColor = '#ffb6c1';
+                      else if (pilar.id === 3) titleColor = '#d1c4e9';
+                      else if (pilar.id === 4) titleColor = '#7b1fa2';
+                    }
+
                     return (
                       <div 
                         key={pilar.id}
@@ -2577,13 +2581,13 @@ export default function Home() {
                           background: isRevealed ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.04)', 
                           padding: '12px 14px', 
                           borderRadius: '8px', 
-                          border: isRevealed ? `1px solid ${pilar.titleColor}66` : '1px solid rgba(255, 255, 255, 0.08)',
+                          border: isRevealed ? '1px solid rgba(255, 0, 127, 0.4)' : '1px solid rgba(255, 255, 255, 0.08)',
                           cursor: 'pointer',
                           transition: 'all 0.3s ease'
                         }}
                       >
                         <h4 style={{ 
-                          color: pilar.titleColor, 
+                          color: titleColor, 
                           fontWeight: 'bold', 
                           margin: 0, 
                           display: 'flex', 
