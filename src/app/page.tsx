@@ -1364,7 +1364,7 @@ export default function Home() {
         transition={{ duration: 0.3 }}
         onClick={() => setShowDonations(true)}
       >
-        <div className="history-sphere donation-heart-shape" style={{ width: '95px', height: '95px', position: 'relative' }}>
+        <div className="history-sphere donation-heart-shape" style={{ width: '81px', height: '81px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <svg viewBox="0 0 1 1" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'drop-shadow(0 0 10px rgba(255, 0, 127, 0.6))', zIndex: 1 }}>
             <path 
               d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" 
@@ -1397,17 +1397,17 @@ export default function Home() {
             }}
             style={{
               position: 'absolute',
-              top: '50%',
+              top: '46%',
               left: '50%',
               x: '-50%',
               y: '-50%',
               textAlign: 'center',
               color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
-              fontSize: '0.64rem',
+              fontSize: '0.58rem',
               fontWeight: 900,
               letterSpacing: '1px',
-              lineHeight: '1.2',
+              lineHeight: '1.1',
               zIndex: 30,
               pointerEvents: 'none',
               whiteSpace: 'pre-line',
@@ -1416,7 +1416,7 @@ export default function Home() {
               justifyContent: 'center',
               width: '100%',
               height: '100%',
-              padding: '12px',
+              padding: '6px',
               boxSizing: 'border-box',
               filter: isGlitching ? 'hue-rotate(15deg) contrast(1.5)' : 'none'
             }}
