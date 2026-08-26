@@ -250,6 +250,7 @@ export default function Home() {
   const [joiningName, setJoiningName] = useState("");
   const [joiningRoles, setJoiningRoles] = useState<string[]>([]);
   const [joiningProjects, setJoiningProjects] = useState<string[]>([]);
+  const [showProjectDropdown, setShowProjectDropdown] = useState(false);
   const [joiningProfession, setJoiningProfession] = useState("");
   const [joiningBirthDate, setJoiningBirthDate] = useState("");
   
@@ -2602,57 +2603,122 @@ export default function Home() {
                             {["Gestor Financeiro","Tesoureiro","Coordenador Estratégico"].map(r => <option key={r} value={r} style={{ background: '#fbe9e7', color: '#bf360c' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                         </select>
-                        {joiningProjects.length > 0 && (
-                          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center', margin: '4px 0 8px 0', width: '100%' }}>
-                            <span style={{ fontSize: '0.7rem', color: '#00b0ff', fontFamily: 'Orbitron, sans-serif', width: '100%', textAlign: 'center', letterSpacing: '1px' }}>
-                              PROJETOS SELECIONADOS ({joiningProjects.length}):
+                        {/* Multi-Select de Projetos Interativo (Não fecha a lista ao clicar) */}
+                        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                          <button
+                            type="button"
+                            className="phantom-input center-text"
+                            onClick={() => setShowProjectDropdown(prev => !prev)}
+                            style={{
+                              cursor: 'pointer',
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              background: 'rgba(0, 0, 0, 0.4)',
+                              border: showProjectDropdown ? '1px solid #00b0ff' : '1px solid rgba(255, 255, 255, 0.2)',
+                              color: joiningProjects.length > 0 ? '#00b0ff' : '#ffffff',
+                              fontWeight: 'bold',
+                              fontFamily: 'Orbitron, sans-serif',
+                              fontSize: '0.8rem',
+                              padding: '12px 16px'
+                            }}
+                          >
+                            <span>
+                              {joiningProjects.length === 0 
+                                ? "▼ SELECIONAR PROJETOS (ESCOLHA QUANTOS DESEJAR)" 
+                                : `✓ ${joiningProjects.length} PROJETO(S) SELECIONADO(S)`}
                             </span>
-                            {joiningProjects.map((proj) => (
-                              <span 
-                                key={proj} 
-                                onClick={() => setJoiningProjects(prev => prev.filter(p => p !== proj))}
-                                style={{ 
-                                  background: 'rgba(0, 176, 255, 0.15)', 
-                                  border: '1px solid #00b0ff',
-                                  color: '#00b0ff', 
-                                  fontSize: '0.75rem', 
-                                  padding: '4px 10px', 
-                                  borderRadius: '15px', 
-                                  cursor: 'pointer', 
-                                  display: 'flex', 
-                                  alignItems: 'center', 
-                                  gap: '6px',
-                                  fontFamily: 'Orbitron, sans-serif',
-                                  boxShadow: '0 2px 5px rgba(0, 176, 255, 0.2)'
-                                }}
-                                title="Clique para remover"
-                              >
-                                ✓ {proj} <span style={{ fontWeight: 'bold', marginLeft: '2px' }}>×</span>
-                              </span>
-                            ))}
-                          </div>
-                        )}
+                            <span>{showProjectDropdown ? "▲" : "▼"}</span>
+                          </button>
 
-                        <select 
-                          className="phantom-input center-text phantom-select" 
-                          value=""
-                          onChange={e => {
-                            const val = e.target.value;
-                            if (!val) return;
-                            if (joiningProjects.includes(val)) {
-                              setJoiningProjects(prev => prev.filter(p => p !== val));
-                            } else {
-                              setJoiningProjects(prev => [...prev, val]);
-                            }
-                          }}
-                        >
-                          <option value="" disabled>SELECIONAR PROJETOS (ESCOLHA QUANTOS DESEJAR)</option>
-                          {APPS.map(app => (
-                            <option key={app.id} value={app.fullName}>
-                              {joiningProjects.includes(app.fullName) ? `✓ ${app.fullName} (SELECIONADO)` : app.fullName}
-                            </option>
-                          ))}
-                        </select>
+                          {/* Chips dos Projetos Selecionados */}
+                          {joiningProjects.length > 0 && (
+                            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'center', margin: '4px 0 6px 0', width: '100%' }}>
+                              {joiningProjects.map((proj) => (
+                                <span 
+                                  key={proj} 
+                                  onClick={() => setJoiningProjects(prev => prev.filter(p => p !== proj))}
+                                  style={{ 
+                                    background: 'rgba(0, 176, 255, 0.2)', 
+                                    border: '1px solid #00b0ff',
+                                    color: '#00b0ff', 
+                                    fontSize: '0.75rem', 
+                                    padding: '4px 10px', 
+                                    borderRadius: '15px', 
+                                    cursor: 'pointer', 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    gap: '6px',
+                                    fontFamily: 'Orbitron, sans-serif',
+                                    boxShadow: '0 2px 5px rgba(0, 176, 255, 0.2)'
+                                  }}
+                                  title="Clique para remover"
+                                >
+                                  ✓ {proj} <span style={{ fontWeight: 'bold', marginLeft: '2px' }}>×</span>
+                                </span>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Lista Interativa de Opções (Permanece Aberta ao Clicar) */}
+                          {showProjectDropdown && (
+                            <div 
+                              style={{ 
+                                width: '100%', 
+                                maxHeight: '220px', 
+                                overflowY: 'auto', 
+                                background: 'rgba(15, 15, 25, 0.95)', 
+                                border: '1px solid rgba(0, 176, 255, 0.5)', 
+                                borderRadius: '6px', 
+                                padding: '8px', 
+                                display: 'flex', 
+                                flexDirection: 'column', 
+                                gap: '6px',
+                                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)',
+                                zIndex: 50
+                              }}
+                            >
+                              {APPS.map(app => {
+                                const isSelected = joiningProjects.includes(app.fullName);
+                                return (
+                                  <div
+                                    key={app.id}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      if (isSelected) {
+                                        setJoiningProjects(prev => prev.filter(p => p !== app.fullName));
+                                      } else {
+                                        setJoiningProjects(prev => [...prev, app.fullName]);
+                                      }
+                                    }}
+                                    style={{
+                                      padding: '10px 12px',
+                                      borderRadius: '4px',
+                                      cursor: 'pointer',
+                                      fontSize: '0.82rem',
+                                      fontFamily: 'Orbitron, sans-serif',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'space-between',
+                                      transition: 'all 0.2s ease',
+                                      background: isSelected ? 'rgba(0, 176, 255, 0.25)' : 'rgba(255, 255, 255, 0.04)',
+                                      border: isSelected ? '1px solid #00b0ff' : '1px solid rgba(255, 255, 255, 0.08)',
+                                      color: isSelected ? '#00b0ff' : '#ffffff',
+                                      fontWeight: isSelected ? 'bold' : 'normal'
+                                    }}
+                                  >
+                                    <span>{isSelected ? `✓ ${app.fullName}` : `+ ${app.fullName}`}</span>
+                                    {isSelected && (
+                                      <span style={{ fontSize: '0.65rem', background: '#00b0ff', color: '#000', padding: '2px 6px', borderRadius: '4px', fontWeight: 'bold' }}>
+                                        SELECIONADO
+                                      </span>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
 
                         <input 
                           type="text" 
