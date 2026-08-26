@@ -522,6 +522,16 @@ export default function Home() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+  const [toggleDonationText, setToggleDonationText] = useState(false);
+
+  useEffect(() => {
+    // A cada 3 segundos alternar entre DOAÇÕES e AJUDAS com efeito de esmaecer
+    const interval = setInterval(() => {
+      setToggleDonationText(prev => !prev);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
   
   // Ticker Velocity Control
   const tickerRef = useRef<HTMLDivElement>(null);
@@ -1387,14 +1397,14 @@ export default function Home() {
             }}
             style={{
               position: 'absolute',
-              top: '43%',
+              top: '50%',
               left: '50%',
               x: '-50%',
               y: '-50%',
               textAlign: 'center',
               color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
-              fontSize: '0.62rem',
+              fontSize: '0.64rem',
               fontWeight: 900,
               letterSpacing: '1px',
               lineHeight: '1.2',
@@ -1411,7 +1421,17 @@ export default function Home() {
               filter: isGlitching ? 'hue-rotate(15deg) contrast(1.5)' : 'none'
             }}
           >
-            AJUDAS{"\n"}& DOAÇÕES
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={toggleDonationText ? 'ajudas' : 'doacoes'}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              >
+                {toggleDonationText ? "AJUDAS" : "DOAÇÕES"}
+              </motion.span>
+            </AnimatePresence>
           </motion.div>
         </div>
         
@@ -1474,7 +1494,7 @@ export default function Home() {
               textAlign: 'center',
               color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
-              fontSize: '0.71rem',
+              fontSize: '0.64rem',
               fontWeight: 900,
               letterSpacing: '1px',
               lineHeight: '1.2',
@@ -1555,7 +1575,7 @@ export default function Home() {
               textAlign: 'center',
               color: '#ffffff',
               fontFamily: '"Orbitron", sans-serif',
-              fontSize: '0.71rem',
+              fontSize: '0.64rem',
               fontWeight: 900,
               letterSpacing: '1px',
               lineHeight: '1.2',
@@ -1572,7 +1592,7 @@ export default function Home() {
               filter: isGlitching ? 'hue-rotate(15deg) contrast(1.5)' : 'none'
             }}
           >
-            NOTÍCIAS{"\n"}& MURAL
+            NOTÍCIAS{"\n"}& MURAIS
           </motion.div>
         </div>
         
