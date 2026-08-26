@@ -499,6 +499,17 @@ export default function Home() {
   const [showHistory, setShowHistory] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
   const [historyPage, setHistoryPage] = useState(1);
+  const [hoveredPillar, setHoveredPillar] = useState<number | null>(null);
+  const [clickedPillars, setClickedPillars] = useState<number[]>([]);
+  const [mobileAutoRevealed, setMobileAutoRevealed] = useState(false);
+
+  useEffect(() => {
+    // A cada 7 segundos no mobile (ou geral), mostrar os textos dos titulos normalmente
+    const timer = setTimeout(() => {
+      setMobileAutoRevealed(true);
+    }, 7000);
+    return () => clearTimeout(timer);
+  }, []);
   
   // Ticker Velocity Control
   const tickerRef = useRef<HTMLDivElement>(null);
@@ -2436,31 +2447,84 @@ export default function Home() {
                 <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--primary)', marginBottom: '15px' }}>Que bom ter você aqui!</p>
                 <p style={{ marginBottom: '15px', color: '#ffffff' }}>Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:</p>
                 
-                <div style={{ textAlign: 'left', marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '15px', padding: '0 10px' }}>
-                  <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                    <h4 style={{ color: 'var(--primary)', fontWeight: 'bold', marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '6px' }}>1. Acolhimento e Comunidade</h4>
-                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#ffffff' }}>Um espaço seguro para quem se sente fora dos círculos tradicionais, permitindo criar vínculos reais e encontrar apoio mútuo.</p>
-                  </div>
-                  
-                  <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                    <h4 style={{ color: 'var(--primary)', fontWeight: 'bold', marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '6px' }}>2. Expressão e Arte</h4>
-                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#ffffff' }}>Compartilhe sua arte, música, desenho, poesia ou crônicas. O processo criativo aqui é livre de julgamentos e competições.</p>
-                  </div>
-                  
-                  <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                    <h4 style={{ color: 'var(--primary)', fontWeight: 'bold', marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '6px' }}>3. Conexão Espontânea</h4>
-                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#ffffff' }}>Conecte-se de forma leve, seja em conversas tranquilas, ouvindo músicas juntos, jogando ou apenas dividindo momentos simples.</p>
-                  </div>
-                  
-                  <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                    <h4 style={{ color: 'var(--primary)', fontWeight: 'bold', marginBottom: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '6px' }}>4. Missões e Impacto Real</h4>
-                    <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#ffffff' }}>Participe da construção do próprio ecossistema através de tarefas de desenvolvimento, design, moderação ou projetos sociais no mundo físico.</p>
-                  </div>
+                <div style={{ textAlign: 'left', marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '12px', padding: '0 10px' }}>
+                  {[
+                    {
+                      id: 1,
+                      title: "1. Acolhimento e Comunidade",
+                      text: "Um espaço seguro para quem se sente fora dos círculos tradicionais, permitindo criar vínculos reais e encontrar apoio mútuo."
+                    },
+                    {
+                      id: 2,
+                      title: "2. Expressão e Arte",
+                      text: "Compartilhe sua arte, música, desenho, poesia ou crônicas. O processo criativo aqui é livre de julgamentos e competições."
+                    },
+                    {
+                      id: 3,
+                      title: "3. Conexão Espontânea",
+                      text: "Conecte-se de forma leve, seja em conversas tranquilas, ouvindo músicas juntos, jogando ou apenas dividindo momentos simples."
+                    },
+                    {
+                      id: 4,
+                      title: "4. Missões e Impacto Real",
+                      text: "Participe da construção do próprio ecossistema através de tarefas de desenvolvimento, design, moderação ou projetos sociais no mundo físico."
+                    }
+                  ].map((pilar) => {
+                    const isRevealed = mobileAutoRevealed || hoveredPillar === pilar.id || clickedPillars.includes(pilar.id);
+                    return (
+                      <div 
+                        key={pilar.id}
+                        onMouseEnter={() => setHoveredPillar(pilar.id)}
+                        onMouseLeave={() => setHoveredPillar(null)}
+                        onClick={() => {
+                          setClickedPillars(prev => 
+                            prev.includes(pilar.id) ? prev.filter(id => id !== pilar.id) : [...prev, pilar.id]
+                          );
+                        }}
+                        style={{ 
+                          background: isRevealed ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.04)', 
+                          padding: '12px 14px', 
+                          borderRadius: '8px', 
+                          border: isRevealed ? '1px solid rgba(255, 0, 127, 0.4)' : '1px solid rgba(255, 255, 255, 0.08)',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease'
+                        }}
+                      >
+                        <h4 style={{ 
+                          color: 'var(--primary)', 
+                          fontWeight: 'bold', 
+                          margin: 0, 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          justifyContent: 'center', 
+                          textAlign: 'center', 
+                          gap: '6px' 
+                        }}>
+                          {pilar.title} {!isRevealed && <span style={{ fontSize: '0.75rem', opacity: 0.6, marginLeft: '6px' }}>▼</span>}
+                        </h4>
+                        
+                        <AnimatePresence>
+                          {isRevealed && (
+                            <motion.p 
+                              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                              animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
+                              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                              transition={{ duration: 0.25 }}
+                              style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#ffffff', textAlign: 'center' }}
+                            >
+                              {pilar.text}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
               <button 
-                className="cute-action-btn"
+                className="cute-action-btn guide-page-btn btn-next"
+                style={{ marginTop: '20px' }}
                 onClick={() => setShowGuide(false)}
               >
                 Começar ▷
