@@ -249,7 +249,7 @@ export default function Home() {
   });
   const [joiningName, setJoiningName] = useState("");
   const [joiningRoles, setJoiningRoles] = useState<string[]>([]);
-  const [joiningType, setJoiningType] = useState("");
+  const [joiningProjects, setJoiningProjects] = useState<string[]>([]);
   const [joiningProfession, setJoiningProfession] = useState("");
   const [joiningBirthDate, setJoiningBirthDate] = useState("");
   
@@ -2602,14 +2602,55 @@ export default function Home() {
                             {["Gestor Financeiro","Tesoureiro","Coordenador Estratégico"].map(r => <option key={r} value={r} style={{ background: '#fbe9e7', color: '#bf360c' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                         </select>
+                        {joiningProjects.length > 0 && (
+                          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center', margin: '4px 0 8px 0', width: '100%' }}>
+                            <span style={{ fontSize: '0.7rem', color: '#00b0ff', fontFamily: 'Orbitron, sans-serif', width: '100%', textAlign: 'center', letterSpacing: '1px' }}>
+                              PROJETOS SELECIONADOS ({joiningProjects.length}):
+                            </span>
+                            {joiningProjects.map((proj) => (
+                              <span 
+                                key={proj} 
+                                onClick={() => setJoiningProjects(prev => prev.filter(p => p !== proj))}
+                                style={{ 
+                                  background: 'rgba(0, 176, 255, 0.15)', 
+                                  border: '1px solid #00b0ff',
+                                  color: '#00b0ff', 
+                                  fontSize: '0.75rem', 
+                                  padding: '4px 10px', 
+                                  borderRadius: '15px', 
+                                  cursor: 'pointer', 
+                                  display: 'flex', 
+                                  alignItems: 'center', 
+                                  gap: '6px',
+                                  fontFamily: 'Orbitron, sans-serif',
+                                  boxShadow: '0 2px 5px rgba(0, 176, 255, 0.2)'
+                                }}
+                                title="Clique para remover"
+                              >
+                                ✓ {proj} <span style={{ fontWeight: 'bold', marginLeft: '2px' }}>×</span>
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
                         <select 
                           className="phantom-input center-text phantom-select" 
-                          value={joiningType} 
-                          onChange={e => setJoiningType(e.target.value)}
+                          value=""
+                          onChange={e => {
+                            const val = e.target.value;
+                            if (!val) return;
+                            if (joiningProjects.includes(val)) {
+                              setJoiningProjects(prev => prev.filter(p => p !== val));
+                            } else {
+                              setJoiningProjects(prev => [...prev, val]);
+                            }
+                          }}
                         >
-                          <option value="" disabled>SELECIONAR O PROJETO</option>
+                          <option value="" disabled>SELECIONAR PROJETOS (ESCOLHA QUANTOS DESEJAR)</option>
                           {APPS.map(app => (
-                            <option key={app.id} value={app.fullName}>{app.fullName}</option>
+                            <option key={app.id} value={app.fullName}>
+                              {joiningProjects.includes(app.fullName) ? `✓ ${app.fullName} (SELECIONADO)` : app.fullName}
+                            </option>
                           ))}
                         </select>
 
@@ -2633,22 +2674,22 @@ export default function Home() {
                           className="guide-page-btn btn-next btn-grey"
                           style={{ marginTop: '10px', width: '100%' }}
                           onClick={() => {
-                            if (joiningName.trim() && joiningRoles.length > 0 && joiningType.trim()) {
+                            if (joiningName.trim() && joiningRoles.length > 0 && joiningProjects.length > 0) {
                               setPendingRequests(prev => [...prev, { 
                                 name: joiningName.trim(), 
                                 role: joiningRoles.join(" & "), 
-                                type: joiningType.trim(),
+                                type: joiningProjects.join(" | "),
                                 profession: joiningProfession.trim() || undefined,
                                 birthDate: joiningBirthDate.trim() || undefined
                               }]);
                               setJoiningName("");
                               setJoiningRoles([]);
-                              setJoiningType("");
+                              setJoiningProjects([]);
                               setJoiningProfession("");
                               setJoiningBirthDate("");
                               setHasRequestedJoin(true);
                             } else {
-                              alert("Por favor, preencha seu Nome, selecione pelo menos 1 Função e escolha um Projeto!");
+                              alert("Por favor, preencha seu Nome, selecione pelo menos 1 Função e escolha pelo menos 1 Projeto!");
                             }
                           }}
                         >
