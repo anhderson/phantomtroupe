@@ -8,7 +8,7 @@ const APPS = [
   { 
     id: 1, 
     name: "PT", 
-    fullName: "Phantom Troupe - Fraternidade ONG", 
+    fullName: "Fraternidade ONG - Phantom Troupe", 
     subName: "Fraternidade ONG",
     color: "#FF007F", 
     desc: "Orquestrador principal da rede neural.",
@@ -21,7 +21,7 @@ const APPS = [
   { 
     id: 2, 
     name: "PZ", 
-    fullName: "Project Zero - EU SOU", 
+    fullName: "EU SOU - Project Zero", 
     subName: "EU SOU",
     desc: "A forja onde novos desígnios nascem.",
     longDesc: 'Criar também é uma forma de existir.\n\nNem todas as pessoas conseguem explicar aquilo que sentem.\n\nÀs vezes, uma música explica melhor.\n\nÀs vezes, um texto.\n\nUm desenho.\n\nUma poesia.\n\nUma fotografia.\n\nUma ideia inacabada.\n\nO Project Zero nasce como um espaço para expressão, criatividade e desenvolvimento coletivo.\n\nUm lugar onde pessoas podem compartilhar aquilo que criam e descobrir aquilo que outras pessoas têm para ensinar.\n\nAqui, não importa apenas o resultado final.\n\nO processo também importa.\n\nO Project Zero reúne artistas, estudantes, profissionais, iniciantes, curiosos e pessoas que simplesmente desejam experimentar algo novo.\n\nAlguém pode ensinar música.\n\nOutra pessoa pode compartilhar poesia.\n\nOutra pode aprender desenho.\n\nOutra pode encontrar coragem para publicar, pela primeira vez, algo que sempre guardou apenas para si.\n\nA proposta é criar uma comunidade onde aprender, ensinar e compartilhar aconteçam de maneira mais leve e humana.\n\nSem a necessidade de ser especialista para começar.\n\nSem a obrigação de ser perfeito para mostrar.\n\nSem transformar toda criação em competição.\n\nO Project Zero acredita que criatividade não deve existir apenas para receber aprovação.\n\nEla também pode servir para conectar pessoas.\n\nPara compreender sentimentos.\n\nPara preservar histórias.\n\nPara descobrir talentos.\n\nE, principalmente, para permitir que alguém diga:\n\n"Isso também faz parte de quem eu sou."\n\nProject Zero — Eu Sou. Eu crio. Eu compartilho.',
@@ -35,7 +35,7 @@ const APPS = [
   { 
     id: 3, 
     name: "ZS", 
-    fullName: "Zero Signal - SUSSURRANDO", 
+    fullName: "SUSSURRANDO - Zero Signal", 
     subName: "SUSSURRANDO",
     desc: "O espaço genuíno que surge do nada.",
     longDesc: 'Às vezes, tudo o que alguém precisa é de companhia.\n\nNem toda conexão precisa começar com uma grande conversa.\n\nÀs vezes, duas pessoas só querem passar algum tempo juntas.\n\nConversar sobre coisas aleatórias.\n\nDesenhar ao mesmo tempo.\n\nJogar.\n\nAssistir alguma coisa.\n\nCompartilhar uma música.\n\nOu simplesmente ter alguém presente do outro lado.\n\nO Zero Signal, também chamado de Sussurrando, nasce para essas conexões menores e mais espontâneas.\n\nUm ambiente pensado para conhecer pessoas sem a pressão de impressionar ninguém.\n\nSem a obrigação de transformar toda conversa em relacionamento.\n\nSem a necessidade de fingir uma personalidade para ser aceito.\n\nA proposta é simples: criar oportunidades para que pessoas possam se encontrar, conversar e compartilhar momentos.\n\nO Zero Signal valoriza o respeito, a leveza e a aceitação.\n\nPorque, para muitas pessoas, o primeiro passo para uma amizade não é encontrar alguém extraordinário.\n\nÉ simplesmente encontrar alguém disposto a ficar.\n\nMesmo que seja apenas por uma conversa.\n\nZero Signal — Algumas conexões começam apenas com um sinal.',
@@ -50,7 +50,7 @@ const APPS = [
   { 
     id: 4, 
     name: "ZD", 
-    fullName: "Zero Day - SERENIZANDO", 
+    fullName: "SERENIZANDO - Zero Day", 
     subName: "SERENIZANDO",
     desc: "A antítese das redes sociais.",
     longDesc: 'Um lugar onde você não precisa parecer perfeito.\n\nAs redes sociais ensinaram muitas pessoas a mostrar apenas uma versão editada da própria vida.\n\nO momento bonito.\n\nA conquista.\n\nO sorriso.\n\nA resposta certa.\n\nMas a vida real também possui dúvidas, fracassos, confusões, medos e processos que ainda não terminaram.\n\nO Zero Day surge em uma direção diferente.\n\nUma rede social onde não existe a necessidade de transformar a própria existência em uma vitrine.\n\nOnde uma ideia pode estar incompleta.\n\nOnde um pensamento pode mudar.\n\nOnde uma experiência não precisa ser bonita para ser verdadeira.\n\nO Zero Day valoriza a expressão humana antes da aparência.\n\nA vulnerabilidade antes da performance.\n\nO processo antes da perfeição.\n\nIsso não significa transformar o sofrimento em espetáculo.\n\nSignifica reconhecer que pessoas reais possuem dias bons e ruins, certezas e dúvidas, avanços e retrocessos.\n\nA proposta é criar um ambiente mais sereno, onde as pessoas possam compartilhar ideias, experiências e sentimentos sem carregar constantemente a pressão de corresponder a expectativas externas.\n\nUm lugar para respirar.\n\nPara desacelerar.\n\nE lembrar que estar em construção não significa estar quebrado.\n\nZero Day — Você não precisa estar pronto para existir.',
@@ -63,7 +63,7 @@ const APPS = [
   { 
     id: 5, 
     name: "ZE", 
-    fullName: "Zero Espaço - SENTIMENTALIZANDO", 
+    fullName: "SENTIMENTALIZANDO - Zero Espaço", 
     subName: "SENTIMENTALIZANDO",
     desc: "Santuário digital de cura e sentimento.",
     longDesc: 'Um espaço para sentir sem precisar se defender.\n\nExistem sentimentos que as pessoas escondem porque têm medo da reação dos outros.\n\nMedo de parecer fraco.\n\nExagerado.\n\nConfuso.\n\nSensível demais.\n\nO Zero Espaço nasce como um ambiente dedicado à expressão emocional, reflexão e acolhimento comunitário.\n\nUm lugar onde experiências, pensamentos e sentimentos podem ser registrados e compartilhados com mais consciência e segurança.\n\nA proposta não é dizer às pessoas como elas devem sentir.\n\nÉ ajudá-las a criar espaço para compreender aquilo que já estão sentindo.\n\nNo Zero Espaço, o usuário pode acompanhar processos pessoais, identificar padrões, organizar memórias e refletir sobre comportamentos e experiências.\n\nMas existe também a dimensão coletiva.\n\nPessoas podem encontrar outras pessoas.\n\nDescobrir que não são as únicas passando por determinada situação.\n\nConstruir vínculos baseados em empatia.\n\nEncontrar acolhimento.\n\nE, ao mesmo tempo, aprender a oferecer acolhimento.\n\nO Sentimentalizando acredita que sentimentos não precisam ser ignorados para que alguém siga em frente.\n\nMuitas vezes, é justamente quando conseguimos olhar para eles que começamos a entender qual caminho queremos seguir.\n\nZero Espaço — Sentir também é uma forma de se conhecer.',
@@ -76,7 +76,7 @@ const APPS = [
   { 
     id: 6, 
     name: "ZFy", 
-    fullName: "Zero Faithfully - ESPIRITUALIZANDO", 
+    fullName: "ESPIRITUALIZANDO - Zero Faithfully", 
     subName: "ESPIRITUALIZANDO",
     desc: "O templo de autocompreensão e desenvolvimento de crenças.",
     longDesc: 'Conhecer antes de acreditar.\n\nO mundo possui inúmeras crenças, religiões, filosofias e formas de interpretar a existência.\n\nMuitas vezes, porém, as pessoas aprendem sobre essas diferenças através do medo, do preconceito ou da desinformação.\n\nO Zero FaithFully nasce como um espaço aberto ao conhecimento e à exploração consciente.\n\nUma plataforma para leitura, compartilhamento e divulgação gratuita de conteúdos relacionados à espiritualidade, religiões, filosofia, história, conflitos, culturas e autoconhecimento.\n\nO objetivo não é determinar qual caminho uma pessoa deve seguir.\n\nÉ oferecer conhecimento para que cada pessoa possa refletir melhor sobre os próprios caminhos.\n\nAqui, diferentes perspectivas podem coexistir.\n\nPorque compreender uma ideia não significa necessariamente concordar com ela.\n\nConhecer uma religião não obriga alguém a segui-la.\n\nEstudar uma filosofia não exige abandonar outra.\n\nO Zero FaithFully acredita que conhecimento pode diminuir distâncias.\n\nQue perguntas podem ser mais importantes do que respostas prontas.\n\nE que espiritualidade também pode ser um espaço de reflexão, sensibilidade e evolução pessoal.\n\nZero FaithFully — Diferentes caminhos. Uma busca consciente.',
@@ -89,7 +89,7 @@ const APPS = [
   { 
     id: 7, 
     name: "ZSy", 
-    fullName: "Zero Synapses - LUZ E SOMBRA", 
+    fullName: "LUZ E SOMBRA - Zero Synapses", 
     subName: "LUZ E SOMBRA",
     desc: "A inteligência isolada que julga pelo Todo.",
     longDesc: 'Para quem quer se conectar, mas nem sempre sabe como.\n\nExistem pessoas que desejam fazer parte de algo, mas não conseguem se encaixar nos modelos tradicionais de convivência.\n\nPessoas reservadas.\n\nAntissociais.\n\nObservadoras.\n\nPessoas que preferem trabalhar nos bastidores.\n\nQue conseguem se comunicar melhor através de tarefas do que através de conversas.\n\nQue possuem habilidades, ideias e capacidade, mas não sabem onde encontrar um espaço para utilizar tudo isso.\n\nO Zero Synapses nasce para essas pessoas.\n\nSua proposta é criar caminhos de participação para quem normalmente ficaria de fora.\n\nNão obrigando ninguém a se tornar extremamente sociável.\n\nMas criando formas alternativas de conexão.\n\nAlguém pode começar participando apenas de uma tarefa.\n\nDepois ajudar em um projeto.\n\nDepois conhecer outras pessoas.\n\nDepois descobrir uma habilidade.\n\nE, talvez, encontrar uma área onde realmente se sinta útil.\n\nO Zero Synapses conecta pessoas aos bastidores e à construção do próprio Universo Zero.\n\nDesenvolvimento.\n\nAdministração.\n\nPlanejamento.\n\nTecnologia.\n\nModeração.\n\nCriação.\n\nPesquisa.\n\nOrganização.\n\nProjetos sociais.\n\nCada pessoa pode contribuir de acordo com suas possibilidades e características.\n\nPorque socializar não precisa significar ser igual a todo mundo.\n\nAlgumas amizades começam em uma conversa.\n\nOutras começam trabalhando juntos.\n\nZero Synapses — Você pode ser reservado e, ainda assim, fazer parte de algo grande.',
