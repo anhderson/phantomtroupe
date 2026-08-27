@@ -2688,15 +2688,28 @@ export default function Home() {
           >
             <motion.div 
               className="cute-welcome-banner"
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 180 }}
+              initial={{ 
+                scale: 0.12, 
+                opacity: 1, 
+                borderRadius: '70px',
+                backgroundColor: '#ffffff',
+                borderColor: '#ffffff',
+                boxShadow: '0 0 45px #ffffff, 0 0 90px rgba(255, 255, 255, 0.95)'
+              }}
+              animate={{ 
+                scale: 1, 
+                opacity: 1, 
+                borderRadius: '24px',
+                backgroundColor: 'rgba(18, 18, 22, 0.96)',
+                borderColor: '#ffffff',
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 255, 255, 0.5)'
+              }}
+              exit={{ scale: 0.12, opacity: 0, borderRadius: '70px', backgroundColor: '#ffffff' }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
               onClick={e => e.stopPropagation()}
               style={{
                 position: 'relative',
-                borderColor: '#ffffff',
-                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 255, 255, 0.5)',
+                overflow: 'hidden',
                 transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
               }}
             >
@@ -2722,7 +2735,7 @@ export default function Home() {
                 className="cute-welcome-projects-grid"
                 initial={{ opacity: 0, y: 12, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 0.80 }}
               >
                 {APPS.map((app, index) => {
                   const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
@@ -2814,7 +2827,7 @@ export default function Home() {
                 className="cute-title"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.25 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 1.05 }}
               >
                 Bem-vindo(a) à Phantom Troupe Fraternidade
               </motion.h2>
@@ -2823,7 +2836,7 @@ export default function Home() {
                 <motion.p 
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: 0.50 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 1.30 }}
                   style={{ fontWeight: 'bold', fontSize: '1.1rem', color: 'var(--primary)', marginBottom: '10px' }}
                 >
                   Tudo que é grande ou poderoso é composto de "pequenas" partes.
@@ -2833,7 +2846,7 @@ export default function Home() {
                   className="cute-tagline-pulse" 
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: 0.75 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 1.55 }}
                   style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}
                 >
                   Chegue como você é. Cada pequena contribuição e cada história importam!
@@ -2842,7 +2855,7 @@ export default function Home() {
                 <motion.p 
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: 1.00 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 1.80 }}
                   style={{ marginBottom: '15px', color: '#ffffff' }}
                 >
                   Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:
@@ -2887,7 +2900,7 @@ export default function Home() {
                         className="cute-pilar-card"
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, ease: "easeOut", delay: 1.25 + pilarIdx * 0.25 }}
+                        transition={{ duration: 0.4, ease: "easeOut", delay: 2.05 + pilarIdx * 0.25 }}
                         onMouseEnter={() => setHoveredPillar(pilar.id)}
                         onMouseLeave={() => setHoveredPillar(null)}
                         onClick={() => {
@@ -2941,7 +2954,7 @@ export default function Home() {
                 className="cute-action-btn guide-page-btn btn-next"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 2.25 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 3.05 }}
                 style={{ marginTop: '20px' }}
                 onClick={() => setShowGuide(false)}
               >
