@@ -1434,6 +1434,15 @@ export default function Home() {
       >
         <div className="history-sphere donation-heart-shape" style={{ width: '81px', height: '81px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <svg viewBox="0 0 1 1" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'drop-shadow(0 0 10px rgba(255, 0, 127, 0.6))', zIndex: 1 }}>
+            {/* Secondary Fine Silver Outer Border for Heart */}
+            <path 
+              d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" 
+              fill="none" 
+              stroke="#c0c0c0" 
+              strokeWidth="0.04" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
             <path 
               d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" 
               fill="rgba(255, 0, 127, 0.15)" 
