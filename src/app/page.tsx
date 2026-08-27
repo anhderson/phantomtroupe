@@ -2287,6 +2287,34 @@ export default function Home() {
                           </motion.div>
                         );
                       })
+                    ) : selectedApp.id === 1 ? (
+                      <div className="node01-summary-container" style={{ textAlign: 'left', padding: '10px 5px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                        <h3 style={{ color: '#FF007F', fontSize: '0.95rem', fontFamily: "'Orbitron', sans-serif", borderBottom: '1px solid rgba(255, 0, 127, 0.3)', paddingBottom: '6px', marginBottom: '4px', letterSpacing: '0.5px' }}>
+                          RESUMO DOS 12 PROJETOS
+                        </h3>
+                        {[
+                          { name: "Phantom Troupe", desc: "Onde a ideia se tornou movimento" },
+                          { name: "Project Zero", desc: "Onde os as idéias dos integrantes começam a se tornar realidade" },
+                          { name: "Zero Signal", desc: "Ambiente virtual de comunicaçao, um aplicativo de chamadas de voz" },
+                          { name: "Zero Day", desc: "Ambiente virtual de comunicação, rede social para expressão indivudual personalizada." },
+                          { name: "Zero Espaço", desc: "Ferramenta de apoio e potencialização emocional e compreensão interna para evolução" },
+                          { name: "Zero FaithFully", desc: "Ferramenta de estudos e expressão, biblioteca online grátis e livre" },
+                          { name: "Zero Synapses", desc: "Corporação e união descentralizada, desenvolvimento de projetos reais com fins lucrativos" },
+                          { name: "Zero Mind", desc: "Em construção (Futuro ambiente de produção de artes em geral)" },
+                          { name: "Zero Infinity", desc: "Em construção (Futuras ferramentas de apoio desenvolvidas pela fraternidade)" },
+                          { name: "Zero Pay", desc: "Em construção (Fundo financeiro e administrativo e administração financeira)" },
+                          { name: "Zero Control", desc: "Em construção (Missões com recompensas financeiras da fraternidade)" },
+                          { name: "Zero Ground", desc: "Em construção (Módulo que conecta tudo, cria a partir do tudo para todos)" }
+                        ].map((proj, idx) => (
+                          <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.04)', borderRadius: '6px', padding: '8px 10px', borderLeft: '3px solid #FF007F' }}>
+                            <span style={{ color: '#FF007F', fontWeight: 'bold', fontSize: '0.88rem' }}>{proj.name}</span>
+                            <span style={{ color: '#e0e0e0', fontSize: '0.84rem', display: 'block', marginTop: '2px', lineHeight: '1.3' }}>{proj.desc}</span>
+                          </div>
+                        ))}
+                        <p style={{ marginTop: '10px', fontSize: '0.85rem', color: '#ffb6c1', fontStyle: 'italic', textAlign: 'center', lineHeight: '1.4', padding: '0 5px' }}>
+                          Cada projeto tem seus Sub Projetos e Sub Grupos em construções e crescimento procedural sem fim.
+                        </p>
+                      </div>
                     ) : (
                       <div className="no-screens-production">
                         <div className="construction-icon">🚧</div>
@@ -2715,9 +2743,9 @@ export default function Home() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, ease: "easeOut", delay: 0.50 }}
-                  style={{ fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--primary)', marginBottom: '10px' }}
+                  style={{ fontWeight: 'bold', fontSize: '1.1rem', color: 'var(--primary)', marginBottom: '10px' }}
                 >
-                  Que bom ter você aqui!
+                  Tudo que é grande ou poderoso é composto de "pequenas" partes.
                 </motion.p>
                 
                 <motion.p 
