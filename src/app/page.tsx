@@ -1741,15 +1741,15 @@ export default function Home() {
                   </p>
                   <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '500px', justifyContent: 'center' }}>
                     <button 
-                      className="guide-page-btn" 
-                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'rgba(128, 128, 128, 0.22)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255, 255, 255, 0.4)', borderRadius: '6px', color: '#ffffff', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}
+                      className="guide-page-btn btn-news-selector" 
+                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', borderRadius: '6px', fontWeight: 'bold' }}
                       onClick={() => setNewsTab('news')}
                     >
                       NOTÍCIAS
                     </button>
                     <button 
-                      className="guide-page-btn" 
-                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'rgba(128, 128, 128, 0.22)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255, 255, 255, 0.4)', borderRadius: '6px', color: '#ffffff', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}
+                      className="guide-page-btn btn-news-selector" 
+                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', borderRadius: '6px', fontWeight: 'bold' }}
                       onClick={() => setNewsTab('records')}
                     >
                       REGISTROS (MURAL)
