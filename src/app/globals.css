@@ -3527,7 +3527,7 @@ body::before {
   display: inline-block;
   color: #ffffff !important;
   font-weight: bold;
-  animation: tagline-pulse-glow 3.5s infinite ease-in-out;
+  animation: tagline-pulse-glow 7.5s infinite ease-in-out;
 }
 
 .cute-text-content p {
