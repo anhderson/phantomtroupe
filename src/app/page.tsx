@@ -461,7 +461,7 @@ export default function Home() {
     id: number;
     x: number;
     y: number;
-    icon: string;
+    iconType: string;
     rotation: number;
     size: number;
   }[]>([]);
@@ -469,22 +469,22 @@ export default function Home() {
   const lastTrailTime = useRef<number>(0);
 
   useEffect(() => {
-    const icons = ['🎵', '🎶', '🎨', '🖌️', '📱', '🎸', '🎹', '🎤', '💖', '💗', '💕', '❤️'];
+    const iconTypes = ['nota', 'pincel', 'celular', 'guitarra', 'piano', 'microfone', 'coracao'];
 
     const handleMove = (clientX: number, clientY: number) => {
       const now = Date.now();
       if (now - lastTrailTime.current < 45) return;
       lastTrailTime.current = now;
 
-      const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+      const randomType = iconTypes[Math.floor(Math.random() * iconTypes.length)];
       const randomRotation = Math.floor(Math.random() * 40) - 20;
-      const randomSize = Math.floor(Math.random() * 8) + 20;
+      const randomSize = Math.floor(Math.random() * 8) + 22;
 
       const newParticle = {
         id: now + Math.random(),
         x: clientX,
         y: clientY,
-        icon: randomIcon,
+        iconType: randomType,
         rotation: randomRotation,
         size: randomSize
       };
@@ -4055,29 +4055,86 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Interactive Cursor & Touch Trail Effect (3 seconds duration) */}
+      {/* Interactive Cursor & Touch Trail Effect (3 seconds duration, theme color matched, low transparency) */}
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 99999, overflow: 'hidden' }}>
         <AnimatePresence>
-          {trailParticles.map((p) => (
-            <motion.span
-              key={p.id}
-              initial={{ opacity: 0.9, scale: 0.6, x: p.x - p.size / 2, y: p.y - p.size / 2, rotate: p.rotation }}
-              animate={{ opacity: 0, scale: 1.25, y: p.y - p.size / 2 - 35, rotate: p.rotation + 15 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 2.8, ease: "easeOut" }}
-              style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                pointerEvents: 'none',
-                fontSize: `${p.size}px`,
-                filter: 'drop-shadow(0 0 4px rgba(255, 0, 127, 0.4))',
-                userSelect: 'none'
-              }}
-            >
-              {p.icon}
-            </motion.span>
-          ))}
+          {trailParticles.map((p) => {
+            const activeThemeColor = 
+              currentTheme === 1 ? '#ffb6c1' :
+              currentTheme === 2 ? '#ff007f' :
+              currentTheme === 3 ? '#e040fb' : '#b39ddb';
+
+            const renderIcon = (type: string) => {
+              switch (type) {
+                case 'nota':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                    </svg>
+                  );
+                case 'pincel':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34a.996.996 0 0 0-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
+                    </svg>
+                  );
+                case 'celular':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+                    </svg>
+                  );
+                case 'guitarra':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M20 3l-2 2 1.5 1.5-1.4 1.4L16.6 6.4 14.5 8.5c-.8-.5-1.8-.6-2.7-.2L9.2 5.7c.3-.8.2-1.8-.3-2.6l-2-2C6.4.6 5.7.4 5 .6L8.4 4 7 5.4 3.6 2c-.2.7 0 1.4.5 1.9l2 2c.8.5 1.8.6 2.6.3l2.6 2.6c-.4.9-.3 1.9.2 2.7l-7.1 7.1c-1.2 1.2-1.2 3.1 0 4.2 1.2 1.2 3.1 1.2 4.2 0l7.1-7.1c.8.5 1.8.6 2.7.2l2.6 2.6c-.3.8-.2 1.8.3 2.6l2 2c.5.5 1.2.7 1.9.5l-3.4-3.4 1.4-1.4 3.4 3.4c.2-.7 0-1.4-.5-1.9l-2-2c-.8-.5-1.8-.6-2.6-.3l-2.6-2.6c.4-.9.3-1.9-.2-2.7l2.1-2.1 1.5 1.5 1.4-1.4L18 5l2-2z"/>
+                    </svg>
+                  );
+                case 'piano':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 7h2v6H7zm4 0h2v6h-2zm4 0h2v6h-2z"/>
+                    </svg>
+                  );
+                case 'microfone':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                    </svg>
+                  );
+                case 'coracao':
+                default:
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                  );
+              }
+            };
+
+            return (
+              <motion.div
+                key={p.id}
+                initial={{ opacity: 1, scale: 0.65, x: p.x - p.size / 2, y: p.y - p.size / 2, rotate: p.rotation }}
+                animate={{ opacity: 0, scale: 1.3, y: p.y - p.size / 2 - 40, rotate: p.rotation + 15 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 3.0, ease: [0.25, 0.1, 0.25, 1.0] }}
+                style={{
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  pointerEvents: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  filter: `drop-shadow(0 0 6px ${activeThemeColor}) drop-shadow(0 0 12px ${activeThemeColor})`,
+                  userSelect: 'none'
+                }}
+              >
+                {renderIcon(p.iconType)}
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
       </div>
     </main>
