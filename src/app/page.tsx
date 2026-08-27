@@ -2654,6 +2654,7 @@ export default function Home() {
                     return (
                       <motion.div 
                         key={pilar.id}
+                        className="cute-pilar-card"
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, ease: "easeOut", delay: 1.25 + pilarIdx * 0.25 }}

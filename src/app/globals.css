@@ -3304,6 +3304,13 @@ body::before {
   max-width: 100%;
 }
 
+.cute-pilar-card {
+  width: 80% !important; /* Diminuído em 20% horizontalmente */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box;
+}
+
 /* Cute Welcome Icons Grid - 12 símbolos sempre em 1 linha horizontal sem quebra */
 .cute-welcome-projects-grid {
   display: flex !important;
