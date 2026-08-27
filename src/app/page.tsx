@@ -467,18 +467,39 @@ export default function Home() {
   }[]>([]);
 
   const lastTrailTime = useRef<number>(0);
+  const [activePairIndex, setActivePairIndex] = useState<number>(0);
+
+  const SHAPE_PAIRS = [
+    ['nota', 'pincel'],
+    ['celular', 'guitarra'],
+    ['piano', 'microfone'],
+    ['coracao', 'nota'],
+    ['pincel', 'celular'],
+    ['guitarra', 'piano'],
+    ['microfone', 'coracao']
+  ];
+
+  const activePairRef = useRef<string[]>(SHAPE_PAIRS[0]);
 
   useEffect(() => {
-    const iconTypes = ['nota', 'pincel', 'celular', 'guitarra', 'piano', 'microfone', 'coracao'];
+    activePairRef.current = SHAPE_PAIRS[activePairIndex];
+  }, [activePairIndex]);
+
+  useEffect(() => {
+    // Alterna a dupla de 2 formas a cada 3 segundos
+    const pairTimer = setInterval(() => {
+      setActivePairIndex(prev => (prev + 1) % 7);
+    }, 3000);
 
     const handleMove = (clientX: number, clientY: number) => {
       const now = Date.now();
       if (now - lastTrailTime.current < 45) return;
       lastTrailTime.current = now;
 
-      const randomType = iconTypes[Math.floor(Math.random() * iconTypes.length)];
+      const currentPair = activePairRef.current;
+      const randomType = currentPair[Math.floor(Math.random() * currentPair.length)];
       const randomRotation = Math.floor(Math.random() * 40) - 20;
-      const randomSize = Math.floor(Math.random() * 8) + 22;
+      const randomSize = Math.floor(Math.random() * 8) + 20;
 
       const newParticle = {
         id: now + Math.random(),
@@ -511,6 +532,7 @@ export default function Home() {
     }, 12 * 60 * 60 * 1000);
 
     return () => {
+      clearInterval(pairTimer);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('touchmove', onTouchMove);
       clearInterval(newsRefresh);
@@ -4127,7 +4149,7 @@ export default function Home() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  filter: `drop-shadow(0 0 6px ${activeThemeColor}) drop-shadow(0 0 12px ${activeThemeColor})`,
+                  filter: `drop-shadow(0 0 3px ${activeThemeColor})`,
                   userSelect: 'none'
                 }}
               >
