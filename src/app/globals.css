@@ -3136,8 +3136,27 @@ body::before {
   transform: translateY(-2px);
 }
 
+.members-overlay .member-card h3,
+.members-overlay .member-card h3.member-name {
+  color: #ff007f !important; /* Cor do texto do nome dos Membros Ativos */
+  font-weight: 700;
+}
+
+.members-overlay .member-card p.member-role {
+  color: #ff007f !important;
+}
+
+.members-overlay .member-card p.member-detail {
+  color: #333333 !important;
+}
+
+.members-overlay .member-card p.member-activation-date {
+  color: #ff007f !important;
+  font-weight: 600;
+}
+
 .members-overlay .member-card p {
-  color: #ff007f !important; /* Rosa da pagina inicial */
+  color: #ff007f;
 }
 
 .members-overlay .member-card span {
@@ -3485,9 +3504,17 @@ body::before {
   color: #e040fb !important;
   text-shadow: 0 0 15px rgba(171, 71, 188, 0.8) !important;
 }
-/* Sombreamento branco por trás dos textos dos botões no Tema 3 */
+/* Sombreamento preto por trás dos textos dos botões no Tema 3 */
 .theme-3 .seja-membro-flicker-text,
-.theme-3 .global-news-flicker-text,
+.theme-3 .global-news-flicker-text {
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 4px #000000,
+    0 0 8px #000000,
+    0 0 14px #000000,
+    2px 2px 4px #000000,
+    -2px -2px 4px #000000 !important;
+}
 .theme-3 .runic-node .initials,
 .theme-3 .runic-node .full-name {
   color: #ffffff !important;
@@ -3566,4 +3593,17 @@ body::before {
 .theme-4 .global-visit-counter .counter-value,
 .theme-4 .global-visit-counter .counter-label {
   color: #311b92 !important;
+}
+
+/* Textos SYNC, Cidade e Relógio em Roxo Claro no Tema 4 */
+.theme-4 .hud-meta .hud-label,
+.theme-4 .hud-meta .hud-value,
+.theme-4 .hud-meta .hardware-hl,
+.theme-4 .hud-meta .clock-trigger,
+.theme-4 .hud-meta .clock-value {
+  color: #d1c4e9 !important;
+  text-shadow: 0 0 8px rgba(209, 196, 233, 0.6) !important;
+}
+.theme-4 .hud-meta .hud-divider {
+  background: rgba(209, 196, 233, 0.3) !important;
 }

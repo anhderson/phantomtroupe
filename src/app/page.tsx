@@ -2463,7 +2463,28 @@ export default function Home() {
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 180 }}
               onClick={e => e.stopPropagation()}
+              style={{
+                position: 'relative',
+                borderColor: '#ffffff',
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 255, 255, 0.5)',
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
+              }}
             >
+              {/* Camada de rosa blur por trás do fundo da janela */}
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: '-25px',
+                  left: '-25px',
+                  right: '-25px',
+                  bottom: '-25px',
+                  background: 'radial-gradient(circle, rgba(255, 0, 127, 0.45) 0%, rgba(255, 0, 127, 0.18) 60%, transparent 95%)',
+                  filter: 'blur(35px)',
+                  borderRadius: '35px',
+                  zIndex: -1,
+                  pointerEvents: 'none'
+                }}
+              />
               {/* Cute close button */}
               <div className="cute-close-btn" onClick={() => setShowGuide(false)}>×</div>
               
@@ -2554,7 +2575,7 @@ export default function Home() {
                 })}
               </div>
               
-              <h2 className="cute-title">Bem-vindo(a) à Phantom Troupe Fraternidade!</h2>
+              <h2 className="cute-title">Bem-vindo(a) à Phantom Troupe Fraternidade</h2>
               
               <div className="cute-text-content">
                 <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--primary)', marginBottom: '10px' }}>Que bom ter você aqui!</p>
@@ -2590,12 +2611,13 @@ export default function Home() {
                   ].map((pilar) => {
                     const isRevealed = mobileAutoRevealed || hoveredPillar === pilar.id || clickedPillars.includes(pilar.id);
                     const isHovered = hoveredPillar === pilar.id;
-                    let titleColor = 'var(--primary)';
-                    if (isHovered) {
-                      if (pilar.id === 1) titleColor = '#ffb6c1';
-                      else if (pilar.id === 3) titleColor = '#d1c4e9';
-                      else if (pilar.id === 4) titleColor = '#7b1fa2';
-                    }
+                    let pilarColor = 'var(--primary)';
+                    if (pilar.id === 1) pilarColor = '#ffb6c1';
+                    else if (pilar.id === 2) pilarColor = 'var(--primary)';
+                    else if (pilar.id === 3) pilarColor = '#d1c4e9';
+                    else if (pilar.id === 4) pilarColor = '#7b1fa2';
+
+                    const titleColor = isHovered ? pilarColor : 'var(--primary)';
 
                     return (
                       <div 
@@ -2611,7 +2633,8 @@ export default function Home() {
                           background: isRevealed ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.04)', 
                           padding: '12px 14px', 
                           borderRadius: '8px', 
-                          border: isRevealed ? '1px solid rgba(255, 0, 127, 0.4)' : '1px solid rgba(255, 255, 255, 0.08)',
+                          border: '1px solid #ffffff',
+                          boxShadow: isHovered ? '0 0 14px rgba(255, 255, 255, 0.8)' : '0 0 6px rgba(255, 255, 255, 0.2)',
                           cursor: 'pointer',
                           transition: 'all 0.3s ease'
                         }}
