@@ -12,7 +12,7 @@ const APPS = [
     subName: "Fraternidade ONG",
     color: "#FF007F", 
     desc: "Orquestrador principal da rede neural.",
-    longDesc: 'O Phantom Troupe é o coração de todo o ecossistema.\n\nAntes dos aplicativos, dos projetos, das plataformas e das ideias, existem pessoas.\n\nPessoas reais, com histórias reais.\n\nO Phantom Troupe nasce como uma fraternidade e comunidade para pessoas que, por diferentes motivos, sentem que estão fora dos círculos tradicionais de convivência.\n\nPessoas que enfrentam dificuldades na vida.\n\nPessoas com deficiência.\n\nPessoas solitárias.\n\nPessoas carentes de vínculos.\n\nPessoas com dificuldades emocionais ou sociais.\n\nPessoas que simplesmente nunca encontraram um grupo onde pudessem ser elas mesmas.\n\nAqui, ninguém precisa chegar pronto.\n\nNinguém precisa ter uma história impressionante.\n\nNinguém precisa provar que merece pertencer.\n\nA proposta é simples: criar vínculos humanos e permitir que pessoas se fortaleçam mutuamente.\n\nO Phantom Troupe funciona como a comunidade central do Universo Zero.\n\nÉ onde ideias nascem.\n\nOnde projetos encontram pessoas.\n\nOnde participantes podem se tornar colaboradores.\n\nOnde alguém que entrou procurando acolhimento pode, no futuro, ajudar a acolher outra pessoa.\n\nOnde alguém que começou perdido pode encontrar uma função, uma amizade ou uma nova direção.\n\nAtravés de grupos, comunidades, encontros digitais, projetos colaborativos e iniciativas sociais, o Phantom Troupe busca construir algo que muitas pessoas passam a vida procurando:\n\num sentimento de pertencimento.\n\nNão porque todos são iguais.\n\nMas porque ninguém precisa atravessar tudo sozinho.\n\nPhantom Troupe — Pessoas diferentes. Histórias diferentes. Um lugar para construir algo juntos.',
+    longDesc: `ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 𝔽𝖗𝖆𝖙𝖊𝖗𝖓𝖎𝖉𝖆𝖉𝖊\nA Fraternidade que nasceu de uma ideia e começou a se tornar realidade\n\nAℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 não nasceu em um único dia. Ela nasceu primeiro como uma ideia, um sentimento e uma visão que permaneceu viva durante anos.\n\nHá praticamente sete anos, surgiu o desejo de criar algo diferente: um espaço onde pessoas pudessem se encontrar, compartilhar experiências, desenvolver suas capacidades e, acima de tudo, não precisassem caminhar sozinhas.\n\nAgora, em seu oitavo ano de existência como ideia, essa visão finalmente começou a ganhar movimento, identidade e forma.\n\nNo dia 04/04/2026, a ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 iniciou oficialmente sua jornada como uma fraternidade em construção.\n\nDesde então, seu propósito tem sido simples em sua essência, mas imenso em seu significado:\n\nUnir corações e mentes em prol uns dos outros.\n\nAcreditamos que cada pessoa possui uma história, um conhecimento, uma habilidade, uma dor, um sonho e algo que pode oferecer ao mundo. Dentro da ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊, ninguém precisa ser apenas espectador. Todos podem, de alguma forma, participar da construção.\n\nAlguns chegam para ensinar.\nOutros chegam para aprender.\nAlguns chegam para ajudar.\nOutros, inicialmente, precisam ser ajudados.\nExistem aqueles que praticam, aqueles que criam, aqueles que dividem, aqueles que doam e aqueles que, simplesmente, encontram um lugar onde podem começar novamente.\n\nE é justamente através dessa troca que a nossa fraternidade cresce.\n\nNosso objetivo nunca foi determinar um único destino para todos. Pelo contrário: queremos que cada integrante tenha a oportunidade de encontrar o seu próprio caminho, enquanto também contribui para que outras pessoas encontrem os delas.\n\nChegar juntos, quando possível. Chegar individualmente, quando necessário. Mas nunca deixar de acreditar que podemos ajudar uns aos outros a chegar a algum lugar.\n\nA ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 está sendo construída através da união de todos que acreditam nessa proposta. Cada conversa, atividade, projeto, encontro, aprendizado, criação e experiência compartilhada se torna uma parte daquilo que estamos construindo.\n\nNossa base está nas práticas psicossociais saudáveis, livres e divertidas, utilizando diferentes formas de expressão, convivência e desenvolvimento humano. Queremos criar experiências que possam aproximar pessoas e estimular o crescimento através da arte, música, poesia, desenho, criatividade, diálogo, aprendizado, apoio mútuo e convivência.\n\nAcreditamos que evoluir não precisa significar caminhar sozinho.\n\nAcreditamos que aprender pode ser divertido.\n\nAcreditamos que ensinar também é aprender.\n\nAcreditamos que ajudar alguém não diminui quem ajuda — fortalece ambos.\n\nE acreditamos que uma comunidade pode ser mais do que apenas um grupo de pessoas reunidas por interesses semelhantes. Ela pode se tornar uma fraternidade, onde diferentes indivíduos, histórias e capacidades encontram espaço para coexistir, criar e construir algo maior juntos.\n\nA ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 ainda está em seus primeiros passos.\n\nNão nos definimos como uma obra pronta.\n\nSomos uma construção.\n\nUma ideia que resistiu ao tempo.\nUm propósito que começou a ganhar movimento.\nUma fraternidade formada por pessoas diferentes, mas conectadas pela possibilidade de construir, aprender, criar e evoluir juntas.\n\nO que já foi construído até aqui representa apenas o início.\n\nPorque a Phantom Troupe não pertence a uma única pessoa.\n\nEla é construída por todos aqueles que chegam, permanecem, contribuem, ensinam, aprendem, ajudam e permitem ser ajudados.\n\nE enquanto existirem pessoas dispostas a unir seus corações e suas mentes em prol umas das outras, a Phantom Troupe continuará existindo, crescendo e encontrando novos caminhos.\n\nℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊\n\nTudo que é grande ou poderoso é composto de "pequenas" partes.`,
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "OPERACIONAL",
     security: "GENESIS",
@@ -233,6 +233,8 @@ export default function Home() {
   const [isGlitching, setIsGlitching] = useState(false);
   const [showConstructionModal, setShowConstructionModal] = useState(false);
   const [showLaunchWarning, setShowLaunchWarning] = useState(false);
+  const [showMotivacoesModal, setShowMotivacoesModal] = useState(false);
+  const [isMotivacoesHovered, setIsMotivacoesHovered] = useState(false);
   const [currentTheme, setCurrentTheme] = useState<1 | 2 | 3 | 4>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('phantom_theme');
@@ -2298,6 +2300,53 @@ export default function Home() {
                         FIM DOS REGISTROS VISUAIS
                       </div>
                     )}
+
+                    {selectedApp.id === 1 && (
+                      <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center', width: '100%' }}>
+                        <motion.button
+                          onMouseEnter={() => setIsMotivacoesHovered(true)}
+                          onMouseLeave={() => setIsMotivacoesHovered(false)}
+                          onClick={() => setShowMotivacoesModal(true)}
+                          initial={false}
+                          animate={{
+                            width: isMotivacoesHovered ? '135px' : '42px',
+                            borderRadius: isMotivacoesHovered ? '20px' : '50%'
+                          }}
+                          transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                          style={{
+                            height: '42px',
+                            background: 'rgba(255, 0, 127, 0.25)',
+                            border: '1.5px solid #FF007F',
+                            boxShadow: '0 0 14px rgba(255, 0, 127, 0.6), inset 0 0 8px rgba(255, 0, 127, 0.3)',
+                            color: '#ffffff',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '8px',
+                            overflow: 'hidden',
+                            fontWeight: 'bold',
+                            fontSize: '0.9rem',
+                            whiteSpace: 'nowrap',
+                            padding: '0 12px',
+                            fontFamily: "'Orbitron', sans-serif"
+                          }}
+                          title="Motivações"
+                        >
+                          <span style={{ fontSize: '1.15rem', flexShrink: 0 }}>💡</span>
+                          {isMotivacoesHovered && (
+                            <motion.span
+                              initial={{ opacity: 0, x: -5 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -5 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              Motivações
+                            </motion.span>
+                          )}
+                        </motion.button>
+                      </div>
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -2360,13 +2409,8 @@ export default function Home() {
 
                     <div className="detail-section">
                       <span className="section-label">VISÃO GERAL</span>
-                      <p className="section-text">
-                        {selectedApp?.longDesc.split('.').filter(s => s.trim()).map((sentence, idx) => (
-                          <span key={idx}>
-                            {sentence.trim()}.
-                            <br /><br />
-                          </span>
-                        ))}
+                      <p className="section-text" style={{ whiteSpace: 'pre-line', lineHeight: '1.6' }}>
+                        {selectedApp?.longDesc}
                       </p>
                     </div>
 
@@ -2422,6 +2466,83 @@ export default function Home() {
 
             </motion.div>
           </>
+        )}
+      </AnimatePresence>
+
+      {/* Motivacoes Originarias Modal Overlay */}
+      <AnimatePresence>
+        {showMotivacoesModal && (
+          <motion.div
+            className="cute-welcome-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowMotivacoesModal(false)}
+            style={{ zIndex: 20000 }}
+          >
+            <motion.div
+              className="cute-welcome-banner"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                border: '1px solid #FF007F',
+                boxShadow: '0 0 30px rgba(255, 0, 127, 0.4), inset 0 0 15px rgba(255, 0, 127, 0.2)'
+              }}
+            >
+              <div className="cute-close-btn" onClick={() => setShowMotivacoesModal(false)}>×</div>
+              
+              <h2 className="cute-title" style={{ color: '#FF007F', fontSize: '1.35rem', marginBottom: '15px' }}>
+                Motivações Originárias — Node01
+              </h2>
+
+              <div className="cute-text-content" style={{ textAlign: 'left', maxHeight: '68vh', overflowY: 'auto', paddingRight: '8px', fontSize: '0.96rem' }}>
+                <p style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#FF007F', marginBottom: '14px', textAlign: 'center' }}>
+                  O Phantom Troupe é o coração de todo o ecossistema.
+                </p>
+
+                {[
+                  "Antes dos aplicativos, dos projetos, das plataformas e das ideias, existem pessoas.",
+                  "Pessoas reais, com histórias reais.",
+                  "O Phantom Troupe nasce como uma fraternidade e comunidade para pessoas que, por diferentes motivos, sentem que estão fora dos círculos tradicionais de convivência.",
+                  "Pessoas que enfrentam dificuldades na vida.",
+                  "Pessoas com deficiência.",
+                  "Pessoas solitárias.",
+                  "Pessoas carentes de vínculos.",
+                  "Pessoas com dificuldades emocionais ou sociais.",
+                  "Pessoas que simplesmente nunca encontraram um grupo onde pudessem ser elas mesmas.",
+                  "Aqui, ninguém precisa chegar pronto.",
+                  "Ninguém precisa ter uma história impressionante.",
+                  "Ninguém precisa provar que merece pertencer.",
+                  "A proposta é simples: criar vínculos humanos e permitir que pessoas se fortaleçam mutuamente.",
+                  "O Phantom Troupe funciona como a comunidade central do Universo Zero.",
+                  "É onde ideias nascem.",
+                  "Onde projetos encontram pessoas.",
+                  "Onde participantes podem se tornar colaboradores.",
+                  "Onde alguém que entrou procurando acolhimento pode, no futuro, ajudar a acolher outra pessoa.",
+                  "Onde alguém que começou perdido pode encontrar uma função, uma amizade ou uma nova direção.",
+                  "Através de grupos, comunidades, encontros digitais, projetos colaborativos e iniciativas sociais, o Phantom Troupe busca construir algo que muitas pessoas passam a vida procurando:",
+                  "um sentimento de pertencimento.",
+                  "Não porque todos são iguais.",
+                  "Mas porque ninguém precisa atravessar tudo sozinho.",
+                  "Phantom Troupe — Pessoas diferentes. Histórias diferentes. Um lugar para construir algo juntos."
+                ].map((para, idx) => (
+                  <p key={idx} style={{ marginBottom: '10px', lineHeight: '1.5', color: '#e0e0e0' }}>
+                    {para}
+                  </p>
+                ))}
+              </div>
+
+              <button 
+                className="cute-action-btn guide-page-btn btn-next"
+                style={{ marginTop: '20px', background: 'linear-gradient(135deg, #FF007F, #b30059)' }}
+                onClick={() => setShowMotivacoesModal(false)}
+              >
+                Fechar ✕
+              </button>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
 
