@@ -457,26 +457,62 @@ export default function Home() {
   const [adminPass, setAdminPass] = useState("");
   const [authError, setAuthError] = useState(false);
 
+  const [trailParticles, setTrailParticles] = useState<{
+    id: number;
+    x: number;
+    y: number;
+    icon: string;
+    rotation: number;
+    size: number;
+  }[]>([]);
+
+  const lastTrailTime = useRef<number>(0);
+
   useEffect(() => {
-    // Disable glitch on mobile for better UX/Performance
-    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    
-    let glitchTimer: any = null;
-    if (!isMobile) {
-      glitchTimer = setInterval(() => {
-        setIsGlitching(true);
-        setTimeout(() => setIsGlitching(false), 1300);
-      }, 21000);
-    }
-    
+    const icons = ['🎵', '🎶', '🎨', '🖌️', '📱', '🎸', '🎹', '🎤', '💖', '💗', '💕', '❤️'];
+
+    const handleMove = (clientX: number, clientY: number) => {
+      const now = Date.now();
+      if (now - lastTrailTime.current < 45) return;
+      lastTrailTime.current = now;
+
+      const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+      const randomRotation = Math.floor(Math.random() * 40) - 20;
+      const randomSize = Math.floor(Math.random() * 8) + 20;
+
+      const newParticle = {
+        id: now + Math.random(),
+        x: clientX,
+        y: clientY,
+        icon: randomIcon,
+        rotation: randomRotation,
+        size: randomSize
+      };
+
+      setTrailParticles(prev => [...prev.slice(-25), newParticle]);
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      handleMove(e.clientX, e.clientY);
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches && e.touches.length > 0) {
+        handleMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('touchmove', onTouchMove);
+
     // 12-hour News Cycle Refresh
     const newsRefresh = setInterval(() => {
-      // Simulate news refresh
       setNewsItems(prev => [...prev].sort(() => Math.random() - 0.5));
     }, 12 * 60 * 60 * 1000);
 
     return () => {
-      if (glitchTimer) clearInterval(glitchTimer);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchmove', onTouchMove);
       clearInterval(newsRefresh);
     };
   }, []);
@@ -2306,9 +2342,9 @@ export default function Home() {
                           { name: "Zero Control", desc: "Em construção (Missões com recompensas financeiras da fraternidade)" },
                           { name: "Zero Ground", desc: "Em construção (Módulo que conecta tudo, cria a partir do tudo para todos)" }
                         ].map((proj, idx) => (
-                          <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.04)', borderRadius: '6px', padding: '8px 10px', borderLeft: '3px solid #FF007F' }}>
-                            <span style={{ color: '#FF007F', fontWeight: 'bold', fontSize: '0.88rem' }}>{proj.name}</span>
-                            <span style={{ color: '#e0e0e0', fontSize: '0.84rem', display: 'block', marginTop: '2px', lineHeight: '1.3' }}>{proj.desc}</span>
+                          <div key={idx} style={{ background: '#ffffff', borderRadius: '6px', padding: '10px 12px', borderLeft: '4px solid #FF007F', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)' }}>
+                            <span style={{ color: '#c70066', fontWeight: 'bold', fontSize: '0.9rem', display: 'block' }}>{proj.name}</span>
+                            <span style={{ color: '#000000', fontSize: '0.86rem', display: 'block', marginTop: '3px', lineHeight: '1.35', fontWeight: '500' }}>{proj.desc}</span>
                           </div>
                         ))}
                         <p style={{ marginTop: '10px', fontSize: '0.85rem', color: '#ffb6c1', fontStyle: 'italic', textAlign: 'center', lineHeight: '1.4', padding: '0 5px' }}>
@@ -4018,6 +4054,32 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Interactive Cursor & Touch Trail Effect (3 seconds duration) */}
+      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 99999, overflow: 'hidden' }}>
+        <AnimatePresence>
+          {trailParticles.map((p) => (
+            <motion.span
+              key={p.id}
+              initial={{ opacity: 0.9, scale: 0.6, x: p.x - p.size / 2, y: p.y - p.size / 2, rotate: p.rotation }}
+              animate={{ opacity: 0, scale: 1.25, y: p.y - p.size / 2 - 35, rotate: p.rotation + 15 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 2.8, ease: "easeOut" }}
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                pointerEvents: 'none',
+                fontSize: `${p.size}px`,
+                filter: 'drop-shadow(0 0 4px rgba(255, 0, 127, 0.4))',
+                userSelect: 'none'
+              }}
+            >
+              {p.icon}
+            </motion.span>
+          ))}
+        </AnimatePresence>
+      </div>
     </main>
   );
 }
