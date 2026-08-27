@@ -471,13 +471,12 @@ export default function Home() {
   const [activePairIndex, setActivePairIndex] = useState<number>(0);
 
   const SHAPE_PAIRS = [
-    ['nota', 'pincel'],
-    ['celular', 'guitarra'],
-    ['piano', 'microfone'],
-    ['coracao', 'nota'],
-    ['pincel', 'celular'],
-    ['guitarra', 'piano'],
-    ['microfone', 'coracao']
+    ['microfone', 'nota'],            // Canto com Música
+    ['pincel', 'celular'],            // Escrita/Arte com Celular
+    ['baquetas', 'guitarra_eletrica'],// Baquetas com Guitarra Elétrica
+    ['violao_redondo', 'piano'],      // Violão Redondo com Piano
+    ['shape_x', 'shape_0'],           // X e 0
+    ['coracao', 'pincel']             // Coração com Pincel
   ];
 
   const activePairRef = useRef<string[]>(SHAPE_PAIRS[0]);
@@ -487,9 +486,9 @@ export default function Home() {
   }, [activePairIndex]);
 
   useEffect(() => {
-    // Alterna a dupla de 2 formas a cada 3 segundos
+    // Alterna a dupla temática de 2 formas a cada 3 segundos
     const pairTimer = setInterval(() => {
-      setActivePairIndex(prev => (prev + 1) % 7);
+      setActivePairIndex(prev => (prev + 1) % 6);
     }, 3000);
 
     const handleMove = (clientX: number, clientY: number) => {
@@ -4115,10 +4114,36 @@ export default function Home() {
                       <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
                     </svg>
                   );
-                case 'guitarra':
+                case 'violao_redondo':
                   return (
                     <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
-                      <path d="M20 3l-2 2 1.5 1.5-1.4 1.4L16.6 6.4 14.5 8.5c-.8-.5-1.8-.6-2.7-.2L9.2 5.7c.3-.8.2-1.8-.3-2.6l-2-2C6.4.6 5.7.4 5 .6L8.4 4 7 5.4 3.6 2c-.2.7 0 1.4.5 1.9l2 2c.8.5 1.8.6 2.6.3l2.6 2.6c-.4.9-.3 1.9.2 2.7l-7.1 7.1c-1.2 1.2-1.2 3.1 0 4.2 1.2 1.2 3.1 1.2 4.2 0l7.1-7.1c.8.5 1.8.6 2.7.2l2.6 2.6c-.3.8-.2 1.8.3 2.6l2 2c.5.5 1.2.7 1.9.5l-3.4-3.4 1.4-1.4 3.4 3.4c.2-.7 0-1.4-.5-1.9l-2-2c-.8-.5-1.8-.6-2.6-.3l-2.6-2.6c.4-.9.3-1.9-.2-2.7l2.1-2.1 1.5 1.5 1.4-1.4L18 5l2-2z"/>
+                      <path d="M19.8 4.2c-.8-.8-2-.8-2.8 0L14 7.2l1.8 1.8 1.4-1.4L18.6 9l1.4-1.4L18.6 6.2l1.2-1.2c.4-.4.4-1 0-1.4zM12.8 8.4L4.2 17c-1.6 1.6-1.6 4.2 0 5.8 1.6 1.6 4.2 1.6 5.8 0l8.6-8.6-5.8-5.8zM7.1 19.9c-.8.8-2.1.8-2.8 0-.8-.8-.8-2.1 0-2.8.8-.8 2.1-.8 2.8 0 .8.7.8 2 0 2.8z"/>
+                    </svg>
+                  );
+                case 'guitarra_eletrica':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M21 3l-3 1 1 1-2 2-2-2-1 1 2 2-7.8 7.8c-.8-.5-1.9-.6-2.8-.1l-2.4-2.4 1.4-1.4-2.8-2.8-1.4 1.4L2.8 9.5l2.8 2.8-1.4 1.4 2.4 2.4c-.5.9-.4 2 .1 2.8l7.8 7.8 2-2-2-2 1-1 2 2 2-2-1-1 1-3L21 3z"/>
+                    </svg>
+                  );
+                case 'baquetas':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <circle cx="5" cy="5" r="2.5" />
+                      <circle cx="19" cy="5" r="2.5" />
+                      <path d="M5.5 7L18.5 20l1.5-1.5L7 5.5zM18.5 7L5.5 20l-1.5-1.5L17 5.5z"/>
+                    </svg>
+                  );
+                case 'shape_x':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                  );
+                case 'shape_0':
+                  return (
+                    <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={activeThemeColor}>
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
                     </svg>
                   );
                 case 'piano':
