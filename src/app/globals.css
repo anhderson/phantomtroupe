@@ -682,10 +682,9 @@ body::before {
   justify-content: center;
 }
 
-/* Secondary Fine Silver Outer Border for Triggers (Seja Membro, Notícias e Murais, Ajudas Doações) */
+/* Secondary Fine Silver Outer Border for Triggers (Seja Membro, Notícias e Murais) */
 .planet-trigger::before,
-.history-trigger::before,
-.donations-trigger::before {
+.history-trigger::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -702,8 +701,7 @@ body::before {
 }
 
 .planet-trigger:hover::before,
-.history-trigger:hover::before,
-.donations-trigger:hover::before {
+.history-trigger:hover::before {
   border-color: #ffffff;
   box-shadow: 0 0 14px rgba(255, 255, 255, 0.95), inset 0 0 6px rgba(255, 255, 255, 0.8);
   transform: translate(-50%, -50%) scale(1.05);
