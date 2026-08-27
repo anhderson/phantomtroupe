@@ -2488,7 +2488,12 @@ export default function Home() {
               {/* Cute close button */}
               <div className="cute-close-btn" onClick={() => setShowGuide(false)}>×</div>
               
-              <div className="cute-welcome-projects-grid">
+              <motion.div 
+                className="cute-welcome-projects-grid"
+                initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 0 }}
+              >
                 {APPS.map((app, index) => {
                   const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
                   const brasaoSrc = `/Brasoes/${app.id}.png`;
@@ -2573,18 +2578,45 @@ export default function Home() {
                     </div>
                   );
                 })}
-              </div>
+              </motion.div>
               
-              <h2 className="cute-title">Bem-vindo(a) à Phantom Troupe Fraternidade</h2>
+              <motion.h2 
+                className="cute-title"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 0.25 }}
+              >
+                Bem-vindo(a) à Phantom Troupe Fraternidade
+              </motion.h2>
               
               <div className="cute-text-content">
-                <p style={{ fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--primary)', marginBottom: '10px' }}>Que bom ter você aqui!</p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 0.50 }}
+                  style={{ fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--primary)', marginBottom: '10px' }}
+                >
+                  Que bom ter você aqui!
+                </motion.p>
                 
-                <p className="cute-tagline-pulse" style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}>
+                <motion.p 
+                  className="cute-tagline-pulse" 
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 0.75 }}
+                  style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}
+                >
                   Chegue como você é. Cada pequena contribuição e cada história importam!
-                </p>
+                </motion.p>
 
-                <p style={{ marginBottom: '15px', color: '#ffffff' }}>Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:</p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 1.00 }}
+                  style={{ marginBottom: '15px', color: '#ffffff' }}
+                >
+                  Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:
+                </motion.p>
                 
                 <div style={{ textAlign: 'left', marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '12px', padding: '0 10px' }}>
                   {[
@@ -2608,7 +2640,7 @@ export default function Home() {
                       title: "4. Missões e Impacto Real",
                       text: "Participe da construção do próprio ecossistema através de tarefas de desenvolvimento, design, moderação ou projetos sociais no mundo físico."
                     }
-                  ].map((pilar) => {
+                  ].map((pilar, pilarIdx) => {
                     const isRevealed = mobileAutoRevealed || hoveredPillar === pilar.id || clickedPillars.includes(pilar.id);
                     const isHovered = hoveredPillar === pilar.id;
                     let pilarColor = 'var(--primary)';
@@ -2620,8 +2652,11 @@ export default function Home() {
                     const titleColor = isHovered ? pilarColor : 'var(--primary)';
 
                     return (
-                      <div 
+                      <motion.div 
                         key={pilar.id}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, ease: "easeOut", delay: 1.25 + pilarIdx * 0.25 }}
                         onMouseEnter={() => setHoveredPillar(pilar.id)}
                         onMouseLeave={() => setHoveredPillar(null)}
                         onClick={() => {
@@ -2665,19 +2700,22 @@ export default function Home() {
                             </motion.p>
                           )}
                         </AnimatePresence>
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>
               </div>
 
-              <button 
+              <motion.button 
                 className="cute-action-btn guide-page-btn btn-next"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 2.25 }}
                 style={{ marginTop: '20px' }}
                 onClick={() => setShowGuide(false)}
               >
                 Começar ▷
-              </button>
+              </motion.button>
             </motion.div>
           </motion.div>
         )}
