@@ -1722,7 +1722,7 @@ export default function Home() {
                 <h2 
                   className="guide-heading" 
                   style={{ 
-                    color: '#000000', 
+                    color: '#222222', 
                     textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff',
                     fontWeight: 900
                   }}
@@ -1742,14 +1742,14 @@ export default function Home() {
                   <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '500px', justifyContent: 'center' }}>
                     <button 
                       className="guide-page-btn" 
-                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'linear-gradient(135deg, rgba(240, 240, 240, 0.75) 0%, rgba(180, 180, 180, 0.75) 100%)', backdropFilter: 'blur(8px)', border: '1px solid rgba(160, 160, 160, 0.6)', borderRadius: '6px', color: '#111827', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)' }}
+                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'rgba(128, 128, 128, 0.22)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255, 255, 255, 0.4)', borderRadius: '6px', color: '#ffffff', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}
                       onClick={() => setNewsTab('news')}
                     >
                       NOTÍCIAS
                     </button>
                     <button 
                       className="guide-page-btn" 
-                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'linear-gradient(135deg, rgba(209, 196, 233, 0.75) 0%, rgba(179, 136, 255, 0.75) 100%)', backdropFilter: 'blur(8px)', border: '1px solid rgba(179, 136, 255, 0.6)', borderRadius: '6px', color: '#1a0933', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)' }}
+                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', background: 'rgba(128, 128, 128, 0.22)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255, 255, 255, 0.4)', borderRadius: '6px', color: '#ffffff', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}
                       onClick={() => setNewsTab('records')}
                     >
                       REGISTROS (MURAL)
@@ -1759,7 +1759,7 @@ export default function Home() {
                   <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
                     <button 
                       className="guide-page-btn btn-next btn-grey"
-                      style={{ marginTop: 0, padding: '8px 15px', fontSize: '0.75rem' }}
+                      style={{ marginTop: 0, padding: '10px 18px', fontSize: '0.78rem', background: '#555555', color: '#ffffff', border: '1px solid #888888', borderRadius: '6px', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)' }}
                       onClick={() => {
                         setShowGeneralNews(false);
                         setShowWorldometer(true);
@@ -2991,7 +2991,7 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>
@@ -3309,7 +3309,7 @@ export default function Home() {
               </div>
 
               <footer className="guide-footer-branding" style={{ marginTop: '20px', transform: 'translateY(-2vh)' }}>
-                <h2 className="guide-heading" style={{ color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontSize: '1.2rem', fontWeight: 900 }}>▽ ℙ𝖆𝖗𝖙𝖎𝖈𝖎𝖕𝖊 𝖉𝖆 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
+                <h2 className="guide-heading" style={{ color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontSize: '1.2rem', fontWeight: 900 }}>▽ ℙ𝖆𝖗𝖙𝖎𝖈𝖎𝖕𝖊 𝖉𝖆 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
               </footer>
             </div>
           </motion.div>
@@ -3341,7 +3341,7 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>▽ 𝔸𝖏𝖚𝖉𝖆𝖘 𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>▽ 𝔸𝖏𝖚𝖉𝖆𝖘 𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '20px', transform: 'translateY(-2vh)' }}>
@@ -3667,7 +3667,7 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '30px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#FF007F', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>▽ 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
