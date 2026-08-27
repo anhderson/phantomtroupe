@@ -3068,39 +3068,39 @@ export default function Home() {
                             }
                           }}
                         >
-                          <option value="" disabled>SELECIONE SUA FUNÇÃO (MÁXIMO 2)</option>
-                          <optgroup label="🎨 Artes Visuais">
-                            {["Pintor","Ilustrador","Desenhista","Artista Visual","Muralista","Grafiteiro","Escultor","Fotógrafo","Colagista","Gravurista","Retratista","Colorista","Arte-Educador","Curador Artístico","Diretor de Arte"].map(r => <option key={r} value={r} style={{ background: '#e8f5e9', color: '#2e7d32' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <option value="" disabled style={{ color: '#ff6584', fontWeight: 'bold' }}>SELECIONE SUA FUNÇÃO (MÁXIMO 2)</option>
+                          <optgroup label="🎨 Artes Visuais" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Pintor","Ilustrador","Desenhista","Artista Visual","Muralista","Grafiteiro","Escultor","Fotógrafo","Colagista","Gravurista","Retratista","Colorista","Arte-Educador","Curador Artístico","Diretor de Arte"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="✍️ Escrita e Poesia">
-                            {["Poeta","Escritor","Compositor","Cronista","Contista","Roteirista","Narrador","Letrista","Declamador","Slammer","Contador de Histórias","Criador Literário","Guardião das Palavras","Tecelão de Histórias"].map(r => <option key={r} value={r} style={{ background: '#e3f2fd', color: '#1565c0' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="✍️ Escrita e Poesia" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Poeta","Escritor","Compositor","Cronista","Contista","Roteirista","Narrador","Letrista","Declamador","Slammer","Contador de Histórias","Criador Literário","Guardião das Palavras","Tecelão de Histórias"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="🎵 Música">
-                            {["Compositor Musical","Músico","Cantor","Instrumentista","Produtor Musical","Beatmaker","DJ","Arranjador","Intérprete Musical","Criador Sonoro","Maestro","Regente","Pesquisador Musical"].map(r => <option key={r} value={r} style={{ background: '#fff3e0', color: '#e65100' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="🎵 Música" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Compositor Musical","Músico","Cantor","Instrumentista","Produtor Musical","Beatmaker","DJ","Arranjador","Intérprete Musical","Criador Sonoro","Maestro","Regente","Pesquisador Musical"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="🎭 Teatro e Performance">
-                            {["Ator","Atriz","Performista","Diretor Teatral","Dramaturgo","Cenógrafo","Figurinista","Coreógrafo","Dançarino","Intérprete","Artista Cênico","Mestre de Cerimônias"].map(r => <option key={r} value={r} style={{ background: '#fce4ec', color: '#c62828' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="🎭 Teatro e Performance" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Ator","Atriz","Performista","Diretor Teatral","Dramaturgo","Cenógrafo","Figurinista","Coreógrafo","Dançarino","Intérprete","Artista Cênico","Mestre de Cerimônias"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="🎬 Audiovisual e Digital">
-                            {["Cineasta","Videomaker","Editor de Vídeo","Animador","Motion Designer","Designer","Criador Digital","Diretor Criativo","Produtor Audiovisual","Streamer","Criador de Conteúdo","Documentarista"].map(r => <option key={r} value={r} style={{ background: '#e8eaf6', color: '#283593' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="🎬 Audiovisual e Digital" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Cineasta","Videomaker","Editor de Vídeo","Animador","Motion Designer","Designer","Criador Digital","Diretor Criativo","Produtor Audiovisual","Streamer","Criador de Conteúdo","Documentarista"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="👑 Direção">
-                            {["Fundador","Cofundador","Diretor Geral","Vice-Diretor"].map(r => <option key={r} value={r} style={{ background: '#fff9c4', color: '#f57f17' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="👑 Direção" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Fundador","Cofundador","Diretor Geral","Vice-Diretor"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="📋 Gestão">
-                            {["Coordenador Geral","Coordenador de Núcleo","Gestor de Projetos","Administrador","Supervisor"].map(r => <option key={r} value={r} style={{ background: '#e0f7fa', color: '#00695c' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="📋 Gestão" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Coordenador Geral","Coordenador de Núcleo","Gestor de Projetos","Administrador","Supervisor"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="🤝 Comunidade">
-                            {["Gestor de Pessoas","Moderador","Mediador","Coordenador de Membros","Mentor"].map(r => <option key={r} value={r} style={{ background: '#f3e5f5', color: '#6a1b9a' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="🤝 Comunidade" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Gestor de Pessoas","Moderador","Mediador","Coordenador de Membros","Mentor"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="⚙️ Operações">
-                            {["Organizador","Coordenador de Eventos","Gestor de Operações","Responsável por Parcerias"].map(r => <option key={r} value={r} style={{ background: '#efebe9', color: '#4e342e' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="⚙️ Operações" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Organizador","Coordenador de Eventos","Gestor de Operações","Responsável por Parcerias"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="📢 Comunicação">
-                            {["Coordenador de Comunicação","Gestor de Redes Sociais","Relações Públicas","Porta-Voz"].map(r => <option key={r} value={r} style={{ background: '#e0f2f1', color: '#00796b' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="📢 Comunicação" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Coordenador de Comunicação","Gestor de Redes Sociais","Relações Públicas","Porta-Voz"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="📊 Recursos e Estratégia">
-                            {["Gestor Financeiro","Tesoureiro","Coordenador Estratégico"].map(r => <option key={r} value={r} style={{ background: '#fbe9e7', color: '#bf360c' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="📊 Recursos e Estratégia" style={{ color: '#ff6584', fontWeight: 'bold' }}>
+                            {["Gestor Financeiro","Tesoureiro","Coordenador Estratégico"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                         </select>
                         {/* Multi-Select de Projetos Interativo (Não fecha a lista ao clicar) */}

@@ -3201,30 +3201,35 @@ body::before {
 
 /* Inputs in members overlay */
 .members-overlay .phantom-input {
-  background: #f4f4f4 !important;
+  background: #ffffff !important;
   border: 1px solid rgba(255, 101, 132, 0.4) !important;
-  color: #2c1a16 !important;
+  color: #ff6584 !important;
   border-radius: 4px;
+  font-weight: bold !important;
 }
 
 .members-overlay .phantom-input:focus {
   border-color: #ff007f !important;
-  background: #fcfcfc !important;
+  background: #ffffff !important;
   box-shadow: 0 0 10px rgba(255, 0, 127, 0.2) !important;
 }
 
 .members-overlay .phantom-input::placeholder {
-  color: rgba(255, 101, 132, 0.6) !important;
+  color: rgba(255, 101, 132, 0.7) !important;
 }
 
 /* Select element styling */
 .members-overlay .phantom-select {
-  color: #2c1a16 !important;
+  color: #ff6584 !important;
+  font-weight: bold !important;
+  background-color: #ffffff !important;
 }
 
-.members-overlay .phantom-select option {
+.members-overlay .phantom-select option,
+.members-overlay .phantom-select optgroup {
   background-color: #ffffff !important;
-  color: #2c1a16 !important;
+  color: #ff6584 !important;
+  font-weight: bold !important;
 }
 
 /* Buttons in members overlay */
