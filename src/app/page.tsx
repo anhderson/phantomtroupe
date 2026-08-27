@@ -4,6 +4,29 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useAnimationFrame, animate, useTransform } from "framer-motion";
 
+const getProjectMainName = (rawName: string) => {
+  if (!rawName) return '';
+  const str = rawName.trim();
+  if (str.includes("SUSSURRANDO")) return "Sussurrando";
+  if (str.includes("SERENIZANDO")) return "Serenizando";
+  if (str.includes("SENTIMENTALIZANDO")) return "Sentimentalizando";
+  if (str.includes("ESPIRITUALIZANDO")) return "Espiritualizando";
+  if (str.includes("LUZ E SOMBRA")) return "Luz e Sombra";
+  if (str.includes("Phantom Troupe")) return "Phantom Troupe";
+  if (str.includes("Project Zero")) return "Project Zero";
+  if (str.includes("Zero Signal")) return "Zero Signal";
+  if (str.includes("Zero Day")) return "Zero Day";
+  if (str.includes("Zero Espaço")) return "Zero Espaço";
+  if (str.includes("Zero Faithfully") || str.includes("Zero FaithFully")) return "Zero FaithFully";
+  if (str.includes("Zero Synapses")) return "Zero Synapses";
+  if (str.includes("Zero Mind")) return "Zero Mind";
+  if (str.includes("Zero Infinity")) return "Zero Infinity";
+  if (str.includes("Zero Pay")) return "Zero Pay";
+  if (str.includes("Zero Craft")) return "Zero Craft";
+  if (str.includes("Zero Trade")) return "Zero Trade";
+  return str.split(" - ")[0].trim();
+};
+
 const APPS = [
   { 
     id: 1, 
@@ -430,12 +453,12 @@ export default function Home() {
 
   const [activeMembers, setActiveMembers] = useState<{name: string, role: string, type: string, profession?: string, birthDate?: string}[]>(() => {
     const defaultMembers = [
-      { role: 'Fundador', name: 'Anderson Moitinho', type: 'Membro' },
-      { role: 'Administrador', name: 'Chrystian Cesar', type: 'Membro' },
-      { role: 'Mediadora', name: 'Sara Brandes', type: 'Membro' },
-      { role: 'Facilitador de Cura', name: 'Sara Ellen', type: 'Amigo' },
-      { role: 'Administrador', name: 'Raphael Braga', type: 'Membro' },
-      { role: 'Facilitador', name: 'Gabriel Ricardo', type: 'Membro' }
+      { role: 'Fundador', name: 'Anderson Moitinho', type: 'Phantom Troupe | Serenizando', profession: 'Criador & Desenvolvedor', birthDate: '04/04/1998' },
+      { role: 'Administrador', name: 'Chrystian Cesar', type: 'Project Zero | Sussurrando', profession: 'Gestor Cultural', birthDate: '12/08/1999' },
+      { role: 'Mediadora', name: 'Sara Brandes', type: 'Serenizando | Sentimentalizando', profession: 'Psicóloga / Mediadora', birthDate: '25/03/2000' },
+      { role: 'Facilitador de Cura', name: 'Sara Ellen', type: 'Sentimentalizando', profession: 'Terapeuta Integrativa', birthDate: '14/11/1997' },
+      { role: 'Administrador', name: 'Raphael Braga', type: 'Zero Synapses', profession: 'Arquiteto de Sistemas', birthDate: '09/06/1996' },
+      { role: 'Facilitador', name: 'Gabriel Ricardo', type: 'Espiritualizando', profession: 'Educador & Pesquisador', birthDate: '18/01/2001' }
     ];
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('phantom_active_members');
@@ -3283,17 +3306,74 @@ export default function Home() {
                       paddingRight: '10px' 
                     }}
                   >
-                    {activeMembers.map((member, i) => (
-                      <div key={i} className="member-card" style={{ padding: '15px', marginBottom: '10px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
-                          <p style={{ margin: '0', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '2px' }}>{member.role}</p>
-                          <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '12px' }}>{member.type}</span>
+                    {activeMembers.map((member, i) => {
+                      const projectList = member.type 
+                        ? (member.type.includes('|') ? member.type.split('|') : [member.type]).map(p => p.trim()).filter(Boolean)
+                        : [];
+
+                      const profText = member.profession || member.role || 'Membro';
+                      const dateText = member.birthDate || '04/04/2026';
+
+                      return (
+                        <div key={i} className="member-card" style={{ padding: '16px', marginBottom: '12px', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 101, 132, 0.3)', borderRadius: '8px' }}>
+                          {/* Top Row: Profissão à esquerda e Data à direita */}
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', fontSize: '0.82rem', color: '#ffb6c1', fontWeight: 'bold' }}>
+                            <span>Profissão: {profText}</span>
+                            <span>Data: {dateText}</span>
+                          </div>
+
+                          {/* Nome do Membro */}
+                          <h3 style={{ margin: '0 0 4px 0', fontSize: '1.25rem', color: '#ffffff', fontWeight: 'bold' }}>{member.name}</h3>
+
+                          {/* Cargo/Função abaixo do nome */}
+                          <p style={{ margin: '0 0 10px 0', fontSize: '0.78rem', color: '#d1c4e9', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                            {member.role}
+                          </p>
+
+                          {/* Projetos: Nome principal de cada projeto, alinhados um abaixo do outro */}
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'flex-start', width: '100%' }}>
+                            {projectList.length > 0 ? (
+                              projectList.map((projStr, idx) => {
+                                const mainName = getProjectMainName(projStr);
+                                if (!mainName) return null;
+                                return (
+                                  <span 
+                                    key={idx} 
+                                    style={{ 
+                                      fontSize: '0.78rem', 
+                                      color: '#ff007f', 
+                                      fontWeight: 'bold',
+                                      background: 'rgba(255, 0, 127, 0.12)',
+                                      border: '1px solid rgba(255, 0, 127, 0.35)',
+                                      padding: '3px 10px',
+                                      borderRadius: '12px',
+                                      display: 'inline-block'
+                                    }}
+                                  >
+                                    {mainName}
+                                  </span>
+                                );
+                              })
+                            ) : (
+                              <span 
+                                style={{ 
+                                  fontSize: '0.78rem', 
+                                  color: '#ff007f', 
+                                  fontWeight: 'bold',
+                                  background: 'rgba(255, 0, 127, 0.12)',
+                                  border: '1px solid rgba(255, 0, 127, 0.35)',
+                                  padding: '3px 10px',
+                                  borderRadius: '12px',
+                                  display: 'inline-block'
+                                }}
+                              >
+                                {getProjectMainName(member.type)}
+                              </span>
+                            )}
+                          </div>
                         </div>
-                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#ffffff' }}>{member.name}</h3>
-                        {member.profession && <p style={{ margin: '3px 0 0 0', fontSize: '0.75rem', color: '#cccccc' }}><strong>Profissão:</strong> {member.profession}</p>}
-                        {member.birthDate && <p style={{ margin: '2px 0 0 0', fontSize: '0.75rem', color: '#cccccc' }}><strong>Data de Nasc.:</strong> {member.birthDate}</p>}
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
 
