@@ -1722,8 +1722,9 @@ export default function Home() {
                 <h2 
                   className="guide-heading" 
                   style={{ 
-                    color: newsTab === 'records' ? '#d1c4e9' : 'var(--primary)', 
-                    textShadow: newsTab === 'records' ? '0 0 15px rgba(179, 136, 255, 0.6)' : '0 0 15px rgba(255, 0, 127, 0.5)' 
+                    color: '#000000', 
+                    textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff',
+                    fontWeight: 900
                   }}
                 >
                   {newsTab === 'select' && "▽ ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 & 𝕄𝖚𝖗𝖆𝖑 △"}
@@ -2989,7 +2990,7 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: 'var(--primary)', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>
@@ -3307,7 +3308,7 @@ export default function Home() {
               </div>
 
               <footer className="guide-footer-branding" style={{ marginTop: '20px', transform: 'translateY(-2vh)' }}>
-                <h2 className="guide-heading" style={{ color: '#ff007f', textShadow: '0 0 15px rgba(255, 0, 127, 0.3)', fontSize: '1.2rem' }}>▽ 𝕁𝖔𝖎𝖓 𝖙𝖍𝖊 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
+                <h2 className="guide-heading" style={{ color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontSize: '1.2rem', fontWeight: 900 }}>▽ ℙ𝖆𝖗𝖙𝖎𝖈𝖎𝖕𝖊 𝖉𝖆 ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 △</h2>
               </footer>
             </div>
           </motion.div>
@@ -3339,7 +3340,7 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: 'var(--primary)', textShadow: '0 0 15px rgba(255, 0, 127, 0.5)' }}>▽ 𝔸𝖏𝖚𝖉𝖆𝖘 𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>▽ 𝔸𝖏𝖚𝖉𝖆𝖘 𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 △</h2>
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '20px', transform: 'translateY(-2vh)' }}>
