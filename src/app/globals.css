@@ -3274,6 +3274,8 @@ body::before {
   justify-content: center;
   align-items: center;
   padding: 20px;
+  overflow-x: hidden !important;
+  box-sizing: border-box;
 }
 
 .cute-welcome-banner {
@@ -3285,11 +3287,85 @@ body::before {
   max-width: 600px;
   max-height: calc(100vh - 40px);
   overflow-y: auto;
+  overflow-x: hidden !important;
   width: 100%;
+  box-sizing: border-box;
   text-align: center;
   position: relative;
   font-family: 'Rajdhani', sans-serif;
   color: #ffffff;
+}
+
+/* Previne rolagem lateral e redimensiona elementos no modal */
+.cute-welcome-overlay *,
+.cute-welcome-banner * {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .cute-welcome-overlay {
+    padding: 10px !important;
+    overflow-x: hidden !important;
+  }
+  
+  .cute-welcome-banner {
+    padding: 20px 14px !important;
+    max-height: calc(100vh - 20px) !important;
+    border-radius: 16px !important;
+    overflow-x: hidden !important;
+  }
+
+  .cute-welcome-projects-grid {
+    gap: 6px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .cute-welcome-projects-grid > div {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .cute-title {
+    font-size: 1.15rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 8px !important;
+    word-break: break-word !important;
+  }
+
+  .cute-text-content {
+    font-size: 0.92rem !important;
+  }
+
+  .cute-tagline-pulse {
+    font-size: 0.85rem !important;
+    margin-bottom: 12px !important;
+    padding: 0 4px !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .cute-welcome-overlay {
+    padding: 6px !important;
+  }
+
+  .cute-welcome-banner {
+    padding: 16px 10px !important;
+  }
+
+  .cute-title {
+    font-size: 1.05rem !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .cute-welcome-projects-grid {
+    gap: 4px !important;
+  }
+
+  .cute-welcome-projects-grid > div {
+    width: 28px !important;
+    height: 28px !important;
+  }
 }
 
 .cute-close-btn {
