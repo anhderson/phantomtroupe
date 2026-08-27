@@ -2613,9 +2613,9 @@ export default function Home() {
                     const isHovered = hoveredPillar === pilar.id;
                     let pilarColor = 'var(--primary)';
                     if (pilar.id === 1) pilarColor = '#ffb6c1';
-                    else if (pilar.id === 2) pilarColor = 'var(--primary)';
+                    else if (pilar.id === 2) pilarColor = '#ff007f';
                     else if (pilar.id === 3) pilarColor = '#d1c4e9';
-                    else if (pilar.id === 4) pilarColor = '#7b1fa2';
+                    else if (pilar.id === 4) pilarColor = '#e040fb';
 
                     const titleColor = isHovered ? pilarColor : 'var(--primary)';
 
