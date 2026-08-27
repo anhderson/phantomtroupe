@@ -467,6 +467,7 @@ export default function Home() {
   }[]>([]);
 
   const lastTrailTime = useRef<number>(0);
+  const lastTrailPos = useRef<{ x: number; y: number }>({ x: -999, y: -999 });
   const [activePairIndex, setActivePairIndex] = useState<number>(0);
 
   const SHAPE_PAIRS = [
@@ -493,8 +494,16 @@ export default function Home() {
 
     const handleMove = (clientX: number, clientY: number) => {
       const now = Date.now();
-      if (now - lastTrailTime.current < 45) return;
+      if (now - lastTrailTime.current < 100) return;
+
+      const dx = clientX - lastTrailPos.current.x;
+      const dy = clientY - lastTrailPos.current.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 40) return;
+
       lastTrailTime.current = now;
+      lastTrailPos.current = { x: clientX, y: clientY };
 
       const currentPair = activePairRef.current;
       const randomType = currentPair[Math.floor(Math.random() * currentPair.length)];
@@ -510,7 +519,7 @@ export default function Home() {
         size: randomSize
       };
 
-      setTrailParticles(prev => [...prev.slice(-25), newParticle]);
+      setTrailParticles(prev => [...prev.slice(-18), newParticle]);
     };
 
     const onMouseMove = (e: MouseEvent) => {
