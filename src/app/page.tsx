@@ -2603,7 +2603,7 @@ export default function Home() {
             >
               <div className="cute-close-btn" onClick={() => setShowMotivacoesModal(false)}>×</div>
               
-              <h2 className="cute-title" style={{ color: '#FF007F', fontSize: '1.35rem', marginBottom: '15px' }}>
+              <h2 className="cute-title" style={{ color: '#000000', textShadow: '0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 2px 2px 2px #ffffff, -2px -2px 2px #ffffff', fontSize: '1.35rem', marginBottom: '15px', fontWeight: 900 }}>
                 Motivações Originárias — Node01
               </h2>
 
@@ -2829,6 +2829,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 1.05 }}
+                style={{ color: '#000000', textShadow: '0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 2px 2px 2px #ffffff, -2px -2px 2px #ffffff', fontWeight: 900 }}
               >
                 Bem-vindo(a) à Phantom Troupe Fraternidade
               </motion.h2>
@@ -4052,7 +4053,7 @@ export default function Home() {
 
               <header className="panel-header" style={{ marginBottom: '30px', textAlign: 'center', width: '100%' }}>
                 <span className="panel-id" style={{ fontSize: '0.8rem', letterSpacing: '3px' }}>◇ APRESENTAÇÃO COLETIVA ◇</span>
-                <h2 className="panel-title" style={{ color: '#FF007F', fontSize: '2.2rem', textShadow: '0 0 20px rgba(255, 0, 127, 0.6)', marginTop: '10px' }}>
+                <h2 className="panel-title" style={{ color: '#000000', fontSize: '2.2rem', textShadow: '0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 2px 2px 2px #ffffff, -2px -2px 2px #ffffff', marginTop: '10px', fontWeight: 900 }}>
                   UNIVERSO ZERO
                 </h2>
                 <p style={{ color: '#a0a0a0', fontFamily: 'Orbitron, sans-serif', fontSize: '0.8rem', letterSpacing: '1px', marginTop: '5px' }}>
