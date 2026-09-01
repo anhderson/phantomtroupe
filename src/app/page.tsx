@@ -516,13 +516,13 @@ export default function Home() {
 
     const handleMove = (clientX: number, clientY: number) => {
       const now = Date.now();
-      if (now - lastTrailTime.current < 100) return;
+      if (now - lastTrailTime.current < 120) return;
 
       const dx = clientX - lastTrailPos.current.x;
       const dy = clientY - lastTrailPos.current.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      if (dist < 40) return;
+      if (dist < 50) return;
 
       lastTrailTime.current = now;
       lastTrailPos.current = { x: clientX, y: clientY };
@@ -541,7 +541,7 @@ export default function Home() {
         size: randomSize
       };
 
-      setTrailParticles(prev => [...prev.slice(-18), newParticle]);
+      setTrailParticles(prev => [...prev.slice(-12), newParticle]);
     };
 
     const onMouseMove = (e: MouseEvent) => {
@@ -700,14 +700,15 @@ export default function Home() {
       ctx.restore();
     };
 
-    const tick = () => {
-      if (needsRedraw) {
-        drawCanvas();
-        needsRedraw = false;
+    const requestRedraw = () => {
+      if (!needsRedraw) {
+        needsRedraw = true;
+        animFrameId = requestAnimationFrame(() => {
+          drawCanvas();
+          needsRedraw = false;
+        });
       }
-      animFrameId = requestAnimationFrame(tick);
     };
-    animFrameId = requestAnimationFrame(tick);
 
     const handleResize = () => {
       if (!canvas) return;
@@ -715,7 +716,7 @@ export default function Home() {
       height = canvas.height = window.innerHeight;
       maskCanvas.width = width;
       maskCanvas.height = height;
-      needsRedraw = true;
+      requestRedraw();
     };
 
     window.addEventListener('resize', handleResize);
@@ -724,35 +725,26 @@ export default function Home() {
     let lastX: number | null = null;
     let lastY: number | null = null;
 
-    // Mouse reveal logic
+    // High performance mouse reveal logic (no heavy canvas shadowBlur)
     const handleMouseMove = (e: MouseEvent) => {
       if (!maskCtx) return;
       const rect = canvas.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      // Draw a soft spray/brush onto the mask canvas
       maskCtx.save();
-      
-      // We set the brush size and soft blur
       maskCtx.strokeStyle = 'rgba(0, 0, 0, 1)';
       maskCtx.fillStyle = 'rgba(0, 0, 0, 1)';
-      maskCtx.lineWidth = 140; // Brush diameter
+      maskCtx.lineWidth = 140;
       maskCtx.lineCap = 'round';
       maskCtx.lineJoin = 'round';
-      
-      // Use shadow to create a soft spray-paint edge
-      maskCtx.shadowBlur = 45;
-      maskCtx.shadowColor = 'rgba(0, 0, 0, 1)';
 
       if (lastX !== null && lastY !== null) {
-        // Draw line from last position to current position
         maskCtx.beginPath();
         maskCtx.moveTo(lastX, lastY);
         maskCtx.lineTo(x, y);
         maskCtx.stroke();
       } else {
-        // Draw single dot if we just started
         maskCtx.beginPath();
         maskCtx.arc(x, y, 70, 0, Math.PI * 2);
         maskCtx.fill();
@@ -763,7 +755,7 @@ export default function Home() {
       lastX = x;
       lastY = y;
 
-      needsRedraw = true;
+      requestRedraw();
     };
 
     const handleMouseLeave = () => {
@@ -2366,6 +2358,44 @@ export default function Home() {
                     exit={{ opacity: 0, x: 20, filter: "brightness(0) blur(10px)" }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
                   >
+                    {/* Header Card: Brasão Emblem + Circular Icon for ALL 12 Projects */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', marginBottom: '20px', padding: '18px 12px', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 0, 127, 0.35)', borderRadius: '12px', boxShadow: '0 0 25px rgba(255, 0, 127, 0.25)', width: '100%', boxSizing: 'border-box' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
+                        {/* Brasão Image */}
+                        <motion.div 
+                          style={{ position: 'relative', cursor: 'pointer', textAlign: 'center' }}
+                          whileHover={{ scale: 1.08 }}
+                          onClick={() => setFullscreenImage(`/Brasoes/${selectedApp.id}.png`)}
+                          title="Clique para ampliar o Brasão Oficial"
+                        >
+                          <img 
+                            src={`/Brasoes/${selectedApp.id}.png`} 
+                            alt={`${selectedApp.fullName} Brasão`} 
+                            style={{ width: '100px', height: '100px', objectFit: 'contain', filter: 'drop-shadow(0 0 12px rgba(255, 255, 255, 0.85))' }}
+                          />
+                          <span style={{ display: 'block', fontSize: '0.7rem', color: '#ffb6c1', marginTop: '4px', fontWeight: 'bold' }}>BRASÃO 🔍</span>
+                        </motion.div>
+
+                        {/* Circular Icon */}
+                        <motion.div 
+                          style={{ position: 'relative', cursor: 'pointer', textAlign: 'center' }}
+                          whileHover={{ scale: 1.08 }}
+                          onClick={() => setFullscreenImage(selectedApp.icon)}
+                          title="Clique para ampliar o Ícone Oficial"
+                        >
+                          <img 
+                            src={selectedApp.icon} 
+                            alt={`${selectedApp.fullName} Ícone`} 
+                            style={{ width: '85px', height: '85px', objectFit: 'contain', borderRadius: '50%', filter: 'drop-shadow(0 0 12px rgba(255, 0, 127, 0.7))' }}
+                          />
+                          <span style={{ display: 'block', fontSize: '0.7rem', color: '#ffb6c1', marginTop: '4px', fontWeight: 'bold' }}>ÍCONE 🔍</span>
+                        </motion.div>
+                      </div>
+                      <span style={{ fontSize: '0.78rem', color: '#ffffff', fontFamily: "'Orbitron', sans-serif", letterSpacing: '1px', textTransform: 'uppercase' }}>
+                        NODE_{selectedApp.id.toString().padStart(2, '0')} — INSÍGNIA & IDENTIDADE
+                      </span>
+                    </div>
+
                     {["PZ", "ZS", "ZD", "ZE", "ZFy"].includes(selectedApp.name) ? (
                       [1, 2, 3].map((num) => {
                         const baseName = selectedApp.fullName.split(/[-—]/)[0].trim();
@@ -2383,6 +2413,7 @@ export default function Home() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 + num * 0.05 }}
                             onClick={() => setFullscreenImage(src)}
+                            style={{ cursor: 'pointer' }}
                           >
                             <img 
                               src={src} 
@@ -2421,10 +2452,10 @@ export default function Home() {
                         </p>
                       </div>
                     ) : (
-                      <div className="no-screens-production">
-                        <div className="construction-icon">🚧</div>
-                        <p>Este projeto terá imagens em breve, pois ainda está em produção.</p>
-                        <p className="highlight">Previsão: Dezembro de 2026</p>
+                      <div className="no-screens-production" style={{ marginTop: '10px' }}>
+                        <div className="construction-icon">🔮</div>
+                        <p style={{ fontWeight: 'bold', color: '#ffffff' }}>MÓDULO DE DESENVOLVIMENTO ATIVO</p>
+                        <p className="highlight">Imagens adicionais em expansão procedural</p>
                       </div>
                     )}
                     
