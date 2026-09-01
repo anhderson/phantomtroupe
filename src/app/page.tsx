@@ -23,8 +23,25 @@ const getProjectMainName = (rawName: string) => {
   if (str.includes("Zero Infinity")) return "Zero Infinity";
   if (str.includes("Zero Pay")) return "Zero Pay";
   if (str.includes("Zero Craft")) return "Zero Craft";
-  if (str.includes("Zero Trade")) return "Zero Trade";
   return str.split(" - ")[0].trim();
+};
+
+const getProjectScreenshots = (app: { name: string; fullName: string }) => {
+  const map: Record<string, { folder: string; prefix: string }> = {
+    PZ: { folder: 'projectzero', prefix: 'ProjectZeroImage' },
+    ZS: { folder: 'zerosignal', prefix: 'ZeroSignalImage' },
+    ZD: { folder: 'zeroday', prefix: 'ZeroDayImage' },
+    ZE: { folder: 'zeroespaco', prefix: 'ZeroEspacoImage' },
+    ZFy: { folder: 'zerofaithfully', prefix: 'ZeroFaithFullyImage' },
+  };
+
+  const config = map[app.name];
+  if (!config) return [];
+
+  return [1, 2, 3].map((num) => {
+    const fileName = num === 1 ? `${config.prefix}.png` : `${config.prefix}${num}.png`;
+    return `/screens/${config.folder}/${fileName}`;
+  });
 };
 
 const APPS = [
@@ -2358,71 +2375,24 @@ export default function Home() {
                     exit={{ opacity: 0, x: 20, filter: "brightness(0) blur(10px)" }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
                   >
-                    {/* Header Card: Brasão Emblem + Circular Icon for ALL 12 Projects */}
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', marginBottom: '20px', padding: '18px 12px', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 0, 127, 0.35)', borderRadius: '12px', boxShadow: '0 0 25px rgba(255, 0, 127, 0.25)', width: '100%', boxSizing: 'border-box' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
-                        {/* Brasão Image */}
-                        <motion.div 
-                          style={{ position: 'relative', cursor: 'pointer', textAlign: 'center' }}
-                          whileHover={{ scale: 1.08 }}
-                          onClick={() => setFullscreenImage(`/Brasoes/${selectedApp.id}.png`)}
-                          title="Clique para ampliar o Brasão Oficial"
-                        >
-                          <img 
-                            src={`/Brasoes/${selectedApp.id}.png`} 
-                            alt={`${selectedApp.fullName} Brasão`} 
-                            style={{ width: '100px', height: '100px', objectFit: 'contain', filter: 'drop-shadow(0 0 12px rgba(255, 255, 255, 0.85))' }}
-                          />
-                          <span style={{ display: 'block', fontSize: '0.7rem', color: '#ffb6c1', marginTop: '4px', fontWeight: 'bold' }}>BRASÃO 🔍</span>
-                        </motion.div>
-
-                        {/* Circular Icon */}
-                        <motion.div 
-                          style={{ position: 'relative', cursor: 'pointer', textAlign: 'center' }}
-                          whileHover={{ scale: 1.08 }}
-                          onClick={() => setFullscreenImage(selectedApp.icon)}
-                          title="Clique para ampliar o Ícone Oficial"
-                        >
-                          <img 
-                            src={selectedApp.icon} 
-                            alt={`${selectedApp.fullName} Ícone`} 
-                            style={{ width: '85px', height: '85px', objectFit: 'contain', borderRadius: '50%', filter: 'drop-shadow(0 0 12px rgba(255, 0, 127, 0.7))' }}
-                          />
-                          <span style={{ display: 'block', fontSize: '0.7rem', color: '#ffb6c1', marginTop: '4px', fontWeight: 'bold' }}>ÍCONE 🔍</span>
-                        </motion.div>
-                      </div>
-                      <span style={{ fontSize: '0.78rem', color: '#ffffff', fontFamily: "'Orbitron', sans-serif", letterSpacing: '1px', textTransform: 'uppercase' }}>
-                        NODE_{selectedApp.id.toString().padStart(2, '0')} — INSÍGNIA & IDENTIDADE
-                      </span>
-                    </div>
-
                     {["PZ", "ZS", "ZD", "ZE", "ZFy"].includes(selectedApp.name) ? (
-                      [1, 2, 3].map((num) => {
-                        const baseName = selectedApp.fullName.split(/[-—]/)[0].trim();
-                        const normalized = baseName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                        const folder = normalized.toLowerCase().replace(/\s/g, '');
-                        const pascalName = normalized.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
-                        const fileName = num === 1 ? `${pascalName}Image.png` : `${pascalName}Image${num}.png`;
-                        const src = `/screens/${folder}/${fileName}`;
-                        
-                        return (
-                          <motion.div 
-                            key={num}
-                            className="screen-item"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 + num * 0.05 }}
-                            onClick={() => setFullscreenImage(src)}
-                            style={{ cursor: 'pointer' }}
-                          >
-                            <img 
-                              src={src} 
-                              alt={`${selectedApp.fullName} Screenshot ${num}`} 
-                              className="screen-img"
-                            />
-                          </motion.div>
-                        );
-                      })
+                      getProjectScreenshots(selectedApp).map((src, idx) => (
+                        <motion.div 
+                          key={idx}
+                          className="screen-item"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.1 + (idx + 1) * 0.05 }}
+                          onClick={() => setFullscreenImage(src)}
+                          style={{ cursor: 'pointer' }}
+                        >
+                          <img 
+                            src={src} 
+                            alt={`${selectedApp.fullName} Screenshot ${idx + 1}`} 
+                            className="screen-img"
+                          />
+                        </motion.div>
+                      ))
                     ) : selectedApp.id === 1 ? (
                       <div className="node01-summary-container" style={{ textAlign: 'left', padding: '10px 5px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                         <h3 style={{ color: '#FF007F', fontSize: '0.95rem', fontFamily: "'Orbitron', sans-serif", borderBottom: '1px solid rgba(255, 0, 127, 0.3)', paddingBottom: '6px', marginBottom: '4px', letterSpacing: '0.5px' }}>
@@ -2452,10 +2422,10 @@ export default function Home() {
                         </p>
                       </div>
                     ) : (
-                      <div className="no-screens-production" style={{ marginTop: '10px' }}>
-                        <div className="construction-icon">🔮</div>
-                        <p style={{ fontWeight: 'bold', color: '#ffffff' }}>MÓDULO DE DESENVOLVIMENTO ATIVO</p>
-                        <p className="highlight">Imagens adicionais em expansão procedural</p>
+                      <div className="no-screens-production">
+                        <div className="construction-icon">🚧</div>
+                        <p>Este projeto terá imagens em breve, pois ainda está em produção.</p>
+                        <p className="highlight">Previsão: Dezembro de 2026</p>
                       </div>
                     )}
                     
