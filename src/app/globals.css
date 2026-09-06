@@ -2559,7 +2559,7 @@ body::before {
 
   .donations-trigger {
     top: 95px !important;
-    left: 24px !important;
+    left: 45% !important;
     transform: translateX(-50%) !important;
   }
 
@@ -3489,20 +3489,26 @@ body::before {
 
 @media (max-width: 768px) {
   .cute-welcome-overlay {
-    padding: 20px 12px !important;
+    padding: 30px 12px !important;
     align-items: center !important;
     justify-content: center !important;
+    touch-action: pan-y !important;
   }
 
   .cute-welcome-banner {
     width: 92% !important;
     max-width: 100% !important;
-    max-height: calc(100vh - 40px) !important; /* Mesma distância de 20px em cima e 20px em baixo */
+    height: auto !important;
+    max-height: calc(100vh - 60px) !important; /* Mesma distância simétrica de 30px em cima e 30px em baixo */
     margin: auto !important;
     display: flex !important;
     flex-direction: column !important;
-    padding: 24px 14px 14px 14px !important;
-    overflow: hidden !important; /* A janela em si fica fixa */
+    padding: 24px 16px 65px 16px !important;
+    overflow-y: auto !important; /* Permite rolagem com o toque na própria janela */
+    -webkit-overflow-scrolling: touch !important; /* Rolagem suave nativa iOS/Android */
+    touch-action: pan-y !important; /* Habilita o gesto de arrastar com o dedo verticalmente */
+    overscroll-behavior-y: contain !important;
+    position: relative !important;
   }
 
   .cute-welcome-scroll-container {
@@ -3510,11 +3516,30 @@ body::before {
     overflow-x: hidden !important;
     flex: 1 1 auto !important;
     width: 100% !important;
-    padding-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 20px;
     padding-right: 2px;
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
     -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+  }
+
+  .cute-welcome-overlay *,
+  .cute-welcome-banner *,
+  .cute-welcome-scroll-container * {
+    touch-action: pan-y !important; /* Garante que qualquer elemento filho aceite o gesto de rolagem */
+  }
+
+  /* Mover botão X para a parte de baixo da janela no Mobile */
+  .cute-welcome-banner .cute-close-btn {
+    top: auto !important;
+    bottom: 12px !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    position: absolute !important;
+    z-index: 10000 !important;
   }
 
   .cute-welcome-scroll-container::-webkit-scrollbar {
