@@ -3364,7 +3364,7 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>▽ 𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘</h2>
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>

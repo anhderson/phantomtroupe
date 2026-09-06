@@ -2538,11 +2538,11 @@ body::before {
   }
 
   .visual-anchor {
-    transform: translateY(30vh) !important;
+    transform: translateY(40vh) !important;
   }
 
   .top-gateway-container {
-    transform: translate(-50%, calc(-50% - 224px + 5vh)) scale(0.7) !important;
+    transform: translate(-50%, calc(-50% - 224px + 15vh)) scale(0.7) !important;
   }
 
   /* UNLOCKING OVERLAY SCROLLING */
