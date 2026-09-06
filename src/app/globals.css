@@ -3342,13 +3342,22 @@ body::before {
   max-width: 580px;
   min-width: 320px;
   max-height: calc(100vh - 40px);
-  overflow-y: auto;
+  overflow-y: auto !important;
   overflow-x: hidden !important;
+  scrollbar-width: none !important; /* Firefox: oculta barra visual */
+  -ms-overflow-style: none !important; /* IE/Edge */
+  -webkit-overflow-scrolling: touch !important; /* iOS touch scroll */
   box-sizing: border-box;
   text-align: center;
   position: relative;
   font-family: 'Rajdhani', sans-serif;
   color: #ffffff;
+}
+
+.cute-welcome-banner::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Opera: oculta barra visual de rolagem */
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* Previne rolagem lateral e redimensiona elementos no modal */
