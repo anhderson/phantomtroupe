@@ -2029,16 +2029,16 @@ export default function Home() {
                               <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#d1c4e9', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>
                                 {record.title || "Doação Registrada"}
                               </h3>
-                              <p style={{ margin: 0, fontSize: '0.8rem', color: '#ffffff' }}>
-                                <strong style={{ color: '#ffffff' }}>Doador:</strong> {record.name}
+                              <p style={{ margin: 0, fontSize: '0.8rem', color: '#000000' }}>
+                                <strong style={{ color: '#000000' }}>Doador:</strong> {record.name}
                               </p>
                               {record.items && (
-                                <p style={{ margin: 0, fontSize: '0.85rem', lineHeight: '1.4', color: '#ffffff' }}>
-                                  <strong style={{ color: '#ffffff' }}>Doado:</strong> {record.items}
+                                <p style={{ margin: 0, fontSize: '0.85rem', lineHeight: '1.4', color: '#000000' }}>
+                                  <strong style={{ color: '#000000' }}>Doado:</strong> {record.items}
                                 </p>
                               )}
                               {record.testimonial && (
-                                <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#e0d6f7', fontStyle: 'italic', background: 'rgba(179, 136, 255, 0.15)', padding: '6px 10px', borderRadius: '4px', borderLeft: '3px solid #b388ff' }}>
+                                <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#000000', fontStyle: 'italic', background: 'rgba(179, 136, 255, 0.15)', padding: '6px 10px', borderRadius: '4px', borderLeft: '3px solid #b388ff' }}>
                                   "{record.testimonial}"
                                 </p>
                               )}
@@ -2598,89 +2598,6 @@ export default function Home() {
                 </motion.div>
               </AnimatePresence>
             </motion.div>
-
-            {/* Mobile & Desktop Side Wall Navigation Buttons (Grudados na Parede Lateral) */}
-            <motion.button
-              key="nav-left-btn"
-              className="side-wall-nav-btn left-wall-btn"
-              initial={{ opacity: 0, x: -15 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -15 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                const currentIndex = APPS.findIndex(a => a.id === selectedApp.id);
-                const prevIndex = (currentIndex - 1 + APPS.length) % APPS.length;
-                setIsSwitching(true);
-                setSelectedApp(APPS[prevIndex]);
-                setTimeout(() => setIsSwitching(false), 200);
-              }}
-              style={{
-                position: 'fixed',
-                left: '0px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                zIndex: 30000,
-                background: 'rgba(18, 18, 25, 0.88)',
-                border: '1.5px solid rgba(255, 0, 127, 0.7)',
-                borderLeft: 'none',
-                borderRadius: '0 16px 16px 0',
-                color: '#ffffff',
-                width: '44px',
-                height: '66px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.35rem',
-                cursor: 'pointer',
-                boxShadow: '4px 0 20px rgba(255, 0, 127, 0.5), inset -2px 0 10px rgba(255, 0, 127, 0.35)',
-                backdropFilter: 'blur(10px)',
-                touchAction: 'manipulation'
-              }}
-              title="Projeto Anterior (◀)"
-            >
-              ◀
-            </motion.button>
-
-            <motion.button
-              key="nav-right-btn"
-              className="side-wall-nav-btn right-wall-btn"
-              initial={{ opacity: 0, x: 15 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 15 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                const currentIndex = APPS.findIndex(a => a.id === selectedApp.id);
-                const nextIndex = (currentIndex + 1) % APPS.length;
-                setIsSwitching(true);
-                setSelectedApp(APPS[nextIndex]);
-                setTimeout(() => setIsSwitching(false), 200);
-              }}
-              style={{
-                position: 'fixed',
-                right: '0px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                zIndex: 30000,
-                background: 'rgba(18, 18, 25, 0.88)',
-                border: '1.5px solid rgba(255, 0, 127, 0.7)',
-                borderRight: 'none',
-                borderRadius: '16px 0 0 16px',
-                color: '#ffffff',
-                width: '44px',
-                height: '66px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.35rem',
-                cursor: 'pointer',
-                boxShadow: '-4px 0 20px rgba(255, 0, 127, 0.5), inset 2px 0 10px rgba(255, 0, 127, 0.35)',
-                backdropFilter: 'blur(10px)',
-                touchAction: 'manipulation'
-              }}
-              title="Próximo Projeto (▶)"
-            >
-              ▶
-            </motion.button>
           </>
         )}
       </AnimatePresence>
@@ -2766,9 +2683,15 @@ export default function Home() {
       <button 
         className={`side-nav-node left-trigger ${isGlitching ? 'is-glitching' : ''}`} 
         onClick={() => {
-          setShowGuide(true);
+          if (selectedApp) {
+            const currentIndex = APPS.findIndex(a => a.id === selectedApp.id);
+            const prevIndex = (currentIndex - 1 + APPS.length) % APPS.length;
+            setSelectedApp(APPS[prevIndex]);
+          } else {
+            setShowGuide(true);
+          }
         }}
-        aria-label="Welcome Guide / Enter Node"
+        aria-label="Previous Project / Welcome Guide"
       >
         <div className="side-scan-line" />
       </button>
@@ -2776,9 +2699,15 @@ export default function Home() {
       <button 
         className={`side-nav-node right-trigger ${isGlitching ? 'is-glitching' : ''}`}
         onClick={() => {
-          setShowGuide(true);
+          if (selectedApp) {
+            const currentIndex = APPS.findIndex(a => a.id === selectedApp.id);
+            const nextIndex = (currentIndex + 1) % APPS.length;
+            setSelectedApp(APPS[nextIndex]);
+          } else {
+            setShowGuide(true);
+          }
         }}
-        aria-label="System Node / Enter Node"
+        aria-label="Next Project / System Node"
       >
         <div className="side-scan-line" />
       </button>
