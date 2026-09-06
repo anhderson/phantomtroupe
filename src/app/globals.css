@@ -2558,7 +2558,7 @@ body::before {
   }
 
   .donations-trigger {
-    top: 95px !important;
+    top: calc(95px + 5vh) !important;
     left: 49% !important;
     transform: translateX(-50%) !important;
   }
