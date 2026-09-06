@@ -2527,14 +2527,40 @@ body::before {
 
   .hud-meta {
     border-left: none !important;
-    padding: 0 !important;
+    padding: 0 10px !important;
     width: 100% !important;
-    justify-content: center !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     order: -1; /* Place Sync/UPD at the top of the stack */
   }
 
   .sync-label {
     display: none !important;
+  }
+
+  .hud-meta .hardware-hl {
+    margin-right: auto !important;
+    text-align: left !important;
+  }
+
+  .hud-meta .hud-divider {
+    display: none !important;
+  }
+
+  .hud-meta .clock-trigger {
+    margin-left: auto !important;
+  }
+
+  .hud-meta .clock-value {
+    margin-left: 4px !important;
+    text-align: right !important;
+  }
+
+  .donations-trigger {
+    top: 95px !important;
+    left: 24px !important;
+    transform: translateX(-50%) !important;
   }
 
   .visual-anchor {
