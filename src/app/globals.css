@@ -2559,7 +2559,7 @@ body::before {
 
   .donations-trigger {
     top: 95px !important;
-    left: 45% !important;
+    left: 49% !important;
     transform: translateX(-50%) !important;
   }
 
@@ -3503,7 +3503,7 @@ body::before {
     margin: auto !important;
     display: flex !important;
     flex-direction: column !important;
-    padding: 24px 16px 65px 16px !important;
+    padding: 24px 16px 24px 16px !important;
     overflow-y: auto !important; /* Permite rolagem com o toque na própria janela */
     -webkit-overflow-scrolling: touch !important; /* Rolagem suave nativa iOS/Android */
     touch-action: pan-y !important; /* Habilita o gesto de arrastar com o dedo verticalmente */
@@ -3517,7 +3517,7 @@ body::before {
     flex: 1 1 auto !important;
     width: 100% !important;
     padding-top: 5px;
-    padding-bottom: 20px;
+    padding-bottom: 25px !important;
     padding-right: 2px;
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
@@ -3531,15 +3531,13 @@ body::before {
     touch-action: pan-y !important; /* Garante que qualquer elemento filho aceite o gesto de rolagem */
   }
 
-  /* Mover botão X para a parte de baixo da janela no Mobile */
-  .cute-welcome-banner .cute-close-btn {
-    top: auto !important;
-    bottom: 12px !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-    position: absolute !important;
-    z-index: 10000 !important;
+  .cute-action-btn {
+    flex-shrink: 0 !important;
+    margin-top: 20px !important;
+    margin-bottom: 15px !important;
+    display: inline-block !important;
+    position: relative !important;
+    z-index: 10 !important;
   }
 
   .cute-welcome-scroll-container::-webkit-scrollbar {

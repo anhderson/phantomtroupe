@@ -1824,8 +1824,6 @@ export default function Home() {
                   pointerEvents: 'none'
                 }}
               />
-              {/* Cute close button */}
-              <div className="cute-close-btn" onClick={() => setShowGuide(false)}>×</div>
               
               <div className="cute-welcome-scroll-container">
                 <motion.div 
@@ -3102,8 +3100,7 @@ export default function Home() {
                   pointerEvents: 'none'
                 }}
               />
-              {/* Cute close button */}
-              <div className="cute-close-btn" onClick={() => setShowGuide(false)}>×</div>
+
               
               <motion.div 
                 className="cute-welcome-projects-grid"
