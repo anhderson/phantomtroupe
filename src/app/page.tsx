@@ -613,6 +613,17 @@ export default function Home() {
   const [activeBrasaoIndex, setActiveBrasaoIndex] = useState(0);
   const [clickedBrasoes, setClickedBrasoes] = useState<number[]>([]);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   useEffect(() => {
     // Apenas no mobile (window.innerWidth <= 768), mostrar os textos dos titulos apos 7 segundos
     if (typeof window !== 'undefined' && window.innerWidth <= 768) {
@@ -2717,14 +2728,15 @@ export default function Home() {
         {showGuide && (
           <motion.div 
             className="cute-welcome-overlay"
-            initial={{ opacity: 0 }}
+            initial={isMobile ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={isMobile ? { duration: 0 } : undefined}
             onClick={() => setShowGuide(false)}
           >
             <motion.div 
               className="cute-welcome-banner"
-              initial={{ 
+              initial={isMobile ? false : { 
                 scale: 0.12, 
                 opacity: 1, 
                 borderRadius: '70px',
@@ -2741,7 +2753,7 @@ export default function Home() {
                 boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 255, 255, 0.5)'
               }}
               exit={{ scale: 0.12, opacity: 0, borderRadius: '70px', backgroundColor: '#ffffff' }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={isMobile ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               onClick={e => e.stopPropagation()}
               style={{
                 position: 'relative',
@@ -2769,9 +2781,9 @@ export default function Home() {
               
               <motion.div 
                 className="cute-welcome-projects-grid"
-                initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                initial={isMobile ? false : { opacity: 0, y: 12, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.35, ease: "easeOut", delay: 0.35 }}
+                transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.35 }}
               >
                 {APPS.map((app, index) => {
                   const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
@@ -2798,7 +2810,7 @@ export default function Home() {
                           scale: isBrasaoActive ? [1, 0] : 1,
                           opacity: isBrasaoActive ? [1, 0] : 1
                         }}
-                        transition={{ duration: 0.5, ease: "easeIn" }}
+                        transition={isMobile ? { duration: 0 } : { duration: 0.5, ease: "easeIn" }}
                         style={{
                           position: 'absolute',
                           top: 0,
@@ -2819,7 +2831,7 @@ export default function Home() {
                               opacity: [0, 1, 0] 
                             }}
                             exit={{ scale: 0, opacity: 0 }}
-                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                            transition={isMobile ? { duration: 0 } : { duration: 0.8, ease: "easeInOut" }}
                             style={{
                               position: 'absolute',
                               width: '20px',
@@ -2844,7 +2856,7 @@ export default function Home() {
                           scale: isBrasaoActive ? [0, 1.1, 1] : 0,
                           opacity: isBrasaoActive ? [0, 1, 1] : 0
                         }}
-                        transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
+                        transition={isMobile ? { duration: 0 } : { delay: 0.4, duration: 0.5, ease: "easeOut" }}
                         style={{
                           position: 'absolute',
                           top: 0,
@@ -2861,9 +2873,9 @@ export default function Home() {
               
               <motion.h2 
                 className="cute-title"
-                initial={{ opacity: 0, y: 12 }}
+                initial={isMobile ? false : { opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, ease: "easeOut", delay: 0.48 }}
+                transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.48 }}
                 style={{ color: '#222222', textShadow: '0 0 4px rgba(255, 255, 255, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.8)', fontWeight: 900 }}
               >
                 Bem-vindo(a) à Phantom Troupe Fraternidade
@@ -2871,9 +2883,9 @@ export default function Home() {
               
               <div className="cute-text-content">
                 <motion.p 
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={isMobile ? false : { opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, ease: "easeOut", delay: 0.58 }}
+                  transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.58 }}
                   style={{ fontWeight: 'bold', fontSize: '1.1rem', color: 'var(--primary)', marginBottom: '10px' }}
                 >
                   Tudo que é grande ou poderoso é composto de "pequenas" partes.
@@ -2881,18 +2893,18 @@ export default function Home() {
                 
                 <motion.p 
                   className="cute-tagline-pulse" 
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={isMobile ? false : { opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, ease: "easeOut", delay: 0.68 }}
+                  transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.68 }}
                   style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}
                 >
                   Chegue como você é. Cada pequena contribuição e cada história importam!
                 </motion.p>
 
                 <motion.p 
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={isMobile ? false : { opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, ease: "easeOut", delay: 0.78 }}
+                  transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.78 }}
                   style={{ marginBottom: '15px', color: '#ffffff' }}
                 >
                   Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:
@@ -2935,9 +2947,9 @@ export default function Home() {
                       <motion.div 
                         key={pilar.id}
                         className="cute-pilar-card"
-                        initial={{ opacity: 0, y: 12 }}
+                        initial={isMobile ? false : { opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.35, ease: "easeOut", delay: 0.88 + pilarIdx * 0.10 }}
+                        transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.88 + pilarIdx * 0.10 }}
                         onMouseEnter={() => setHoveredPillar(pilar.id)}
                         onMouseLeave={() => setHoveredPillar(null)}
                         onClick={() => {
@@ -2989,9 +3001,9 @@ export default function Home() {
 
               <motion.button 
                 className="cute-action-btn guide-page-btn btn-next"
-                initial={{ opacity: 0, y: 12 }}
+                initial={isMobile ? false : { opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, ease: "easeOut", delay: 1.35 }}
+                transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 1.35 }}
                 style={{ marginTop: '20px' }}
                 onClick={() => setShowGuide(false)}
               >
