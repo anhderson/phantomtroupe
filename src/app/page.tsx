@@ -1274,7 +1274,7 @@ export default function Home() {
           </motion.div>
         </div>
         <div className="hud-meta">
-          <span className="hud-label" style={{ color: '#ffffff' }}>SYNC:</span>
+          <span className="hud-label sync-label" style={{ color: '#ffffff' }}>SYNC:</span>
           <span className="hud-value hardware-hl">{metrics.city}</span>
           <div className="hud-divider"></div>
           <span 
@@ -1737,6 +1737,332 @@ export default function Home() {
           ))}
         </div>
       </motion.div>
+
+      {/* Side Navigation Triggers */}
+      <button 
+        className={`side-nav-node left-trigger ${isGlitching ? 'is-glitching' : ''}`}
+        onClick={() => {
+          if (selectedApp) {
+            const currentIndex = APPS.findIndex(a => a.id === selectedApp.id);
+            const prevIndex = (currentIndex - 1 + APPS.length) % APPS.length;
+            setSelectedApp(APPS[prevIndex]);
+          } else {
+            setShowGuide(true);
+          }
+        }}
+        aria-label="Previous Project / System Node"
+      >
+        <div className="side-scan-line" />
+      </button>
+
+      <button 
+        className={`side-nav-node right-trigger ${isGlitching ? 'is-glitching' : ''}`}
+        onClick={() => {
+          if (selectedApp) {
+            const currentIndex = APPS.findIndex(a => a.id === selectedApp.id);
+            const nextIndex = (currentIndex + 1) % APPS.length;
+            setSelectedApp(APPS[nextIndex]);
+          } else {
+            setShowGuide(true);
+          }
+        }}
+        aria-label="Next Project / System Node"
+      >
+        <div className="side-scan-line" />
+      </button>
+
+      {/* Fraternidade Guide Overlay */}
+      <AnimatePresence>
+        {showGuide && (
+          <motion.div 
+            className="cute-welcome-overlay"
+            initial={isMobile ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={isMobile ? { duration: 0 } : undefined}
+            onClick={() => setShowGuide(false)}
+          >
+            <motion.div 
+              className="cute-welcome-banner"
+              initial={isMobile ? false : { 
+                scale: 0.12, 
+                opacity: 1, 
+                borderRadius: '70px',
+                backgroundColor: '#ffffff',
+                borderColor: '#ffffff',
+                boxShadow: '0 0 45px #ffffff, 0 0 90px rgba(255, 255, 255, 0.95)'
+              }}
+              animate={{ 
+                scale: 1, 
+                opacity: 1, 
+                borderRadius: '24px',
+                backgroundColor: 'rgba(18, 18, 22, 0.96)',
+                borderColor: '#ffffff',
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 255, 255, 0.5)'
+              }}
+              exit={{ scale: 0.12, opacity: 0, borderRadius: '70px', backgroundColor: '#ffffff' }}
+              transition={isMobile ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              onClick={e => e.stopPropagation()}
+              style={{
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
+              }}
+            >
+              {/* Camada de rosa blur por trás do fundo da janela */}
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: '-25px',
+                  left: '-25px',
+                  right: '-25px',
+                  bottom: '-25px',
+                  background: 'radial-gradient(circle, rgba(255, 0, 127, 0.45) 0%, rgba(255, 0, 127, 0.18) 60%, transparent 95%)',
+                  filter: 'blur(35px)',
+                  borderRadius: '35px',
+                  zIndex: -1,
+                  pointerEvents: 'none'
+                }}
+              />
+              {/* Cute close button */}
+              <div className="cute-close-btn" onClick={() => setShowGuide(false)}>×</div>
+              
+              <div className="cute-welcome-scroll-container">
+                <motion.div 
+                  className="cute-welcome-projects-grid"
+                  initial={isMobile ? false : { opacity: 0, y: 12, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.35 }}
+                >
+                  {APPS.map((app, index) => {
+                    const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
+                    const brasaoSrc = `/Brasoes/${app.id}.png`;
+
+                    return (
+                      <div 
+                        key={app.id} 
+                        className="cute-welcome-icon-item"
+                        onClick={() => {
+                          setClickedBrasoes(prev => 
+                            prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+                          );
+                          setActiveBrasaoIndex(index);
+                        }}
+                      >
+                        {/* 1. Ícone Circular Base */}
+                        <motion.img
+                          src={app.icon}
+                          alt={app.fullName}
+                          title={app.fullName}
+                          className="cute-welcome-project-icon"
+                          animate={{
+                            scale: isBrasaoActive ? [1, 0] : 1,
+                            opacity: isBrasaoActive ? [1, 0] : 1
+                          }}
+                          transition={isMobile ? { duration: 0 } : { duration: 0.5, ease: "easeIn" }}
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%'
+                          }}
+                        />
+
+                        {/* 2. Ponto de Luz Branco no Centro que Cresce */}
+                        <AnimatePresence>
+                          {isBrasaoActive && (
+                            <motion.div
+                              key={`light-${app.id}`}
+                              initial={{ scale: 0, opacity: 0 }}
+                              animate={{ 
+                                scale: [0, 1.8, 0], 
+                                opacity: [0, 1, 0] 
+                              }}
+                              exit={{ scale: 0, opacity: 0 }}
+                              transition={isMobile ? { duration: 0 } : { duration: 0.8, ease: "easeInOut" }}
+                              style={{
+                                position: 'absolute',
+                                width: '20px',
+                                height: '20px',
+                                borderRadius: '50%',
+                                background: '#ffffff',
+                                boxShadow: '0 0 25px #ffffff, 0 0 45px #ffffff, 0 0 60px #ffffff',
+                                pointerEvents: 'none',
+                                zIndex: 10
+                              }}
+                            />
+                          )}
+                        </AnimatePresence>
+
+                        {/* 3. Imagem do Brasão (/Brasoes/X.png) tomando a forma */}
+                        <motion.img
+                          src={brasaoSrc}
+                          alt={`${app.fullName} Brasão`}
+                          title={`${app.fullName} Brasão`}
+                          className="cute-welcome-project-icon"
+                          animate={{
+                            scale: isBrasaoActive ? [0, 1.1, 1] : 0,
+                            opacity: isBrasaoActive ? [0, 1, 1] : 0
+                          }}
+                          transition={isMobile ? { duration: 0 } : { delay: 0.4, duration: 0.5, ease: "easeOut" }}
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            zIndex: 5
+                          }}
+                        />
+                      </div>
+                    );
+                  })}
+                </motion.div>
+                
+                <motion.h2 
+                  className="cute-title"
+                  initial={isMobile ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.48 }}
+                  style={{ color: '#222222', textShadow: '0 0 4px rgba(255, 255, 255, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.8)', fontWeight: 900 }}
+                >
+                  Bem-vindo(a) à Phantom Troupe Fraternidade
+                </motion.h2>
+                
+                <div className="cute-text-content">
+                  <motion.p 
+                    initial={isMobile ? false : { opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.58 }}
+                    style={{ fontWeight: 'bold', fontSize: '1.1rem', color: 'var(--primary)', marginBottom: '10px' }}
+                  >
+                    Tudo que é grande ou poderoso é composto de "pequenas" partes.
+                  </motion.p>
+                  
+                  <motion.p 
+                    className="cute-tagline-pulse" 
+                    initial={isMobile ? false : { opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.68 }}
+                    style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}
+                  >
+                    Chegue como você é. Cada pequena contribuição e cada história importam!
+                  </motion.p>
+
+                  <motion.p 
+                    initial={isMobile ? false : { opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.78 }}
+                    style={{ marginBottom: '15px', color: '#ffffff' }}
+                  >
+                    Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:
+                  </motion.p>
+                  
+                  <div style={{ textAlign: 'left', marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '12px', padding: '0 10px' }}>
+                    {[
+                      {
+                        id: 1,
+                        title: "1. Acolhimento e Comunidade",
+                        text: "Um espaço seguro para quem se sente fora dos círculos tradicionais, permitindo criar vínculos reais e encontrar apoio mútuo."
+                      },
+                      {
+                        id: 2,
+                        title: "2. Expressão e Arte",
+                        text: "Compartilhe sua arte, música, desenho, poesia ou crônicas. O processo criativo aqui é livre de julgamentos e competições."
+                      },
+                      {
+                        id: 3,
+                        title: "3. Conexão Espontânea",
+                        text: "Conecte-se de forma leve, seja em conversas tranquilas, ouvindo músicas juntos, jogando ou apenas dividindo momentos simples."
+                      },
+                      {
+                        id: 4,
+                        title: "4. Missões e Impacto Real",
+                        text: "Participe da construção do próprio ecossistema através de tarefas de desenvolvimento, design, moderação ou projetos sociais no mundo físico."
+                      }
+                    ].map((pilar, pilarIdx) => {
+                      const isRevealed = mobileAutoRevealed || hoveredPillar === pilar.id || clickedPillars.includes(pilar.id);
+                      const isHovered = hoveredPillar === pilar.id;
+                      let pilarColor = 'var(--primary)';
+                      if (pilar.id === 1) pilarColor = '#ffb6c1';
+                      else if (pilar.id === 2) pilarColor = '#ff007f';
+                      else if (pilar.id === 3) pilarColor = '#d1c4e9';
+                      else if (pilar.id === 4) pilarColor = '#e040fb';
+
+                      const titleColor = isHovered ? pilarColor : 'var(--primary)';
+
+                      return (
+                        <motion.div 
+                          key={pilar.id}
+                          className="cute-pilar-card"
+                          initial={isMobile ? false : { opacity: 0, y: 12 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 0.88 + pilarIdx * 0.10 }}
+                          onMouseEnter={() => setHoveredPillar(pilar.id)}
+                          onMouseLeave={() => setHoveredPillar(null)}
+                          onClick={() => {
+                            setClickedPillars(prev => 
+                              prev.includes(pilar.id) ? prev.filter(id => id !== pilar.id) : [...prev, pilar.id]
+                            );
+                          }}
+                          style={{ 
+                            background: isRevealed ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.04)', 
+                            padding: '12px 14px', 
+                            borderRadius: '8px', 
+                            border: '1px solid #ffffff',
+                            boxShadow: isHovered ? '0 0 14px rgba(255, 255, 255, 0.8)' : '0 0 6px rgba(255, 255, 255, 0.2)',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s ease'
+                          }}
+                        >
+                          <h4 style={{ 
+                            color: titleColor, 
+                            fontWeight: 'bold', 
+                            margin: 0, 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            justifyContent: 'center', 
+                            textAlign: 'center', 
+                            gap: '6px' 
+                          }}>
+                            {pilar.title} {!isRevealed && <span style={{ fontSize: '0.75rem', opacity: 0.6, marginLeft: '6px' }}>▼</span>}
+                          </h4>
+                          
+                          <AnimatePresence>
+                            {isRevealed && (
+                              <motion.p 
+                                initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                                animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
+                                exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                                transition={{ duration: 0.25 }}
+                                style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.4', color: '#ffffff', textAlign: 'center' }}
+                              >
+                                {pilar.text}
+                              </motion.p>
+                            )}
+                          </AnimatePresence>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <motion.button 
+                  className="cute-action-btn guide-page-btn btn-next"
+                  initial={isMobile ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={isMobile ? { duration: 0 } : { duration: 0.35, ease: "easeOut", delay: 1.35 }}
+                  style={{ marginTop: '20px' }}
+                  onClick={() => setShowGuide(false)}
+                >
+                  Começar ▷
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* General News Overlay (Notícias Gerais) */}
       <AnimatePresence>
