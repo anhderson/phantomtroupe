@@ -2085,25 +2085,26 @@ export default function Home() {
                 ×
               </div>
 
-              <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 
-                  className="guide-heading" 
-                  style={{ 
-                    color: '#222222', 
-                    textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff',
-                    fontWeight: 900
-                  }}
-                >
-                  {newsTab === 'select' && " ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 & 𝕄𝖚𝖗𝖆𝖑 "}
-                  {newsTab === 'news' && "▽ Últimas Notícias △"}
-                  {newsTab === 'records' && "𝕄𝖚𝖗𝖆𝖑 𝖉𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 & 𝔸𝖏𝖚𝖉𝖆𝖘"}
-                </h2>
-              </header>
+              {newsTab !== 'select' && (
+                <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
+                  <h2 
+                    className="guide-heading" 
+                    style={{ 
+                      color: '#222222', 
+                      textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff',
+                      fontWeight: 900
+                    }}
+                  >
+                    {newsTab === 'news' && "▽ Últimas Notícias △"}
+                    {newsTab === 'records' && "𝕄𝖚𝖗𝖆𝖑 𝖉𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 & 𝔸𝖏𝖚𝖉𝖆𝖘"}
+                  </h2>
+                </header>
+              )}
 
               {/* Aba 1: Seletor de Painéis */}
               {newsTab === 'select' && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', width: '100%', padding: '10px 0' }}>
-                  <p style={{ color: '#333333', fontSize: '0.9rem', lineHeight: '1.5', textAlign: 'center', marginBottom: '10px', maxWidth: '450px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', width: '100%', padding: '10px 0' }}>
+                  <p style={{ color: '#222222', fontSize: '1.8rem', lineHeight: '1.3', textAlign: 'center', marginBottom: '2px', maxWidth: '550px', fontWeight: 900, textShadow: '0 0 8px #ffffff' }}>
                     Selecione o painel que deseja visualizar no terminal da fraternidade:
                   </p>
                   <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '500px', justifyContent: 'center' }}>
@@ -3768,7 +3769,7 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>▽ 𝔸𝖏𝖚𝖉𝖆𝖘 𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 △</h2>
+                <h2 className="guide-heading" style={{ color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>𝔸𝖏𝖚𝖉𝖆𝖘 𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘</h2>
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '20px', transform: 'translateY(-2vh)' }}>
@@ -3883,7 +3884,7 @@ export default function Home() {
                             }}
                           />
                         </label>
-                        <span style={{ fontSize: '0.68rem', color: '#ff6584', fontFamily: 'Orbitron, sans-serif', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                        <span style={{ fontSize: '0.68rem', color: '#777777', fontFamily: 'Orbitron, sans-serif', letterSpacing: '1px', textTransform: 'uppercase' }}>
                           A IMAGEM É OPCIONAL
                         </span>
                         {donationImage && (
