@@ -1759,9 +1759,9 @@ export default function Home() {
                     fontWeight: 900
                   }}
                 >
-                  {newsTab === 'select' && "▽ ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 & 𝕄𝖚𝖗𝖆𝖑 △"}
+                  {newsTab === 'select' && " ℕ𝖔𝖙𝖎́𝖈𝖎𝖆𝖘 & 𝕄𝖚𝖗𝖆𝖑 "}
                   {newsTab === 'news' && "▽ Últimas Notícias △"}
-                  {newsTab === 'records' && "▽ Mural de Doações & Ajudas △"}
+                  {newsTab === 'records' && "𝕄𝖚𝖗𝖆𝖑 𝖉𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 & 𝔸𝖏𝖚𝖉𝖆𝖘"}
                 </h2>
               </header>
 
@@ -1986,8 +1986,8 @@ export default function Home() {
                     </button>
                   </div>
 
-                  <p style={{ margin: '0 0 10px 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#ffffff', textAlign: 'center', fontWeight: 'bold' }}>
-                    Registros públicos de ajudas e doações propostas por nossa fraternidade. Gratidão a todos que colaboram com o ecossistema! ❤️
+                  <p style={{ margin: '0 0 10px 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#000000', textAlign: 'center', fontWeight: 'bold' }}>
+                    Registros públicos de ajudas e doações propostas por nossa fraternidade. Gratidão a todos que colaboram com o ecossistema.
                   </p>
 
                   <div className="members-list" style={{ width: '100%', maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '5px' }}>
