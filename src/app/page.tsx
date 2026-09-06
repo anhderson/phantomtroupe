@@ -2395,7 +2395,7 @@ export default function Home() {
                       ))
                     ) : selectedApp.id === 1 ? (
                       <div className="node01-summary-container" style={{ textAlign: 'left', padding: '10px 5px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                        <h3 style={{ color: '#FF007F', fontSize: '0.95rem', fontFamily: "'Orbitron', sans-serif", borderBottom: '1px solid rgba(255, 0, 127, 0.3)', paddingBottom: '6px', marginBottom: '4px', letterSpacing: '0.5px' }}>
+                        <h3 style={{ color: '#FF007F', fontSize: '0.95rem', fontFamily: "'Orbitron', sans-serif", borderBottom: '1px solid rgba(255, 0, 127, 0.3)', paddingBottom: '6px', marginBottom: '4px', letterSpacing: '0.5px', textAlign: 'center' }}>
                           RESUMO DOS 12 PROJETOS
                         </h3>
                         {[
@@ -2412,7 +2412,7 @@ export default function Home() {
                           { name: "Zero Control", desc: "Em construção (Missões com recompensas financeiras da fraternidade)" },
                           { name: "Zero Ground", desc: "Em construção (Módulo que conecta tudo, cria a partir do tudo para todos)" }
                         ].map((proj, idx) => (
-                          <div key={idx} style={{ background: '#ffffff', borderRadius: '6px', padding: '10px 12px', borderLeft: '4px solid #FF007F', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)' }}>
+                          <div key={idx} style={{ background: '#ffffff', borderRadius: '6px', padding: '10px 12px', borderLeft: '4px solid rgba(255, 0, 127, 0.45)', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)' }}>
                             <span style={{ color: '#c70066', fontWeight: 'bold', fontSize: '0.9rem', display: 'block' }}>{proj.name}</span>
                             <span style={{ color: '#000000', fontSize: '0.86rem', display: 'block', marginTop: '3px', lineHeight: '1.35', fontWeight: '500' }}>{proj.desc}</span>
                           </div>
