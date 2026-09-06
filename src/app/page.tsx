@@ -48,8 +48,8 @@ const APPS = [
   { 
     id: 1, 
     name: "PT", 
-    fullName: "Fraternidade ONG - Phantom Troupe", 
-    subName: "Fraternidade ONG",
+    fullName: "Phantom Troupe Fraternidade", 
+    subName: "Phantom Troupe Fraternidade",
     color: "#FF007F", 
     desc: "Orquestrador principal da rede neural.",
     longDesc: `ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 𝔽𝖗𝖆𝖙𝖊𝖗𝖓𝖎𝖉𝖆𝖉𝖊\nA Fraternidade que nasceu de uma ideia e começou a se tornar realidade\n\nAℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 não nasceu em um único dia. Ela nasceu primeiro como uma ideia, um sentimento e uma visão que permaneceu viva durante anos.\n\nHá praticamente sete anos, surgiu o desejo de criar algo diferente: um espaço onde pessoas pudessem se encontrar, compartilhar experiências, desenvolver suas capacidades e, acima de tudo, não precisassem caminhar sozinhas.\n\nAgora, em seu oitavo ano de existência como ideia, essa visão finalmente começou a ganhar movimento, identidade e forma.\n\nNo dia 04/04/2026, a ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 iniciou oficialmente sua jornada como uma fraternidade em construção.\n\nDesde então, seu propósito tem sido simples em sua essência, mas imenso em seu significado:\n\nUnir corações e mentes em prol uns dos outros.\n\nAcreditamos que cada pessoa possui uma história, um conhecimento, uma habilidade, uma dor, um sonho e algo que pode oferecer ao mundo. Dentro da ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊, ninguém precisa ser apenas espectador. Todos podem, de alguma forma, participar da construção.\n\nAlguns chegam para ensinar.\nOutros chegam para aprender.\nAlguns chegam para ajudar.\nOutros, inicialmente, precisam ser ajudados.\nExistem aqueles que praticam, aqueles que criam, aqueles que dividem, aqueles que doam e aqueles que, simplesmente, encontram um lugar onde podem começar novamente.\n\nE é justamente através dessa troca que a nossa fraternidade cresce.\n\nNosso objetivo nunca foi determinar um único destino para todos. Pelo contrário: queremos que cada integrante tenha a oportunidade de encontrar o seu próprio caminho, enquanto também contribui para que outras pessoas encontrem os delas.\n\nChegar juntos, quando possível. Chegar individualmente, quando necessário. Mas nunca deixar de acreditar que podemos ajudar uns aos outros a chegar a algum lugar.\n\nA ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 está sendo construída através da união de todos que acreditam nessa proposta. Cada conversa, atividade, projeto, encontro, aprendizado, criação e experiência compartilhada se torna uma parte daquilo que estamos construindo.\n\nNossa base está nas práticas psicossociais saudáveis, livres e divertidas, utilizando diferentes formas de expressão, convivência e desenvolvimento humano. Queremos criar experiências que possam aproximar pessoas e estimular o crescimento através da arte, música, poesia, desenho, criatividade, diálogo, aprendizado, apoio mútuo e convivência.\n\nAcreditamos que evoluir não precisa significar caminhar sozinho.\n\nAcreditamos que aprender pode ser divertido.\n\nAcreditamos que ensinar também é aprender.\n\nAcreditamos que ajudar alguém não diminui quem ajuda — fortalece ambos.\n\nE acreditamos que uma comunidade pode ser mais do que apenas um grupo de pessoas reunidas por interesses semelhantes. Ela pode se tornar uma fraternidade, onde diferentes indivíduos, histórias e capacidades encontram espaço para coexistir, criar e construir algo maior juntos.\n\nA ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 ainda está em seus primeiros passos.\n\nNão nos definimos como uma obra pronta.\n\nSomos uma construção.\n\nUma ideia que resistiu ao tempo.\nUm propósito que começou a ganhar movimento.\nUma fraternidade formada por pessoas diferentes, mas conectadas pela possibilidade de construir, aprender, criar e evoluir juntas.\n\nO que já foi construído até aqui representa apenas o início.\n\nPorque a Phantom Troupe não pertence a uma única pessoa.\n\nEla é construída por todos aqueles que chegam, permanecem, contribuem, ensinam, aprendem, ajudam e permitem ser ajudados.\n\nE enquanto existirem pessoas dispostas a unir seus corações e suas mentes em prol umas das outras, a Phantom Troupe continuará existindo, crescendo e encontrando novos caminhos.\n\nℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊\n\nTudo que é grande ou poderoso é composto de "pequenas" partes.`,
@@ -2730,7 +2730,7 @@ export default function Home() {
                 boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 255, 255, 0.5)'
               }}
               exit={{ scale: 0.12, opacity: 0, borderRadius: '70px', backgroundColor: '#ffffff' }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               onClick={e => e.stopPropagation()}
               style={{
                 position: 'relative',
@@ -2760,7 +2760,7 @@ export default function Home() {
                 className="cute-welcome-projects-grid"
                 initial={{ opacity: 0, y: 12, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.80 }}
+                transition={{ duration: 0.35, ease: "easeOut", delay: 0.35 }}
               >
                 {APPS.map((app, index) => {
                   const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
@@ -2852,8 +2852,8 @@ export default function Home() {
                 className="cute-title"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 1.05 }}
-                style={{ color: '#000000', textShadow: '0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 2px 2px 2px #ffffff, -2px -2px 2px #ffffff', fontWeight: 900 }}
+                transition={{ duration: 0.35, ease: "easeOut", delay: 0.48 }}
+                style={{ color: '#222222', textShadow: '0 0 4px rgba(255, 255, 255, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.8)', fontWeight: 900 }}
               >
                 Bem-vindo(a) à Phantom Troupe Fraternidade
               </motion.h2>
@@ -2862,7 +2862,7 @@ export default function Home() {
                 <motion.p 
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: 1.30 }}
+                  transition={{ duration: 0.35, ease: "easeOut", delay: 0.58 }}
                   style={{ fontWeight: 'bold', fontSize: '1.1rem', color: 'var(--primary)', marginBottom: '10px' }}
                 >
                   Tudo que é grande ou poderoso é composto de "pequenas" partes.
@@ -2872,7 +2872,7 @@ export default function Home() {
                   className="cute-tagline-pulse" 
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: 1.55 }}
+                  transition={{ duration: 0.35, ease: "easeOut", delay: 0.68 }}
                   style={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1rem', textAlign: 'center', padding: '0 10px' }}
                 >
                   Chegue como você é. Cada pequena contribuição e cada história importam!
@@ -2881,7 +2881,7 @@ export default function Home() {
                 <motion.p 
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: 1.80 }}
+                  transition={{ duration: 0.35, ease: "easeOut", delay: 0.78 }}
                   style={{ marginBottom: '15px', color: '#ffffff' }}
                 >
                   Este é um ecossistema descentralizado criado para acolher, conectar e impulsionar pessoas. A Phantom Troupe é dividida em quatro grandes pilares:
@@ -2926,7 +2926,7 @@ export default function Home() {
                         className="cute-pilar-card"
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, ease: "easeOut", delay: 2.05 + pilarIdx * 0.25 }}
+                        transition={{ duration: 0.35, ease: "easeOut", delay: 0.88 + pilarIdx * 0.10 }}
                         onMouseEnter={() => setHoveredPillar(pilar.id)}
                         onMouseLeave={() => setHoveredPillar(null)}
                         onClick={() => {
@@ -2980,7 +2980,7 @@ export default function Home() {
                 className="cute-action-btn guide-page-btn btn-next"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 3.05 }}
+                transition={{ duration: 0.35, ease: "easeOut", delay: 1.35 }}
                 style={{ marginTop: '20px' }}
                 onClick={() => setShowGuide(false)}
               >
