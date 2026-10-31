@@ -3920,7 +3920,13 @@ export default function Home() {
                 <button 
                   className="guide-page-btn btn-grey" 
                   style={{ fontSize: '0.8rem', padding: '10px 20px', borderStyle: 'dashed', margin: '0 auto', display: 'block' }}
-                  onClick={() => setShowPending(true)}
+                  onClick={() => {
+                    setIsAdminAuth(false);
+                    setAdminUser("");
+                    setAdminPass("");
+                    setAuthError(false);
+                    setShowPending(true);
+                  }}
                   title="Abrir Central de Requisições"
                 >
                   <span style={{ fontSize: '1.2rem', marginRight: '8px', verticalAlign: 'middle' }}>🗲</span> 𝕊𝖔𝖑𝖎𝖈𝖎𝖙𝖆𝖈̧𝖔̃𝖊𝖘 ℙ𝖊𝖓𝖉𝖊𝖓𝖙𝖊𝖘
@@ -4269,7 +4275,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setShowPending(false)}
+            onClick={() => { setShowPending(false); setIsAdminAuth(false); setAdminUser(""); setAdminPass(""); }}
             style={{ zIndex: 12000 }}
           >
             <div 
@@ -4280,7 +4286,7 @@ export default function Home() {
               {/* Cyberpunk Inner Close Button */}
               <div 
                 className="close-btn-pending" 
-                onClick={() => setShowPending(false)}
+                onClick={() => { setShowPending(false); setIsAdminAuth(false); setAdminUser(""); setAdminPass(""); }}
               >
                 ×
               </div>
@@ -4379,6 +4385,39 @@ export default function Home() {
                                   REJEITAR
                                 </button>
                               </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Seção Membros Registrados (Excluir Membro) */}
+                    <div style={{ width: '100%' }}>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#ffffff', letterSpacing: '2px', borderBottom: '1px solid rgba(255, 255, 255, 0.2)', paddingBottom: '8px', marginBottom: '15px', textAlign: 'center' }}>
+                        MEMBROS REGISTRADOS ({activeMembers.length})
+                      </h3>
+                      {activeMembers.length === 0 ? (
+                        <p style={{ color: '#a0a0a0', letterSpacing: '2px', fontSize: '0.9rem', textAlign: 'center' }}>NENHUM MEMBRO REGISTRADO</p>
+                      ) : (
+                        <div className="members-list" style={{ width: '100%', maxHeight: '220px', overflowY: 'auto' }}>
+                          {activeMembers.map((member, i) => (
+                            <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 255, 255, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
+                              <div>
+                                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '3px', flexWrap: 'wrap' }}>
+                                  <p style={{ color: '#ffffff', margin: '0', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px', fontWeight: 'bold' }}>{member.role}</p>
+                                  {member.type && <span style={{ fontSize: '0.65rem', color: '#cccccc', border: '1px solid rgba(255,255,255,0.4)', padding: '1px 5px', borderRadius: '4px' }}>{member.type}</span>}
+                                </div>
+                                <h3 style={{ margin: 0, fontSize: '1.05rem', color: '#ffffff' }}>{member.name}</h3>
+                              </div>
+                              <button
+                                className="silver-btn"
+                                style={{ padding: '6px 12px', fontSize: '0.7rem', background: '#ff3c3c', border: '1px solid #cc0000', color: '#ffffff', fontWeight: 'bold', flexShrink: 0, cursor: 'pointer' }}
+                                onClick={() => {
+                                  setActiveMembers(prev => prev.filter((_, idx) => idx !== i));
+                                }}
+                              >
+                                EXCLUIR MEMBRO
+                              </button>
                             </div>
                           ))}
                         </div>
