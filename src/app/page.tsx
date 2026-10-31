@@ -659,7 +659,8 @@ export default function Home() {
   
   // Real-time News & Environment
   const [newsItems, setNewsItems] = useState([
-    { id: 1, cat: "DINHEIRO E CUSTO DE VIDA", text: "Brasil monitora impacto geopolítico nos preços e inflação.", url: "https://news.google.com/search?q=economia+inflacao+custo+de+vida+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 1, cat: "POLÍTICA GLOBAL MUNDIAL", text: "Jornais internacionais destacam acordos diplomáticos e tensões geopolíticas globais.", url: "https://news.google.com/search?q=geopolitica+politica+internacional+mundo+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 2, cat: "DINHEIRO E CUSTO DE VIDA", text: "Brasil monitora impacto geopolítico nos preços e inflação.", url: "https://news.google.com/search?q=economia+inflacao+custo+de+vida+brasil+when:3d&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
     { id: 2, cat: "EMPREGO E OPORTUNIDADES", text: "Vagas em tecnologia crescem em 2026; foco em especialistas em IA.", url: "https://news.google.com/search?q=vagas+emprego+oportunidades+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
     { id: 3, cat: "SEGURANÇA", text: "Debate sobre segurança pública intensifica com novas medidas nacionais.", url: "https://news.google.com/search?q=seguranca+publica+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
     { id: 4, cat: "SAÚDE", text: "Avanços em tratamentos e investimentos em saúde pública no Brasil.", url: "https://news.google.com/search?q=saude+medicina+tratamento+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
@@ -2248,53 +2249,69 @@ export default function Home() {
                   <h2 
                     className="guide-heading" 
                     style={{ 
+                      fontFamily: "'Orbitron', sans-serif",
+                      fontSize: '1.35rem',
+                      letterSpacing: '2px',
                       color: '#222222', 
                       textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff',
                       fontWeight: 900
                     }}
                   >
-                    {newsTab === 'news' && "▽ Últimas Notícias △"}
-                    {newsTab === 'records' && "𝕄𝖚𝖗𝖆𝖑 𝖉𝖊 𝔻𝖔𝖆𝖈̧𝖔̃𝖊𝖘 & 𝔸𝖏𝖚𝖉𝖆𝖘"}
+                    {newsTab === 'news' && "▽ ÚLTIMAS NOTÍCIAS △"}
+                    {newsTab === 'records' && "MURAL DE DOAÇÕES & AJUDAS"}
                   </h2>
                 </header>
               )}
 
               {/* Aba 1: Seletor de Painéis */}
               {newsTab === 'select' && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', width: '100%', padding: '10px 0' }}>
-                  <p style={{ color: '#222222', fontSize: '1.8rem', lineHeight: '1.3', textAlign: 'center', marginBottom: '2px', maxWidth: '550px', fontWeight: 900, textShadow: '0 0 8px #ffffff' }}>
-                    Selecione o painel que deseja visualizar:
-                  </p>
-                  <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '500px', justifyContent: 'center' }}>
-                    <button 
-                      className="guide-page-btn btn-news-selector" 
-                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', borderRadius: '6px', fontWeight: 'bold' }}
-                      onClick={() => setNewsTab('news')}
-                    >
-                      NOTÍCIAS
-                    </button>
-                    <button 
-                      className="guide-page-btn btn-news-selector" 
-                      style={{ flex: 1, padding: '18px 12px', fontSize: '0.85rem', letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', borderRadius: '6px', fontWeight: 'bold' }}
-                      onClick={() => setNewsTab('records')}
-                    >
-                      REGISTROS (MURAL)
-                    </button>
-                  </div>
-                  {/* Button to Global News (Telemetria) */}
-                  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
-                    <button 
-                      className="guide-page-btn btn-next btn-grey"
-                      style={{ marginTop: 0, padding: '10px 18px', fontSize: '0.78rem', background: '#555555', color: '#ffffff', border: '1px solid #888888', borderRadius: '6px', fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)' }}
-                      onClick={() => {
-                        setShowGeneralNews(false);
-                        setShowWorldometer(true);
+                <>
+                  <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
+                    <h2
+                      className="guide-heading"
+                      style={{
+                        fontFamily: "'Orbitron', sans-serif",
+                        fontSize: '1.35rem',
+                        letterSpacing: '2px',
+                        lineHeight: '1.35',
+                        color: '#222222',
+                        textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff',
+                        fontWeight: 900
                       }}
                     >
-                      ACESSAR TELEMETRIA GLOBAL / GLOBAL NEWS ▷
-                    </button>
+                      Selecione o painel que deseja visualizar:
+                    </h2>
+                  </header>
+
+                  <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                    <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(180, 180, 180, 0.3)', borderRadius: '6px', display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
+                      <button 
+                        className="guide-page-btn btn-news-selector btn-sweep-alt-1" 
+                        style={{ marginTop: 0, width: '100%', padding: '16px 18px', fontSize: '0.88rem', fontFamily: "'Orbitron', sans-serif", letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', borderRadius: '6px', fontWeight: 900 }}
+                        onClick={() => setNewsTab('news')}
+                      >
+                        NOTÍCIAS
+                      </button>
+                      <button 
+                        className="guide-page-btn btn-news-selector btn-sweep-alt-2" 
+                        style={{ marginTop: 0, width: '100%', padding: '16px 18px', fontSize: '0.88rem', fontFamily: "'Orbitron', sans-serif", letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', borderRadius: '6px', fontWeight: 900 }}
+                        onClick={() => setNewsTab('records')}
+                      >
+                        REGISTROS (MURAL)
+                      </button>
+                      <button 
+                        className="guide-page-btn btn-next btn-grey"
+                        style={{ marginTop: 0, width: '100%', padding: '16px 18px', fontSize: '0.85rem', fontFamily: "'Orbitron', sans-serif", letterSpacing: '2px', background: '#555555', color: '#ffffff', border: '1px solid #888888', borderRadius: '6px', fontWeight: 900, boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)' }}
+                        onClick={() => {
+                          setShowGeneralNews(false);
+                          setShowWorldometer(true);
+                        }}
+                      >
+                        ACESSAR TELEMETRIA GLOBAL / GLOBAL NEWS ▷
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </>
               )}
 
               {/* Aba 2: Lista de Notícias */}
@@ -3536,7 +3553,7 @@ export default function Home() {
               </div>
 
               <header className="guide-header-section" style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h2 className="guide-heading" style={{ color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>𝕄𝖊𝖒𝖇𝖗𝖔𝖘, ℙ𝖆𝖗𝖈𝖊𝖎𝖗𝖔𝖘 𝖊 𝔸𝖒𝖎𝖌𝖔𝖘</h2>
+                <h2 className="guide-heading" style={{ fontFamily: "'Orbitron', sans-serif", fontSize: '1.35rem', letterSpacing: '2px', color: '#222222', textShadow: '0 0 8px #ffffff, 0 0 15px #ffffff, 0 0 3px #ffffff', fontWeight: 900 }}>MEMBROS, PARCEIROS E AMIGOS</h2>
               </header>
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>

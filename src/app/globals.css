@@ -2212,6 +2212,7 @@ body::before {
   content: '';
   position: absolute;
   top: 0;
+  left: -100px;
   width: 60px;
   height: 100%;
   background: linear-gradient(
@@ -2229,6 +2230,47 @@ body::before {
 .btn-next::after {
   left: -80px;
   animation: scan-lr 4s infinite ease-in-out;
+}
+
+.btn-sweep-alt-1::after {
+  left: -80px;
+  animation: scan-lr-alt-1 6s infinite ease-in-out !important;
+}
+
+.btn-sweep-alt-2::after {
+  left: -80px;
+  animation: scan-lr-alt-2 6s infinite ease-in-out !important;
+}
+
+@keyframes scan-lr-alt-1 {
+  0%, 5% { left: -80px; opacity: 1; }
+  35%, 49.9% { left: 105%; opacity: 1; }
+  50%, 100% { left: 105%; opacity: 0; }
+}
+
+@keyframes scan-lr-alt-2 {
+  0%, 49.9% { left: -80px; opacity: 0; }
+  50%, 55% { left: -80px; opacity: 1; }
+  85%, 100% { left: 105%; opacity: 1; }
+}
+
+.close-btn-membros {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 2.5rem !important;
+  font-weight: 700;
+  line-height: 1;
+  color: #222222;
+  cursor: pointer;
+  z-index: 10100;
+  transition: transform 0.2s ease, color 0.2s ease;
+  user-select: none;
+}
+
+.close-btn-membros:hover {
+  color: #000000;
+  transform: scale(1.15);
 }
 
 .btn-back::after {
