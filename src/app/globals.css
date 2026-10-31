@@ -302,6 +302,8 @@ body::before {
 .runic-node:hover .full-name,
 .runic-node.is-selected .initials,
 .runic-node.is-selected .full-name,
+.runic-node.is-processing .initials,
+.runic-node.is-processing .full-name,
 .cyber-blackout-active .initials,
 .cyber-blackout-active .full-name,
 .force-visible ~ .initials,
@@ -314,7 +316,8 @@ body::before {
 }
 
 .runic-node:hover .node-icon,
-.runic-node.is-selected .node-icon {
+.runic-node.is-selected .node-icon,
+.runic-node.is-processing .node-icon {
   opacity: 1 !important;
   visibility: visible !important;
   animation: none !important;

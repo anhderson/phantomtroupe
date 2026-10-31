@@ -56,7 +56,8 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "OPERACIONAL",
     security: "GENESIS",
-    icon: "/icones/phantomtroupeiconecircular.png"
+    icon: "/icones/phantomtroupeiconecircular.png",
+    activeIcon: "/icones/phantomtroupeiconecircularPRO3.png"
   },
   { 
     id: 2, 
@@ -70,7 +71,8 @@ const APPS = [
     security: "ARCANO",
     downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Project.Zero.Setup.1.0.5.exe",
     installerPath: "src/executaveis/Project Zero Setup 1.0.5.exe",
-    icon: "/icones/projectzeroiconecircular.png"
+    icon: "/icones/projectzeroiconecircular.png",
+    activeIcon: "/icones/projectzeroiconecircular3.png"
   },
   { 
     id: 3, 
@@ -85,7 +87,8 @@ const APPS = [
     downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.11/Zero.Signal.Setup.1.0.11.exe",
     mobileDownloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.22/ZeroSignal_v1.0.22.apk",
     installerPath: "src/executaveis/Zero Signal Setup 1.0.11.exe",
-    icon: "/icones/zerosignaliconecircular.png"
+    icon: "/icones/zerosignaliconecircular.png",
+    activeIcon: "/icones/zerosignaliconecircular3.png"
   },
   { 
     id: 4, 
@@ -98,7 +101,8 @@ const APPS = [
     status: "SENTIMENTO ATIVO",
     security: "VULNERÁVEL",
     downloadUrl: "https://zeroday-chi.vercel.app",
-    icon: "/icones/zerodayiconecircular.png"
+    icon: "/icones/zerodayiconecircular.png",
+    activeIcon: "/icones/zerodayiconecircular3.png"
   },
   { 
     id: 5, 
@@ -111,7 +115,8 @@ const APPS = [
     status: "EM PAZ",
     security: "SAGRADO",
     downloadUrl: "https://paginaterapeutaanderson.vercel.app",
-    icon: "/icones/zeroespacoiconecircular.png"
+    icon: "/icones/zeroespacoiconecircular.png",
+    activeIcon: "/icones/zeroespacoiconecircular3.png"
   },
   { 
     id: 6, 
@@ -124,7 +129,8 @@ const APPS = [
     status: "PROJETANDO CAMINHOS",
     security: "OCULTO NA VERDADE",
     downloadUrl: "https://zerofaithfully.vercel.app",
-    icon: "/icones/zerofaithfullyiconecircular.png"
+    icon: "/icones/zerofaithfullyiconecircular.png",
+    activeIcon: "/icones/zerofaithfullyiconecircular3.png"
   },
   { 
     id: 7, 
@@ -136,7 +142,8 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "CALCULANDO O BEM MAIOR",
     security: "100% ISOLADO",
-    icon: "/icones/zerosynapsesiconecircular.png"
+    icon: "/icones/zerosynapsesiconecircular.png",
+    activeIcon: "/icones/zerosynapsesiconecircular3.png"
   },
   { 
     id: 8, 
@@ -148,7 +155,8 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "SINTONIZADO NO AGORA",
     security: "ARTE COMPARTILHADA",
-    icon: "/icones/zeromindiconecircular.png"
+    icon: "/icones/zeromindiconecircular.png",
+    activeIcon: "/icones/zeromindiconecircular3.png"
   },
   { 
     id: 9, 
@@ -161,7 +169,8 @@ const APPS = [
     status: "MOLDE INFINITO",
     security: "ALQUIMIA",
     installerPath: "src/executaveis/Zero Infinity Setup 1.0.0.exe",
-    icon: "/icones/zeroinfinityiconecircular.png"
+    icon: "/icones/zeroinfinityiconecircular.png",
+    activeIcon: "/icones/zeroinfinityiconecircular3.png"
   },
   { 
     id: 10, 
@@ -173,7 +182,8 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "TRANSAÇÃO ATIVA",
     security: "FINANCEIRO",
-    icon: "/icones/zeropayiconecircular.png"
+    icon: "/icones/zeropayiconecircular.png",
+    activeIcon: "/icones/zeropayiconecircular3.png"
   },
   { 
     id: 11, 
@@ -185,7 +195,8 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "AGUARDANDO DECLARAÇÃO",
     security: "LIVRE ESCOLHA",
-    icon: "/icones/zerocontroliconecircular.png"
+    icon: "/icones/zerocontroliconecircular.png",
+    activeIcon: "/icones/zerocontroliconecircular3.png"
   },
   { 
     id: 12, 
@@ -196,7 +207,8 @@ const APPS = [
     longDesc: "O Zero Ground é o módulo responsável por conectar o ecossistema digital ao mundo físico, transformando ideias e estruturas virtuais em iniciativas concretas. Ele atua como a base para criação e desenvolvimento de espaços reais, que vão desde organizações sociais e ONGs até empresas e operações estruturadas.\n\nMais do que um ponto de execução, o Zero Ground funciona como a interface direta com o “hardware” do mundo real, onde projetos ganham presença física, operação prática e impacto tangível. Ele organiza processos, acompanha atividades e registra informações essenciais, permitindo controle mais preciso sobre cada etapa de implementação.\n\nAlém disso, o sistema oferece uma visão detalhada das operações, com registros de baixo nível e monitoramento contínuo, garantindo que recursos, processos e estruturas estejam funcionando de forma estável e eficiente. Isso possibilita ajustes rápidos, maior previsibilidade e segurança na execução.\n\nNa prática, o Zero Ground é onde o ecossistema deixa de ser apenas conceito e passa a existir de forma concreta, conectando planejamento, tecnologia e ação real em um fluxo contínuo de construção e evolução.",
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "ESPERANDO COMANDO",
-    icon: "/icones/zerogroundiconecircular.png"
+    icon: "/icones/zerogroundiconecircular.png",
+    activeIcon: "/icones/zerogroundiconecircular3.png"
   },
 ];
 
@@ -1424,7 +1436,7 @@ export default function Home() {
                     <div className="runic-name-container">
                       {app.icon && (
                         <img 
-                          src={app.icon} 
+                          src={isProcessing ? ((app as any).activeIcon || app.icon) : app.icon} 
                           className={`node-icon ${isGlitching ? 'force-visible' : ''}`}
                           alt=""
                         />
