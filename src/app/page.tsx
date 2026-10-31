@@ -1366,9 +1366,10 @@ export default function Home() {
                     style={{ 
                       width: 'var(--orbit-radius)',
                       transform: `rotate(${angle}deg)`,
-                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#ffffff' : 'rgba(255, 255, 255, 0.15)',
-                      boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #ffffff' : 'none',
-                      opacity: shouldGlobalFlash ? 0.8 : 1,
+                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#ffffff' : 'rgba(5, 5, 5, 0.95)',
+                      boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #ffffff' : '0 0 4px rgba(5, 5, 5, 0.3)',
+                      opacity: shouldGlobalFlash ? 0.8 : 0.95,
+                      height: '1.5px',
                       transition: 'all 0.2s ease-out'
                     }}
                   />
@@ -1377,8 +1378,8 @@ export default function Home() {
                     style={{ 
                       width: 'calc(var(--orbit-radius) - (var(--node-size) / 2))',
                       transform: `rotate(${angle}deg)`,
-                      background: `linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, ${app.color || 'var(--primary)'} 100%)`, 
-                      opacity: 0.3
+                      background: `linear-gradient(90deg, rgba(5, 5, 5, 0.15) 0%, rgba(5, 5, 5, 0.95) 100%)`, 
+                      opacity: 0.85
                     }}
                   >
                     <div 
@@ -1506,7 +1507,7 @@ export default function Home() {
             {/* Main Heart Path (Stroke thickness reduced by 50%: 0.013 -> 0.0065) */}
             <path 
               d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" 
-              fill="rgba(255, 255, 255, 0.15)" 
+              fill="rgba(5, 5, 5, 0.95)" 
               stroke="#ffffff" 
               strokeWidth="0.0065" 
               strokeLinecap="round" 

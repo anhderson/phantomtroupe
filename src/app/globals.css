@@ -32,10 +32,11 @@
 }
 
 .members-trigger .history-sphere,
-.planet-trigger .earth-sphere {
+.planet-trigger .earth-sphere,
+.donations-trigger .history-sphere {
   border-color: #ffffff !important;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6) !important;
-  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
+  background: rgba(5, 5, 5, 0.95) !important;
 }
 
 .members-trigger .history-pattern,
@@ -161,9 +162,9 @@ body::before {
 .web-segment {
   position: absolute;
   height: 1px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(5, 5, 5, 0.4);
   transform-origin: left center;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 4px rgba(5, 5, 5, 0.15);
 }
 
 /* Runic Node Design - More Web-like */
@@ -738,7 +739,7 @@ body::before {
 .history-sphere {
   width: 81px;
   height: 81px;
-  background: rgba(255, 255, 255, 0.05); /* Tinted Glass */
+  background: rgba(5, 5, 5, 0.95); /* Tinted Glass */
   backdrop-filter: blur(5px);
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1), inset 0 0 10px rgba(255, 255, 255, 0.1);
@@ -829,7 +830,7 @@ body::before {
 .earth-sphere {
   width: 81px;
   height: 81px;
-  background: rgba(255, 255, 255, 0.05); /* Transparent Glass */
+  background: rgba(5, 5, 5, 0.95); /* Transparent Glass */
   backdrop-filter: blur(5px);
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1), inset 0 0 10px rgba(255, 255, 255, 0.05);
