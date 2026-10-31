@@ -295,7 +295,9 @@ const resizeImage = (file: File): Promise<string> => {
 
 export default function Home() {
   const [selectedApp, setSelectedApp] = useState<typeof APPS[0] | null>(null);
-  const [rotation, setRotation] = useState(0);
+  const [rotation, setRotation] = useState(258);
+  const [hoveredSummaryIdx, setHoveredSummaryIdx] = useState<number | null>(null);
+  const [selectedSummaryIdx, setSelectedSummaryIdx] = useState<number | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [showWorldometer, setShowWorldometer] = useState(false);
   const [showGeneralNews, setShowGeneralNews] = useState(false);
@@ -1465,6 +1467,7 @@ export default function Home() {
               const absoluteAngle = (angle + rotation) % 360;
               const isProcessing = Math.abs(absoluteAngle - 270) < 8 || Math.abs(absoluteAngle - 270 + 360) < 8;
               const shouldGlobalFlash = isPTProcessing;
+              const isNodeActiveByScouter = isProcessing || isPTProcessing;
 
               return (
                 <div key={`radial-${index}`}>
@@ -1473,8 +1476,8 @@ export default function Home() {
                     style={{ 
                       width: 'var(--orbit-radius)',
                       transform: `rotate(${angle}deg)`,
-                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#ffffff' : 'rgba(5, 5, 5, 0.95)',
-                      boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #ffffff' : '0 0 4px rgba(5, 5, 5, 0.3)',
+                      backgroundColor: isNodeActiveByScouter ? '#ffffff' : 'rgba(5, 5, 5, 0.95)',
+                      boxShadow: isNodeActiveByScouter ? '0 0 15px #ffffff' : '0 0 4px rgba(5, 5, 5, 0.3)',
                       opacity: shouldGlobalFlash ? 0.8 : 0.95,
                       height: '1.5px',
                       transition: 'all 0.2s ease-out'
@@ -1493,8 +1496,8 @@ export default function Home() {
                       className="particle" 
                       style={{ 
                         animationDelay: `${index * 0.4}s`,
-                        backgroundColor: isProcessing ? ((app as any).scouterColor || '#ffffff') : (app.color || 'var(--primary)'),
-                        boxShadow: isProcessing
+                        backgroundColor: isNodeActiveByScouter ? ((app as any).scouterColor || '#ffffff') : (app.color || 'var(--primary)'),
+                        boxShadow: isNodeActiveByScouter
                           ? `0 0 12px ${(app as any).scouterColor || '#ffffff'}, 0 0 22px ${(app as any).scouterColor || '#ffffff'}`
                           : `0 0 10px ${app.color || 'var(--primary)'}`
                       }}
@@ -1524,19 +1527,19 @@ export default function Home() {
                   })}
 
                   <motion.div 
-                    className={`runic-node node-pulse ${isProcessing ? 'is-processing' : ''} ${isPTProcessing ? 'is-resonance-overdrive' : ''} ${selectedApp?.id === app.id ? 'is-selected' : ''}`}
+                    className={`runic-node node-pulse ${isNodeActiveByScouter ? 'is-processing' : ''} ${isPTProcessing ? 'is-resonance-overdrive' : ''} ${selectedApp?.id === app.id ? 'is-selected' : ''}`}
                     style={{ 
                       left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       animationDelay: `${index * 0.4}s`,
-                      '--custom-color': (isProcessing || selectedApp?.id === app.id) ? ((app as any).scouterColor || '#ffffff') : isPTProcessing ? '#ffffff' : (app.color || 'var(--primary)'),
+                      '--custom-color': (isNodeActiveByScouter || selectedApp?.id === app.id) ? ((app as any).scouterColor || '#ffffff') : (app.color || 'var(--primary)'),
                       '--node-angle': `${angle}deg`,
                       '--current-rotation': `${rotation}deg`
                     } as any}
                     id={`node-${app.name}`}
                     animate={{ 
                       rotate: -rotation,
-                      scale: isProcessing ? 1.2 : 1,
+                      scale: isNodeActiveByScouter ? 1.2 : 1,
                     }}
                     transition={{ type: "tween", ease: "linear", duration: 0 }}
                     whileHover={{ scale: 1.2, borderColor: app.color || 'var(--primary)' }}
@@ -1548,7 +1551,7 @@ export default function Home() {
                     <div className="runic-name-container">
                       {app.icon && (
                         <img 
-                          src={(isProcessing || selectedApp?.id === app.id) ? ((app as any).scouterIcon || (app as any).activeIcon || app.icon) : hoveredNodeId === app.id ? ((app as any).activeIcon || app.icon) : app.icon} 
+                          src={(isNodeActiveByScouter || selectedApp?.id === app.id) ? ((app as any).scouterIcon || (app as any).activeIcon || app.icon) : hoveredNodeId === app.id ? ((app as any).activeIcon || app.icon) : app.icon} 
                           className={`node-icon ${isGlitching ? 'force-visible' : ''}`}
                           alt=""
                         />
@@ -2910,34 +2913,57 @@ export default function Home() {
                           RESUMO DOS 12 PROJETOS
                         </h3>
                         {[
-                          { name: "Phantom Troupe", desc: "Onde a ideia se tornou movimento", color: "#ffffff", isPT: true },
+                          { name: "Phantom Troupe", desc: "Onde a ideia se tornou movimento", color: "#ffffff" },
                           { name: "Project Zero", desc: "Onde os as idéias dos integrantes começam a se tornar realidade", color: "#FF00CC" },
-                          { name: "Zero Signal", desc: "Ambiente virtual de comunicaçao, um aplicativo de chamadas de voz", color: "#8000FF" },
                           { name: "Zero Day", desc: "Ambiente virtual de comunicação, rede social para expressão indivudual personalizada.", color: "#FF80EE" },
-                          { name: "Zero Espaço", desc: "Ferramenta de apoio e potencialização emocional e compreensão interna para evolução", color: "#0040FF" },
-                          { name: "Zero FaithFully", desc: "Ferramenta de estudos e expressão, biblioteca online grátis e livre", color: "#F0FF00" },
-                          { name: "Zero Synapses", desc: "Corporação e união descentralizada, desenvolvimento de projetos reais com fins lucrativos", color: "#FFBF00" },
-                          { name: "Zero Mind", desc: "Em construção (Futuro ambiente de produção de artes em geral)", color: "#00E68A" },
-                          { name: "Zero Infinity", desc: "Em construção (Futuras ferramentas de apoio desenvolvidas pela fraternidade)", color: "#FF6600" },
-                          { name: "Zero Pay", desc: "Em construção (Fundo financeiro e administrativo e administração financeira)", color: "#BFFF00" },
+                          { name: "Zero Signal", desc: "Ambiente virtual de comunicaçao, um aplicativo de chamadas de voz", color: "#8000FF" },
                           { name: "Zero Control", desc: "Em construção (Missões com recompensas financeiras da fraternidade)", color: "#FF0000" },
-                          { name: "Zero Ground", desc: "Em construção (Módulo que conecta tudo, cria a partir do tudo para todos)", color: "#00DFFF" }
-                        ].map((proj, idx) => (
-                          <div
-                            key={idx}
-                            style={{
-                              background: proj.isPT ? '#0a0a0a' : '#ffffff',
-                              borderRadius: '6px',
-                              padding: '10px 12px',
-                              borderLeft: proj.isPT ? '4px solid #ffffff' : '4px solid rgba(255, 255, 255, 0.45)',
-                              border: proj.isPT ? '1px solid rgba(255, 255, 255, 0.25)' : undefined,
-                              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)'
-                            }}
-                          >
-                            <span style={{ color: proj.color, fontWeight: 'bold', fontSize: '0.9rem', display: 'block' }}>{proj.name}</span>
-                            <span style={{ color: proj.isPT ? '#cccccc' : '#000000', fontSize: '0.86rem', display: 'block', marginTop: '3px', lineHeight: '1.35', fontWeight: '500' }}>{proj.desc}</span>
-                          </div>
-                        ))}
+                          { name: "Zero Infinity", desc: "Em construção (Futuras ferramentas de apoio desenvolvidas pela fraternidade)", color: "#FF6600" },
+                          { name: "Zero Synapses", desc: "Corporação e união descentralizada, desenvolvimento de projetos reais com fins lucrativos", color: "#FFBF00" },
+                          { name: "Zero FaithFully", desc: "Ferramenta de estudos e expressão, biblioteca online grátis e livre", color: "#F0FF00" },
+                          { name: "Zero Pay", desc: "Em construção (Fundo financeiro e administrativo e administração financeira)", color: "#BFFF00" },
+                          { name: "Zero Mind", desc: "Em construção (Futuro ambiente de produção de artes em geral)", color: "#00E68A" },
+                          { name: "Zero Ground", desc: "Em construção (Módulo que conecta tudo, cria a partir do tudo para todos)", color: "#00DFFF" },
+                          { name: "Zero Espaço", desc: "Ferramenta de apoio e potencialização emocional e compreensão interna para evolução", color: "#0040FF" }
+                        ].map((proj, idx) => {
+                          const isSummaryActive = hoveredSummaryIdx === idx || selectedSummaryIdx === idx;
+                          return (
+                            <div
+                              key={idx}
+                              onMouseEnter={() => setHoveredSummaryIdx(idx)}
+                              onMouseLeave={() => setHoveredSummaryIdx(null)}
+                              onClick={() => setSelectedSummaryIdx(prev => prev === idx ? null : idx)}
+                              style={{
+                                background: '#ffffff',
+                                borderRadius: '6px',
+                                padding: '10px 12px',
+                                border: isSummaryActive ? `1.5px solid ${proj.color}` : '1.5px solid transparent',
+                                borderLeft: isSummaryActive ? `4px solid ${proj.color}` : '4px solid rgba(255, 255, 255, 0.45)',
+                                boxShadow: isSummaryActive
+                                  ? `0 0 12px ${proj.color}, 0 0 22px ${proj.color}, inset 0 0 6px ${proj.color}`
+                                  : '0 2px 8px rgba(0, 0, 0, 0.25)',
+                                transition: 'all 0.25s ease',
+                                cursor: 'pointer'
+                              }}
+                            >
+                              <span
+                                style={{
+                                  color: isSummaryActive ? proj.color : '#000000',
+                                  textShadow: isSummaryActive
+                                    ? '-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000, 0 0 6px rgba(0, 0, 0, 0.85)'
+                                    : '0 1px 3px rgba(0, 0, 0, 0.4), 0 0 2px rgba(0, 0, 0, 0.25)',
+                                  fontWeight: 'bold',
+                                  fontSize: '0.9rem',
+                                  display: 'block',
+                                  transition: 'color 0.25s ease, text-shadow 0.25s ease'
+                                }}
+                              >
+                                {proj.name}
+                              </span>
+                              <span style={{ color: '#000000', fontSize: '0.86rem', display: 'block', marginTop: '3px', lineHeight: '1.35', fontWeight: '500' }}>{proj.desc}</span>
+                            </div>
+                          );
+                        })}
                         <p style={{ marginTop: '10px', fontSize: '0.85rem', color: '#cccccc', fontStyle: 'italic', textAlign: 'center', lineHeight: '1.4', padding: '0 5px' }}>
                           Cada projeto tem seus Sub Projetos e Sub Grupos em construções e crescimento procedural sem fim.
                         </p>
@@ -3875,7 +3901,7 @@ export default function Home() {
                           <h3 style={{ margin: '0 0 4px 0', fontSize: '1.25rem', color: '#ffffff', fontWeight: 'bold' }}>{member.name}</h3>
 
                           {/* Cargo/Função abaixo do nome */}
-                          <p style={{ margin: '0 0 10px 0', fontSize: '0.78rem', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                          <p style={{ margin: '0 0 10px 0', fontSize: '0.78rem', color: '#2a2a2a', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>
                             {member.role}
                           </p>
 
