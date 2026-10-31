@@ -14,7 +14,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Phantom Troupe Fraternidade",
-  description: "The official gateway of the Phantom Troupe.",
+  description: "ONG de Acolhimento e Desenvolvimento Psicossocial",
+  openGraph: {
+    title: "Phantom Troupe Fraternidade",
+    description: "ONG de Acolhimento e Desenvolvimento Psicossocial",
+    url: "https://www.phantomtroupefraternidade.com.br/",
+    siteName: "Phantom Troupe Fraternidade",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Phantom Troupe Fraternidade",
+    description: "ONG de Acolhimento e Desenvolvimento Psicossocial",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico?v=2" },
@@ -30,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );

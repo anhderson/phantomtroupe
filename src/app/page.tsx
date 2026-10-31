@@ -2284,7 +2284,7 @@ export default function Home() {
                   </header>
 
                   <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px' }}>
-                    <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(180, 180, 180, 0.3)', borderRadius: '6px', display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
+                    <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.35)', border: '1px solid rgba(34, 34, 34, 0.25)', borderRadius: '6px', display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
                       <button 
                         className="guide-page-btn btn-news-selector btn-sweep-alt-1" 
                         style={{ marginTop: 0, width: '100%', padding: '16px 18px', fontSize: '0.88rem', fontFamily: "'Orbitron', sans-serif", letterSpacing: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', borderRadius: '6px', fontWeight: 900 }}
@@ -2301,7 +2301,7 @@ export default function Home() {
                       </button>
                       <button 
                         className="guide-page-btn btn-next btn-grey"
-                        style={{ marginTop: 0, width: '100%', padding: '16px 18px', fontSize: '0.85rem', fontFamily: "'Orbitron', sans-serif", letterSpacing: '2px', background: '#555555', color: '#ffffff', border: '1px solid #888888', borderRadius: '6px', fontWeight: 900, boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)' }}
+                        style={{ marginTop: 0, width: '100%', padding: '16px 18px', fontSize: '0.85rem', fontFamily: "'Orbitron', sans-serif", letterSpacing: '2px', background: 'rgba(10, 10, 10, 0.92)', color: '#ffffff', border: '1px solid #333333', borderRadius: '6px', fontWeight: 900, boxShadow: '0 4px 12px rgba(0, 0, 0, 0.35)' }}
                         onClick={() => {
                           setShowGeneralNews(false);
                           setShowWorldometer(true);
@@ -3558,17 +3558,17 @@ export default function Home() {
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>
                 {/* 1. Seja Membro Form (at the top) */}
-                <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(180, 180, 180, 0.3)', borderRadius: '6px' }}>
+                <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.35)', border: '1px solid rgba(34, 34, 34, 0.25)', borderRadius: '6px' }}>
                   {hasRequestedJoin ? (
-                    <div className="join-success-msg" style={{ padding: '20px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #888888', borderRadius: '4px' }}>
-                      <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
-                      <p style={{ margin: 0, fontSize: '0.85rem', color: '#333333', lineHeight: '1.4' }}>
+                    <div className="join-success-msg" style={{ padding: '20px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.7)', border: '1px dashed #333333', borderRadius: '4px' }}>
+                      <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#2a2a2a', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
+                      <p style={{ margin: 0, fontSize: '0.85rem', color: '#222222', lineHeight: '1.4' }}>
                         Sua solicitação de participação no projeto foi enviada com sucesso!
                       </p>
                     </div>
                   ) : (
                     <>
-                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: 'var(--primary)', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(180, 180, 180, 0.2)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: '#2a2a2a', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(34, 34, 34, 0.2)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
                         SEJA MEMBRO
                       </h3>
                       <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5', color: '#333333' }}>
@@ -3833,7 +3833,7 @@ export default function Home() {
 
                 {/* 3. Registered Members List (at the bottom) */}
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
-                  <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: 'var(--primary)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px', textAlign: 'center' }}>
+                  <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#2a2a2a', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px', textAlign: 'center' }}>
                     MEMBROS ATIVOS
                   </h3>
                   <div 

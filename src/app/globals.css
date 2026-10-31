@@ -3223,15 +3223,17 @@ body::before {
 }
 
 .members-overlay .guide-inner-wrap {
-  border: 2px solid #555555 !important;
-  box-shadow: 0 0 45px rgba(0, 0, 0, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.8) !important;
-  background: linear-gradient(135deg, #ffffff 0%, #f0f0f2 100%) !important; /* White and Light Silver gradient */
+  border: 2px solid #222222 !important;
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(255, 255, 255, 0.5) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.74) 0%, rgba(235, 235, 238, 0.68) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   border-radius: 12px !important;
   max-width: 600px !important;
   width: 100% !important;
   margin: auto !important;
   transform: none !important;
-  color: #1a1a1a !important; /* Dark grey for readability */
+  color: #1a1a1a !important;
 }
 
 /* Custom dashed pink border for Pending Requests modal */
@@ -3343,54 +3345,54 @@ body::before {
   font-weight: bold !important;
 }
 
-/* Buttons in members overlay */
+/* Buttons in members overlay - using the blacks from the main page */
 .members-overlay .guide-page-btn {
-  background: #222222 !important;
-  border: 1px solid #444444 !important;
+  background: rgba(10, 10, 10, 0.92) !important;
+  border: 1px solid #333333 !important;
   color: #ffffff !important;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
   font-weight: bold !important;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .members-overlay .guide-page-btn:hover {
-  background: #000000 !important;
-  border-color: #111111 !important;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4) !important;
+  background: #222222 !important;
+  border-color: #555555 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
   transform: translateY(-1px);
 }
 
 .members-overlay .guide-page-btn.btn-grey,
 .guide-page-btn.btn-grey {
-  background: #555555 !important;
-  border: 1px solid #888888 !important;
+  background: rgba(10, 10, 10, 0.92) !important;
+  border: 1px solid #333333 !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
 }
 
 .members-overlay .guide-page-btn.btn-grey:hover,
 .guide-page-btn.btn-grey:hover {
-  background: #666666 !important;
-  border-color: #aaaaaa !important;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35) !important;
+  background: #222222 !important;
+  border-color: #555555 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
   transform: translateY(-1px);
 }
 
 .members-overlay .guide-page-btn.btn-news-selector,
 .guide-page-btn.btn-news-selector {
-  background: #555555 !important;
-  border: 1px solid #888888 !important;
+  background: rgba(10, 10, 10, 0.92) !important;
+  border: 1px solid #333333 !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
   text-shadow: none !important;
 }
 
 .members-overlay .guide-page-btn.btn-news-selector:hover,
 .guide-page-btn.btn-news-selector:hover {
-  background: #666666 !important;
-  border-color: #aaaaaa !important;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35) !important;
+  background: #222222 !important;
+  border-color: #555555 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
   transform: translateY(-1px);
 }
 
