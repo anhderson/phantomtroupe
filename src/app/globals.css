@@ -32,8 +32,7 @@
 }
 
 .members-trigger .history-sphere,
-.planet-trigger .earth-sphere,
-.donations-trigger .history-sphere {
+.planet-trigger .earth-sphere {
   border-color: #ffffff !important;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
   background: rgba(5, 5, 5, 0.95) !important;
@@ -711,6 +710,7 @@ body::before {
   transform: translate(-50%, -50%) scale(1.05);
 }
 
+.donations-trigger .history-sphere.donation-heart-shape,
 .donation-heart-shape {
   border-radius: 0 !important;
   background: transparent !important;
@@ -1409,7 +1409,8 @@ body::before {
     width: 100%;
     z-index: 10000;
   }
-}/* Efeito de transmutação quando passa pelo Gateway */
+}
+/* Efeito de transmutação quando passa pelo Gateway */
 .runic-node.is-processing {
   border-color: var(--custom-color, var(--primary)) !important;
   box-shadow: 
@@ -3159,14 +3160,22 @@ body::before {
   background: rgba(255, 255, 255, 0.4) !important;
 }
 
+.members-overlay.news-centered-overlay {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100vh !important;
+  padding: 20px !important;
+}
+
 .members-overlay .guide-inner-wrap {
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 0 45px rgba(0, 0, 0, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.8) !important;
+  border: 2px solid #555555 !important;
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.8) !important;
   background: linear-gradient(135deg, #ffffff 0%, #f0f0f2 100%) !important; /* White and Light Silver gradient */
   border-radius: 12px !important;
   max-width: 600px !important;
   width: 100% !important;
-  margin: 0 auto !important;
+  margin: auto !important;
   transform: none !important;
   color: #1a1a1a !important; /* Dark grey for readability */
 }
@@ -3316,18 +3325,17 @@ body::before {
 
 .members-overlay .guide-page-btn.btn-news-selector,
 .guide-page-btn.btn-news-selector {
-  background: rgba(120, 120, 120, 0.45) !important;
-  backdrop-filter: blur(8px) !important;
-  border: 1px solid rgba(220, 220, 220, 0.5) !important;
+  background: #555555 !important;
+  border: 1px solid #888888 !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) !important;
+  text-shadow: none !important;
 }
 
 .members-overlay .guide-page-btn.btn-news-selector:hover,
 .guide-page-btn.btn-news-selector:hover {
-  background: rgba(160, 160, 160, 0.65) !important;
-  border-color: rgba(255, 255, 255, 0.8) !important;
+  background: #666666 !important;
+  border-color: #aaaaaa !important;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35) !important;
   transform: translateY(-1px);
 }

@@ -1116,7 +1116,7 @@ export default function Home() {
     }
 
     const orbitInterval = setInterval(() => {
-      setRotation(prev => (prev + 0.1) % 360);
+      setRotation(prev => (prev - 0.1 + 360) % 360);
     }, 50);
     // Rotate disaster ticker every 4 seconds
     const tickerInterval = setInterval(() => {
@@ -1448,7 +1448,7 @@ export default function Home() {
                       left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       animationDelay: `${index * 0.4}s`,
-                      '--custom-color': isProcessing ? ((app as any).scouterColor || '#ffffff') : isPTProcessing ? '#ffffff' : (app.color || 'var(--primary)'),
+                      '--custom-color': (isProcessing || selectedApp?.id === app.id) ? ((app as any).scouterColor || '#ffffff') : isPTProcessing ? '#ffffff' : (app.color || 'var(--primary)'),
                       '--node-angle': `${angle}deg`,
                       '--current-rotation': `${rotation}deg`
                     } as any}
@@ -1467,7 +1467,7 @@ export default function Home() {
                     <div className="runic-name-container">
                       {app.icon && (
                         <img 
-                          src={(selectedApp?.id === app.id || hoveredNodeId === app.id) ? ((app as any).activeIcon || app.icon) : isProcessing ? ((app as any).scouterIcon || (app as any).activeIcon || app.icon) : app.icon} 
+                          src={(isProcessing || selectedApp?.id === app.id) ? ((app as any).scouterIcon || (app as any).activeIcon || app.icon) : hoveredNodeId === app.id ? ((app as any).activeIcon || app.icon) : app.icon} 
                           className={`node-icon ${isGlitching ? 'force-visible' : ''}`}
                           alt=""
                         />
@@ -2128,7 +2128,7 @@ export default function Home() {
       <AnimatePresence>
         {showGeneralNews && (
           <motion.div 
-            className="guide-overlay-container members-overlay"
+            className="guide-overlay-container members-overlay news-centered-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -2136,7 +2136,7 @@ export default function Home() {
           >
             <div 
               className="guide-inner-wrap" 
-              style={{ padding: '40px', position: 'relative', display: 'flex', flexDirection: 'column', gap: '20px', margin: 'auto' }}
+              style={{ padding: '40px', position: 'relative', display: 'flex', flexDirection: 'column', gap: '20px', margin: 'auto', border: '2px solid #555555' }}
               onClick={e => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -2167,7 +2167,7 @@ export default function Home() {
               {newsTab === 'select' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', width: '100%', padding: '10px 0' }}>
                   <p style={{ color: '#222222', fontSize: '1.8rem', lineHeight: '1.3', textAlign: 'center', marginBottom: '2px', maxWidth: '550px', fontWeight: 900, textShadow: '0 0 8px #ffffff' }}>
-                    Selecione o painel que deseja visualizar no terminal da fraternidade:
+                    Selecione o painel que deseja visualizar:
                   </p>
                   <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '500px', justifyContent: 'center' }}>
                     <button 
@@ -2390,7 +2390,7 @@ export default function Home() {
 
                   <div className="members-list" style={{ width: '100%', maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '5px' }}>
                     {donationsList.length === 0 ? (
-                      <p style={{ textAlign: 'center', color: '#ffffff', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhum registro no mural ainda.</p>
+                      <p style={{ textAlign: 'center', color: '#666666', fontStyle: 'italic', fontSize: '0.9rem' }}>Nenhum registro no mural ainda.</p>
                     ) : (
                       [...donationsList]
                         .filter((record, idx, arr) => 
@@ -2403,8 +2403,8 @@ export default function Home() {
                           className="member-card"
                           style={{ 
                             padding: '15px', 
-                            background: 'rgba(40, 25, 65, 0.85)', 
-                            border: '1px solid rgba(200, 200, 200, 0.4)', 
+                            background: 'rgba(255, 255, 255, 0.75)', 
+                            border: '1px solid rgba(180, 180, 180, 0.4)', 
                             borderRadius: '6px',
                             display: 'flex',
                             flexDirection: 'column',
@@ -2444,7 +2444,7 @@ export default function Home() {
                           </div>
 
                           {isAdminAuth && (
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px', borderTop: '1px dashed rgba(123, 31, 162, 0.2)', paddingTop: '5px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px', borderTop: '1px dashed rgba(150, 150, 150, 0.4)', paddingTop: '5px' }}>
                               <span style={{ fontSize: '0.75rem', color: '#333333' }}><strong style={{ color: '#111111' }}>Contato:</strong> {record.contact}</span>
                               <button 
                                 style={{ background: 'transparent', border: 'none', color: '#d50000', cursor: 'pointer', fontSize: '0.75rem', padding: 0, fontWeight: 'bold' }}
@@ -3412,7 +3412,7 @@ export default function Home() {
           >
             <div 
               className="guide-inner-wrap" 
-              style={{ padding: '40px', transform: 'translateY(-10vh)', position: 'relative' }}
+              style={{ padding: '40px', transform: 'translateY(-10vh)', position: 'relative', border: '2px solid #555555' }}
               onClick={e => e.stopPropagation()}
             >
               {/* Modern Cyberpunk Close Button in the panel */}
