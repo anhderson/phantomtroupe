@@ -44,6 +44,24 @@ const getProjectScreenshots = (app: { name: string; fullName: string }) => {
   });
 };
 
+const getBrasaoVisualStyle = (num: number): { size: string; tx: string; ty: string } => {
+  switch (num) {
+    case 1:  return { size: '84%', tx: '0%',    ty: '1%' };
+    case 2:  return { size: '86%', tx: '0%',    ty: '1%' };
+    case 3:  return { size: '88%', tx: '0%',    ty: '1.5%' };
+    case 4:  return { size: '88%', tx: '0%',    ty: '6%' };
+    case 5:  return { size: '88%', tx: '0%',    ty: '5%' };
+    case 6:  return { size: '96%', tx: '0%',    ty: '-2%' };   // 666 diminuir quase nada
+    case 7:  return { size: '84%', tx: '-1.5%', ty: '0%' };
+    case 8:  return { size: '86%', tx: '0%',    ty: '2.5%' };
+    case 9:  return { size: '76%', tx: '0%',    ty: '3%' };    // 999 diminuir um pouco mais
+    case 10: return { size: '72%', tx: '0%',    ty: '-1.5%' }; // 101010 diminuir mais um pouco
+    case 11: return { size: '88%', tx: '0%',    ty: '3.5%' };
+    case 12: return { size: '86%', tx: '-1.5%', ty: '1.5%' };
+    default: return { size: '85%', tx: '0%',    ty: '0%' };
+  }
+};
+
 const APPS = [
   { 
     id: 1, 
@@ -1958,7 +1976,8 @@ export default function Home() {
                 >
                   {APPS.map((app, index) => {
                     const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
-                    const brasaoNum = index + 1;
+                    const brasaoNum = index + 1;
+
                     const brasaoSrc = `/Brasoes/${brasaoNum}${brasaoNum}${brasaoNum}.png`;
 
                     return (
@@ -2019,9 +2038,7 @@ export default function Home() {
                         </AnimatePresence>
 
                         {/* 3. Imagem do Brasão (/Brasoes/XXX.png) tomando a forma */}
-                        <motion.img
-                          src={brasaoSrc}
-                          alt={`${app.fullName} Brasão`}
+                        <motion.div
                           title={`${app.fullName} Brasão`}
                           className="cute-welcome-project-icon"
                           animate={{
@@ -2035,10 +2052,25 @@ export default function Home() {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            objectFit: 'contain',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            overflow: 'hidden',
                             zIndex: 5
                           }}
-                        />
+                        >
+                          <img
+                            src={brasaoSrc}
+                            alt={`${app.fullName} Brasão`}
+                            style={{
+                              width: getBrasaoVisualStyle(brasaoNum).size,
+                              height: getBrasaoVisualStyle(brasaoNum).size,
+                              objectFit: 'contain',
+                              transform: `translate(${getBrasaoVisualStyle(brasaoNum).tx}, ${getBrasaoVisualStyle(brasaoNum).ty})`,
+                              pointerEvents: 'none'
+                            }}
+                          />
+                        </motion.div>
                       </div>
                     );
                   })}
@@ -3237,7 +3269,8 @@ export default function Home() {
               >
                 {APPS.map((app, index) => {
                   const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
-                  const brasaoNum = index + 1;
+                  const brasaoNum = index + 1;
+
                     const brasaoSrc = `/Brasoes/${brasaoNum}${brasaoNum}${brasaoNum}.png`;
 
                   return (
@@ -3298,9 +3331,7 @@ export default function Home() {
                       </AnimatePresence>
 
                       {/* 3. Imagem do Brasão (/Brasoes/XXX.png) tomando a forma */}
-                      <motion.img
-                        src={brasaoSrc}
-                        alt={`${app.fullName} Brasão`}
+                      <motion.div
                         title={`${app.fullName} Brasão`}
                         className="cute-welcome-project-icon"
                         animate={{
@@ -3314,10 +3345,25 @@ export default function Home() {
                           left: 0,
                           width: '100%',
                           height: '100%',
-                          objectFit: 'contain',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          overflow: 'hidden',
                           zIndex: 5
                         }}
-                      />
+                      >
+                        <img
+                          src={brasaoSrc}
+                          alt={`${app.fullName} Brasão`}
+                          style={{
+                            width: getBrasaoVisualStyle(brasaoNum).size,
+                            height: getBrasaoVisualStyle(brasaoNum).size,
+                            objectFit: 'contain',
+                            transform: `translate(${getBrasaoVisualStyle(brasaoNum).tx}, ${getBrasaoVisualStyle(brasaoNum).ty})`,
+                            pointerEvents: 'none'
+                          }}
+                        />
+                      </motion.div>
                     </div>
                   );
                 })}
