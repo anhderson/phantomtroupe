@@ -1596,7 +1596,7 @@ export default function Home() {
       </div>
 
       {/* Global Connection Counter */}
-      {visitCount !== null && (
+      {visitCount !== null && !showWorldometer && (
         <div 
           className={`global-visit-counter ${showCounterLabel ? 'with-label' : 'compact'}`}
           onClick={() => setShowCounterLabel(!showCounterLabel)}
@@ -1612,11 +1612,11 @@ export default function Home() {
       {/* Ajudas e Doações Button (Top Left - Symmetrical to Seja Membro) */}
       <motion.div 
         className="donations-trigger"
-        whileHover={selectedApp ? {} : { scale: 1.1 }}
-        whileTap={selectedApp ? {} : { scale: 0.9 }}
+        whileHover={(selectedApp || showWorldometer) ? {} : { scale: 1.1 }}
+        whileTap={(selectedApp || showWorldometer) ? {} : { scale: 0.9 }}
         animate={{ 
-          opacity: selectedApp ? 0 : 1,
-          pointerEvents: selectedApp ? 'none' : 'auto'
+          opacity: (selectedApp || showWorldometer) ? 0 : 1,
+          pointerEvents: (selectedApp || showWorldometer) ? 'none' : 'auto'
         }}
         transition={{ duration: 0.3 }}
         onClick={() => setShowDonations(true)}
@@ -1725,11 +1725,11 @@ export default function Home() {
       {/* Seja Membro Button */}
       <motion.div 
         className="history-trigger members-trigger"
-        whileHover={selectedApp ? {} : { scale: 1.1 }}
-        whileTap={selectedApp ? {} : { scale: 0.9 }}
+        whileHover={(selectedApp || showWorldometer) ? {} : { scale: 1.1 }}
+        whileTap={(selectedApp || showWorldometer) ? {} : { scale: 0.9 }}
         animate={{ 
-          opacity: selectedApp ? 0 : 1,
-          pointerEvents: selectedApp ? 'none' : 'auto'
+          opacity: (selectedApp || showWorldometer) ? 0 : 1,
+          pointerEvents: (selectedApp || showWorldometer) ? 'none' : 'auto'
         }}
         transition={{ duration: 0.3 }}
         onClick={() => setShowMembers(true)}
@@ -1806,11 +1806,11 @@ export default function Home() {
       {/* Worldometer Button (Planet Earth) */}
       <motion.div 
         className="planet-trigger"
-        whileHover={selectedApp ? {} : { scale: 1.1 }}
-        whileTap={selectedApp ? {} : { scale: 0.9 }}
+        whileHover={(selectedApp || showWorldometer) ? {} : { scale: 1.1 }}
+        whileTap={(selectedApp || showWorldometer) ? {} : { scale: 0.9 }}
         animate={{ 
-          opacity: selectedApp ? 0 : 1,
-          pointerEvents: selectedApp ? 'none' : 'auto'
+          opacity: (selectedApp || showWorldometer) ? 0 : 1,
+          pointerEvents: (selectedApp || showWorldometer) ? 'none' : 'auto'
         }}
         transition={{ duration: 0.3 }}
         onClick={() => { setShowGeneralNews(!showGeneralNews); setNewsTab('select'); }}
