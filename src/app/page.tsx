@@ -1934,7 +1934,7 @@ export default function Home() {
                 >
                   {APPS.map((app, index) => {
                     const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
-                    const brasaoSrc = `/Brasoes/${app.id}.png`;
+                    const brasaoSrc = `/Brasoes/${app.id}${app.id}${app.id}.png`;
 
                     return (
                       <div 
@@ -1993,7 +1993,7 @@ export default function Home() {
                           )}
                         </AnimatePresence>
 
-                        {/* 3. Imagem do Brasão (/Brasoes/X.png) tomando a forma */}
+                        {/* 3. Imagem do Brasão (/Brasoes/XXX.png) tomando a forma */}
                         <motion.img
                           src={brasaoSrc}
                           alt={`${app.fullName} Brasão`}
@@ -2010,6 +2010,7 @@ export default function Home() {
                             left: 0,
                             width: '100%',
                             height: '100%',
+                            objectFit: 'contain',
                             zIndex: 5
                           }}
                         />
@@ -3211,7 +3212,7 @@ export default function Home() {
               >
                 {APPS.map((app, index) => {
                   const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
-                  const brasaoSrc = `/Brasoes/${app.id}.png`;
+                  const brasaoSrc = `/Brasoes/${app.id}${app.id}${app.id}.png`;
 
                   return (
                     <div 
@@ -3270,7 +3271,7 @@ export default function Home() {
                         )}
                       </AnimatePresence>
 
-                      {/* 3. Imagem do Brasão (/Brasoes/X.png) tomando a forma */}
+                      {/* 3. Imagem do Brasão (/Brasoes/XXX.png) tomando a forma */}
                       <motion.img
                         src={brasaoSrc}
                         alt={`${app.fullName} Brasão`}
@@ -3287,6 +3288,7 @@ export default function Home() {
                           left: 0,
                           width: '100%',
                           height: '100%',
+                          objectFit: 'contain',
                           zIndex: 5
                         }}
                       />
