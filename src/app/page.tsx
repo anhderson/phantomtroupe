@@ -2910,22 +2910,32 @@ export default function Home() {
                           RESUMO DOS 12 PROJETOS
                         </h3>
                         {[
-                          { name: "Phantom Troupe", desc: "Onde a ideia se tornou movimento" },
-                          { name: "Project Zero", desc: "Onde os as idéias dos integrantes começam a se tornar realidade" },
-                          { name: "Zero Signal", desc: "Ambiente virtual de comunicaçao, um aplicativo de chamadas de voz" },
-                          { name: "Zero Day", desc: "Ambiente virtual de comunicação, rede social para expressão indivudual personalizada." },
-                          { name: "Zero Espaço", desc: "Ferramenta de apoio e potencialização emocional e compreensão interna para evolução" },
-                          { name: "Zero FaithFully", desc: "Ferramenta de estudos e expressão, biblioteca online grátis e livre" },
-                          { name: "Zero Synapses", desc: "Corporação e união descentralizada, desenvolvimento de projetos reais com fins lucrativos" },
-                          { name: "Zero Mind", desc: "Em construção (Futuro ambiente de produção de artes em geral)" },
-                          { name: "Zero Infinity", desc: "Em construção (Futuras ferramentas de apoio desenvolvidas pela fraternidade)" },
-                          { name: "Zero Pay", desc: "Em construção (Fundo financeiro e administrativo e administração financeira)" },
-                          { name: "Zero Control", desc: "Em construção (Missões com recompensas financeiras da fraternidade)" },
-                          { name: "Zero Ground", desc: "Em construção (Módulo que conecta tudo, cria a partir do tudo para todos)" }
+                          { name: "Phantom Troupe", desc: "Onde a ideia se tornou movimento", color: "#ffffff", isPT: true },
+                          { name: "Project Zero", desc: "Onde os as idéias dos integrantes começam a se tornar realidade", color: "#FF00CC" },
+                          { name: "Zero Signal", desc: "Ambiente virtual de comunicaçao, um aplicativo de chamadas de voz", color: "#8000FF" },
+                          { name: "Zero Day", desc: "Ambiente virtual de comunicação, rede social para expressão indivudual personalizada.", color: "#FF80EE" },
+                          { name: "Zero Espaço", desc: "Ferramenta de apoio e potencialização emocional e compreensão interna para evolução", color: "#0040FF" },
+                          { name: "Zero FaithFully", desc: "Ferramenta de estudos e expressão, biblioteca online grátis e livre", color: "#F0FF00" },
+                          { name: "Zero Synapses", desc: "Corporação e união descentralizada, desenvolvimento de projetos reais com fins lucrativos", color: "#FFBF00" },
+                          { name: "Zero Mind", desc: "Em construção (Futuro ambiente de produção de artes em geral)", color: "#00E68A" },
+                          { name: "Zero Infinity", desc: "Em construção (Futuras ferramentas de apoio desenvolvidas pela fraternidade)", color: "#FF6600" },
+                          { name: "Zero Pay", desc: "Em construção (Fundo financeiro e administrativo e administração financeira)", color: "#BFFF00" },
+                          { name: "Zero Control", desc: "Em construção (Missões com recompensas financeiras da fraternidade)", color: "#FF0000" },
+                          { name: "Zero Ground", desc: "Em construção (Módulo que conecta tudo, cria a partir do tudo para todos)", color: "#00DFFF" }
                         ].map((proj, idx) => (
-                          <div key={idx} style={{ background: '#ffffff', borderRadius: '6px', padding: '10px 12px', borderLeft: '4px solid rgba(255, 255, 255, 0.45)', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)' }}>
-                            <span style={{ color: '#c70066', fontWeight: 'bold', fontSize: '0.9rem', display: 'block' }}>{proj.name}</span>
-                            <span style={{ color: '#000000', fontSize: '0.86rem', display: 'block', marginTop: '3px', lineHeight: '1.35', fontWeight: '500' }}>{proj.desc}</span>
+                          <div
+                            key={idx}
+                            style={{
+                              background: proj.isPT ? '#0a0a0a' : '#ffffff',
+                              borderRadius: '6px',
+                              padding: '10px 12px',
+                              borderLeft: proj.isPT ? '4px solid #ffffff' : '4px solid rgba(255, 255, 255, 0.45)',
+                              border: proj.isPT ? '1px solid rgba(255, 255, 255, 0.25)' : undefined,
+                              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)'
+                            }}
+                          >
+                            <span style={{ color: proj.color, fontWeight: 'bold', fontSize: '0.9rem', display: 'block' }}>{proj.name}</span>
+                            <span style={{ color: proj.isPT ? '#cccccc' : '#000000', fontSize: '0.86rem', display: 'block', marginTop: '3px', lineHeight: '1.35', fontWeight: '500' }}>{proj.desc}</span>
                           </div>
                         ))}
                         <p style={{ marginTop: '10px', fontSize: '0.85rem', color: '#cccccc', fontStyle: 'italic', textAlign: 'center', lineHeight: '1.4', padding: '0 5px' }}>
