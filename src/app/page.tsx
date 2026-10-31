@@ -1242,7 +1242,7 @@ export default function Home() {
 
   return (
     <main 
-      className={`black-hole-container ${isGlitching ? 'cyber-blackout-active' : ''} ${isSlowMotion ? 'slow-mo-active' : ''} theme-${currentTheme}`}
+      className={`black-hole-container ${isGlitching ? 'cyber-blackout-active' : ''} theme-${currentTheme}`}
       onClick={handleBackgroundClick}
     >
       {/* SVG ClipPaths definitions */}
@@ -1258,7 +1258,7 @@ export default function Home() {
       <canvas ref={canvasRef} className="reveal-canvas" />
 
       {/* Orbital HUD */}
-      <div className={`survival-hud ${isSlowMotion ? 'hud-highlight' : ''}`}>
+      <div className="survival-hud">
         {/* Botão de Troca de Temas (Círculo Compacto no Menu Superior Esquerdo) */}
         <button
           onClick={(e) => {
@@ -1450,8 +1450,10 @@ export default function Home() {
                       className="particle" 
                       style={{ 
                         animationDelay: `${index * 0.4}s`,
-                        backgroundColor: app.color || 'var(--primary)',
-                        boxShadow: `0 0 10px ${app.color || 'var(--primary)'}`
+                        backgroundColor: isProcessing ? ((app as any).scouterColor || '#ffffff') : (app.color || 'var(--primary)'),
+                        boxShadow: isProcessing
+                          ? `0 0 12px ${(app as any).scouterColor || '#ffffff'}, 0 0 22px ${(app as any).scouterColor || '#ffffff'}`
+                          : `0 0 10px ${app.color || 'var(--primary)'}`
                       }}
                     ></div>
                   </div>
