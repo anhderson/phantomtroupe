@@ -50,7 +50,7 @@ const APPS = [
     name: "PT", 
     fullName: "Phantom Troupe Fraternidade", 
     subName: "Phantom Troupe Fraternidade",
-    color: "#FF007F", 
+    color: "#ffffff", 
     desc: "Orquestrador principal da rede neural.",
     longDesc: `ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 𝔽𝖗𝖆𝖙𝖊𝖗𝖓𝖎𝖉𝖆𝖉𝖊\nA Fraternidade que nasceu de uma ideia e começou a se tornar realidade\n\nAℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 não nasceu em um único dia. Ela nasceu primeiro como uma ideia, um sentimento e uma visão que permaneceu viva durante anos.\n\nHá praticamente sete anos, surgiu o desejo de criar algo diferente: um espaço onde pessoas pudessem se encontrar, compartilhar experiências, desenvolver suas capacidades e, acima de tudo, não precisassem caminhar sozinhas.\n\nAgora, em seu oitavo ano de existência como ideia, essa visão finalmente começou a ganhar movimento, identidade e forma.\n\nNo dia 04/04/2026, a ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 iniciou oficialmente sua jornada como uma fraternidade em construção.\n\nDesde então, seu propósito tem sido simples em sua essência, mas imenso em seu significado:\n\nUnir corações e mentes em prol uns dos outros.\n\nAcreditamos que cada pessoa possui uma história, um conhecimento, uma habilidade, uma dor, um sonho e algo que pode oferecer ao mundo. Dentro da ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊, ninguém precisa ser apenas espectador. Todos podem, de alguma forma, participar da construção.\n\nAlguns chegam para ensinar.\nOutros chegam para aprender.\nAlguns chegam para ajudar.\nOutros, inicialmente, precisam ser ajudados.\nExistem aqueles que praticam, aqueles que criam, aqueles que dividem, aqueles que doam e aqueles que, simplesmente, encontram um lugar onde podem começar novamente.\n\nE é justamente através dessa troca que a nossa fraternidade cresce.\n\nNosso objetivo nunca foi determinar um único destino para todos. Pelo contrário: queremos que cada integrante tenha a oportunidade de encontrar o seu próprio caminho, enquanto também contribui para que outras pessoas encontrem os delas.\n\nChegar juntos, quando possível. Chegar individualmente, quando necessário. Mas nunca deixar de acreditar que podemos ajudar uns aos outros a chegar a algum lugar.\n\nA ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 está sendo construída através da união de todos que acreditam nessa proposta. Cada conversa, atividade, projeto, encontro, aprendizado, criação e experiência compartilhada se torna uma parte daquilo que estamos construindo.\n\nNossa base está nas práticas psicossociais saudáveis, livres e divertidas, utilizando diferentes formas de expressão, convivência e desenvolvimento humano. Queremos criar experiências que possam aproximar pessoas e estimular o crescimento através da arte, música, poesia, desenho, criatividade, diálogo, aprendizado, apoio mútuo e convivência.\n\nAcreditamos que evoluir não precisa significar caminhar sozinho.\n\nAcreditamos que aprender pode ser divertido.\n\nAcreditamos que ensinar também é aprender.\n\nAcreditamos que ajudar alguém não diminui quem ajuda — fortalece ambos.\n\nE acreditamos que uma comunidade pode ser mais do que apenas um grupo de pessoas reunidas por interesses semelhantes. Ela pode se tornar uma fraternidade, onde diferentes indivíduos, histórias e capacidades encontram espaço para coexistir, criar e construir algo maior juntos.\n\nA ℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊 ainda está em seus primeiros passos.\n\nNão nos definimos como uma obra pronta.\n\nSomos uma construção.\n\nUma ideia que resistiu ao tempo.\nUm propósito que começou a ganhar movimento.\nUma fraternidade formada por pessoas diferentes, mas conectadas pela possibilidade de construir, aprender, criar e evoluir juntas.\n\nO que já foi construído até aqui representa apenas o início.\n\nPorque a Phantom Troupe não pertence a uma única pessoa.\n\nEla é construída por todos aqueles que chegam, permanecem, contribuem, ensinam, aprendem, ajudam e permitem ser ajudados.\n\nE enquanto existirem pessoas dispostas a unir seus corações e suas mentes em prol umas das outras, a Phantom Troupe continuará existindo, crescendo e encontrando novos caminhos.\n\nℙ𝖍𝖆𝖓𝖙𝖔𝖒 𝕋𝖗𝖔𝖚𝖕𝖊\n\nTudo que é grande ou poderoso é composto de "pequenas" partes.`,
     tech: "JS, Java, Json, md, png, svg, html, css",
@@ -1234,14 +1234,14 @@ export default function Home() {
             height: '18px',
             borderRadius: '50%',
             cursor: 'pointer',
-            border: currentTheme === 1 ? '2px solid #ff007f' :
-                    currentTheme === 2 ? '2px solid #ff007f' :
-                    currentTheme === 3 ? '2px solid #e040fb' : '2px solid #b39ddb',
+            border: currentTheme === 1 ? '2px solid #ffffff' :
+                    currentTheme === 2 ? '2px solid #ffffff' :
+                    currentTheme === 3 ? '2px solid #cccccc' : '2px solid #cccccc',
             background: currentTheme === 1 ? 'radial-gradient(circle, #e0e0e0 0%, #555555 100%)' :
-                        currentTheme === 2 ? 'radial-gradient(circle, #ff007f 0%, #111111 100%)' :
-                        currentTheme === 3 ? 'radial-gradient(circle, #e040fb 0%, #6a1b9a 100%)' :
-                        'radial-gradient(circle, #d1c4e9 0%, #311b92 100%)',
-            boxShadow: currentTheme === 3 ? '0 0 10px #e040fb' : currentTheme === 4 ? '0 0 10px #b39ddb' : '0 0 10px #ff007f',
+                        currentTheme === 2 ? 'radial-gradient(circle, #ffffff 0%, #111111 100%)' :
+                        currentTheme === 3 ? 'radial-gradient(circle, #cccccc 0%, #333333 100%)' :
+                        'radial-gradient(circle, #e0e0e0 0%, #111111 100%)',
+            boxShadow: currentTheme === 3 ? '0 0 10px #ffffff' : currentTheme === 4 ? '0 0 10px #888888' : '0 0 10px #333333',
             marginRight: '10px',
             alignSelf: 'center',
             zIndex: 30,
@@ -1251,10 +1251,10 @@ export default function Home() {
             transition: 'all 0.3s ease'
           }}
           title={
-            currentTheme === 1 ? 'Tema 1: Manhã (06h-12h) - Modo Claro / Cinza' :
-            currentTheme === 2 ? 'Tema 2: Tarde (12h-18h) - Modo Dark Rosa' :
-            currentTheme === 3 ? 'Tema 3: Noite (18h-00h) - Modo Roxo Neon' :
-            'Tema 4: Madrugada (00h-06h) - Modo Roxo Pastel'
+            currentTheme === 1 ? 'Tema 1: Manhã (06h-12h) - Modo Claro / Branco e Cinza' :
+            currentTheme === 2 ? 'Tema 2: Tarde (12h-18h) - Modo Grafite / Cinza Metálico' :
+            currentTheme === 3 ? 'Tema 3: Noite (18h-00h) - Modo Dark Neon / Preto e Branco' :
+            'Tema 4: Madrugada (00h-06h) - Modo Sombra / Cinza Escuro'
           }
         />
 
@@ -1286,7 +1286,7 @@ export default function Home() {
           <span 
             className="hud-value clock-value"
             onClick={() => setShowTimeSelector(true)}
-            style={{ color: '#FF007F', textShadow: '0 0 10px rgba(255, 0, 127, 0.4)' }}
+            style={{ color: '#ffffff', textShadow: '0 0 10px rgba(255, 255, 255, 0.4)' }}
           >
             {currentTime.toLocaleTimeString('pt-BR', { timeZone: selectedLocation.tz })}
           </span>
@@ -1354,8 +1354,8 @@ export default function Home() {
                     style={{ 
                       width: 'var(--orbit-radius)',
                       transform: `rotate(${angle}deg)`,
-                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#FF007F' : 'rgba(255, 0, 127, 0.15)',
-                      boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #FF007F' : 'none',
+                      backgroundColor: (isProcessing || shouldGlobalFlash) ? '#ffffff' : 'rgba(255, 255, 255, 0.15)',
+                      boxShadow: (isProcessing || shouldGlobalFlash) ? '0 0 15px #ffffff' : 'none',
                       opacity: shouldGlobalFlash ? 0.8 : 1,
                       transition: 'all 0.2s ease-out'
                     }}
@@ -1365,7 +1365,7 @@ export default function Home() {
                     style={{ 
                       width: 'calc(var(--orbit-radius) - (var(--node-size) / 2))',
                       transform: `rotate(${angle}deg)`,
-                      background: `linear-gradient(90deg, rgba(255, 0, 127, 0.05) 0%, ${app.color || 'var(--primary)'} 100%)`, 
+                      background: `linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, ${app.color || 'var(--primary)'} 100%)`, 
                       opacity: 0.3
                     }}
                   >
@@ -1407,7 +1407,7 @@ export default function Home() {
                       left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       animationDelay: `${index * 0.4}s`,
-                      '--custom-color': (isProcessing || isPTProcessing) ? '#FF007F' : (app.color || 'var(--primary)'),
+                      '--custom-color': (isProcessing || isPTProcessing) ? '#ffffff' : (app.color || 'var(--primary)'),
                       '--node-angle': `${angle}deg`,
                       '--current-rotation': `${rotation}deg`
                     } as any}
@@ -1476,7 +1476,7 @@ export default function Home() {
         onClick={() => setShowDonations(true)}
       >
         <div className="history-sphere donation-heart-shape" style={{ width: '81px', height: '81px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg viewBox="0 0 1 1" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'drop-shadow(0 0 10px rgba(255, 0, 127, 0.6))', zIndex: 1, overflow: 'visible' }}>
+          <svg viewBox="0 0 1 1" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6))', zIndex: 1, overflow: 'visible' }}>
             {/* Secondary Fine Silver Outer Border in Heart Shape */}
             <path 
               d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" 
@@ -1494,8 +1494,8 @@ export default function Home() {
             {/* Main Heart Path (Stroke thickness reduced by 50%: 0.013 -> 0.0065) */}
             <path 
               d="M 0.5 0.9 C 0.1 0.5 -0.1 0.2 0.1 0.05 C 0.25 -0.1 0.45 0.05 0.5 0.2 C 0.55 0.05 0.75 -0.1 0.9 0.05 C 1.1 0.2 0.9 0.5 0.5 0.9 Z" 
-              fill="rgba(255, 0, 127, 0.15)" 
-              stroke="#FF007F" 
+              fill="rgba(255, 255, 255, 0.15)" 
+              stroke="#ffffff" 
               strokeWidth="0.0065" 
               strokeLinecap="round" 
               strokeLinejoin="round"
@@ -1510,11 +1510,11 @@ export default function Home() {
               color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
               textShadow: isGlitching 
                 ? [
-                    '0 0 10px #FF007F, 0 0 20px #FF007F',
+                    '0 0 10px #ffffff, 0 0 20px #ffffff',
                     '0 0 10px #808080, 0 0 20px #808080',
                     '0 0 10px #ffffff, 0 0 20px #ffffff'
                   ]
-                : '0 0 10px #FF007F, 0 0 15px rgba(255, 0, 127, 0.3)'
+                : '0 0 10px #ffffff, 0 0 15px rgba(255, 255, 255, 0.3)'
             }}
             transition={{ 
               duration: isGlitching ? 0.3 : 2,
@@ -1600,11 +1600,11 @@ export default function Home() {
               color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
               textShadow: isGlitching 
                 ? [
-                    '0 0 10px #FF007F, 0 0 20px #FF007F',
+                    '0 0 10px #ffffff, 0 0 20px #ffffff',
                     '0 0 10px #808080, 0 0 20px #808080',
                     '0 0 10px #ffffff, 0 0 20px #ffffff'
                   ]
-                : '0 0 10px #FF007F, 0 0 15px rgba(255, 0, 127, 0.3)'
+                : '0 0 10px #ffffff, 0 0 15px rgba(255, 255, 255, 0.3)'
             }}
             transition={{ 
               duration: isGlitching ? 0.3 : 2,
@@ -1681,11 +1681,11 @@ export default function Home() {
               color: isGlitching ? ["#ffffff", "#808080", "#ffffff", "#a0a0a0", "#ffffff"] : "#ffffff",
               textShadow: isGlitching 
                 ? [
-                    '0 0 10px #FF007F, 0 0 20px #FF007F',
+                    '0 0 10px #ffffff, 0 0 20px #ffffff',
                     '0 0 10px #808080, 0 0 20px #808080',
                     '0 0 10px #ffffff, 0 0 20px #ffffff'
                   ]
-                : '0 0 10px #FF007F, 0 0 15px rgba(255, 0, 127, 0.3)'
+                : '0 0 10px #ffffff, 0 0 15px rgba(255, 255, 255, 0.3)'
             }}
             transition={{ 
               duration: isGlitching ? 0.3 : 2,
@@ -1817,7 +1817,7 @@ export default function Home() {
                   left: '-25px',
                   right: '-25px',
                   bottom: '-25px',
-                  background: 'radial-gradient(circle, rgba(255, 0, 127, 0.45) 0%, rgba(255, 0, 127, 0.18) 60%, transparent 95%)',
+                  background: 'radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.18) 60%, transparent 95%)',
                   filter: 'blur(35px)',
                   borderRadius: '35px',
                   zIndex: -1,
@@ -1983,10 +1983,10 @@ export default function Home() {
                       const isRevealed = mobileAutoRevealed || hoveredPillar === pilar.id || clickedPillars.includes(pilar.id);
                       const isHovered = hoveredPillar === pilar.id;
                       let pilarColor = 'var(--primary)';
-                      if (pilar.id === 1) pilarColor = '#ffb6c1';
-                      else if (pilar.id === 2) pilarColor = '#ff007f';
-                      else if (pilar.id === 3) pilarColor = '#d1c4e9';
-                      else if (pilar.id === 4) pilarColor = '#e040fb';
+                      if (pilar.id === 1) pilarColor = '#cccccc';
+                      else if (pilar.id === 2) pilarColor = '#ffffff';
+                      else if (pilar.id === 3) pilarColor = '#e0e0e0';
+                      else if (pilar.id === 4) pilarColor = '#cccccc';
 
                       const titleColor = isHovered ? pilarColor : 'var(--primary)';
 
@@ -2163,7 +2163,7 @@ export default function Home() {
                           style={{ 
                             padding: '15px', 
                             background: 'rgba(255, 255, 255, 0.75)', 
-                            border: '1px solid rgba(255, 0, 127, 0.2)', 
+                            border: '1px solid rgba(255, 255, 255, 0.2)', 
                             borderRadius: '6px',
                             display: 'flex',
                             flexDirection: 'column',
@@ -2174,7 +2174,7 @@ export default function Home() {
                             <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>{news.date}</span>
                             {isAdminAuth && (
                               <button 
-                                style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', padding: 0 }}
+                                style={{ background: 'transparent', border: 'none', color: '#666666', cursor: 'pointer', fontSize: '0.75rem', padding: 0 }}
                                 onClick={() => {
                                   setGeneralNewsList(prev => prev.filter(item => item.id !== news.id));
                                 }}
@@ -2191,7 +2191,7 @@ export default function Home() {
                   </div>
 
                   {/* Admin Area */}
-                  <div style={{ borderTop: '1px solid rgba(255, 101, 132, 0.2)', paddingTop: '15px', marginTop: '5px' }}>
+                  <div style={{ borderTop: '1px solid rgba(180, 180, 180, 0.2)', paddingTop: '15px', marginTop: '5px' }}>
                     {!isAdminAuth ? (
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         {!showAdminLoginInNews ? (
@@ -2261,7 +2261,7 @@ export default function Home() {
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                           <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)', letterSpacing: '1px' }}>ADICIONAR NOVA NOTÍCIA</span>
                           <button 
-                            style={{ background: 'transparent', border: 'none', color: '#ff0055', cursor: 'pointer', fontSize: '0.75rem', textDecoration: 'underline' }}
+                            style={{ background: 'transparent', border: 'none', color: '#666666', cursor: 'pointer', fontSize: '0.75rem', textDecoration: 'underline' }}
                             onClick={() => setIsAdminAuth(false)}
                           >
                             Sair do Painel
@@ -2342,7 +2342,7 @@ export default function Home() {
                           style={{ 
                             padding: '15px', 
                             background: 'rgba(40, 25, 65, 0.85)', 
-                            border: '1px solid rgba(179, 136, 255, 0.4)', 
+                            border: '1px solid rgba(200, 200, 200, 0.4)', 
                             borderRadius: '6px',
                             display: 'flex',
                             flexDirection: 'column',
@@ -2351,18 +2351,18 @@ export default function Home() {
                           }}
                         >
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#d1c4e9', letterSpacing: '1px' }}>{record.date}</span>
-                            <span style={{ fontSize: '0.65rem', color: '#d1c4e9', border: '1px solid #b388ff', background: 'rgba(179, 136, 255, 0.25)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>{record.type}</span>
+                            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#e0e0e0', letterSpacing: '1px' }}>{record.date}</span>
+                            <span style={{ fontSize: '0.65rem', color: '#e0e0e0', border: '1px solid #888888', background: 'rgba(200, 200, 200, 0.25)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>{record.type}</span>
                           </div>
                           
                           <div style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
                             {record.image && (
-                              <div style={{ width: '90px', height: '90px', border: '1px solid rgba(179, 136, 255, 0.4)', borderRadius: '4px', overflow: 'hidden', background: '#fff', flexShrink: 0 }}>
+                              <div style={{ width: '90px', height: '90px', border: '1px solid rgba(200, 200, 200, 0.4)', borderRadius: '4px', overflow: 'hidden', background: '#fff', flexShrink: 0 }}>
                                 <img src={record.image} alt={record.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                               </div>
                             )}
                             <div style={{ flex: 1, minWidth: '150px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                              <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#d1c4e9', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>
+                              <h3 style={{ margin: '0', fontSize: '1.05rem', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>
                                 {record.title || "Doação Registrada"}
                               </h3>
                               <p style={{ margin: 0, fontSize: '0.8rem', color: '#000000' }}>
@@ -2374,7 +2374,7 @@ export default function Home() {
                                 </p>
                               )}
                               {record.testimonial && (
-                                <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#000000', fontStyle: 'italic', background: 'rgba(179, 136, 255, 0.15)', padding: '6px 10px', borderRadius: '4px', borderLeft: '3px solid #b388ff' }}>
+                                <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', lineHeight: '1.4', color: '#000000', fontStyle: 'italic', background: 'rgba(200, 200, 200, 0.15)', padding: '6px 10px', borderRadius: '4px', borderLeft: '3px solid #888888' }}>
                                   "{record.testimonial}"
                                 </p>
                               )}
@@ -2383,7 +2383,7 @@ export default function Home() {
 
                           {isAdminAuth && (
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px', borderTop: '1px dashed rgba(123, 31, 162, 0.2)', paddingTop: '5px' }}>
-                              <span style={{ fontSize: '0.75rem', color: '#6a1b9a' }}><strong style={{ color: '#4a148c' }}>Contato:</strong> {record.contact}</span>
+                              <span style={{ fontSize: '0.75rem', color: '#333333' }}><strong style={{ color: '#111111' }}>Contato:</strong> {record.contact}</span>
                               <button 
                                 style={{ background: 'transparent', border: 'none', color: '#d50000', cursor: 'pointer', fontSize: '0.75rem', padding: 0, fontWeight: 'bold' }}
                                 onClick={() => {
@@ -2731,7 +2731,7 @@ export default function Home() {
                       ))
                     ) : selectedApp.id === 1 ? (
                       <div className="node01-summary-container" style={{ textAlign: 'left', padding: '10px 5px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                        <h3 style={{ color: '#FF007F', fontSize: '0.95rem', fontFamily: "'Orbitron', sans-serif", borderBottom: '1px solid rgba(255, 0, 127, 0.3)', paddingBottom: '6px', marginBottom: '4px', letterSpacing: '0.5px', textAlign: 'center' }}>
+                        <h3 style={{ color: '#ffffff', fontSize: '0.95rem', fontFamily: "'Orbitron', sans-serif", borderBottom: '1px solid rgba(255, 255, 255, 0.3)', paddingBottom: '6px', marginBottom: '4px', letterSpacing: '0.5px', textAlign: 'center' }}>
                           RESUMO DOS 12 PROJETOS
                         </h3>
                         {[
@@ -2748,12 +2748,12 @@ export default function Home() {
                           { name: "Zero Control", desc: "Em construção (Missões com recompensas financeiras da fraternidade)" },
                           { name: "Zero Ground", desc: "Em construção (Módulo que conecta tudo, cria a partir do tudo para todos)" }
                         ].map((proj, idx) => (
-                          <div key={idx} style={{ background: '#ffffff', borderRadius: '6px', padding: '10px 12px', borderLeft: '4px solid rgba(255, 0, 127, 0.45)', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)' }}>
+                          <div key={idx} style={{ background: '#ffffff', borderRadius: '6px', padding: '10px 12px', borderLeft: '4px solid rgba(255, 255, 255, 0.45)', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)' }}>
                             <span style={{ color: '#c70066', fontWeight: 'bold', fontSize: '0.9rem', display: 'block' }}>{proj.name}</span>
                             <span style={{ color: '#000000', fontSize: '0.86rem', display: 'block', marginTop: '3px', lineHeight: '1.35', fontWeight: '500' }}>{proj.desc}</span>
                           </div>
                         ))}
-                        <p style={{ marginTop: '10px', fontSize: '0.85rem', color: '#ffb6c1', fontStyle: 'italic', textAlign: 'center', lineHeight: '1.4', padding: '0 5px' }}>
+                        <p style={{ marginTop: '10px', fontSize: '0.85rem', color: '#cccccc', fontStyle: 'italic', textAlign: 'center', lineHeight: '1.4', padding: '0 5px' }}>
                           Cada projeto tem seus Sub Projetos e Sub Grupos em construções e crescimento procedural sem fim.
                         </p>
                       </div>
@@ -2785,9 +2785,9 @@ export default function Home() {
                           transition={{ type: "spring", stiffness: 350, damping: 25 }}
                           style={{
                             height: '42px',
-                            background: 'rgba(255, 0, 127, 0.25)',
-                            border: '1.5px solid #FF007F',
-                            boxShadow: '0 0 14px rgba(255, 0, 127, 0.6), inset 0 0 8px rgba(255, 0, 127, 0.3)',
+                            background: 'rgba(255, 255, 255, 0.25)',
+                            border: '1.5px solid #ffffff',
+                            boxShadow: '0 0 14px rgba(255, 255, 255, 0.6), inset 0 0 8px rgba(255, 255, 255, 0.3)',
                             color: '#ffffff',
                             cursor: 'pointer',
                             display: 'flex',
@@ -2956,8 +2956,8 @@ export default function Home() {
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
               style={{
-                border: '1px solid #FF007F',
-                boxShadow: '0 0 30px rgba(255, 0, 127, 0.4), inset 0 0 15px rgba(255, 0, 127, 0.2)'
+                border: '1px solid #ffffff',
+                boxShadow: '0 0 30px rgba(255, 255, 255, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.2)'
               }}
             >
               <div className="cute-close-btn" onClick={() => setShowMotivacoesModal(false)}>×</div>
@@ -2967,7 +2967,7 @@ export default function Home() {
               </h2>
 
               <div className="cute-text-content" style={{ textAlign: 'left', maxHeight: '68vh', overflowY: 'auto', paddingRight: '8px', fontSize: '0.96rem' }}>
-                <p style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#FF007F', marginBottom: '14px', textAlign: 'center' }}>
+                <p style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#ffffff', marginBottom: '14px', textAlign: 'center' }}>
                   O Phantom Troupe é o coração de todo o ecossistema.
                 </p>
 
@@ -3005,7 +3005,7 @@ export default function Home() {
 
               <button 
                 className="cute-action-btn guide-page-btn btn-next"
-                style={{ marginTop: '20px', background: 'linear-gradient(135deg, #FF007F, #b30059)' }}
+                style={{ marginTop: '20px', background: 'linear-gradient(135deg, #ffffff, #222222)' }}
                 onClick={() => setShowMotivacoesModal(false)}
               >
                 Fechar ✕
@@ -3094,7 +3094,7 @@ export default function Home() {
                   left: '-25px',
                   right: '-25px',
                   bottom: '-25px',
-                  background: 'radial-gradient(circle, rgba(255, 0, 127, 0.45) 0%, rgba(255, 0, 127, 0.18) 60%, transparent 95%)',
+                  background: 'radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.18) 60%, transparent 95%)',
                   filter: 'blur(35px)',
                   borderRadius: '35px',
                   zIndex: -1,
@@ -3260,10 +3260,10 @@ export default function Home() {
                     const isRevealed = mobileAutoRevealed || hoveredPillar === pilar.id || clickedPillars.includes(pilar.id);
                     const isHovered = hoveredPillar === pilar.id;
                     let pilarColor = 'var(--primary)';
-                    if (pilar.id === 1) pilarColor = '#ffb6c1';
-                    else if (pilar.id === 2) pilarColor = '#ff007f';
-                    else if (pilar.id === 3) pilarColor = '#d1c4e9';
-                    else if (pilar.id === 4) pilarColor = '#e040fb';
+                    if (pilar.id === 1) pilarColor = '#cccccc';
+                    else if (pilar.id === 2) pilarColor = '#ffffff';
+                    else if (pilar.id === 3) pilarColor = '#e0e0e0';
+                    else if (pilar.id === 4) pilarColor = '#cccccc';
 
                     const titleColor = isHovered ? pilarColor : 'var(--primary)';
 
@@ -3367,17 +3367,17 @@ export default function Home() {
 
               <div className="guide-unified-content" style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', gap: '30px', transform: 'translateY(-2vh)' }}>
                 {/* 1. Seja Membro Form (at the top) */}
-                <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(255, 101, 132, 0.3)', borderRadius: '6px' }}>
+                <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(180, 180, 180, 0.3)', borderRadius: '6px' }}>
                   {hasRequestedJoin ? (
-                    <div className="join-success-msg" style={{ padding: '20px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #ff6584', borderRadius: '4px' }}>
-                      <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#ff007f', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
+                    <div className="join-success-msg" style={{ padding: '20px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #888888', borderRadius: '4px' }}>
+                      <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
                       <p style={{ margin: 0, fontSize: '0.85rem', color: '#333333', lineHeight: '1.4' }}>
                         Sua solicitação de participação no projeto foi enviada com sucesso!
                       </p>
                     </div>
                   ) : (
                     <>
-                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: 'var(--primary)', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255, 101, 132, 0.2)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: 'var(--primary)', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(180, 180, 180, 0.2)', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
                         SEJA MEMBRO
                       </h3>
                       <p style={{ marginBottom: '25px', textAlign: 'center', fontSize: '0.9rem', lineHeight: '1.5', color: '#333333' }}>
@@ -3394,7 +3394,7 @@ export default function Home() {
                         />
                         {joiningRoles.length > 0 && (
                           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center', margin: '4px 0 8px 0', width: '100%' }}>
-                            <span style={{ fontSize: '0.7rem', color: '#ff6584', fontFamily: 'Orbitron, sans-serif', width: '100%', textAlign: 'center', letterSpacing: '1px' }}>
+                            <span style={{ fontSize: '0.7rem', color: '#888888', fontFamily: 'Orbitron, sans-serif', width: '100%', textAlign: 'center', letterSpacing: '1px' }}>
                               FUNÇÕES SELECIONADAS ({joiningRoles.length}/2):
                             </span>
                             {joiningRoles.map((role) => (
@@ -3402,7 +3402,7 @@ export default function Home() {
                                 key={role} 
                                 onClick={() => setJoiningRoles(prev => prev.filter(r => r !== role))}
                                 style={{ 
-                                  background: '#ff6584', 
+                                  background: '#888888', 
                                   color: '#fff', 
                                   fontSize: '0.75rem', 
                                   padding: '4px 10px', 
@@ -3412,7 +3412,7 @@ export default function Home() {
                                   alignItems: 'center', 
                                   gap: '6px',
                                   fontFamily: 'Orbitron, sans-serif',
-                                  boxShadow: '0 2px 5px rgba(255, 101, 132, 0.4)'
+                                  boxShadow: '0 2px 5px rgba(180, 180, 180, 0.4)'
                                 }}
                                 title="Clique para remover"
                               >
@@ -3439,39 +3439,39 @@ export default function Home() {
                             }
                           }}
                         >
-                          <option value="" disabled style={{ color: '#ff6584', fontWeight: 'bold' }}>SELECIONE SUA FUNÇÃO (MÁXIMO 2)</option>
-                          <optgroup label="🎨 Artes Visuais" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Pintor","Ilustrador","Desenhista","Artista Visual","Muralista","Grafiteiro","Escultor","Fotógrafo","Colagista","Gravurista","Retratista","Colorista","Arte-Educador","Curador Artístico","Diretor de Arte"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <option value="" disabled style={{ color: '#333333', fontWeight: 'bold' }}>SELECIONE SUA FUNÇÃO (MÁXIMO 2)</option>
+                          <optgroup label="🎨 Artes Visuais" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Pintor","Ilustrador","Desenhista","Artista Visual","Muralista","Grafiteiro","Escultor","Fotógrafo","Colagista","Gravurista","Retratista","Colorista","Arte-Educador","Curador Artístico","Diretor de Arte"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="✍️ Escrita e Poesia" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Poeta","Escritor","Compositor","Cronista","Contista","Roteirista","Narrador","Letrista","Declamador","Slammer","Contador de Histórias","Criador Literário","Guardião das Palavras","Tecelão de Histórias"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="✍️ Escrita e Poesia" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Poeta","Escritor","Compositor","Cronista","Contista","Roteirista","Narrador","Letrista","Declamador","Slammer","Contador de Histórias","Criador Literário","Guardião das Palavras","Tecelão de Histórias"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="🎵 Música" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Compositor Musical","Músico","Cantor","Instrumentista","Produtor Musical","Beatmaker","DJ","Arranjador","Intérprete Musical","Criador Sonoro","Maestro","Regente","Pesquisador Musical"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="🎵 Música" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Compositor Musical","Músico","Cantor","Instrumentista","Produtor Musical","Beatmaker","DJ","Arranjador","Intérprete Musical","Criador Sonoro","Maestro","Regente","Pesquisador Musical"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="🎭 Teatro e Performance" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Ator","Atriz","Performista","Diretor Teatral","Dramaturgo","Cenógrafo","Figurinista","Coreógrafo","Dançarino","Intérprete","Artista Cênico","Mestre de Cerimônias"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="🎭 Teatro e Performance" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Ator","Atriz","Performista","Diretor Teatral","Dramaturgo","Cenógrafo","Figurinista","Coreógrafo","Dançarino","Intérprete","Artista Cênico","Mestre de Cerimônias"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="🎬 Audiovisual e Digital" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Cineasta","Videomaker","Editor de Vídeo","Animador","Motion Designer","Designer","Criador Digital","Diretor Criativo","Produtor Audiovisual","Streamer","Criador de Conteúdo","Documentarista"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="🎬 Audiovisual e Digital" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Cineasta","Videomaker","Editor de Vídeo","Animador","Motion Designer","Designer","Criador Digital","Diretor Criativo","Produtor Audiovisual","Streamer","Criador de Conteúdo","Documentarista"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="👑 Direção" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Fundador","Cofundador","Diretor Geral","Vice-Diretor"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="👑 Direção" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Fundador","Cofundador","Diretor Geral","Vice-Diretor"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="📋 Gestão" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Coordenador Geral","Coordenador de Núcleo","Gestor de Projetos","Administrador","Supervisor"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="📋 Gestão" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Coordenador Geral","Coordenador de Núcleo","Gestor de Projetos","Administrador","Supervisor"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="🤝 Comunidade" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Gestor de Pessoas","Moderador","Mediador","Coordenador de Membros","Mentor"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="🤝 Comunidade" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Gestor de Pessoas","Moderador","Mediador","Coordenador de Membros","Mentor"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="⚙️ Operações" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Organizador","Coordenador de Eventos","Gestor de Operações","Responsável por Parcerias"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="⚙️ Operações" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Organizador","Coordenador de Eventos","Gestor de Operações","Responsável por Parcerias"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="📢 Comunicação" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Coordenador de Comunicação","Gestor de Redes Sociais","Relações Públicas","Porta-Voz"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="📢 Comunicação" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Coordenador de Comunicação","Gestor de Redes Sociais","Relações Públicas","Porta-Voz"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
-                          <optgroup label="📊 Recursos e Estratégia" style={{ color: '#ff6584', fontWeight: 'bold' }}>
-                            {["Gestor Financeiro","Tesoureiro","Coordenador Estratégico"].map(r => <option key={r} value={r} style={{ background: '#fff0f3', color: '#ff6584', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
+                          <optgroup label="📊 Recursos e Estratégia" style={{ color: '#333333', fontWeight: 'bold' }}>
+                            {["Gestor Financeiro","Tesoureiro","Coordenador Estratégico"].map(r => <option key={r} value={r} style={{ background: '#f5f5f5', color: '#333333', fontWeight: 'bold' }}>{joiningRoles.includes(r) ? `✓ ${r} (SELECIONADO)` : r}</option>)}
                           </optgroup>
                         </select>
                         {/* Multi-Select de Projetos Interativo (Não fecha a lista ao clicar) */}
@@ -3638,7 +3638,7 @@ export default function Home() {
                 </div>
 
                 {/* Horizontal Divider Line */}
-                <div style={{ height: '1px', background: 'rgba(255, 101, 132, 0.2)', width: '100%', margin: '20px 0' }}></div>
+                <div style={{ height: '1px', background: 'rgba(180, 180, 180, 0.2)', width: '100%', margin: '20px 0' }}></div>
 
                 {/* 3. Registered Members List (at the bottom) */}
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
@@ -3663,9 +3663,9 @@ export default function Home() {
                       const dateText = member.birthDate || '04/04/2026';
 
                       return (
-                        <div key={i} className="member-card" style={{ padding: '16px', marginBottom: '12px', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 101, 132, 0.3)', borderRadius: '8px' }}>
+                        <div key={i} className="member-card" style={{ padding: '16px', marginBottom: '12px', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(180, 180, 180, 0.3)', borderRadius: '8px' }}>
                           {/* Top Row: Profissão à esquerda e Data à direita */}
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', fontSize: '0.82rem', color: '#ffb6c1', fontWeight: 'bold' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', fontSize: '0.82rem', color: '#cccccc', fontWeight: 'bold' }}>
                             <span>Profissão: {profText}</span>
                             <span>Data: {dateText}</span>
                           </div>
@@ -3674,7 +3674,7 @@ export default function Home() {
                           <h3 style={{ margin: '0 0 4px 0', fontSize: '1.25rem', color: '#ffffff', fontWeight: 'bold' }}>{member.name}</h3>
 
                           {/* Cargo/Função abaixo do nome */}
-                          <p style={{ margin: '0 0 10px 0', fontSize: '0.78rem', color: '#d1c4e9', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                          <p style={{ margin: '0 0 10px 0', fontSize: '0.78rem', color: '#e0e0e0', textTransform: 'uppercase', letterSpacing: '1px' }}>
                             {member.role}
                           </p>
 
@@ -3689,10 +3689,10 @@ export default function Home() {
                                     key={idx} 
                                     style={{ 
                                       fontSize: '0.78rem', 
-                                      color: '#ff007f', 
+                                      color: '#ffffff', 
                                       fontWeight: 'bold',
-                                      background: 'rgba(255, 0, 127, 0.12)',
-                                      border: '1px solid rgba(255, 0, 127, 0.35)',
+                                      background: 'rgba(255, 255, 255, 0.12)',
+                                      border: '1px solid rgba(255, 255, 255, 0.35)',
                                       padding: '3px 10px',
                                       borderRadius: '12px',
                                       display: 'inline-block'
@@ -3706,10 +3706,10 @@ export default function Home() {
                               <span 
                                 style={{ 
                                   fontSize: '0.78rem', 
-                                  color: '#ff007f', 
+                                  color: '#ffffff', 
                                   fontWeight: 'bold',
-                                  background: 'rgba(255, 0, 127, 0.12)',
-                                  border: '1px solid rgba(255, 0, 127, 0.35)',
+                                  background: 'rgba(255, 255, 255, 0.12)',
+                                  border: '1px solid rgba(255, 255, 255, 0.35)',
                                   padding: '3px 10px',
                                   borderRadius: '12px',
                                   display: 'inline-block'
@@ -3762,7 +3762,7 @@ export default function Home() {
               {/* Close Button */}
               <div 
                 className="close-btn-membros" 
-                style={{ position: 'absolute', top: '20px', right: '25px', fontSize: '2rem', color: '#ff6584', cursor: 'pointer' }}
+                style={{ position: 'absolute', top: '20px', right: '25px', fontSize: '2rem', color: '#888888', cursor: 'pointer' }}
                 onClick={() => { setShowDonations(false); setHasRequestedDonation(false); }}
               >
                 ×
@@ -3780,8 +3780,8 @@ export default function Home() {
                 </p>
 
                 {hasRequestedDonation ? (
-                  <div className="join-success-msg" style={{ padding: '25px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #ff6584', borderRadius: '4px' }}>
-                    <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#ff007f', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
+                  <div className="join-success-msg" style={{ padding: '25px', textAlign: 'center', background: 'rgba(255, 255, 255, 0.8)', border: '1px dashed #888888', borderRadius: '4px' }}>
+                    <h4 style={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff', fontSize: '1.1rem', margin: '0 0 10px 0', letterSpacing: '1px' }}>✓ SOLICITAÇÃO REGISTRADA</h4>
                     <p style={{ margin: 0, fontSize: '0.85rem', color: '#333333', lineHeight: '1.4' }}>
                       Sua proposta de ajuda/doação foi enviada com sucesso! Entraremos em contato em breve para alinhar os detalhes. Agradecemos muito pelo apoio! ❤️
                     </p>
@@ -3794,8 +3794,8 @@ export default function Home() {
                     </button>
                   </div>
                 ) : (
-                  <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(255, 101, 132, 0.3)', borderRadius: '6px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                    <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: 'var(--primary)', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255, 101, 132, 0.2)', paddingBottom: '10px', marginBottom: '10px', textAlign: 'center' }}>
+                  <div className="participation-section" style={{ width: '100%', padding: '25px', background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(180, 180, 180, 0.3)', borderRadius: '6px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                    <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1.1rem', color: 'var(--primary)', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(180, 180, 180, 0.2)', paddingBottom: '10px', marginBottom: '10px', textAlign: 'center' }}>
                       REGISTRAR DOAÇÃO
                     </h3>
                     
@@ -3831,13 +3831,13 @@ export default function Home() {
                       </select>
 
                       {donationType === "Apoio Financeiro (PIX)" && (
-                        <div className="pix-donation-box" style={{ background: 'rgba(255, 255, 255, 0.85)', border: '1px dashed #ff6584', borderRadius: '6px', padding: '15px', textAlign: 'center', width: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                        <div className="pix-donation-box" style={{ background: 'rgba(255, 255, 255, 0.85)', border: '1px dashed #888888', borderRadius: '6px', padding: '15px', textAlign: 'center', width: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
                           <p style={{ fontSize: '0.85rem', color: '#333333', margin: 0, lineHeight: '1.4' }}>
                             Escaneie o QR Code ou copie a chave CPF abaixo para realizar a transferência via Banco Inter:
                           </p>
                           
                           {/* QR Code Image */}
-                          <div style={{ background: '#fff', padding: '8px', borderRadius: '6px', border: '1px solid rgba(255,101,132,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '150px', height: '150px', boxShadow: '0 0 10px rgba(0,0,0,0.05)' }}>
+                          <div style={{ background: '#fff', padding: '8px', borderRadius: '6px', border: '1px solid rgba(180, 180, 180, 0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '150px', height: '150px', boxShadow: '0 0 10px rgba(0,0,0,0.05)' }}>
                             <img 
                               src="/pix_qrcode.jpg" 
                               alt="Banco Inter PIX QR Code" 
@@ -3845,10 +3845,10 @@ export default function Home() {
                             />
                           </div>
                           
-                          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', alignItems: 'center', background: 'rgba(255,255,255,0.9)', padding: '8px 12px', borderRadius: '4px', border: '1px solid rgba(255,101,132,0.3)', width: '100%', boxSizing: 'border-box' }}>
+                          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', alignItems: 'center', background: 'rgba(255,255,255,0.9)', padding: '8px 12px', borderRadius: '4px', border: '1px solid rgba(180, 180, 180, 0.3)', width: '100%', boxSizing: 'border-box' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', maxWidth: '70%', textAlign: 'left' }}>
-                              <span style={{ fontSize: '0.65rem', color: '#ff6584', fontWeight: 'bold', fontFamily: 'Orbitron, sans-serif' }}>CHAVE CPF (BANCO INTER)</span>
-                              <code style={{ fontSize: '0.9rem', color: '#ff3366', fontFamily: 'monospace', fontWeight: 'bold' }}>478.631.358-00</code>
+                              <span style={{ fontSize: '0.65rem', color: '#333333', fontWeight: 'bold', fontFamily: 'Orbitron, sans-serif' }}>CHAVE CPF (BANCO INTER)</span>
+                              <code style={{ fontSize: '0.9rem', color: '#555555', fontFamily: 'monospace', fontWeight: 'bold' }}>478.631.358-00</code>
                             </div>
                             <button 
                               onClick={() => {
@@ -3856,7 +3856,7 @@ export default function Home() {
                                 setCopiedPix(true);
                                 setTimeout(() => setCopiedPix(false), 2000);
                               }}
-                              style={{ background: '#ff6584', border: 'none', color: '#fff', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75rem', cursor: 'pointer', fontFamily: 'Orbitron, sans-serif', fontWeight: 'bold', alignSelf: 'center' }}
+                              style={{ background: '#888888', border: 'none', color: '#fff', padding: '8px 15px', borderRadius: '4px', fontSize: '0.75rem', cursor: 'pointer', fontFamily: 'Orbitron, sans-serif', fontWeight: 'bold', alignSelf: 'center' }}
                             >
                               {copiedPix ? "COPIADO!" : "COPIAR"}
                             </button>
@@ -3888,7 +3888,7 @@ export default function Home() {
                           A IMAGEM É OPCIONAL
                         </span>
                         {donationImage && (
-                          <div style={{ position: 'relative', width: '80px', height: '80px', border: '1px solid rgba(255, 101, 132, 0.4)', borderRadius: '4px', overflow: 'hidden', background: '#fff', marginTop: '4px' }}>
+                          <div style={{ position: 'relative', width: '80px', height: '80px', border: '1px solid rgba(180, 180, 180, 0.4)', borderRadius: '4px', overflow: 'hidden', background: '#fff', marginTop: '4px' }}>
                             <img src={donationImage} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             <button 
                               onClick={() => setDonationImage(null)}
@@ -4101,7 +4101,7 @@ export default function Home() {
               <div className="guide-unified-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
                 {!isAdminAuth ? (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', width: '100%', maxWidth: '300px' }}>
-                    <p style={{ color: '#FF007F', letterSpacing: '2px', fontSize: '0.9rem' }}>ACESSO RESTRITO</p>
+                    <p style={{ color: '#ffffff', letterSpacing: '2px', fontSize: '0.9rem' }}>ACESSO RESTRITO</p>
                     <input 
                       type="text" 
                       placeholder="ADMIN ID" 
@@ -4143,13 +4143,13 @@ export default function Home() {
                     >
                       AUTENTICAR ▷
                     </button>
-                    {authError && <span style={{ color: '#FF007F', fontSize: '0.8rem', letterSpacing: '1px' }}>CREDENCIAS INVÁLIDAS</span>}
+                    {authError && <span style={{ color: '#ffffff', fontSize: '0.8rem', letterSpacing: '1px' }}>CREDENCIAS INVÁLIDAS</span>}
                   </div>
                 ) : (
                   <div style={{ width: '100%', maxWidth: '600px', display: 'flex', flexDirection: 'column', gap: '30px' }}>
                     {/* Seção Membros */}
                     <div style={{ width: '100%' }}>
-                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#FF007F', letterSpacing: '2px', borderBottom: '1px solid rgba(255, 0, 127, 0.2)', paddingBottom: '8px', marginBottom: '15px', textAlign: 'center' }}>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#ffffff', letterSpacing: '2px', borderBottom: '1px solid rgba(255, 255, 255, 0.2)', paddingBottom: '8px', marginBottom: '15px', textAlign: 'center' }}>
                         MEMBROS PENDENTES
                       </h3>
                       {pendingRequests.length === 0 ? (
@@ -4157,11 +4157,11 @@ export default function Home() {
                       ) : (
                         <div className="members-list" style={{ width: '100%', maxHeight: '200px', overflowY: 'auto' }}>
                           {pendingRequests.map((req, i) => (
-                            <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 255, 255, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                               <div>
                                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '3px' }}>
-                                  <p style={{ color: '#FF007F', margin: '0', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '2px', fontWeight: 'bold' }}>{req.role}</p>
-                                  <span style={{ fontSize: '0.65rem', color: '#FF007F', border: '1px solid #FF007F', padding: '1px 4px', borderRadius: '4px' }}>{req.type}</span>
+                                  <p style={{ color: '#ffffff', margin: '0', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '2px', fontWeight: 'bold' }}>{req.role}</p>
+                                  <span style={{ fontSize: '0.65rem', color: '#ffffff', border: '1px solid #ffffff', padding: '1px 4px', borderRadius: '4px' }}>{req.type}</span>
                                 </div>
                                 <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#ffffff' }}>{req.name}</h3>
                                 {req.profession && <p style={{ margin: '3px 0 0 0', fontSize: '0.75rem', color: '#dddddd' }}><strong>Profissão:</strong> {req.profession}</p>}
@@ -4196,7 +4196,7 @@ export default function Home() {
 
                     {/* Seção Doações Pendentes */}
                     <div style={{ width: '100%' }}>
-                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#FF007F', letterSpacing: '2px', borderBottom: '1px solid rgba(255, 0, 127, 0.2)', paddingBottom: '8px', marginBottom: '15px', textAlign: 'center' }}>
+                      <h3 style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', color: '#ffffff', letterSpacing: '2px', borderBottom: '1px solid rgba(255, 255, 255, 0.2)', paddingBottom: '8px', marginBottom: '15px', textAlign: 'center' }}>
                         SOLICITAÇÕES PENDENTES
                       </h3>
                       {pendingDonations.length === 0 ? (
@@ -4204,10 +4204,10 @@ export default function Home() {
                       ) : (
                         <div className="members-list" style={{ width: '100%', maxHeight: '200px', overflowY: 'auto' }}>
                           {pendingDonations.map((don, i) => (
-                            <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 0, 127, 0.05)', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'stretch' }}>
+                            <div key={i} className="member-card" style={{ border: '1px solid rgba(255, 255, 255, 0.3)', padding: '12px', marginBottom: '8px', borderRadius: '4px', background: 'rgba(255, 255, 255, 0.05)', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'stretch' }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <div>
-                                  <span style={{ fontSize: '0.65rem', color: '#FF007F', border: '1px solid #FF007F', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>{don.type}</span>
+                                  <span style={{ fontSize: '0.65rem', color: '#ffffff', border: '1px solid #ffffff', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>{don.type}</span>
                                   <h3 style={{ margin: '5px 0 0 0', fontSize: '1.15rem', color: '#ffffff' }}>{don.name}</h3>
                                 </div>
                                 <div style={{ display: 'flex', gap: '8px', alignSelf: 'center' }}>
@@ -4250,9 +4250,9 @@ export default function Home() {
                                   </button>
                                 </div>
                               </div>
-                              <div style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', flexWrap: 'wrap', borderTop: '1px solid rgba(255, 0, 127, 0.1)', paddingTop: '10px' }}>
+                              <div style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', flexWrap: 'wrap', borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '10px' }}>
                                 {don.image && (
-                                  <div style={{ width: '60px', height: '60px', border: '1px solid rgba(255, 0, 127, 0.2)', borderRadius: '4px', overflow: 'hidden', background: '#fff', flexShrink: 0 }}>
+                                  <div style={{ width: '60px', height: '60px', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '4px', overflow: 'hidden', background: '#fff', flexShrink: 0 }}>
                                     <img src={don.image} alt={don.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                   </div>
                                 )}
@@ -4322,14 +4322,14 @@ export default function Home() {
                             <p style={{ color: '#a0a0a0', letterSpacing: '1px', fontSize: '0.85rem', textAlign: 'center' }}>NENHUM REGISTRO PUBLICADO NO MURAL</p>
                           ) : (
                             [...donationsList].reverse().map((rec) => (
-                              <div key={rec.id} style={{ border: '1px solid rgba(255, 0, 127, 0.3)', padding: '10px', marginBottom: '6px', borderRadius: '4px', background: 'rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <div key={rec.id} style={{ border: '1px solid rgba(255, 255, 255, 0.3)', padding: '10px', marginBottom: '6px', borderRadius: '4px', background: 'rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                                   <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#ffffff' }}>{rec.title} ({rec.name})</span>
                                   <span style={{ fontSize: '0.65rem', color: '#cccccc' }}>{rec.type} — {rec.date}</span>
                                 </div>
                                 <button 
                                   className="silver-btn" 
-                                  style={{ padding: '4px 10px', fontSize: '0.65rem', background: '#ff3366', border: 'none', color: '#fff' }}
+                                  style={{ padding: '4px 10px', fontSize: '0.65rem', background: '#555555', border: 'none', color: '#fff' }}
                                   onClick={() => {
                                     setDonationsList(prev => prev.filter(item => item.id !== rec.id));
                                   }}
@@ -4381,7 +4381,7 @@ export default function Home() {
                     <motion.div 
                       key={idx}
                       className={`location-card ${isSelected ? 'active' : ''}`}
-                      whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 0, 127, 0.15)" }}
+                      whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => {
                         setSelectedLocation(loc);
@@ -4465,10 +4465,10 @@ export default function Home() {
                 maxWidth: '800px', 
                 background: 'rgba(5, 5, 5, 0.85)', 
                 backdropFilter: 'blur(30px)', 
-                border: '1px solid rgba(255, 0, 127, 0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 padding: '40px 30px', 
                 borderRadius: '8px', 
-                boxShadow: '0 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 0, 127, 0.1)'
+                boxShadow: '0 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 255, 255, 0.1)'
               }}
             >
               <div 
@@ -4548,9 +4548,9 @@ export default function Home() {
         <AnimatePresence>
           {trailParticles.map((p) => {
             const activeThemeColor = 
-              currentTheme === 1 ? '#ffb6c1' :
-              currentTheme === 2 ? '#ff007f' :
-              currentTheme === 3 ? '#e040fb' : '#b39ddb';
+              currentTheme === 1 ? '#cccccc' :
+              currentTheme === 2 ? '#ffffff' :
+              currentTheme === 3 ? '#cccccc' : '#cccccc';
 
             const renderIcon = (type: string) => {
               switch (type) {

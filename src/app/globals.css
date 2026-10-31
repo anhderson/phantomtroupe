@@ -2,51 +2,51 @@
 
 :root {
   --background: #ffffff;
-  --primary: #FF007F;
-  --secondary: #ff00ea;
+  --primary: #ffffff;
+  --secondary: #cccccc;
   --accent: #111111;
   --void: #000;
   /* Responsive Units */
   --orbit-radius: clamp(150px, 35vmin, 350px);
   --node-size: clamp(60px, 12vmin, 100px);
   --black-hole-size: clamp(80px, 20vmin, 180px);
-  --silk-color: rgba(255, 0, 127, 0.4);
+  --silk-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Forced Red Accents for Navigation Triggers */
 .side-nav-node {
-  background: rgba(255, 0, 127, 0.1) !important;
-  border-color: rgba(255, 0, 127, 0.3) !important;
-  box-shadow: 0 0 10px rgba(255, 0, 127, 0.2) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
 }
 
 .side-nav-node::after {
-  background: #FF007F !important;
+  background: #ffffff !important;
   opacity: 0.8 !important;
 }
 
 .side-nav-node:hover {
-  background: rgba(255, 0, 127, 0.2) !important;
-  border-color: #FF007F !important;
-  box-shadow: 0 0 20px #FF007F !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 20px #ffffff !important;
 }
 
 .members-trigger .history-sphere,
 .planet-trigger .earth-sphere {
-  border-color: #FF007F !important;
-  box-shadow: 0 0 20px rgba(255, 0, 127, 0.6) !important;
-  background: rgba(255, 0, 127, 0.2) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .members-trigger .history-pattern,
 .planet-trigger .earth-clouds {
-  background: radial-gradient(circle, rgba(255, 0, 127, 0.3) 0%, transparent 70%) !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%) !important;
   opacity: 0.8 !important;
 }
 
 .members-trigger .history-scan-line,
 .planet-trigger .planet-scan-line {
-  background: linear-gradient(90deg, transparent, rgba(255, 0, 127, 0.8), transparent) !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent) !important;
 }
 
 * {
@@ -161,9 +161,9 @@ body::before {
 .web-segment {
   position: absolute;
   height: 1px;
-  background: rgba(255, 0, 127, 0.15);
+  background: rgba(255, 255, 255, 0.15);
   transform-origin: left center;
-  box-shadow: 0 0 5px rgba(255, 0, 127, 0.05);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
 }
 
 /* Runic Node Design - More Web-like */
@@ -537,8 +537,8 @@ body::before {
 }
 
 .hardware-hl {
-  color: #FF007F !important;
-  text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .close-btn {
@@ -724,31 +724,31 @@ body::before {
 @keyframes heartPulse {
   0% {
     transform: scale(1);
-    filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.6));
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
   }
   100% {
     transform: scale(1.08);
-    filter: drop-shadow(0 0 20px rgba(255, 0, 127, 1)) brightness(1.2);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1)) brightness(1.2);
   }
 }
 
 .history-sphere {
   width: 81px;
   height: 81px;
-  background: rgba(255, 0, 127, 0.05); /* Tinted Glass */
+  background: rgba(255, 255, 255, 0.05); /* Tinted Glass */
   backdrop-filter: blur(5px);
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.1), inset 0 0 10px rgba(255, 0, 127, 0.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1), inset 0 0 10px rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 0, 127, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .history-pattern {
   position: absolute;
   width: 200%;
   height: 100%;
-  background: radial-gradient(circle, #FF007F 1px, transparent 1px);
+  background: radial-gradient(circle, #ffffff 1px, transparent 1px);
   background-size: 10px 10px;
   opacity: 0.2;
   animation: move-pattern 30s linear infinite;
@@ -781,8 +781,8 @@ body::before {
   right: -150%; /* Start from Right */
   width: 100%;
   height: 1px;
-  background: linear-gradient(270deg, transparent, #FF007F, transparent);
-  box-shadow: 0 0 10px #FF007F;
+  background: linear-gradient(270deg, transparent, #ffffff, transparent);
+  box-shadow: 0 0 10px #ffffff;
   animation: scan-horizontal-reverse infinite linear;
 }
 
@@ -813,8 +813,8 @@ body::before {
   left: -150%;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #FF007F, transparent);
-  box-shadow: 0 0 10px #FF007F;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  box-shadow: 0 0 10px #ffffff;
   animation: scan-horizontal infinite linear;
 }
 
@@ -1007,14 +1007,14 @@ body::before {
 }
 
 @keyframes border-danger-pulse {
-  0% { border-left-color: #FF007F; }
-  50% { border-left-color: #FF007F; box-shadow: -5px 0 10px rgba(255, 0, 127, 0.2); }
-  100% { border-left-color: #FF007F; }
+  0% { border-left-color: #ffffff; }
+  50% { border-left-color: #ffffff; box-shadow: -5px 0 10px rgba(255, 255, 255, 0.2); }
+  100% { border-left-color: #ffffff; }
 }
 
 .mini-card.danger {
-  background: rgba(255, 0, 127, 0.05);
-  border-left-color: #FF007F;
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: #ffffff;
 }
 
 .highlight {
@@ -1043,7 +1043,7 @@ body::before {
 }
 
 .color-green { color: #88ccff; text-shadow: 0 0 15px rgba(136, 204, 255, 0.6); }
-.color-red { color: #FF007F; text-shadow: 0 0 20px rgba(255, 0, 127, 0.7); }
+.color-red { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.7); }
 .color-orange { color: #ffcc00; text-shadow: 0 0 20px rgba(255, 204, 0, 0.7); }
 .color-blue { color: #88ccff; text-shadow: 0 0 15px rgba(136, 204, 255, 0.6); }
 .color-gold { color: #ffcc00; text-shadow: 0 0 20px rgba(255, 204, 0, 0.7); }
@@ -1088,12 +1088,12 @@ body::before {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: rgba(255, 0, 127, 0.05); /* Heart Red */
+  background: rgba(255, 255, 255, 0.05); /* Heart Red */
   backdrop-filter: blur(5px);
-  border: 2px solid rgba(255, 0, 127, 0.4); 
+  border: 2px solid rgba(255, 255, 255, 0.4); 
   box-shadow: 
-    0 0 30px rgba(255, 0, 127, 0.3), 
-    inset 0 0 20px rgba(255, 0, 127, 0.2);
+    0 0 30px rgba(255, 255, 255, 0.3), 
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -1106,7 +1106,7 @@ body::before {
   width: 70%;
   height: 70%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 0, 127, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
   animation: gateway-pulse 3s infinite ease-in-out;
 }
 
@@ -1122,8 +1122,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 3px;
-  background: rgba(255, 0, 127, 0.5); /* Mudança para vermelho */
-  box-shadow: 0 0 15px rgba(255, 0, 60, 0.7); /* Mudança para vermelho */
+  background: rgba(255, 255, 255, 0.5); /* Mudança para vermelho */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* Mudança para vermelho */
   animation: gateway-scan 2.5s linear infinite;
 }
 
@@ -1244,9 +1244,9 @@ body::before {
   margin-bottom: 15px;
   letter-spacing: 3px;
   text-align: center;
-  text-shadow: 0 0 10px #FF007F, 0 0 20px rgba(255, 0, 127, 0.5); /* Pink glow */
+  text-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.5); /* Pink glow */
   padding-bottom: 8px;
-  border-bottom: 1px dashed rgba(255, 0, 127, 0.4); /* Pink dashed underline */
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.4); /* Pink dashed underline */
   max-width: 280px;
   margin-left: auto;
   margin-right: auto;
@@ -1587,7 +1587,7 @@ body::before {
 .threat-divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 0, 127, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
 }
 
 /* Pathogen & Detail Desc */
@@ -1595,7 +1595,7 @@ body::before {
   font-family: 'Rajdhani', sans-serif;
   font-size: 0.55rem;
   font-weight: 500;
-  color: rgba(255, 0, 127, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   margin-top: 8px;
   margin-top: 2px;
   letter-spacing: 1px;
@@ -1603,7 +1603,7 @@ body::before {
 }
 
 .mini-card.danger {
-  box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.05);
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
 /* G3 Regional Risk Protocol */
@@ -1626,7 +1626,7 @@ body::before {
 }
 
 .g3-column.highlighted {
-  border-left-color: rgba(255, 0, 127, 0.7);
+  border-left-color: rgba(255, 255, 255, 0.7);
   background: rgba(20, 5, 20, 0.9);
 }
 
@@ -1709,15 +1709,15 @@ body::before {
 }
 
 .danger-glow .core-value {
-  text-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 /* Critical News Cards */
 .g3-news-card {
   margin-top: 0.3rem;
   padding: 0.5rem 0.6rem;
-  background: rgba(255, 0, 127, 0.08);
-  border-left: 2px solid #FF007F;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 2px solid #ffffff;
   border-radius: 2px;
 }
 
@@ -1741,8 +1741,8 @@ body::before {
 .disaster-ticker {
   margin-top: 0.5rem;
   padding: 0.6rem 0.8rem;
-  background: rgba(255, 0, 127, 0.05);
-  border-left: 2px solid #FF007F;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid #ffffff;
   border-radius: 2px;
   display: flex;
   flex-direction: column;
@@ -1757,7 +1757,7 @@ body::before {
 
 .disaster-blink {
   font-size: 0.6rem;
-  color: #FF007F;
+  color: #ffffff;
   animation: disaster-pulse 1s infinite alternate;
 }
 
@@ -1778,7 +1778,7 @@ body::before {
 .disaster-count {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.45rem;
-  color: #FF007F;
+  color: #ffffff;
   letter-spacing: 1px;
 }
 
@@ -1809,7 +1809,7 @@ body::before {
 .disaster-time {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.45rem;
-  color: rgba(255, 0, 127, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 1px;
   white-space: nowrap;
 }
@@ -1830,9 +1830,9 @@ body::before {
 }
 
 .disaster-dot.active {
-  background: #FF007F;
+  background: #ffffff;
   width: 12px;
-  box-shadow: 0 0 6px #FF007F;
+  box-shadow: 0 0 6px #ffffff;
 }
 
 /* Cyber Blackout Glitch Effect */
@@ -1884,8 +1884,8 @@ body::before {
   transform: translateY(-50%);
   width: 15px;
   height: 60px;
-  background: rgba(255, 0, 127, 0.05);
-  border: 1px solid rgba(255, 0, 127, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   z-index: 10000;
@@ -1901,7 +1901,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 0%;
-  background: #FF007F;
+  background: #ffffff;
   opacity: 0.6;
   transition: height 0.3s ease;
 }
@@ -1912,8 +1912,8 @@ body::before {
   left: 0;
   width: 200%;
   height: 2px;
-  background: #FF007F;
-  box-shadow: 0 0 15px #FF007F, 0 0 5px #FF007F;
+  background: #ffffff;
+  box-shadow: 0 0 15px #ffffff, 0 0 5px #ffffff;
   opacity: 0;
   z-index: 5;
   pointer-events: none;
@@ -1930,10 +1930,10 @@ body::before {
 }
 
 .side-nav-node:hover {
-  background: rgba(255, 0, 127, 0.15);
-  border-color: #FF007F;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
   width: 25px;
-  box-shadow: 0 0 20px #FF007F;
+  box-shadow: 0 0 20px #ffffff;
 }
 
 .side-nav-node:hover::after {
@@ -1965,7 +1965,7 @@ body::before {
   padding: 10vh 20px;
   overflow: hidden;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 0, 127, 0.3) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
   animation: guide-slide-up 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -1974,7 +1974,7 @@ body::before {
 }
 
 .guide-overlay-container::-webkit-scrollbar-thumb {
-  background: rgba(255, 0, 127, 0.3);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
 }
 
@@ -2002,7 +2002,7 @@ body::before {
 }
 
 .history-overlay {
-  border-left: 1px solid rgba(255, 0, 127, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .members-overlay {
@@ -2077,7 +2077,7 @@ body::before {
 
 .guide-manifest-integration {
   margin-top: 40px;
-  color: #FF007F;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -2120,10 +2120,10 @@ body::before {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 0, 127, 0.05);
-  border: 1px solid rgba(255, 0, 127, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  color: rgba(255, 0, 127, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   width: 80px;
   height: 80px;
   cursor: pointer;
@@ -2136,11 +2136,11 @@ body::before {
 }
 
 .guide-power-node:hover {
-  color: #FF007F;
-  background: rgba(255, 0, 127, 0.15);
-  border-color: #FF007F;
-  text-shadow: 0 0 20px #FF007F;
-  box-shadow: 0 0 40px rgba(255, 0, 127, 0.5);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  text-shadow: 0 0 20px #ffffff;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
   transform: translateY(-50%) scale(1.15) rotate(90deg);
 }
 
@@ -2160,8 +2160,8 @@ body::before {
 .guide-page-btn {
   margin-top: 60px;
   background: transparent;
-  border: 1px solid rgba(255, 0, 127, 0.4);
-  color: #FF007F;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
   font-family: 'Rajdhani', sans-serif;
   font-size: 1rem;
   font-weight: 700;
@@ -2186,9 +2186,9 @@ body::before {
   background: linear-gradient(
     90deg, 
     transparent, 
-    rgba(255, 0, 127, 0.3), 
-    rgba(255, 0, 127, 0.6), 
-    rgba(255, 0, 127, 0.3), 
+    rgba(255, 255, 255, 0.3), 
+    rgba(255, 255, 255, 0.6), 
+    rgba(255, 255, 255, 0.3), 
     transparent
   );
   filter: blur(4px);
@@ -2218,10 +2218,10 @@ body::before {
 }
 
 .guide-page-btn:hover {
-  background: rgba(255, 0, 127, 0.1);
-  border-color: #FF007F;
-  text-shadow: 0 0 10px rgba(255, 0, 127, 0.8);
-  box-shadow: 0 0 20px rgba(255, 0, 127, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
 }
 
@@ -2404,8 +2404,8 @@ body::before {
 .phantom-input {
   width: 100%;
   padding: 12px 15px;
-  background: rgba(255, 0, 127, 0.05);
-  border: 1px solid rgba(255, 0, 127, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
   font-family: 'Rajdhani', sans-serif;
   font-size: 1rem;
@@ -2415,13 +2415,13 @@ body::before {
 }
 
 .phantom-input:focus {
-  border-color: #FF007F;
-  background: rgba(255, 0, 127, 0.1);
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 .phantom-input::placeholder {
-  color: rgba(255, 0, 127, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* BOTTOM TRIGGER CONTAINER */
@@ -2462,18 +2462,18 @@ body::before {
 .phantom-select {
   cursor: pointer;
   appearance: none;
-  background: rgba(255, 0, 127, 0.05); /* keep original neon low opacity */
-  border: 1px solid rgba(255, 0, 127, 0.3);
+  background: rgba(255, 255, 255, 0.05); /* keep original neon low opacity */
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .phantom-select:hover {
-  background: rgba(255, 0, 127, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Hard dark background for select options so they are readable */
 .phantom-select option {
   background: #0a0a0a;
-  color: #FF007F;
+  color: #ffffff;
   font-family: 'Rajdhani', sans-serif;
   letter-spacing: 2px;
   padding: 10px;
@@ -2484,15 +2484,15 @@ body::before {
   width: 6px;
 }
 .members-list::-webkit-scrollbar-track {
-  background: rgba(255, 0, 127, 0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 4px;
 }
 .members-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 0, 127, 0.3);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
 }
 .members-list::-webkit-scrollbar-thumb:hover {
-  background: #FF007F;
+  background: #ffffff;
 }
 
 /* RESPONSIVE MOBILE PROTOCOLS: ALLOWING SCROLLING ON SMALL SCREENS */
@@ -2634,11 +2634,11 @@ body::before {
   .resonance-ring {
     border-width: 2px !important;
     animation-duration: 0.8s !important; /* Slower, less intensive pulse */
-    box-shadow: 0 0 20px rgba(255, 0, 127, 0.4) !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4) !important;
   }
 
   .runic-node.is-processing {
-    box-shadow: 0 0 15px rgba(255, 0, 127, 0.6) !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6) !important;
   }
 
   .runic-node-border {
@@ -2680,8 +2680,8 @@ body::before {
   padding: 10px 25px;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 0, 127, 0.2);
-  border-top: 2px solid #FF007F;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 2px solid #ffffff;
   clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%);
   z-index: 9999;
   pointer-events: auto;
@@ -2708,7 +2708,7 @@ body::before {
   font-size: 0.55rem;
   letter-spacing: 3px;
   color: rgba(255, 255, 255, 0.5);
-  text-shadow: 0 0 5px rgba(255, 0, 127, 0.3);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
 .counter-value {
@@ -2717,7 +2717,7 @@ body::before {
   font-weight: 900;
   color: #fff;
   letter-spacing: 4px;
-  text-shadow: 0 0 10px #FF007F, 0 0 20px rgba(255, 0, 127, 0.5);
+  text-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 .counter-scanline {
@@ -2726,7 +2726,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(transparent, rgba(255, 0, 127, 0.1), transparent);
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.1), transparent);
   background-size: 100% 4px;
   animation: scanline-move 4s linear infinite;
   pointer-events: none;
@@ -2738,8 +2738,8 @@ body::before {
 }
 
 @keyframes counter-glow {
- from { box-shadow: 0 0 10px rgba(255, 0, 127, 0.1); }
- to { box-shadow: 0 0 20px rgba(255, 0, 127, 0.3); }
+ from { box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); }
+ to { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
 }
 
 /* Time Selector Modal Styling */
@@ -2749,8 +2749,8 @@ body::before {
 }
 
 .clock-trigger:hover, .clock-value:hover {
-  color: #FF007F;
-  text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .time-selector-overlay {
@@ -2770,10 +2770,10 @@ body::before {
   width: 90%;
   max-width: 800px;
   background: rgba(10, 10, 10, 0.95);
-  border: 1px solid rgba(255, 0, 127, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 2rem;
   position: relative;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 0, 127, 0.1);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 255, 255, 0.1);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
 }
 
@@ -2787,7 +2787,7 @@ body::before {
 .selector-header h3 {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.2rem;
-  color: #FF007F;
+  color: #ffffff;
   letter-spacing: 4px;
   margin-bottom: 0.5rem;
 }
@@ -2813,7 +2813,7 @@ body::before {
 
 .close-selector:hover {
  opacity: 1;
- color: #FF007F;
+ color: #ffffff;
 }
 
 .location-grid {
@@ -2830,7 +2830,7 @@ body::before {
 }
 
 .location-grid::-webkit-scrollbar-thumb {
- background: #FF007F;
+ background: #ffffff;
  border-radius: 2px;
 }
 
@@ -2847,8 +2847,8 @@ body::before {
 }
 
 .location-card.active {
- border-color: #FF007F;
- background: rgba(255, 0, 127, 0.1);
+ border-color: #ffffff;
+ background: rgba(255, 255, 255, 0.1);
 }
 
 .loc-icon {
@@ -2879,9 +2879,9 @@ body::before {
  right: 10px;
  width: 6px;
  height: 6px;
- background: #FF007F;
+ background: #ffffff;
  border-radius: 50%;
- box-shadow: 0 0 10px #FF007F;
+ box-shadow: 0 0 10px #ffffff;
 }
 
 /* Left Detail Panel Styling */
@@ -2893,7 +2893,7 @@ body::before {
   height: 100vh;
   background: linear-gradient(90deg, rgba(5, 5, 5, 0.65) 0%, rgba(10, 10, 10, 0.6) 100%);
   backdrop-filter: blur(30px);
-  border-right: 1px solid rgba(255, 0, 127, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 1500;
   display: flex;
   flex-direction: column;
@@ -2928,8 +2928,8 @@ body::before {
 }
 
 .screen-item:hover {
-  border-color: #FF007F;
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
+  border-color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 .screen-img {
@@ -2991,8 +2991,8 @@ body::before {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 0, 127, 0.2);
-  border: 1px solid rgba(255, 0, 127, 0.2);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .fullscreen-close {
@@ -3009,7 +3009,7 @@ body::before {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 0, 127, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
   width: 60px;
   height: 60px;
@@ -3018,15 +3018,15 @@ body::before {
   align-items: center;
   font-size: 2.5rem;
   cursor: pointer;
-  border: 1px solid rgba(255, 0, 127, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.2s;
   user-select: none;
 }
 
 .gallery-nav:hover {
-  background: rgba(255, 0, 127, 0.3);
-  border-color: #FF007F;
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+  background: rgba(255, 255, 255, 0.3);
+  border-color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
 .gallery-nav.left { left: -80px; }
@@ -3099,7 +3099,7 @@ body::before {
   position: absolute;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(255, 0, 127, 0.25), transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
   filter: blur(25px);
   animation: core-pulse 4s infinite alternate ease-in-out;
 }
@@ -3112,7 +3112,7 @@ body::before {
 .spider-symbol { 
   transform: translate(-50%, -50%);
   z-index: 101;
-  filter: drop-shadow(0 0 20px rgba(255, 0, 127, 0.6));
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
   opacity: 0.95;
 }
 
@@ -3126,25 +3126,25 @@ body::before {
 }
 
 .members-overlay {
-  scrollbar-color: rgba(255, 101, 132, 0.4) transparent !important;
+  scrollbar-color: rgba(180, 180, 180, 0.4) transparent !important;
 }
 
 .members-overlay::-webkit-scrollbar-thumb {
-  background: rgba(255, 101, 132, 0.4) !important;
+  background: rgba(180, 180, 180, 0.4) !important;
 }
 
 .pending-requests-overlay {
-  scrollbar-color: rgba(255, 0, 127, 0.4) transparent !important;
+  scrollbar-color: rgba(255, 255, 255, 0.4) transparent !important;
 }
 
 .pending-requests-overlay::-webkit-scrollbar-thumb {
-  background: rgba(255, 0, 127, 0.4) !important;
+  background: rgba(255, 255, 255, 0.4) !important;
 }
 
 .members-overlay .guide-inner-wrap {
-  border: 1px solid rgba(255, 101, 132, 0.4) !important;
-  box-shadow: 0 0 45px rgba(255, 105, 180, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.8) !important;
-  background: linear-gradient(135deg, #ffffff 0%, #ffeaf2 100%) !important; /* White and Light Pink gradient */
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.8) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f2 100%) !important; /* White and Light Silver gradient */
   border-radius: 12px !important;
   max-width: 600px !important;
   width: 100% !important;
@@ -3155,9 +3155,9 @@ body::before {
 
 /* Custom dashed pink border for Pending Requests modal */
 .pending-inner-wrap {
-  border: 2px dashed rgba(255, 0, 127, 0.35) !important;
-  box-shadow: 0 0 40px rgba(255, 0, 127, 0.15), inset 0 0 20px rgba(255, 0, 127, 0.05) !important;
-  background: rgba(12, 1, 6, 0.97) !important;
+  border: 2px dashed rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.05) !important;
+  background: rgba(18, 18, 20, 0.97) !important;
   border-radius: 12px !important;
   max-width: 550px !important;
   width: 100% !important;
@@ -3179,14 +3179,14 @@ body::before {
 }
 
 .close-btn-pending:hover {
-  color: #ff007f;
-  text-shadow: 0 0 15px #ff007f;
+  color: #ffffff;
+  text-shadow: 0 0 15px #ffffff;
   transform: rotate(90deg);
 }
 
 /* Customize member cards to be sweet pink/white in light pink overlay */
 .members-overlay .member-card {
-  border: 1px solid rgba(255, 101, 132, 0.25) !important;
+  border: 1px solid rgba(180, 180, 180, 0.25) !important;
   background: rgba(255, 255, 255, 0.65) !important;
   box-shadow: 0 2px 8px rgba(255, 105, 180, 0.05);
   transition: all 0.3s ease;
@@ -3194,20 +3194,20 @@ body::before {
 }
 
 .members-overlay .member-card:hover {
-  border-color: rgba(255, 0, 127, 0.5) !important;
-  box-shadow: 0 4px 12px rgba(255, 0, 127, 0.12);
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.9) !important;
   transform: translateY(-2px);
 }
 
 .members-overlay .member-card h3,
 .members-overlay .member-card h3.member-name {
-  color: #ff007f !important; /* Cor do texto do nome dos Membros Ativos */
+  color: #111111 !important; /* Cor do texto do nome dos Membros Ativos */
   font-weight: 700;
 }
 
 .members-overlay .member-card p.member-role {
-  color: #ff007f !important;
+  color: #444444 !important;
 }
 
 .members-overlay .member-card p.member-detail {
@@ -3215,42 +3215,42 @@ body::before {
 }
 
 .members-overlay .member-card p.member-activation-date {
-  color: #ff007f !important;
+  color: #666666 !important;
   font-weight: 600;
 }
 
 .members-overlay .member-card p {
-  color: #ff007f;
+  color: #222222;
 }
 
 .members-overlay .member-card span {
-  color: #ff007f !important; /* Rosa da pagina inicial */
-  border-color: #ff007f !important;
-  background: rgba(255, 0, 127, 0.05);
+  color: #111111 !important;
+  border-color: #555555 !important;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* Inputs in members overlay */
 .members-overlay .phantom-input {
   background: #ffffff !important;
-  border: 1px solid rgba(255, 101, 132, 0.4) !important;
-  color: #ff6584 !important;
+  border: 1px solid #888888 !important;
+  color: #111111 !important;
   border-radius: 4px;
   font-weight: bold !important;
 }
 
 .members-overlay .phantom-input:focus {
-  border-color: #ff007f !important;
+  border-color: #000000 !important;
   background: #ffffff !important;
-  box-shadow: 0 0 10px rgba(255, 0, 127, 0.2) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
 }
 
 .members-overlay .phantom-input::placeholder {
-  color: rgba(255, 101, 132, 0.7) !important;
+  color: #777777 !important;
 }
 
 /* Select element styling */
 .members-overlay .phantom-select {
-  color: #ff6584 !important;
+  color: #111111 !important;
   font-weight: bold !important;
   background-color: #ffffff !important;
 }
@@ -3258,25 +3258,25 @@ body::before {
 .members-overlay .phantom-select option,
 .members-overlay .phantom-select optgroup {
   background-color: #ffffff !important;
-  color: #ff6584 !important;
+  color: #111111 !important;
   font-weight: bold !important;
 }
 
 /* Buttons in members overlay */
 .members-overlay .guide-page-btn {
-  background: #ff6584 !important;
-  border: 1px solid #ff3366 !important;
+  background: #222222 !important;
+  border: 1px solid #444444 !important;
   color: #ffffff !important;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(255, 101, 132, 0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   font-weight: bold !important;
   border-radius: 4px;
 }
 
 .members-overlay .guide-page-btn:hover {
-  background: #ff3366 !important;
-  border-color: #d81b60 !important;
-  box-shadow: 0 6px 15px rgba(255, 51, 102, 0.4) !important;
+  background: #000000 !important;
+  border-color: #111111 !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4) !important;
   transform: translateY(-1px);
 }
 
@@ -3679,26 +3679,26 @@ body::before {
 /* ==========================================================================
    4 SYSTEM VISUAL THEMES (Baseados nos horários do dia ou trocados via botão)
    Theme 1 (06h-12h): Manhã - Modo Claro / Cinza
-   Theme 2 (12h-18h): Tarde - Modo Padrão Dark Rosa
-   Theme 3 (18h-00h): Noite - Modo Roxo Neon (Com sombreamento branco por trás do texto)
-   Theme 4 (00h-06h): Madrugada - Modo Roxo Pastel (Texto em Preto Claro)
+   Theme 2 (12h-18h): Tarde - Modo Grafite / Cinza Metálico
+   Theme 3 (18h-00h): Noite - Modo Dark Neon / Preto e Branco (Com sombreamento branco por trás do texto)
+   Theme 4 (00h-06h): Madrugada - Modo Carvão / Cinza Escuro Minimalista (Texto em Preto Claro)
    ========================================================================== */
 
 /* TEMA 1: Manhã (06h-12h) - Modo Claro / Cinza */
 .theme-1 .runic-node {
   background: rgba(50, 50, 50, 0.88) !important;
-  border-color: rgba(255, 0, 127, 0.7) !important;
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
 }
 .theme-1 .runic-node .initials,
 .theme-1 .runic-node .full-name {
   color: #ffffff !important;
-  text-shadow: 0 0 5px rgba(255, 0, 127, 0.5) !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
   font-weight: 900 !important;
 }
 .theme-1 .global-visit-counter {
   background: rgba(240, 240, 240, 0.95) !important;
-  border: 1px solid rgba(255, 0, 127, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15) !important;
 }
 .theme-1 .global-visit-counter .counter-value,
@@ -3708,7 +3708,7 @@ body::before {
 }
 .theme-1 .survival-hud {
   background: rgba(235, 235, 235, 0.95) !important;
-  border-color: rgba(255, 0, 127, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
 }
 .theme-1 .hud-news-item .hud-value,
 .theme-1 .hud-meta .hud-value {
@@ -3718,35 +3718,35 @@ body::before {
   color: #555555 !important;
 }
 
-/* TEMA 2: Tarde (12h-18h) - Modo Dark Rosa */
+/* TEMA 2: Tarde (12h-18h) - Modo Grafite / Cinza Metálico */
 .theme-2 {
-  --primary: #FF007F !important;
-  --secondary: #ff00ea !important;
+  --primary: #ffffff !important;
+  --secondary: #cccccc !important;
 }
 
-/* TEMA 3: Noite (18h-00h) - Modo Roxo Neon */
+/* TEMA 3: Noite (18h-00h) - Modo Dark Neon / Preto e Branco */
 .theme-3 {
-  --primary: #ab47bc !important;
-  --secondary: #e040fb !important;
-  --silk-color: rgba(171, 71, 188, 0.4) !important;
+  --primary: #ffffff !important;
+  --secondary: #cccccc !important;
+  --silk-color: rgba(200, 200, 200, 0.4) !important;
 }
 .theme-3 .side-nav-node {
-  background: rgba(171, 71, 188, 0.1) !important;
-  border-color: rgba(171, 71, 188, 0.3) !important;
-  box-shadow: 0 0 10px rgba(171, 71, 188, 0.2) !important;
+  background: rgba(200, 200, 200, 0.1) !important;
+  border-color: rgba(200, 200, 200, 0.3) !important;
+  box-shadow: 0 0 10px rgba(200, 200, 200, 0.2) !important;
 }
 .theme-3 .side-nav-node::after {
-  background: #ab47bc !important;
+  background: #ffffff !important;
 }
 .theme-3 .members-trigger .history-sphere,
 .theme-3 .planet-trigger .earth-sphere {
-  border-color: #ab47bc !important;
-  box-shadow: 0 0 20px rgba(171, 71, 188, 0.6) !important;
-  background: rgba(171, 71, 188, 0.2) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(200, 200, 200, 0.6) !important;
+  background: rgba(200, 200, 200, 0.2) !important;
 }
 .theme-3 .pink-impact {
-  background: radial-gradient(circle, #ab47bc 0%, transparent 70%) !important;
-  box-shadow: 0 0 30px #ab47bc !important;
+  background: radial-gradient(circle, #ffffff 0%, transparent 70%) !important;
+  box-shadow: 0 0 30px #ffffff !important;
 }
 .theme-3 .guide-heading,
 .theme-3 .cute-title,
@@ -3778,54 +3778,54 @@ body::before {
   text-shadow: 
     0 0 8px #ffffff,
     0 0 16px #ffffff,
-    0 0 25px rgba(224, 64, 251, 0.9),
-    0 0 35px rgba(171, 71, 188, 0.8) !important;
+    0 0 25px rgba(255, 255, 255, 0.9),
+    0 0 35px rgba(200, 200, 200, 0.8) !important;
 }
 .theme-3 .guide-page-btn::after {
-  background: linear-gradient(90deg, transparent, rgba(171, 71, 188, 0.3), rgba(224, 64, 251, 0.8), rgba(171, 71, 188, 0.3), transparent) !important;
+  background: linear-gradient(90deg, transparent, rgba(200, 200, 200, 0.3), rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.3), transparent) !important;
 }
 .theme-3 .guide-page-btn:hover {
-  border-color: #ab47bc !important;
-  box-shadow: 0 0 20px rgba(171, 71, 188, 0.4) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(200, 200, 200, 0.4) !important;
 }
 .theme-3 .donation-heart-shape path {
-  fill: rgba(171, 71, 188, 0.15) !important;
-  stroke: #ab47bc !important;
+  fill: rgba(200, 200, 200, 0.15) !important;
+  stroke: #ffffff !important;
 }
 .theme-3 .global-visit-counter {
-  border-color: rgba(171, 71, 188, 0.5) !important;
-  box-shadow: 0 0 15px rgba(171, 71, 188, 0.3) !important;
+  border-color: rgba(200, 200, 200, 0.5) !important;
+  box-shadow: 0 0 15px rgba(200, 200, 200, 0.3) !important;
 }
 
-/* TEMA 4: Madrugada (00h-06h) - Modo Roxo Pastel */
+/* TEMA 4: Madrugada (00h-06h) - Modo Carvão / Cinza Escuro Minimalista */
 .theme-4 {
-  --primary: #b39ddb !important;
-  --secondary: #d1c4e9 !important;
-  --silk-color: rgba(179, 157, 219, 0.4) !important;
+  --primary: #cccccc !important;
+  --secondary: #e0e0e0 !important;
+  --silk-color: rgba(180, 180, 180, 0.4) !important;
 }
 .theme-4 .runic-node {
   background: rgba(20, 16, 28, 0.85) !important;
-  border-color: #b39ddb !important;
-  box-shadow: 0 0 12px rgba(179, 157, 219, 0.3) !important;
+  border-color: #cccccc !important;
+  box-shadow: 0 0 12px rgba(180, 180, 180, 0.3) !important;
 }
 /* Cor do texto dos botões em Preto claro no Tema 4 */
 .theme-4 .seja-membro-flicker-text,
 .theme-4 .global-news-flicker-text,
 .theme-4 .runic-node .initials,
 .theme-4 .runic-node .full-name {
-  color: #2b2236 !important;
-  text-shadow: 0 0 6px rgba(209, 196, 233, 0.9), 0 0 12px rgba(255, 255, 255, 0.7) !important;
+  color: #1a1a1a !important;
+  text-shadow: 0 0 6px rgba(220, 220, 220, 0.9), 0 0 12px rgba(255, 255, 255, 0.7) !important;
   font-weight: 900 !important;
 }
 .theme-4 .members-trigger .history-sphere,
 .theme-4 .planet-trigger .earth-sphere {
-  border-color: #b39ddb !important;
-  box-shadow: 0 0 15px rgba(179, 157, 219, 0.5) !important;
-  background: rgba(179, 157, 219, 0.25) !important;
+  border-color: #cccccc !important;
+  box-shadow: 0 0 15px rgba(180, 180, 180, 0.5) !important;
+  background: rgba(180, 180, 180, 0.25) !important;
 }
 .theme-4 .pink-impact {
-  background: radial-gradient(circle, #b39ddb 0%, transparent 70%) !important;
-  box-shadow: 0 0 25px #b39ddb !important;
+  background: radial-gradient(circle, #cccccc 0%, transparent 70%) !important;
+  box-shadow: 0 0 25px #cccccc !important;
 }
 .theme-4 .guide-heading,
 .theme-4 .cute-title,
@@ -3841,24 +3841,24 @@ body::before {
     -2px 2px 2px #ffffff !important;
 }
 .theme-4 .guide-page-btn::after {
-  background: linear-gradient(90deg, transparent, rgba(179, 157, 219, 0.3), rgba(209, 196, 233, 0.8), rgba(179, 157, 219, 0.3), transparent) !important;
+  background: linear-gradient(90deg, transparent, rgba(180, 180, 180, 0.3), rgba(220, 220, 220, 0.8), rgba(180, 180, 180, 0.3), transparent) !important;
 }
 .theme-4 .guide-page-btn:hover {
-  border-color: #b39ddb !important;
-  box-shadow: 0 0 15px rgba(179, 157, 219, 0.4) !important;
+  border-color: #cccccc !important;
+  box-shadow: 0 0 15px rgba(180, 180, 180, 0.4) !important;
 }
 .theme-4 .donation-heart-shape path {
-  fill: rgba(179, 157, 219, 0.2) !important;
-  stroke: #b39ddb !important;
+  fill: rgba(180, 180, 180, 0.2) !important;
+  stroke: #cccccc !important;
 }
 .theme-4 .global-visit-counter {
-  background: rgba(243, 229, 245, 0.9) !important;
-  border-color: rgba(179, 157, 219, 0.5) !important;
-  color: #311b92 !important;
+  background: rgba(30, 30, 32, 0.9) !important;
+  border-color: rgba(180, 180, 180, 0.5) !important;
+  color: #111111 !important;
 }
 .theme-4 .global-visit-counter .counter-value,
 .theme-4 .global-visit-counter .counter-label {
-  color: #311b92 !important;
+  color: #111111 !important;
 }
 
 /* Textos SYNC, Cidade e Relógio em Roxo Claro no Tema 4 */
@@ -3867,9 +3867,9 @@ body::before {
 .theme-4 .hud-meta .hardware-hl,
 .theme-4 .hud-meta .clock-trigger,
 .theme-4 .hud-meta .clock-value {
-  color: #d1c4e9 !important;
-  text-shadow: 0 0 8px rgba(209, 196, 233, 0.6) !important;
+  color: #e0e0e0 !important;
+  text-shadow: 0 0 8px rgba(220, 220, 220, 0.6) !important;
 }
 .theme-4 .hud-meta .hud-divider {
-  background: rgba(209, 196, 233, 0.3) !important;
+  background: rgba(220, 220, 220, 0.3) !important;
 }
