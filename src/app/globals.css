@@ -1411,20 +1411,20 @@ body::before {
   }
 }/* Efeito de transmutação quando passa pelo Gateway */
 .runic-node.is-processing {
-  border-color: var(--primary) !important;
+  border-color: var(--custom-color, var(--primary)) !important;
   box-shadow: 
-    0 0 30px var(--primary),
-    inset 0 0 20px var(--primary) !important;
+    0 0 30px var(--custom-color, var(--primary)),
+    inset 0 0 20px var(--custom-color, var(--primary)) !important;
   transition: all 0.3s ease-out;
 }
 
 .runic-node.is-processing .initials {
-  color: var(--primary) !important;
-  text-shadow: 0 0 15px var(--primary);
+  color: var(--custom-color, var(--primary)) !important;
+  text-shadow: 0 0 15px var(--custom-color, var(--primary));
 }
 
 .runic-node.is-processing .runic-node-border {
-  border-color: var(--primary) !important;
+  border-color: var(--custom-color, var(--primary)) !important;
   border-width: 2px;
   animation: processing-flicker 0.15s infinite;
 }
@@ -2656,7 +2656,7 @@ body::before {
   }
 
   .runic-node.is-processing {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 0 15px var(--custom-color, rgba(255, 255, 255, 0.6)) !important;
   }
 
   .runic-node-border {

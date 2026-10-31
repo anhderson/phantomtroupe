@@ -56,7 +56,9 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "OPERACIONAL",
     security: "GENESIS",
+    scouterColor: "#ffffff",
     icon: "/icones/phantomtroupeiconecircular.png",
+    scouterIcon: "/icones/phantomtroupeiconecircularPRO.png",
     activeIcon: "/icones/phantomtroupeiconecircularPRO3.png"
   },
   { 
@@ -71,7 +73,9 @@ const APPS = [
     security: "ARCANO",
     downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.0/Project.Zero.Setup.1.0.5.exe",
     installerPath: "src/executaveis/Project Zero Setup 1.0.5.exe",
+    scouterColor: "#FF00CC",
     icon: "/icones/projectzeroiconecircular.png",
+    scouterIcon: "/icones/projectzeroiconecircular2.png",
     activeIcon: "/icones/projectzeroiconecircular3.png"
   },
   { 
@@ -87,7 +91,9 @@ const APPS = [
     downloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.11/Zero.Signal.Setup.1.0.11.exe",
     mobileDownloadUrl: "https://github.com/0PhantomTroupe0/phantomtroupe/releases/download/v1.0.22/ZeroSignal_v1.0.22.apk",
     installerPath: "src/executaveis/Zero Signal Setup 1.0.11.exe",
+    scouterColor: "#8000FF",
     icon: "/icones/zerosignaliconecircular.png",
+    scouterIcon: "/icones/zerosignaliconecircular2.png",
     activeIcon: "/icones/zerosignaliconecircular3.png"
   },
   { 
@@ -101,7 +107,9 @@ const APPS = [
     status: "SENTIMENTO ATIVO",
     security: "VULNERÁVEL",
     downloadUrl: "https://zeroday-chi.vercel.app",
+    scouterColor: "#FF80EE",
     icon: "/icones/zerodayiconecircular.png",
+    scouterIcon: "/icones/zerodayiconecircular2.png",
     activeIcon: "/icones/zerodayiconecircular3.png"
   },
   { 
@@ -115,7 +123,9 @@ const APPS = [
     status: "EM PAZ",
     security: "SAGRADO",
     downloadUrl: "https://paginaterapeutaanderson.vercel.app",
+    scouterColor: "#0040FF",
     icon: "/icones/zeroespacoiconecircular.png",
+    scouterIcon: "/icones/zeroespacoiconecircular2.png",
     activeIcon: "/icones/zeroespacoiconecircular3.png"
   },
   { 
@@ -129,7 +139,9 @@ const APPS = [
     status: "PROJETANDO CAMINHOS",
     security: "OCULTO NA VERDADE",
     downloadUrl: "https://zerofaithfully.vercel.app",
+    scouterColor: "#FFBF00",
     icon: "/icones/zerofaithfullyiconecircular.png",
+    scouterIcon: "/icones/zerofaithfullyiconecircular2.png",
     activeIcon: "/icones/zerofaithfullyiconecircular3.png"
   },
   { 
@@ -142,7 +154,9 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "CALCULANDO O BEM MAIOR",
     security: "100% ISOLADO",
+    scouterColor: "#FF6600",
     icon: "/icones/zerosynapsesiconecircular.png",
+    scouterIcon: "/icones/zerosynapsesiconecircular2.png",
     activeIcon: "/icones/zerosynapsesiconecircular3.png"
   },
   { 
@@ -155,7 +169,9 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "SINTONIZADO NO AGORA",
     security: "ARTE COMPARTILHADA",
+    scouterColor: "#00E68A",
     icon: "/icones/zeromindiconecircular.png",
+    scouterIcon: "/icones/zeromindiconecircular2.png",
     activeIcon: "/icones/zeromindiconecircular3.png"
   },
   { 
@@ -169,7 +185,9 @@ const APPS = [
     status: "MOLDE INFINITO",
     security: "ALQUIMIA",
     installerPath: "src/executaveis/Zero Infinity Setup 1.0.0.exe",
+    scouterColor: "#FF0000",
     icon: "/icones/zeroinfinityiconecircular.png",
+    scouterIcon: "/icones/zeroinfinityiconecircular2.png",
     activeIcon: "/icones/zeroinfinityiconecircular3.png"
   },
   { 
@@ -182,7 +200,9 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "TRANSAÇÃO ATIVA",
     security: "FINANCEIRO",
+    scouterColor: "#BFFF00",
     icon: "/icones/zeropayiconecircular.png",
+    scouterIcon: "/icones/zeropayiconecircularPro.png",
     activeIcon: "/icones/zeropayiconecircular3.png"
   },
   { 
@@ -195,7 +215,9 @@ const APPS = [
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "AGUARDANDO DECLARAÇÃO",
     security: "LIVRE ESCOLHA",
+    scouterColor: "#FF0000",
     icon: "/icones/zerocontroliconecircular.png",
+    scouterIcon: "/icones/zerocontroliconecircular2.png",
     activeIcon: "/icones/zerocontroliconecircular3.png"
   },
   { 
@@ -207,7 +229,9 @@ const APPS = [
     longDesc: "O Zero Ground é o módulo responsável por conectar o ecossistema digital ao mundo físico, transformando ideias e estruturas virtuais em iniciativas concretas. Ele atua como a base para criação e desenvolvimento de espaços reais, que vão desde organizações sociais e ONGs até empresas e operações estruturadas.\n\nMais do que um ponto de execução, o Zero Ground funciona como a interface direta com o “hardware” do mundo real, onde projetos ganham presença física, operação prática e impacto tangível. Ele organiza processos, acompanha atividades e registra informações essenciais, permitindo controle mais preciso sobre cada etapa de implementação.\n\nAlém disso, o sistema oferece uma visão detalhada das operações, com registros de baixo nível e monitoramento contínuo, garantindo que recursos, processos e estruturas estejam funcionando de forma estável e eficiente. Isso possibilita ajustes rápidos, maior previsibilidade e segurança na execução.\n\nNa prática, o Zero Ground é onde o ecossistema deixa de ser apenas conceito e passa a existir de forma concreta, conectando planejamento, tecnologia e ação real em um fluxo contínuo de construção e evolução.",
     tech: "JS, Java, Json, md, png, svg, html, css",
     status: "ESPERANDO COMANDO",
+    scouterColor: "#00DFFF",
     icon: "/icones/zerogroundiconecircular.png",
+    scouterIcon: "/icones/zerogroundiconecircular2.png",
     activeIcon: "/icones/zerogroundiconecircular3.png"
   },
 ];
@@ -1207,11 +1231,14 @@ export default function Home() {
 
   if (!isMounted) return null;
 
-  const isPTProcessing = (() => {
-    const angle = (0 / APPS.length) * 360;
+  const processingApp = APPS.find((_, i) => {
+    const angle = (i / APPS.length) * 360;
     const absAngle = (angle + rotation) % 360;
     return Math.abs(absAngle - 270) < 8 || Math.abs(absAngle - 270 + 360) < 8;
-  })();
+  });
+  const activeScouterColor = (processingApp as any)?.scouterColor || null;
+
+  const isPTProcessing = processingApp?.id === 1;
 
   return (
     <main 
@@ -1421,7 +1448,7 @@ export default function Home() {
                       left: `calc(50% + (${cos} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       top: `calc(50% + (${sin} * var(--orbit-radius)) - (var(--node-size) / 2))`,
                       animationDelay: `${index * 0.4}s`,
-                      '--custom-color': (isProcessing || isPTProcessing) ? '#ffffff' : (app.color || 'var(--primary)'),
+                      '--custom-color': isProcessing ? ((app as any).scouterColor || '#ffffff') : isPTProcessing ? '#ffffff' : (app.color || 'var(--primary)'),
                       '--node-angle': `${angle}deg`,
                       '--current-rotation': `${rotation}deg`
                     } as any}
@@ -1440,7 +1467,7 @@ export default function Home() {
                     <div className="runic-name-container">
                       {app.icon && (
                         <img 
-                          src={(isProcessing || selectedApp?.id === app.id || hoveredNodeId === app.id) ? ((app as any).activeIcon || app.icon) : app.icon} 
+                          src={(selectedApp?.id === app.id || hoveredNodeId === app.id) ? ((app as any).activeIcon || app.icon) : isProcessing ? ((app as any).scouterIcon || (app as any).activeIcon || app.icon) : app.icon} 
                           className={`node-icon ${isGlitching ? 'force-visible' : ''}`}
                           alt=""
                         />
@@ -1459,9 +1486,28 @@ export default function Home() {
 
       {/* Top Gateway Sphere */}
       <div className="top-gateway-container">
-        <div className="gateway-sphere">
-          <div className="gateway-inner-glow"></div>
-          <div className="gateway-scanline"></div>
+        <div 
+          className="gateway-sphere"
+          style={activeScouterColor ? {
+            borderColor: activeScouterColor,
+            boxShadow: `0 0 35px ${activeScouterColor}, inset 0 0 25px ${activeScouterColor}`,
+            background: `radial-gradient(circle, ${activeScouterColor}22 0%, rgba(255, 255, 255, 0.05) 100%)`,
+            transition: 'all 0.25s ease'
+          } : { transition: 'all 0.25s ease' }}
+        >
+          <div 
+            className="gateway-inner-glow"
+            style={activeScouterColor ? {
+              background: `radial-gradient(circle, ${activeScouterColor}88 0%, transparent 70%)`
+            } : undefined}
+          ></div>
+          <div 
+            className="gateway-scanline"
+            style={activeScouterColor ? {
+              background: activeScouterColor,
+              boxShadow: `0 0 18px ${activeScouterColor}`
+            } : undefined}
+          ></div>
         </div>
       </div>
 
