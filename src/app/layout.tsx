@@ -30,10 +30,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico?v=2" },
-      { url: "/icon.png?v=2" }
+      { url: "/icones/phantomtroupeiconecircularPRO.png?v=3", type: "image/png" },
+      { url: "/icon.png?v=3", type: "image/png" },
+      { url: "/favicon.ico?v=3" }
     ],
-    apple: "/icon.png?v=2",
+    shortcut: "/icones/phantomtroupeiconecircularPRO.png?v=3",
+    apple: "/icones/phantomtroupeiconecircularPRO.png?v=3",
   },
 };
 
