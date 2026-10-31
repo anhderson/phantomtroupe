@@ -517,6 +517,18 @@ body::before {
   letter-spacing: 1px;
 }
 
+.hud-news-link {
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.2s ease, text-shadow 0.2s ease;
+}
+
+.hud-news-link:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.85);
+}
+
 .hud-divider {
   width: 1px;
   height: 15px;

@@ -611,10 +611,25 @@ export default function Home() {
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('touchmove', onTouchMove);
 
-    // 12-hour News Cycle Refresh
+    const fetchDailyRealNews = async () => {
+      try {
+        const res = await fetch('/api/daily-news');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && Array.isArray(data.items) && data.items.length > 0) {
+          setNewsItems(data.items);
+        }
+      } catch (err) {
+        console.error("Failed to fetch daily news:", err);
+      }
+    };
+
+    fetchDailyRealNews();
+
+    // Refresh real news every 6 hours (and daily)
     const newsRefresh = setInterval(() => {
-      setNewsItems(prev => [...prev].sort(() => Math.random() - 0.5));
-    }, 12 * 60 * 60 * 1000);
+      fetchDailyRealNews();
+    }, 6 * 60 * 60 * 1000);
 
     return () => {
       clearInterval(pairTimer);
@@ -626,16 +641,16 @@ export default function Home() {
   
   // Real-time News & Environment
   const [newsItems, setNewsItems] = useState([
-    { id: 1, cat: "DINHEIRO E CUSTO DE VIDA", text: "Brasil monitora impacto geopolítico nos preços e inflação." },
-    { id: 2, cat: "EMPREGO E OPORTUNIDADES", text: "Vagas em tecnologia crescem 15% em 2026; foco em especialistas em IA." },
-    { id: 3, cat: "SEGURANÇA", text: "Debate sobre segurança pública intensifica após incidentes internacionais." },
-    { id: 4, cat: "SAÚDE", text: "Avanços em tratamentos e investimentos em saúde pública em 2026." },
-    { id: 5, cat: "TECNOLOGIA ÚTIL", text: "Dificuldade em implementar IA de forma eficaz em processos empresariais." },
-    { id: 6, cat: "NOTÍCIAS E POLÍTICA", text: "Donald Trump alvo de ataque durante jantar de correspondentes." },
-    { id: 7, cat: "CONSUMO E AVALIAÇÕES", text: "Sustentabilidade no consumo têxtil e descarte de tecidos em pauta." },
-    { id: 8, cat: "ENTRETENIMENTO E CULTURA", text: "João Fonseca eliminado do Masters 1000 de Madri em partida épica." },
-    { id: 9, cat: "RELACIONAMENTOS E COMPORTAMENTO", text: "Personalidades debatem saúde mental e relações na era digital." },
-    { id: 10, cat: "ESPIRITUALIDADE E SENTIDO DE VIDA", text: "Busca por propósito e filosofia cresce em ambientes corporativos." }
+    { id: 1, cat: "DINHEIRO E CUSTO DE VIDA", text: "Brasil monitora impacto geopolítico nos preços e inflação.", url: "https://news.google.com/search?q=economia+inflacao+custo+de+vida+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 2, cat: "EMPREGO E OPORTUNIDADES", text: "Vagas em tecnologia crescem em 2026; foco em especialistas em IA.", url: "https://news.google.com/search?q=vagas+emprego+oportunidades+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 3, cat: "SEGURANÇA", text: "Debate sobre segurança pública intensifica com novas medidas nacionais.", url: "https://news.google.com/search?q=seguranca+publica+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 4, cat: "SAÚDE", text: "Avanços em tratamentos e investimentos em saúde pública no Brasil.", url: "https://news.google.com/search?q=saude+medicina+tratamento+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 5, cat: "TECNOLOGIA ÚTIL", text: "Novas soluções de IA transformam processos e ferramentas do dia a dia.", url: "https://news.google.com/search?q=tecnologia+inteligencia+artificial+inovacao&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 6, cat: "NOTÍCIAS E POLÍTICA", text: "Principais acontecimentos políticos e decisões no Brasil e no mundo.", url: "https://news.google.com/search?q=politica+brasil+governo&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 7, cat: "CONSUMO E AVALIAÇÕES", text: "Tendências de mercado, direitos do consumidor e sustentabilidade em pauta.", url: "https://news.google.com/search?q=consumidor+mercado+produtos+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 8, cat: "ENTRETENIMENTO E CULTURA", text: "Destaques da cultura, música, cinema e esportes pelo Brasil.", url: "https://news.google.com/search?q=cultura+entretenimento+cinema+musica+esporte+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 9, cat: "RELACIONAMENTOS E COMPORTAMENTO", text: "Especialistas debatem saúde mental, empatia e relações na era digital.", url: "https://news.google.com/search?q=comportamento+psicologia+saude+mental&hl=pt-BR&gl=BR&ceid=BR:pt-419" },
+    { id: 10, cat: "ESPIRITUALIDADE E SENTIDO DE VIDA", text: "Busca por propósito, filosofia e autoconhecimento cresce na sociedade.", url: "https://news.google.com/search?q=espiritualidade+filosofia+autoconhecimento&hl=pt-BR&gl=BR&ceid=BR:pt-419" }
   ]);
 
   const [isSlowMotion, setIsSlowMotion] = useState(false);
@@ -1307,7 +1322,16 @@ export default function Home() {
             {newsItems.concat(newsItems).concat(newsItems).map((news, idx) => (
               <div key={idx} className="hud-news-item">
                 <span className="hud-label">{news.cat} /</span>
-                <span className="hud-value">{news.text}</span>
+                <a
+                  href={(news as any).url || `https://news.google.com/search?q=${encodeURIComponent(news.text)}&hl=pt-BR&gl=BR&ceid=BR:pt-419`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="hud-value hud-news-link"
+                  title="Clique para acessar a notícia completa"
+                >
+                  {news.text}
+                </a>
                 <div className="hud-divider"></div>
               </div>
             ))}
