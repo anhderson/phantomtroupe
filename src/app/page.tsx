@@ -287,6 +287,7 @@ export default function Home() {
   const [showLaunchWarning, setShowLaunchWarning] = useState(false);
   const [showMotivacoesModal, setShowMotivacoesModal] = useState(false);
   const [isMotivacoesHovered, setIsMotivacoesHovered] = useState(false);
+  const [hoveredNodeId, setHoveredNodeId] = useState<number | null>(null);
   const [currentTheme, setCurrentTheme] = useState<1 | 2 | 3 | 4>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('phantom_theme');
@@ -1431,13 +1432,15 @@ export default function Home() {
                     }}
                     transition={{ type: "tween", ease: "linear", duration: 0 }}
                     whileHover={{ scale: 1.2, borderColor: app.color || 'var(--primary)' }}
+                    onMouseEnter={() => setHoveredNodeId(app.id)}
+                    onMouseLeave={() => setHoveredNodeId(null)}
                     onClick={() => setSelectedApp(app)}
                   >
                     <div className="runic-node-border"></div>
                     <div className="runic-name-container">
                       {app.icon && (
                         <img 
-                          src={isProcessing ? ((app as any).activeIcon || app.icon) : app.icon} 
+                          src={(isProcessing || selectedApp?.id === app.id || hoveredNodeId === app.id) ? ((app as any).activeIcon || app.icon) : app.icon} 
                           className={`node-icon ${isGlitching ? 'force-visible' : ''}`}
                           alt=""
                         />
@@ -4560,10 +4563,7 @@ export default function Home() {
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 99999, overflow: 'hidden' }}>
         <AnimatePresence>
           {trailParticles.map((p) => {
-            const activeThemeColor = 
-              currentTheme === 1 ? '#cccccc' :
-              currentTheme === 2 ? '#ffffff' :
-              currentTheme === 3 ? '#cccccc' : '#cccccc';
+            const activeThemeColor = '#2a2a2a'; // Preto claro para os efeitos do cursor
 
             const renderIcon = (type: string) => {
               switch (type) {
@@ -4654,7 +4654,7 @@ export default function Home() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  filter: `drop-shadow(0 0 3px ${activeThemeColor})`,
+                  filter: 'drop-shadow(0 0 2px rgba(40, 40, 40, 0.7))',
                   userSelect: 'none'
                 }}
               >
