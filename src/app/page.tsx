@@ -79,7 +79,7 @@ const APPS = [
     activeIcon: "/icones/projectzeroiconecircular3.png"
   },
   { 
-    id: 4, 
+    id: 3, 
     name: "ZD", 
     fullName: "SERENIZANDO - Zero Day", 
     subName: "SERENIZANDO",
@@ -95,7 +95,7 @@ const APPS = [
     activeIcon: "/icones/zerodayiconecircular3.png"
   },
   { 
-    id: 3, 
+    id: 4, 
     name: "ZS", 
     fullName: "SUSSURRANDO - Zero Signal", 
     subName: "SUSSURRANDO",
@@ -113,7 +113,7 @@ const APPS = [
     activeIcon: "/icones/zerosignaliconecircular3.png"
   },
   { 
-    id: 11, 
+    id: 5, 
     name: "ZC", 
     fullName: "Zero Control", 
     subName: "Zero Control",
@@ -128,7 +128,7 @@ const APPS = [
     activeIcon: "/icones/zerocontroliconecircular3.png"
   },
   { 
-    id: 9, 
+    id: 6, 
     name: "ZI", 
     fullName: "Zero Infinity", 
     subName: "Zero Infinity",
@@ -159,7 +159,7 @@ const APPS = [
     activeIcon: "/icones/zerosynapsesiconecircular3.png"
   },
   { 
-    id: 6, 
+    id: 8, 
     name: "ZFy", 
     fullName: "ESPIRITUALIZANDO - Zero Faithfully", 
     subName: "ESPIRITUALIZANDO",
@@ -175,7 +175,7 @@ const APPS = [
     activeIcon: "/icones/zerofaithfullyiconecircular3.png"
   },
   { 
-    id: 10, 
+    id: 9, 
     name: "ZP", 
     fullName: "Zero Pay", 
     subName: "Zero Pay",
@@ -190,7 +190,7 @@ const APPS = [
     activeIcon: "/icones/zeropayiconecircular3.png"
   },
   { 
-    id: 8, 
+    id: 10, 
     name: "ZM", 
     fullName: "Zero Mind", 
     subName: "Zero Mind",
@@ -205,7 +205,7 @@ const APPS = [
     activeIcon: "/icones/zeromindiconecircular3.png"
   },
   { 
-    id: 12, 
+    id: 11, 
     name: "ZG", 
     fullName: "Zero Ground", 
     subName: "Zero Ground",
@@ -219,7 +219,7 @@ const APPS = [
     activeIcon: "/icones/zerogroundiconecircular3.png"
   },
   { 
-    id: 5, 
+    id: 12, 
     name: "ZE", 
     fullName: "SENTIMENTALIZANDO - Zero Espaço", 
     subName: "SENTIMENTALIZANDO",
@@ -1958,7 +1958,8 @@ export default function Home() {
                 >
                   {APPS.map((app, index) => {
                     const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
-                    const brasaoSrc = `/Brasoes/${app.id}${app.id}${app.id}.png`;
+                    const brasaoNum = index + 1;
+                    const brasaoSrc = `/Brasoes/${brasaoNum}${brasaoNum}${brasaoNum}.png`;
 
                     return (
                       <div 
@@ -3236,7 +3237,8 @@ export default function Home() {
               >
                 {APPS.map((app, index) => {
                   const isBrasaoActive = activeBrasaoIndex === index || clickedBrasoes.includes(index);
-                  const brasaoSrc = `/Brasoes/${app.id}${app.id}${app.id}.png`;
+                  const brasaoNum = index + 1;
+                    const brasaoSrc = `/Brasoes/${brasaoNum}${brasaoNum}${brasaoNum}.png`;
 
                   return (
                     <div 
