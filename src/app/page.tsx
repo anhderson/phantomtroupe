@@ -693,7 +693,7 @@ export default function Home() {
   const tickerRef = useRef<HTMLDivElement>(null);
   const tickerX = useMotionValue(0);
   const tickerSpeed = useMotionValue(0.06); // Default speed (px per frame approx)
-  const targetSpeed = isSlowMotion ? 0.01 : 0.06; // Reduced speed for better legibility
+  const targetSpeed = isSlowMotion ? 0 : 0.06; // Decelerates and pauses completely when paused
 
   useEffect(() => {
     animate(tickerSpeed, targetSpeed, {
@@ -1314,6 +1314,42 @@ export default function Home() {
           </motion.div>
         </div>
         <div className="hud-meta">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsSlowMotion(prev => !prev);
+            }}
+            title={isSlowMotion ? "Retomar textos do menu superior" : "Desacelerar e pausar textos do menu superior"}
+            style={{
+              width: '22px',
+              height: '22px',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              border: '1px solid rgba(255, 255, 255, 0.5)',
+              background: isSlowMotion ? 'rgba(255, 255, 255, 0.25)' : 'rgba(85, 85, 85, 0.55)',
+              color: currentTheme === 1 ? '#111111' : '#ffffff',
+              boxShadow: isSlowMotion ? '0 0 10px rgba(255, 255, 255, 0.6)' : '0 2px 6px rgba(0, 0, 0, 0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 0,
+              marginRight: '4px',
+              flexShrink: 0,
+              transition: 'all 0.25s ease',
+              outline: 'none'
+            }}
+          >
+            {isSlowMotion ? (
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="6,4 20,12 6,20" />
+              </svg>
+            ) : (
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="5" y="4" width="5" height="16" rx="1" />
+                <rect x="14" y="4" width="5" height="16" rx="1" />
+              </svg>
+            )}
+          </button>
           <span className="hud-label sync-label" style={{ color: '#ffffff' }}>SYNC:</span>
           <span className="hud-value hardware-hl">{metrics.city}</span>
           <div className="hud-divider"></div>
