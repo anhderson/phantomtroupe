@@ -1082,8 +1082,8 @@ body::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, calc(-50% - 320px));
-  width: 100px; /* Cresceu levemente de 80px para 100px */
-  height: 100px;
+  width: 120px; /* Aumentado em 20% (de 100px para 120px) */
+  height: 120px;
   pointer-events: none;
   z-index: 2000;
 }
